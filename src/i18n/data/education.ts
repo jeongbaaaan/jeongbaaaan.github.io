@@ -35,6 +35,12 @@ const educationData: Record<Locale, { education: Education[]; certifications: Ce
         degree: "교환학생 (4.0/4.0)",
         period: "",
       },
+      {
+        school: "AWS CloudSchool 4기",
+        degree: "클라우드 아키텍처",
+        period: "2024.01 ~ 2024.07",
+        note: "AWS 해커톤 대상 (1위)",
+      },
     ],
     certifications: [
       { name: "AWS SAA (Solutions Architect Associate)", date: "2024.07" },
@@ -55,6 +61,12 @@ const educationData: Record<Locale, { education: Education[]; certifications: Ce
         degree: "Exchange Student (4.0/4.0)",
         period: "",
       },
+      {
+        school: "AWS CloudSchool Cohort 4",
+        degree: "Cloud Architecture",
+        period: "2024.01 ~ 2024.07",
+        note: "AWS Hackathon Grand Prize (1st Place)",
+      },
     ],
     certifications: [
       { name: "AWS SAA (Solutions Architect Associate)", date: "2024.07" },
@@ -74,6 +86,12 @@ const educationData: Record<Locale, { education: Education[]; certifications: Ce
         school: "Oklahoma State University",
         degree: "交換留学 (4.0/4.0)",
         period: "",
+      },
+      {
+        school: "AWS CloudSchool 第4期",
+        degree: "クラウドアーキテクチャ",
+        period: "2024.01 ~ 2024.07",
+        note: "AWSハッカソン大賞（1位）",
       },
     ],
     certifications: [

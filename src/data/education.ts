@@ -38,4 +38,10 @@ export const education: Education[] = [
     degree: "교환학생 (4.0/4.0)",
     period: "",
   },
+  {
+    school: "AWS CloudSchool 4기",
+    degree: "클라우드 아키텍처",
+    period: "2024.01 ~ 2024.07",
+    note: "AWS 해커톤 대상 (1위)",
+  },
 ];
