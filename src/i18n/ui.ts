@@ -61,7 +61,7 @@ export const ui = {
 
     // Navbar
     "nav.resume": "Resume",
-    "nav.aiDev": "AI Dev",
+    "nav.aiDev": "With AI",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
     "nav.ariaResumeToggle": "Resume 메뉴 펼치기",
@@ -153,7 +153,7 @@ export const ui = {
 
     // Navbar
     "nav.resume": "Resume",
-    "nav.aiDev": "AI Dev",
+    "nav.aiDev": "With AI",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
     "nav.ariaResumeToggle": "Toggle Resume menu",
@@ -245,7 +245,7 @@ export const ui = {
 
     // Navbar
     "nav.resume": "Resume",
-    "nav.aiDev": "AI Dev",
+    "nav.aiDev": "With AI",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
     "nav.ariaResumeToggle": "Resumeメニューを開く",
