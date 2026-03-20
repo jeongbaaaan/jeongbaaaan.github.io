@@ -1,0 +1,1927 @@
+<html>
+
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <style type="text/css">
+    @import url(https://themes.googleusercontent.com/fonts/css?kit=MdkLunaJDM8LEDc1LlU9zDt0jZqdUG2xqTUcCtI89eLOfsfM6rvuuu7h1pY3r_-A);
+
+    /* 기본 줄간격 정의 */
+    body,
+    p,
+    li,
+    td {
+      line-height: 1.5;
+    }
+
+    /* 문단 사이 여백 추가 */
+    p {
+      margin-bottom: 0.5em;
+    }
+
+    /* 테이블 셀 패딩 증가 */
+    table td {
+      padding: 8pt 5pt 8pt 5pt !important;
+    }
+
+    /* 중앙 정렬을 위한 스타일 추가 */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      /* 배경색 추가로 화면 경계 구분 */
+    }
+
+    .doc-content {
+      max-width: 800px !important;
+      /* 콘텐츠 최대 너비를 더 작게 조정 */
+      width: 95%;
+      margin: 0 auto;
+      box-sizing: border-box;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 테이블 최대 너비 엄격히 제한 */
+    .c36 {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 100% !important;
+      max-width: 800px !important;
+      /* 테이블 최대 너비 명시적 설정 */
+      table-layout: fixed !important;
+      /* 테이블 레이아웃 고정 */
+    }
+
+    /* 테이블 내 콘텐츠 칼럼 너비 확장 */
+    .c19,
+    .c25,
+    .c7 {
+      width: 100% !important;
+      box-sizing: border-box !important;
+      /* 박스 모델이 패딩과 테두리를 포함하도록 */
+      word-wrap: break-word !important;
+      /* 텍스트가 넘치지 않도록 */
+    }
+
+    .c37 {
+      padding: 50pt 30pt 50pt 30pt !important;
+      max-width: 800px !important;
+      /* 본문 최대 너비 명시적 제한 */
+    }
+
+    /* 테이블 셀 반응형 너비 조정 */
+    .c41,
+    .c17 {
+      width: 20% !important;
+      max-width: 160px !important;
+      /* 최대 너비 지정 */
+    }
+
+    .c35,
+    .c12 {
+      width: 80% !important;
+      max-width: 640px !important;
+      /* 최대 너비 지정 */
+    }
+
+    /* 모바일 대응을 위한 미디어 쿼리 추가 */
+    @media screen and (max-width: 768px) {
+      .doc-content {
+        width: 100%;
+        padding: 20pt 15pt !important;
+      }
+
+      .c37 {
+        padding: 30pt 15pt 30pt 15pt !important;
+      }
+
+      .c41,
+      .c17 {
+        width: 30% !important;
+        /* 모바일에서는 좀 더 넓게 */
+      }
+
+      .c35,
+      .c12 {
+        width: 70% !important;
+      }
+    }
+
+    /* 기존 CSS 유지 */
+    ul.lst-kix_ca801xthou7n-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ca801xthou7n-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ca801xthou7n-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ca801xthou7n-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ca801xthou7n-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ca801xthou7n-8 {
+      list-style-type: none
+    }
+
+    .lst-kix_o9wh3atyxqoa-0>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_o9wh3atyxqoa-5>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_f0twgew1dwvb-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_f0twgew1dwvb-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_o9wh3atyxqoa-3>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_f0twgew1dwvb-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_f0twgew1dwvb-3 {
+      list-style-type: none
+    }
+
+    .lst-kix_o9wh3atyxqoa-4>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_f0twgew1dwvb-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_f0twgew1dwvb-5 {
+      list-style-type: none
+    }
+
+    .lst-kix_o9wh3atyxqoa-1>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_f0twgew1dwvb-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_f0twgew1dwvb-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_f0twgew1dwvb-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ca801xthou7n-0 {
+      list-style-type: none
+    }
+
+    .lst-kix_o9wh3atyxqoa-2>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_ca801xthou7n-1 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ca801xthou7n-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-0 {
+      list-style-type: none
+    }
+
+    .lst-kix_62hscnxr884v-7>li:before {
+      content: "\0025cb   "
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-2 {
+      list-style-type: none
+    }
+
+    .lst-kix_62hscnxr884v-6>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_7k3lbbyokens-0>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_k4cuyt1bpp9v-5 {
+      list-style-type: none
+    }
+
+    .lst-kix_7k3lbbyokens-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_7k3lbbyokens-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_o9wh3atyxqoa-6>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_7k3lbbyokens-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_62hscnxr884v-8>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_eqi39e5pcyab-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_o9wh3atyxqoa-7>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_o9wh3atyxqoa-8>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_eqi39e5pcyab-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_eqi39e5pcyab-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_eqi39e5pcyab-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_ca801xthou7n-5>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_ca801xthou7n-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_ca801xthou7n-6>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_ucn32gza98p1-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_ca801xthou7n-1>li:before {
+      content: "\0025cb   "
+    }
+
+    ul.lst-kix_ucn32gza98p1-0 {
+      list-style-type: none
+    }
+
+    .lst-kix_ca801xthou7n-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_ca801xthou7n-8>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_t2r1kvusbz6c-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_ca801xthou7n-7>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_t2r1kvusbz6c-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_nsgwrn58pxun-1>li:before {
+      content: "\0025cb   "
+    }
+
+    ul.lst-kix_ucn32gza98p1-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ucn32gza98p1-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ucn32gza98p1-6 {
+      list-style-type: none
+    }
+
+    .lst-kix_t2r1kvusbz6c-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_t2r1kvusbz6c-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_7k3lbbyokens-5>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_7k3lbbyokens-7>li:before {
+      content: "\0025cb   "
+    }
+
+    ul.lst-kix_ucn32gza98p1-5 {
+      list-style-type: none
+    }
+
+    .lst-kix_nsgwrn58pxun-3>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_ucn32gza98p1-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_ucn32gza98p1-3 {
+      list-style-type: none
+    }
+
+    .lst-kix_nsgwrn58pxun-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_nsgwrn58pxun-4>li:before {
+      content: "\0025cb   "
+    }
+
+    ul.lst-kix_ucn32gza98p1-2 {
+      list-style-type: none
+    }
+
+    .lst-kix_t2r1kvusbz6c-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_7k3lbbyokens-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_7k3lbbyokens-8>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_nsgwrn58pxun-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_7k3lbbyokens-6>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_nsgwrn58pxun-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nsgwrn58pxun-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nsgwrn58pxun-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nsgwrn58pxun-6 {
+      list-style-type: none
+    }
+
+    .lst-kix_k4cuyt1bpp9v-8>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_nsgwrn58pxun-8 {
+      list-style-type: none
+    }
+
+    .lst-kix_k4cuyt1bpp9v-5>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_k4cuyt1bpp9v-6>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_nsgwrn58pxun-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_k4cuyt1bpp9v-7>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_nsgwrn58pxun-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nsgwrn58pxun-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nsgwrn58pxun-2 {
+      list-style-type: none
+    }
+
+    .lst-kix_k4cuyt1bpp9v-1>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_k4cuyt1bpp9v-2>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_k4cuyt1bpp9v-0>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_k4cuyt1bpp9v-4>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_h00fyh7ioccj-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_h00fyh7ioccj-7 {
+      list-style-type: none
+    }
+
+    .lst-kix_ca801xthou7n-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_ca801xthou7n-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_k4cuyt1bpp9v-3>li:before {
+      content: "-  "
+    }
+
+    ul.lst-kix_eqi39e5pcyab-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_wgij0cuk02z7-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_eqi39e5pcyab-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_eqi39e5pcyab-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_eqi39e5pcyab-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_eqi39e5pcyab-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_h00fyh7ioccj-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_h00fyh7ioccj-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_h00fyh7ioccj-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_h00fyh7ioccj-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_eqi39e5pcyab-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_h00fyh7ioccj-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_eqi39e5pcyab-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_h00fyh7ioccj-1 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_eqi39e5pcyab-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_h00fyh7ioccj-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_eqi39e5pcyab-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_f0twgew1dwvb-8>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_f0twgew1dwvb-6>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_f0twgew1dwvb-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_nsgwrn58pxun-7>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_f0twgew1dwvb-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_f0twgew1dwvb-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_ucn32gza98p1-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_nsgwrn58pxun-5>li:before {
+      content: "\0025a0   "
+    }
+
+    ul.lst-kix_wgij0cuk02z7-1 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_wgij0cuk02z7-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_wgij0cuk02z7-3 {
+      list-style-type: none
+    }
+
+    .lst-kix_t2r1kvusbz6c-6>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_wgij0cuk02z7-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_wgij0cuk02z7-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_wgij0cuk02z7-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_wgij0cuk02z7-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_wgij0cuk02z7-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_a1qwh5faudd7-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_a1qwh5faudd7-4 {
+      list-style-type: none
+    }
+
+    .lst-kix_eqi39e5pcyab-6>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_eqi39e5pcyab-8>li:before {
+      content: "\0025a0   "
+    }
+
+    ul.lst-kix_a1qwh5faudd7-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_t2r1kvusbz6c-8>li:before {
+      content: "\0025a0   "
+    }
+
+    ul.lst-kix_a1qwh5faudd7-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_a1qwh5faudd7-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_a1qwh5faudd7-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_a1qwh5faudd7-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_a1qwh5faudd7-6 {
+      list-style-type: none
+    }
+
+    .lst-kix_eqi39e5pcyab-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_h00fyh7ioccj-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_h00fyh7ioccj-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_wgij0cuk02z7-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_62hscnxr884v-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_62hscnxr884v-5>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_ucn32gza98p1-2>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_wgij0cuk02z7-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_h00fyh7ioccj-8>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_ucn32gza98p1-4>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-8 {
+      list-style-type: none
+    }
+
+    .lst-kix_h00fyh7ioccj-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_62hscnxr884v-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_ucn32gza98p1-6>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-1 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-4 {
+      list-style-type: none
+    }
+
+    .lst-kix_ucn32gza98p1-8>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_t2r1kvusbz6c-5 {
+      list-style-type: none
+    }
+
+    .lst-kix_h00fyh7ioccj-6>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_a1qwh5faudd7-0 {
+      list-style-type: none
+    }
+
+    .lst-kix_88mfa53r1zac-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_88mfa53r1zac-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_88mfa53r1zac-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_a1qwh5faudd7-7>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_a1qwh5faudd7-8>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_a1qwh5faudd7-5>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_a1qwh5faudd7-6>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_wgij0cuk02z7-6>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_wgij0cuk02z7-5>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_wgij0cuk02z7-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_a1qwh5faudd7-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_a1qwh5faudd7-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_a1qwh5faudd7-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_a1qwh5faudd7-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_a1qwh5faudd7-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_wgij0cuk02z7-7>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_wgij0cuk02z7-8>li:before {
+      content: "\0025a0   "
+    }
+
+    ul.lst-kix_88mfa53r1zac-1 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_88mfa53r1zac-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_88mfa53r1zac-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_88mfa53r1zac-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_88mfa53r1zac-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_88mfa53r1zac-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_88mfa53r1zac-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_88mfa53r1zac-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_88mfa53r1zac-6 {
+      list-style-type: none
+    }
+
+    .lst-kix_88mfa53r1zac-7>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_88mfa53r1zac-6>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_62hscnxr884v-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_62hscnxr884v-1 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_62hscnxr884v-0 {
+      list-style-type: none
+    }
+
+    .lst-kix_88mfa53r1zac-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_88mfa53r1zac-5>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_88mfa53r1zac-4>li:before {
+      content: "\0025cb   "
+    }
+
+    ul.lst-kix_62hscnxr884v-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_62hscnxr884v-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_62hscnxr884v-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_62hscnxr884v-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_62hscnxr884v-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_62hscnxr884v-3 {
+      list-style-type: none
+    }
+
+    .lst-kix_88mfa53r1zac-8>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_f0twgew1dwvb-5>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_f0twgew1dwvb-7>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_f0twgew1dwvb-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_nsgwrn58pxun-8>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_f0twgew1dwvb-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_nsgwrn58pxun-6>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_7k3lbbyokens-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_7k3lbbyokens-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_7k3lbbyokens-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_7k3lbbyokens-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_7k3lbbyokens-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_7k3lbbyokens-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_t2r1kvusbz6c-5>li:before {
+      content: "\0025a0   "
+    }
+
+    ul.lst-kix_7k3lbbyokens-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_7k3lbbyokens-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_7k3lbbyokens-8 {
+      list-style-type: none
+    }
+
+    .lst-kix_t2r1kvusbz6c-7>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_eqi39e5pcyab-7>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_eqi39e5pcyab-5>li:before {
+      content: "\0025a0   "
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-7 {
+      list-style-type: none
+    }
+
+    .lst-kix_h00fyh7ioccj-1>li:before {
+      content: "\0025cb   "
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-5 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-4 {
+      list-style-type: none
+    }
+
+    .lst-kix_wgij0cuk02z7-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_wgij0cuk02z7-3>li:before {
+      content: "\0025cf   "
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_62hscnxr884v-2>li:before {
+      content: "\0025a0   "
+    }
+
+    ul.lst-kix_o9wh3atyxqoa-0 {
+      list-style-type: none
+    }
+
+    .lst-kix_ucn32gza98p1-1>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_62hscnxr884v-4>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_ucn32gza98p1-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_ucn32gza98p1-5>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_h00fyh7ioccj-5>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_ucn32gza98p1-7>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_h00fyh7ioccj-3>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_62hscnxr884v-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_h00fyh7ioccj-7>li:before {
+      content: "\0025cb   "
+    }
+
+    ol {
+      margin: 0;
+      padding: 0
+    }
+
+    table td,
+    table th {
+      padding: 0
+    }
+
+    .c19 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 1pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 493.5pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c27 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 1pt;
+      width: 54.8pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c3 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 1pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 70.5pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c9 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 70.5pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c5 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 1pt;
+      width: 70.5pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c25 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 493.5pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c12 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 407.2pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c7 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 1pt;
+      width: 493.5pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c22 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 1pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 54.8pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c17 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 86.2pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c41 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 1pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 86.2pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c35 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 1pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 407.2pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c10 {
+      border-right-style: solid;
+      padding: 8pt 5pt 8pt 5pt !important;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 54.8pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c1 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 10pt;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      line-height: 1.5;
+    }
+
+    .c0 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.5;
+      orphans: 2;
+      widows: 2;
+      text-align: left;
+      height: 11pt
+    }
+
+    .c29 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 9pt;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      line-height: 1.5;
+    }
+
+    .c26 {
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 18pt;
+      font-family: "Noto Sans KR";
+      font-style: normal
+    }
+
+    .c31 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 11pt;
+      font-family: "Arial";
+      font-style: normal;
+      line-height: 1.5;
+    }
+
+    .c6 {
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 12pt;
+      font-family: "Noto Sans KR";
+      font-style: normal
+    }
+
+    .c8 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 11pt;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      line-height: 1.5;
+    }
+
+    .c18 {
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 6pt;
+      font-family: "Noto Sans KR";
+      font-style: normal
+    }
+
+    .c30 {
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 20pt;
+      font-family: "Noto Sans KR";
+      font-style: normal
+    }
+
+    .c2 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 9pt;
+      font-family: "Noto Sans KR";
+      font-style: italic
+    }
+
+    .c13 {
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 14pt;
+      font-family: "Noto Sans KR";
+      font-style: normal
+    }
+
+    .c33 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 1pt;
+      font-family: "Noto Sans KR";
+      font-style: normal
+    }
+
+    .c4 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.5;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    .c23 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.5;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    .c28 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.5;
+      orphans: 2;
+      widows: 2;
+      text-align: center
+    }
+
+    .c36 {
+      border-spacing: 0;
+      border-collapse: collapse;
+      margin-right: auto
+    }
+
+    .c38 {
+      color: #000000;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-style: normal
+    }
+
+    .c32 {
+      color: #000000;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-style: italic
+    }
+
+    .c24 {
+      -webkit-text-decoration-skip: none;
+      color: #1155cc;
+      text-decoration: underline;
+      text-decoration-skip-ink: none
+    }
+
+    .c40 {
+      font-size: 9pt;
+      font-weight: 400;
+      font-family: "Noto Sans KR";
+      line-height: 1.5;
+    }
+
+    .c37 {
+      background-color: #ffffff;
+      max-width: 451.3pt;
+      padding: 66.3pt 72pt 72pt 72pt
+    }
+
+    .c34 {
+      font-size: 16pt;
+      font-weight: 700;
+      font-family: "Noto Sans KR";
+      line-height: 1.5;
+    }
+
+    .c14 {
+      font-size: 10pt;
+      font-weight: 400;
+      font-family: "Noto Sans KR";
+      line-height: 1.5;
+    }
+
+    .c16 {
+      color: inherit;
+      text-decoration: inherit
+    }
+
+    .c39 {
+      height: 19.6pt
+    }
+
+    .c42 {
+      height: 26pt
+    }
+
+    .c21 {
+      height: 21pt
+    }
+
+    .c20 {
+      height: 12.9pt
+    }
+
+    .c15 {
+      height: 24pt
+    }
+
+    .c11 {
+      height: 11pt
+    }
+
+    .title {
+      padding-top: 0pt;
+      color: #000000;
+      font-size: 26pt;
+      padding-bottom: 3pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    .subtitle {
+      padding-top: 0pt;
+      color: #666666;
+      font-size: 15pt;
+      padding-bottom: 16pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    li {
+      color: #000000;
+      font-size: 11pt;
+      font-family: "Arial";
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0;
+      color: #000000;
+      font-size: 11pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      margin-bottom: 0.5em;
+    }
+
+    h1 {
+      padding-top: 20pt;
+      color: #000000;
+      font-size: 20pt;
+      padding-bottom: 6pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h2 {
+      padding-top: 18pt;
+      color: #000000;
+      font-size: 16pt;
+      padding-bottom: 6pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h3 {
+      padding-top: 16pt;
+      color: #434343;
+      font-size: 14pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h4 {
+      padding-top: 14pt;
+      color: #666666;
+      font-size: 12pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h5 {
+      padding-top: 12pt;
+      color: #666666;
+      font-size: 11pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h6 {
+      padding-top: 12pt;
+      color: #666666;
+      font-size: 11pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.5;
+      page-break-after: avoid;
+      font-style: italic;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+  </style>
+</head>
+
+<body class="c37 doc-content">
+  <div>
+    <p class="c4 c11"><span class="c31"></span></p>
+  </div>
+  <p class="c4 c11"><span class="c33"></span></p>
+  <table class="c36">
+    <tr class="c21">
+      <td class="c25" colspan="7" rowspan="1">
+        <p class="c4"><span class="c30">김강남 &mdash; AI Research Engineer</span></p>
+        <p class="c4"><span class="c1">📞 +82 010 5230 7653</span></p>
+        <p class="c4"><span class="c14">✉️ </span><span class="c24 c14"><a class="c16"
+              href="mailto:kangnam7653@gmail.com">kangnam7653@gmail.com</a></span></p>
+        <p class="c4"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 13.23px; height: 13.23px;"><img
+              alt="" src="images/image2.png"
+              style="width: 13.23px; height: 13.23px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+              title=""></span><span class="c14">&nbsp;</span><span class="c14 c24"><a class="c16"
+              href="https://www.google.com/url?q=https://github.com/kangnam7654&amp;sa=D&amp;source=editors&amp;ust=1744041783088750&amp;usg=AOvVaw24bxlD6FmxcDPoORh5G2pa">https://github.com/kangnam7654</a></span>
+        </p>
+        <p class="c4"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 13.23px; height: 13.23px;"><img
+              alt="" src="images/image1.png"
+              style="width: 13.23px; height: 13.23px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+              title=""></span><span class="c14">&nbsp;</span><span class="c24 c14"><a class="c16"
+              href="https://www.google.com/url?q=https://linkedin.com/in/kangnam7654&amp;sa=D&amp;source=editors&amp;ust=1744041783089134&amp;usg=AOvVaw0rrVl3vbn9d-j35m0u3sf5">https://linkedin.com/in/kangnam7654</a></span>
+        </p>
+      </td>
+    </tr>
+    <tr class="c20">
+      <td class="c7" colspan="7" rowspan="1">
+        <p class="c4"><span class="c26">Keyword</span></p>
+      </td>
+    </tr>
+    <tr class="c20">
+      <td class="c19" colspan="7" rowspan="1">
+        <p class="c4"><span class="c1">- Microsoft Azure 기반 서비스의 모델 배포 및 운영 경험 (Azure ML, Blob 등)</span></p>
+        <p class="c4"><span class="c1">- 추론(Inference) 최적화 및 모델 서빙 파이프라인 구축 경험 (ONNX, FastAPI 등)</span></p>
+        <p class="c4"><span class="c1">- Sprint 기반 Agile 개발 프로세스 경험 (Daily Scrum, Sprint Planning, Retrospective
+            등)</span></p>
+        <p class="c4"><span class="c1">- Git 기반 협업 문화 경험 (Pull Request &rarr; Code Review &rarr; Merge)</span></p>
+        <p class="c4"><span class="c1">- Vibe Coding 활용 능력 (GitHub Copilot, ChatGPT 등을 통한 협업 및 프로토타이핑)</span></p>
+        <p class="c4"><span class="c1">- 최신 논문 기반 SOTA 아키텍처 및 손실 함수 커스터마이징 경험 (Generative / Discriminative 포함)</span>
+        </p>
+        <p class="c4"><span class="c1">- PyTorch 및 PyTorch Lightning 기반 from-scratch 학습 파이프라인 구축 경험 (W&amp;B 포함)</span>
+        </p>
+        <p class="c4"><span class="c1">- 주요 도메인 경험: Computer Vision, Audio, Recommender System, Anomaly Detection
+            등</span></p>
+      </td>
+    </tr>
+    <tr class="c20">
+      <td class="c7" colspan="7" rowspan="1">
+        <p class="c4"><span class="c26">About Me</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c19" colspan="7" rowspan="1">
+        <p class="c4"><span class="c1">AI Research Engineer로서 3년 이상 다양한 프로젝트를 수행해왔습니다.</span></p>
+        <p class="c4 c11"><span class="c1"></span></p>
+        <p class="c4"><span class="c1">주로 Computer Vision 중심의 과제를 다뤄왔지만, 필요에 따라 음성 합성(TTS), 추천 시스템, 검색, 자연어 처리(NLP), 데이터
+            분석 등 여러 도메인의 문제를 적극적으로 해결해왔습니다. 특정 기술이나 도메인에 얽매이지 않고, 문제 해결에 적합한 기술을 빠르게 학습하고 적용하는 것에 익숙합니다.</span></p>
+        <p class="c4 c11"><span class="c1"></span></p>
+        <p class="c4"><span class="c1">논문을 기반으로 딥러닝 모델을 직접 구현하고 학습시킨 경험이 있습니다. 예를 들어, 학습이 까다로운 GAN을 안정적으로 설계&middot;학습시킨
+            경험이 있으며, 문제 해결 목적에 맞춰 Discriminative 모델을 설계하고 적용한 사례도 있습니다. 이러한 경험을 통해 이론적 지식과 실무 역량을 유기적으로 연결하는 데 강점을 가지고
+            있습니다.</span></p>
+        <p class="c4 c11"><span class="c1"></span></p>
+      </td>
+    </tr>
+    <tr class="c15">
+      <td class="c7" colspan="7" rowspan="1">
+        <p class="c4"><span class="c26">Experience</span></p>
+      </td>
+    </tr>
+    <tr class="c15">
+      <td class="c19" colspan="7" rowspan="1">
+        <p class="c4"><span class="c34">크레버스</span><span class="c38 c34">&nbsp;(청담 러닝)</span></p>
+        <p class="c4"><span class="c2">AI 엔지니어 &ndash; Nesto CV 본부, AI Biz 팀</span></p>
+        <p class="c4"><span class="c40">2024.04 &ndash; 현재, 서울</span></p>
+        <p class="c4"><span class="c6">에이프릴어학원 자동평가 시스템 (서비스 출시)</span></p>
+        <p class="c4"><span class="c1">- [Vision] 생성형 모델을 활용한 이미지 생성 파이프라인 개발 및 최적화(양자화)</span></p>
+        <p class="c4"><span class="c1">- [Audio] 도메인 특화 음성 데이터를 활용한 STT(Speech-to-Text) 모델 미세조정</span></p>
+        <p class="c4"><span class="c1">- [Audio] 도메인 특화 음성 데이터를 활용한 TTS(Text-to-Speech) 모델 미세조정</span></p>
+        <p class="c4"><span class="c1">- [Search] LLM API 비용절감을 위한 하이브리드 검색 시스템 개발</span></p>
+        <p class="c4"><span class="c6">청담어학원 자동평가 시스템 (서비스 출시)</span></p>
+        <p class="c4"><span class="c14">- [Vision] Google MediaPipe 기반 발표태도 평가 시스템 설계 및 개발</span></p>
+      </td>
+    </tr>
+    <tr class="c15">
+      <td class="c25" colspan="7" rowspan="1">
+        <p class="c4"><span class="c34">메타버스월드 (넷마블 F&amp;C)</span></p>
+        <p class="c4"><span class="c2">AI 연구 엔지니어 &ndash; 개발 1실, 메타월드 개발 파트</span></p>
+        <p class="c4"><span class="c40">2022.10 &ndash; 2024.01, 서울</span></p>
+        <p class="c4"><span class="c6">그랜드크로스: 메타월드</span></p>
+        <p class="c4"><span class="c1">- [Vision] 사용자 얼굴을 기반으로 게임 캐릭터를 생성하는 Face-to-Character 모델 개발</span></p>
+        <p class="c4"><span class="c1">- [Vision] Google MediaPipe 기반 Pose Estimation 기술을 활용하여 캐릭터 모션 트래킹 시스템 개발</span>
+        </p>
+      </td>
+    </tr>
+    <tr class="c15">
+      <td class="c25" colspan="7" rowspan="1">
+        <p class="c4"><span class="c34 c38">코코넛사일로</span></p>
+        <p class="c4"><span class="c2">AI 연구 엔지니어 &ndash; CTO실</span></p>
+        <p class="c4"><span class="c40">2021.06 &ndash; 2022.04, 서울</span></p>
+        <p class="c4"><span class="c6">정부 지원 프로젝트 다수 참여</span></p>
+        <p class="c4"><span class="c1">- [Recommender System, NLP] BERT 기반 콘텐츠 기반 추천 시스템(CBF) 설계 및 구현 &ndash; 제품 설명을
+            BERT로 임베딩하여 유사 아이템 추천 모델 개발</span></p>
+        <p class="c4"><span class="c1">- [Vision] 해상 레이더 객체 탐지를 위한 YOLOv5 모델 미세조정 &ndash; 도메인 특화 객체 검출 모델 미세조정 및
+            학습</span></p>
+        <p class="c4"><span class="c1">- [Vision] 산업용 금속 프린터 공정 모니터링을 위한 이상 탐지 로직 구현 &ndash; 실시간 영상 기반 Anomaly Detection
+            시스템 개발</span></p>
+      </td>
+    </tr>
+    <tr class="c42">
+      <td class="c25" colspan="7" rowspan="1">
+        <p class="c4 c11"><span class="c18"></span></p>
+      </td>
+    </tr>
+    <tr class="c39">
+      <td class="c7" colspan="7" rowspan="1">
+        <p class="c4"><span class="c26">Education</span></p>
+      </td>
+    </tr>
+    <tr class="c15">
+      <td class="c19" colspan="7" rowspan="1">
+        <p class="c4"><span class="c13">서강대학교 AIㆍSW 대학원</span></p>
+        <p class="c4"><span class="c32 c14">데이터사이언스 &bull; 인공지능</span></p>
+        <p class="c4"><span class="c1">2023.03 &ndash; 재학중, 서울</span></p>
+        <p class="c4"><span class="c1">* 성적 우수 장학금 1회 (2023년 가을)</span></p>
+      </td>
+    </tr>
+    <tr class="c15">
+      <td class="c25" colspan="7" rowspan="1">
+        <p class="c4"><span class="c13">세종대학교</span></p>
+        <p class="c4"><span class="c14 c32">물리학, 이학사</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c7" colspan="7" rowspan="1">
+        <p class="c4"><span class="c26">Skill</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c41" colspan="1" rowspan="1">
+        <p class="c4"><span class="c6">언어</span></p>
+        <p class="c4 c11"><span class="c1"></span></p>
+      </td>
+      <td class="c35" colspan="6" rowspan="1">
+        <p class="c23"><span class="c1">Python (중급)</span></p>
+        <p class="c23"><span class="c1">C++ (초급)</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c17" colspan="1" rowspan="1">
+        <p class="c4"><span class="c6">프레임워크 / 라이브러리</span></p>
+      </td>
+      <td class="c12" colspan="6" rowspan="1">
+        <p class="c23"><span class="c14">PyTorch</span><span class="c14">, </span><span class="c14">PyTorch</span><span
+            class="c14">&nbsp;</span><span class="c14">Lightning</span><span class="c1">&nbsp;(중급)</span></p>
+        <p class="c23"><span class="c14">Weights &amp; Biases, FastAPI, </span><span class="c14">Gradio</span><span
+            class="c14">, </span><span class="c14">Streamlit</span><span class="c1">&nbsp;(중급)</span></p>
+        <p class="c23"><span class="c1">OpenCV, FFMpeg (중급)</span></p>
+        <p class="c23"><span class="c1">Pandas, Polars, Numpy, Matplotlib, Seaborn (중급)</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c17" colspan="1" rowspan="1">
+        <p class="c4"><span class="c6">클라우드</span></p>
+      </td>
+      <td class="c12" colspan="6" rowspan="1">
+        <p class="c23"><span class="c1">Microsoft Azure</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c17" colspan="1" rowspan="1">
+        <p class="c4"><span class="c6">개발 도구</span></p>
+      </td>
+      <td class="c12" colspan="6" rowspan="1">
+        <p class="c23"><span class="c1">Visual Studio, Visual Studio Code, Github, Github Copilot, WSL (중급)</span></p>
+        <p class="c23"><span class="c1">Unreal Engine, Docker (초급)</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c17" colspan="1" rowspan="1">
+        <p class="c4"><span class="c6">협업 도구</span></p>
+      </td>
+      <td class="c12" colspan="6" rowspan="1">
+        <p class="c23"><span class="c1">Jira, Confluence, Slack, Google Workspace</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c7" colspan="7" rowspan="1">
+        <p class="c4"><span class="c26">Certification</span></p>
+      </td>
+    </tr>
+    <tr class="c21">
+      <td class="c19" colspan="7" rowspan="1">
+        <p class="c4"><span class="c1">AICE (AI Certificate for Everyone), Basic &ndash; 2022. 11</span></p>
+        <p class="c4"><span class="c1">ADsP(Advanced Data Analytics Semi-Professional) &ndash; 2022. 06</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c4 c11"><span class="c33"></span></p>
+</body>
+
+</html>

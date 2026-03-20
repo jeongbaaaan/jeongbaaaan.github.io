@@ -1,0 +1,103 @@
+---
+import AnimatedSection from "../ui/AnimatedSection.tsx";
+import GlassCard from "../ui/GlassCard.tsx";
+import { t } from "../../i18n/utils";
+import type { Locale } from "../../i18n/utils";
+import { getEducationData } from "../../i18n/data/education";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "ko" } = Astro.props;
+const { education, certifications } = getEducationData(locale);
+---
+
+<section id="education" class="py-24 px-6">
+  <div class="mx-auto max-w-4xl">
+    <AnimatedSection client:visible>
+      <h2
+        class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]"
+      >
+        {t("education.subtitle", locale)}
+      </h2>
+      <h3 class="mb-12 text-3xl font-bold md:text-4xl font-[family-name:var(--font-heading)]">
+        {t("education.title", locale)}
+      </h3>
+    </AnimatedSection>
+
+    <div class="space-y-6">
+      {
+        education.map((edu, index) => (
+          <AnimatedSection client:visible delay={index * 0.15}>
+            <GlassCard client:visible hover={false}>
+              <h4 class="text-xl font-bold">{edu.school}</h4>
+              <p class="text-[var(--color-text-secondary)]">{edu.degree}</p>
+              {edu.period && (
+                <p class="mt-1 text-sm text-[var(--color-primary)]">
+                  {edu.period}
+                </p>
+              )}
+              {edu.note && (
+                <p class="mt-2 text-sm text-[var(--color-accent)]">
+                  {edu.note}
+                </p>
+              )}
+              {edu.thesis && (
+                <div class="mt-4 rounded-lg border border-[var(--color-border)] bg-white/[0.02] p-4">
+                  <p class="mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)]">
+                    Thesis ({edu.thesis.date})
+                  </p>
+                  <p class="mb-1 text-sm font-medium">{edu.thesis.title}</p>
+                  <p class="mb-2 text-xs text-[var(--color-text-secondary)] italic">
+                    {edu.thesis.titleEn}
+                  </p>
+                  <p class="mb-3 text-xs text-[var(--color-text-secondary)]">
+                    {t("education.advisor", locale)}: {edu.thesis.advisor}
+                  </p>
+                  <div class="mb-3 flex flex-wrap gap-1.5">
+                    {edu.thesis.keywords.map((kw) => (
+                      <span class="rounded-md bg-[var(--color-primary)]/10 px-2 py-0.5 text-[10px] text-[var(--color-primary)]">
+                        {kw}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={edu.thesis.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 text-xs text-[var(--color-primary)] transition-colors hover:underline"
+                  >
+                    {t("education.viewOriginal", locale)}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              )}
+            </GlassCard>
+          </AnimatedSection>
+        ))
+      }
+    </div>
+
+    <!-- Certifications -->
+    <AnimatedSection client:visible delay={0.3}>
+      <h3 class="mt-16 mb-8 text-2xl font-bold font-[family-name:var(--font-heading)]">
+        {t("education.certTitle", locale)}
+      </h3>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {
+          certifications.map((cert) => (
+            <div class="flex items-center justify-between rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/40 px-5 py-4">
+              <span class="text-sm">{cert.name}</span>
+              <span class="text-xs text-[var(--color-text-secondary)] shrink-0 ml-4">
+                {cert.date}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </AnimatedSection>
+  </div>
+</section>

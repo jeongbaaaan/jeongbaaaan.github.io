@@ -1,0 +1,276 @@
+---
+import { t, localePath } from "../../i18n/utils";
+import type { Locale } from "../../i18n/utils";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "ko" } = Astro.props;
+
+const resumeItems = [
+  { label: "About", href: localePath("/#about", locale) },
+  { label: "Experience", href: localePath("/#experience", locale) },
+  { label: "Skills", href: localePath("/#skills", locale) },
+  { label: "Education", href: localePath("/#education", locale) },
+];
+
+const projectItems = [
+  { label: t("nav.project.cloudInfra", locale), href: localePath("/projects/cloud-infra-management", locale) },
+  { label: t("nav.project.clovaX", locale), href: localePath("/projects/clova-x-chatbot", locale) },
+  { label: t("nav.project.shinhan", locale), href: localePath("/projects/shinhan-banking", locale) },
+  { label: t("nav.project.auction", locale), href: localePath("/projects/cloud-native-auction", locale) },
+  { label: t("nav.project.kubernetes", locale), href: localePath("/projects/kubernetes-service", locale) },
+  { label: t("nav.project.dataViz", locale), href: localePath("/projects/python-data-viz", locale) },
+  { label: t("nav.project.dearAnt", locale), href: localePath("/projects/dear-ant", locale) },
+  { label: t("nav.project.ttona", locale), href: localePath("/projects/ttona", locale) },
+  { label: t("nav.project.dalgyeol", locale), href: localePath("/projects/dalgyeol", locale) },
+  { label: t("nav.project.whatHealth", locale), href: localePath("/projects/what-health", locale) },
+  { label: t("nav.project.quorum", locale), href: localePath("/projects/quorum", locale) },
+];
+---
+
+<!-- Desktop Sidebar -->
+<aside
+  id="sidebar"
+  class="fixed left-0 top-0 z-50 hidden h-screen w-64 flex-col justify-between border-r border-[var(--color-border)] bg-[var(--color-bg)]/80 px-6 py-8 backdrop-blur-xl lg:flex overflow-y-auto"
+>
+  <div>
+    <!-- Profile -->
+    <a href={localePath("/", locale)} class="mb-6 block">
+      <div class="mb-1 text-xl font-extrabold tracking-tight font-[family-name:var(--font-heading)]">
+        {t("hero.name", locale)}
+      </div>
+      <div class="text-sm text-[var(--color-primary)]">
+        {t("hero.role", locale)}
+      </div>
+    </a>
+
+    <!-- Resume Category -->
+    <div class="mb-6">
+      <div class="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-bold uppercase tracking-widest text-[var(--color-text)]">
+        <a href={localePath("/", locale)} class="transition-colors duration-200 hover:text-[var(--color-primary)]">{t("nav.resume", locale)}</a>
+        <button
+          id="resume-toggle"
+          class="transition-colors duration-200 hover:text-[var(--color-primary)]"
+          aria-label={t("nav.ariaResumeToggle", locale)}
+        >
+          <svg id="resume-chevron" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+      <nav id="resume-menu" class="mt-1 flex flex-col gap-0.5 pl-2">
+        {
+          resumeItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link rounded-lg px-3 py-1.5 text-sm text-[var(--color-text-secondary)] transition-all duration-200 hover:bg-white/5 hover:text-[var(--color-primary)]"
+              data-section={item.href.replace(/^\/(en|ja)?\/?(#?)/, "").replace("#", "")}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <!-- AI Dev -->
+    <a
+      href={localePath("/ai-dev", locale)}
+      class="mt-4 block rounded-lg px-3 py-2 text-sm font-bold uppercase tracking-widest text-[var(--color-text)] transition-colors duration-200 hover:bg-white/5 hover:text-[var(--color-primary)]"
+    >
+      {t("nav.aiDev", locale)}
+    </a>
+
+    <!-- Projects Category -->
+    <div class="mt-4 mb-2">
+      <div class="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-bold uppercase tracking-widest text-[var(--color-text)]">
+        <a href={localePath("/projects", locale)} class="transition-colors duration-200 hover:text-[var(--color-primary)]">{t("nav.projects", locale)}</a>
+        <button
+          id="projects-toggle"
+          class="transition-colors duration-200 hover:text-[var(--color-primary)]"
+          aria-label={t("nav.ariaProjectsToggle", locale)}
+        >
+          <svg id="projects-chevron" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+      <nav id="projects-menu" class="mt-1 flex flex-col gap-0.5 pl-2">
+        {
+          projectItems.map((item) => (
+            <a
+              href={item.href}
+              class="rounded-lg px-3 py-1.5 text-sm text-[var(--color-text-secondary)] transition-all duration-200 hover:bg-white/5 hover:text-[var(--color-primary)]"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <!-- Contact -->
+    <a
+      href={localePath("/contact", locale)}
+      class="nav-link mt-4 block rounded-lg px-3 py-2 text-sm font-bold uppercase tracking-widest text-[var(--color-text)] transition-colors duration-200 hover:bg-white/5 hover:text-[var(--color-primary)]"
+      data-section="contact"
+    >
+      {t("nav.contact", locale)}
+    </a>
+  </div>
+
+  <!-- Social Links -->
+  <div class="flex items-center gap-4 pt-4">
+    <a
+      href="https://github.com/jeongbaaaan"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-primary)]"
+      aria-label="GitHub"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+      </svg>
+    </a>
+    <a
+      href="https://substack.com/@bitbit1"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-primary)]"
+      aria-label="Blog"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+      </svg>
+    </a>
+    <a
+      href="mailto:apple22by33@naver.com"
+      class="text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-primary)]"
+      aria-label="Email"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    </a>
+  </div>
+</aside>
+
+<!-- Mobile Top Bar -->
+<nav
+  id="mobile-nav"
+  class="fixed top-0 left-0 right-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/90 backdrop-blur-xl lg:hidden"
+>
+  <div class="flex items-center justify-between px-5 py-3">
+    <a href={localePath("/", locale)} class="font-bold text-[var(--color-primary)] font-[family-name:var(--font-heading)]">
+      JB.
+    </a>
+    <div class="flex items-center gap-3">
+      <button
+        id="mobile-menu-btn"
+        class="text-[var(--color-text)]"
+        aria-label={t("nav.ariaMenu", locale)}
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden max-h-[70vh] overflow-y-auto border-t border-[var(--color-border)] px-5 py-4">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-secondary)]">{t("nav.resume", locale)}</p>
+    {
+      resumeItems.map((item) => (
+        <a
+          href={item.href}
+          class="mobile-link block py-2 pl-2 text-sm text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-primary)]"
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a
+      href={localePath("/ai-dev", locale)}
+      class="mobile-link mt-4 block border-t border-[var(--color-border)] pt-4 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-primary)]"
+    >
+      {t("nav.aiDev", locale)}
+    </a>
+    <p class="mb-3 mt-4 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-secondary)]">{t("nav.projects", locale)}</p>
+    {
+      projectItems.map((item) => (
+        <a
+          href={item.href}
+          class="mobile-link block py-2 pl-2 text-sm text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-primary)]"
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a
+      href={localePath("/contact", locale)}
+      class="mobile-link mt-4 block border-t border-[var(--color-border)] pt-4 text-xs font-semibold uppercase tracking-widest text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-primary)]"
+    >
+      {t("nav.contact", locale)}
+    </a>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+
+  document.querySelectorAll(".mobile-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+    });
+  });
+
+  // Collapsible sections
+  function setupToggle(toggleId: string, menuId: string, chevronId: string) {
+    const toggle = document.getElementById(toggleId);
+    const menu = document.getElementById(menuId);
+    const chevron = document.getElementById(chevronId);
+
+    toggle?.addEventListener("click", () => {
+      menu?.classList.toggle("hidden");
+      chevron?.classList.toggle("rotate-180");
+    });
+  }
+
+  setupToggle("resume-toggle", "resume-menu", "resume-chevron");
+  setupToggle("projects-toggle", "projects-menu", "projects-chevron");
+
+  // Active section highlight (resume page only)
+  const navLinks = document.querySelectorAll(".nav-link");
+  const sections = document.querySelectorAll("section[id]");
+
+  if (sections.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+              const el = link as HTMLElement;
+              if (el.dataset.section === entry.target.id) {
+                el.classList.add("text-[var(--color-primary)]", "bg-white/5");
+                el.classList.remove("text-[var(--color-text-secondary)]");
+              } else {
+                el.classList.remove("text-[var(--color-primary)]", "bg-white/5");
+                el.classList.add("text-[var(--color-text-secondary)]");
+              }
+            });
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>

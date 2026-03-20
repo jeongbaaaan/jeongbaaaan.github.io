@@ -1,0 +1,27 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import { getProjectData, getAllProjectSlugs } from "../../i18n/data/projects";
+import type { Locale } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return getAllProjectSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const locale: Locale = "ko";
+const project = getProjectData(slug!, locale);
+---
+
+<ProjectLayout
+  title={project.title}
+  company={project.company}
+  period={project.period}
+  role={project.role}
+  tags={project.tags}
+  github={project.github}
+  sideProject={project.sideProject}
+  claudeCode={project.claudeCode}
+  locale={locale}
+>
+  <Fragment set:html={project.contentHtml} />
+</ProjectLayout>

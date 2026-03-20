@@ -1,0 +1,46 @@
+---
+import AnimatedSection from "../ui/AnimatedSection.tsx";
+import { t } from "../../i18n/utils";
+import type { Locale } from "../../i18n/utils";
+import { getAboutData } from "../../i18n/data/about";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "ko" } = Astro.props;
+const aboutData = getAboutData(locale);
+---
+
+<section id="about" class="py-24 px-6">
+  <div class="mx-auto max-w-4xl">
+    <AnimatedSection client:visible>
+      <h2
+        class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]"
+      >
+        {t("about.subtitle", locale)}
+      </h2>
+      <h3 class="mb-8 text-3xl font-bold md:text-4xl font-[family-name:var(--font-heading)]">
+        {t("about.title", locale)}
+      </h3>
+    </AnimatedSection>
+
+    <AnimatedSection client:visible delay={0.1}>
+      {aboutData.paragraphs.map((paragraph) => (
+        <p class="mb-6 text-lg leading-relaxed text-[var(--color-text-secondary)]" set:html={paragraph} />
+      ))}
+    </AnimatedSection>
+
+    <AnimatedSection client:visible delay={0.2}>
+      <div class="flex flex-wrap gap-3">
+        {
+          aboutData.tags.map((tag) => (
+            <span class="rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/5 px-4 py-2 text-sm text-[var(--color-primary)] transition-colors duration-200 hover:bg-[var(--color-primary)]/15">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+    </AnimatedSection>
+  </div>
+</section>

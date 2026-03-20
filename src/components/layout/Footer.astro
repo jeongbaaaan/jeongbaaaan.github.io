@@ -1,0 +1,19 @@
+---
+import { t } from "../../i18n/utils";
+import type { Locale } from "../../i18n/utils";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "ko" } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--color-border)] py-8">
+  <div class="mx-auto max-w-6xl px-6 text-center">
+    <p class="text-sm text-[var(--color-text-secondary)]">
+      &copy; {currentYear} {t("footer.copyright", locale)}. All rights reserved.
+    </p>
+  </div>
+</footer>

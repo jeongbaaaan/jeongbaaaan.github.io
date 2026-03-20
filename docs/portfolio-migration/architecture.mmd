@@ -1,0 +1,92 @@
+graph TB
+    subgraph Sources["원본 소스"]
+        PPT["assets/portfolio/<br/>PPT 원본"]
+        Resume["assets/resume/<br/>이력서 원본"]
+        Images["public/images/<br/>프로필/프로젝트 이미지"]
+    end
+
+    subgraph DataLayer["데이터 레이어"]
+        ResumeTS["src/data/resume.ts<br/>(SSOT)"]
+        ExpTS["src/data/experience.ts"]
+        EduTS["src/data/education.ts"]
+        SkillTS["src/data/skills.ts"]
+        I18nUI["src/i18n/ui.ts<br/>(번역키)"]
+        I18nAbout["src/i18n/data/about.ts"]
+        I18nExp["src/i18n/data/experience.ts"]
+        I18nEdu["src/i18n/data/education.ts"]
+        I18nProj["src/i18n/data/projects.ts"]
+    end
+
+    subgraph Components["컴포넌트 레이어"]
+        Hero["Hero.astro"]
+        About["About.astro"]
+        Experience["Experience.tsx"]
+        Skills["Skills.tsx"]
+        Education["Education.astro"]
+        Projects["Projects.tsx"]
+        Contact["Contact.astro"]
+        Navbar["Navbar.astro"]
+    end
+
+    subgraph Layouts["레이아웃"]
+        Base["BaseLayout.astro"]
+        Project["ProjectLayout.astro"]
+    end
+
+    subgraph Pages["페이지 (ko/en/ja)"]
+        Index["index.astro"]
+        ProjPage["projects/[slug].astro"]
+        AiDev["ai-dev.astro"]
+        ContactPage["contact.astro"]
+    end
+
+    subgraph Config["설정"]
+        Astro["astro.config.mjs"]
+        Pkg["package.json"]
+    end
+
+    PPT -->|markitdown 추출| ResumeTS
+    Resume -->|markitdown 추출| ResumeTS
+    Images -->|복사/교체| Pages
+
+    ResumeTS --> ExpTS
+    ResumeTS --> EduTS
+    ResumeTS --> SkillTS
+    ResumeTS --> I18nAbout
+    ResumeTS --> I18nExp
+    ResumeTS --> I18nEdu
+    ResumeTS --> I18nProj
+
+    I18nUI --> Hero
+    I18nUI --> Contact
+    I18nUI --> Navbar
+    I18nAbout --> About
+    I18nExp --> Experience
+    I18nEdu --> Education
+    I18nProj --> Projects
+    I18nProj --> ProjPage
+    SkillTS --> Skills
+
+    Hero --> Index
+    About --> Index
+    Experience --> Index
+    Skills --> Index
+    Education --> Index
+    Projects --> ProjPage
+    Contact --> ContactPage
+    Navbar --> Base
+
+    Base --> Index
+    Base --> ProjPage
+    Base --> AiDev
+    Project --> ProjPage
+
+    Astro --> Base
+    Config --> Base
+
+    style Sources fill:#1a1a2e,stroke:#e94560,color:#fff
+    style DataLayer fill:#16213e,stroke:#0f3460,color:#fff
+    style Components fill:#0f3460,stroke:#533483,color:#fff
+    style Layouts fill:#533483,stroke:#e94560,color:#fff
+    style Pages fill:#1a1a2e,stroke:#e94560,color:#fff
+    style Config fill:#16213e,stroke:#0f3460,color:#fff

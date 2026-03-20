@@ -1,0 +1,12 @@
+flowchart LR
+    A["1. 원본 문서<br/>(PPT, PDF, DOCX)"] -->|markitdown 추출| B["2. TypeScript<br/>데이터 파일"]
+    B -->|import| C["3. Astro 컴포넌트<br/>빌드 시점 렌더링"]
+    C -->|astro build| D["4. 정적 HTML<br/>GitHub Pages 배포"]
+
+    A1["public/images/<br/>프로필/프로젝트"] -->|빌드 포함| D
+
+    style A fill:#e94560,stroke:#fff,color:#fff
+    style B fill:#0f3460,stroke:#fff,color:#fff
+    style C fill:#533483,stroke:#fff,color:#fff
+    style D fill:#16213e,stroke:#fff,color:#fff
+    style A1 fill:#e94560,stroke:#fff,color:#fff

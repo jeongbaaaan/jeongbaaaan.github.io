@@ -1,0 +1,38 @@
+---
+import { localePath, stripLocaleFromPath } from "../../i18n/utils";
+import type { Locale } from "../../i18n/utils";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const currentPath = stripLocaleFromPath(Astro.url.pathname);
+
+const languages: { code: Locale; label: string }[] = [
+  { code: "ko", label: "KO" },
+  { code: "en", label: "EN" },
+  { code: "ja", label: "JA" },
+];
+---
+
+<div class="flex items-center gap-1">
+  {languages.map((lang, i) => (
+    <>
+      <a
+        href={localePath(currentPath, lang.code)}
+        class:list={[
+          "text-xs transition-colors duration-200",
+          locale === lang.code
+            ? "font-bold text-[var(--color-primary)]"
+            : "text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]",
+        ]}
+      >
+        {lang.label}
+      </a>
+      {i < languages.length - 1 && (
+        <span class="text-[var(--color-border)] text-[10px]">/</span>
+      )}
+    </>
+  ))}
+</div>

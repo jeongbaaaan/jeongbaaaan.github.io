@@ -1,0 +1,102 @@
+---
+import TypeWriter from "../ui/TypeWriter.tsx";
+import { t, localePath } from "../../i18n/utils";
+import type { Locale } from "../../i18n/utils";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "ko" } = Astro.props;
+---
+
+<section
+  id="hero"
+  class="relative flex min-h-screen items-center justify-center px-6 pt-14 lg:pt-0"
+>
+  <!-- Background gradient -->
+  <div
+    class="pointer-events-none absolute inset-0 overflow-hidden"
+    aria-hidden="true"
+  >
+    <div
+      class="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-[var(--color-primary)]/10 blur-[120px]"
+    >
+    </div>
+    <div
+      class="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-[var(--color-secondary)]/10 blur-[120px]"
+    >
+    </div>
+  </div>
+
+  <div class="relative z-10 text-center">
+    <!-- Profile image placeholder -->
+    <div class="mx-auto mb-8 h-36 w-36 overflow-hidden rounded-full border-2 border-[var(--color-primary)]/30 shadow-[0_0_40px_rgba(0,212,255,0.15)]">
+      <img
+        src="/images/profile.jpg"
+        alt={t("hero.profileAlt", locale)}
+        class="h-full w-full object-cover object-top"
+      />
+    </div>
+
+    <h1
+      class="mb-4 text-5xl font-extrabold tracking-tight md:text-7xl font-[family-name:var(--font-heading)]"
+    >
+      {t("hero.name", locale)}
+    </h1>
+
+    <p class="mb-6 text-xl text-[var(--color-text-secondary)] md:text-2xl">
+      {t("hero.role", locale)}
+    </p>
+
+    <div class="mb-10 h-8 text-lg md:text-xl">
+      <TypeWriter
+        client:load
+        texts={[
+          t("hero.typewriter.1", locale),
+          t("hero.typewriter.2", locale),
+          t("hero.typewriter.3", locale),
+          t("hero.typewriter.4", locale),
+        ]}
+      />
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href={localePath("/projects", locale)}
+        class="rounded-full bg-[var(--color-primary)] px-8 py-3 font-semibold text-[var(--color-bg)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)]"
+      >
+        {t("hero.cta.projects", locale)}
+      </a>
+      <a
+        href={localePath("/ai-dev", locale)}
+        class="rounded-full border border-[var(--color-accent)]/30 px-8 py-3 font-semibold text-[var(--color-accent)] transition-all duration-200 hover:scale-105 hover:bg-[var(--color-accent)]/10"
+      >
+        {t("hero.cta.aidev", locale)}
+      </a>
+      <a
+        href={localePath("/contact", locale)}
+        class="rounded-full border border-[var(--color-primary)]/30 px-8 py-3 font-semibold text-[var(--color-primary)] transition-all duration-200 hover:scale-105 hover:bg-[var(--color-primary)]/10"
+      >
+        {t("hero.cta.contact", locale)}
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 text-[var(--color-text-secondary)]"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
