@@ -68,15 +68,50 @@ assets/
 | Quorum (멀티에이전트) | - | Rust, Next.js, Tauri |
 
 ## 주의사항
-- **프로젝트 성과를 지어내지 말 것**
-  - 스마일샤크: "스토리지 60% 절감"은 QR 이미지 리사이징 아키텍처 한정
-  - 네이버클라우드: "수정 사이클 66% 단축"은 기획-개발 협업 프로세스 한정
-  - AWS CloudSchool: "처리량 2x, 비용 30%"는 CQRS 경매 프로젝트 한정
-  - 신한은행: 구체적 성과 데이터 없음
-  - Dear,ANT: Claude Code 활용 사실만 기재
+
+### 프로젝트 성과를 지어내지 말 것
+원본 문서(`assets/`)에 있는 내용만 사용한다. 성과를 과장하거나 지어내지 않는다.
+- 스마일샤크: "스토리지 60% 절감"은 QR 이미지 리사이징 아키텍처 한정
+- 네이버클라우드: "수정 사이클 66% 단축"은 기획-개발 협업 프로세스 한정
+- AWS CloudSchool: "처리량 2x, 비용 30%"는 CQRS 경매 프로젝트 한정
+- 신한은행: 구체적 성과 데이터 없음. 역할 설명만 기재
+- Dear,ANT: Claude Code 활용 사실만 기재. 서비스 성과 없음
+- 달결, What Health, Quorum: 공유 프로젝트. 원본 설명을 그대로 사용
+
+### 김강남(kangnam7654) 흔적 금지
+이 사이트는 장정빈(jeongbaaaan)의 포트폴리오이다. 코드, 커밋, 설정 어디에도 김강남의 개인정보를 남기지 않는다.
+- 커밋 Author/Committer: `jeongbaaaan <160698547+jeongbaaaan@users.noreply.github.com>` 사용
+- `kangnam`, `강남`, `김강남`, `Kangnam`, `カンナム` 문자열이 src/ 내에 있으면 안 됨
+- 유일한 예외: `what_health` GitHub URL (`https://github.com/kangnam7654/what_health`) — 실제 레포 위치이므로 유지
+- 변경 후 반드시 검증: `grep -ri "kangnam" src/ --include="*.ts" --include="*.tsx" --include="*.astro"`
+
+### Git 커밋 규칙
+- Author/Committer 모두 jeongbaaaan으로 설정:
+  ```bash
+  GIT_AUTHOR_NAME="jeongbaaaan" GIT_AUTHOR_EMAIL="160698547+jeongbaaaan@users.noreply.github.com" \
+  GIT_COMMITTER_NAME="jeongbaaaan" GIT_COMMITTER_EMAIL="160698547+jeongbaaaan@users.noreply.github.com" \
+  git commit -m "메시지"
+  ```
+- 히스토리에 kangnam 관련 커밋을 남기지 않는다
+
+### 데이터 구조
 - 이력서 원본 데이터: `src/data/resume.ts` (Single Source of Truth)
+- 다국어 데이터: `src/i18n/data/` (ko/en/ja). resume.ts 기반으로 작성
+- 프로젝트 데이터 이중 관리: `src/i18n/data/projects.ts` (상세) + `src/components/sections/Projects.tsx` (카드 목록). 두 파일을 동기화해야 함
 - 타이틀: "Cloud Infra · AI Service · Technical Consulting"
+
+### 이미지 규칙
+- 프로젝트 이미지는 `public/images/projects/`에 저장
+- OG 이미지(`public/images/og-image.png`)는 1200x630 메인화면 스크린샷
+- 이미지가 없는 프로젝트는 텍스트 기반 contentHtml 사용. 없는 이미지를 참조하지 않는다
+- 프로필 사진: `public/images/profile.jpg` (원본: `assets/source-images/profile/profile.jpeg`)
+
+### 배포
+- GitHub Pages + GitHub Actions (`withastro/action`)
+- 레포 Settings → Pages → Source: `GitHub Actions`로 설정 필요
+- push 후 자동 배포. 배포 상태: `gh run list --repo jeongbaaaan/jeongbaaaan.github.io`
 
 ## 완료된 작업
 - [x] i18n (한국어/영어/일본어) 지원 — 45페이지, 동적 라우트 통합, 플로팅 언어/테마 스위처
 - [x] kangnam7654 → jeongbaaaan 포트폴리오 마이그레이션
+- [x] OG 이미지 장정빈 메인화면으로 교체
