@@ -32,7 +32,7 @@ const educationData: Record<Locale, { education: Education[]; certifications: Ce
       },
       {
         school: "Oklahoma State University",
-        degree: "교환학생",
+        degree: "교환학생 (4.0/4.0)",
         period: "",
       },
     ],
@@ -52,7 +52,7 @@ const educationData: Record<Locale, { education: Education[]; certifications: Ce
       },
       {
         school: "Oklahoma State University",
-        degree: "Exchange Student",
+        degree: "Exchange Student (4.0/4.0)",
         period: "",
       },
     ],
@@ -72,7 +72,7 @@ const educationData: Record<Locale, { education: Education[]; certifications: Ce
       },
       {
         school: "Oklahoma State University",
-        degree: "交換留学",
+        degree: "交換留学 (4.0/4.0)",
         period: "",
       },
     ],

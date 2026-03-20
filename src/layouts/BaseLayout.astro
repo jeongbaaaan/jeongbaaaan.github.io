@@ -55,7 +55,7 @@ const langMap: Record<Locale, string> = { ko: "ko", en: "en", ja: "ja" };
     <script is:inline>
       (function() {
         const theme = localStorage.getItem('theme');
-        if (theme === 'light' || (!theme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        if (theme === 'light') {
           document.documentElement.classList.add('light');
         }
       })();

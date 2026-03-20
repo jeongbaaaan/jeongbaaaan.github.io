@@ -113,7 +113,7 @@ export const education = [
   },
   {
     school: "Oklahoma State University",
-    major: "교환학생",
+    major: "교환학생 (4.0/4.0)",
     period: "",
     location: "",
     details: [],
