@@ -42,14 +42,6 @@ const projectsData: Record<Locale, Project[]> = {
       href: "/projects/clova-x-chatbot",
     },
     {
-      title: "기업뱅킹 IT기획",
-      description:
-        "기업뱅킹 IT 기획 업무",
-      tags: ["IT Planning", "Banking"],
-      company: "신한은행",
-      href: "/projects/shinhan-banking",
-    },
-    {
       title: "CQRS 경매 웹사이트",
       description:
         "CQRS 패턴 설계, Multi-AZ 고가용성, 처리량 2배 향상, 비용 30% 절감, AWS 해커톤 대상",
@@ -146,14 +138,6 @@ const projectsData: Record<Locale, Project[]> = {
       href: "/projects/clova-x-chatbot",
     },
     {
-      title: "Corporate Banking IT Planning",
-      description:
-        "Corporate banking IT planning operations",
-      tags: ["IT Planning", "Banking"],
-      company: "Shinhan Bank",
-      href: "/projects/shinhan-banking",
-    },
-    {
       title: "CQRS Auction Website",
       description:
         "CQRS pattern design, Multi-AZ high availability, 2x throughput improvement, 30% cost reduction, AWS Hackathon Grand Prize",
@@ -248,14 +232,6 @@ const projectsData: Record<Locale, Project[]> = {
       tags: ["AI PM", "Prompt Engineering", "UX"],
       company: "NAVERクラウド",
       href: "/projects/clova-x-chatbot",
-    },
-    {
-      title: "法人バンキングIT企画",
-      description:
-        "法人バンキングIT企画業務",
-      tags: ["IT Planning", "Banking"],
-      company: "新韓銀行",
-      href: "/projects/shinhan-banking",
     },
     {
       title: "CQRSオークションサイト",

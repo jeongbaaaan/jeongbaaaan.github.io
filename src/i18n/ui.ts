@@ -72,7 +72,6 @@ export const ui = {
     // Nav project labels
     "nav.project.cloudInfra": "클라우드 인프라 관리",
     "nav.project.clovaX": "Clova X 챗봇 PM",
-    "nav.project.shinhan": "기업뱅킹 IT기획",
     "nav.project.auction": "CQRS 경매 웹사이트",
     "nav.project.kubernetes": "Kubernetes 프로젝트",
     "nav.project.dataViz": "데이터 시각화",
@@ -164,7 +163,6 @@ export const ui = {
     // Nav project labels
     "nav.project.cloudInfra": "Cloud Infra Management",
     "nav.project.clovaX": "Clova X Chatbot PM",
-    "nav.project.shinhan": "Corporate Banking IT",
     "nav.project.auction": "CQRS Auction Website",
     "nav.project.kubernetes": "Kubernetes Project",
     "nav.project.dataViz": "Data Visualization",
@@ -256,7 +254,6 @@ export const ui = {
     // Nav project labels
     "nav.project.cloudInfra": "クラウドインフラ管理",
     "nav.project.clovaX": "Clova X チャットボットPM",
-    "nav.project.shinhan": "法人バンキングIT企画",
     "nav.project.auction": "CQRSオークションサイト",
     "nav.project.kubernetes": "Kubernetesプロジェクト",
     "nav.project.dataViz": "データ可視化",

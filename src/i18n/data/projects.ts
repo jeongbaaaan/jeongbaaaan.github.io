@@ -16,7 +16,6 @@ export interface ProjectData {
 export const projectSlugs = [
   "cloud-infra-management",
   "clova-x-chatbot",
-  "shinhan-banking",
   "cloud-native-auction",
   "kubernetes-service",
   "python-data-viz",
@@ -159,48 +158,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <ul>
 <li><strong>AI</strong>: Clova X, Prompt Engineering</li>
 <li><strong>PM</strong>: UX設計、ユーザーシナリオ、APIスペック文書化</li>
-</ul>`,
-    },
-  },
-
-  "shinhan-banking": {
-    ko: {
-      title: "기업뱅킹 IT기획",
-      company: "신한은행",
-      period: "2023.09",
-      role: "IT기획",
-      tags: ["IT Planning", "Banking"],
-      contentHtml: `<h2>개요</h2>
-<p>신한은행 기업뱅킹 부문의 IT 기획 업무를 수행했습니다.</p>
-<h2>주요 업무</h2>
-<ul>
-<li>기업뱅킹 IT 기획 및 요구사항 분석</li>
-</ul>`,
-    },
-    en: {
-      title: "Corporate Banking IT Planning",
-      company: "Shinhan Bank",
-      period: "2023.09",
-      role: "IT Planning",
-      tags: ["IT Planning", "Banking"],
-      contentHtml: `<h2>Overview</h2>
-<p>Performed IT planning for the corporate banking division at Shinhan Bank.</p>
-<h2>Key Responsibilities</h2>
-<ul>
-<li>Corporate banking IT planning and requirements analysis</li>
-</ul>`,
-    },
-    ja: {
-      title: "法人バンキングIT企画",
-      company: "新韓銀行",
-      period: "2023.09",
-      role: "IT企画",
-      tags: ["IT Planning", "Banking"],
-      contentHtml: `<h2>概要</h2>
-<p>新韓銀行法人バンキング部門のIT企画業務を遂行しました。</p>
-<h2>主要業務</h2>
-<ul>
-<li>法人バンキングIT企画および要件分析</li>
 </ul>`,
     },
   },
