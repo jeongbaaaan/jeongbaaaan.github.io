@@ -35,7 +35,7 @@ export const education: Education[] = [
   },
   {
     school: "Oklahoma State University",
-    degree: "교환학생 (4.0/4.0)",
+    degree: "단기연수 (4.0/4.0)",
     period: "",
   },
   {
