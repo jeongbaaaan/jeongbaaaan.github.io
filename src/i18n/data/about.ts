@@ -8,9 +8,10 @@ interface AboutData {
 const aboutData: Record<Locale, AboutData> = {
   ko: {
     paragraphs: [
-      '<span class="text-[var(--color-text)] font-medium">클라우드 인프라를 관리하며 70개 이상의 고객 문제를 해결하고, AI 도구로 서비스를 직접 만들어본 경험</span>이 있습니다. 고객의 기술적 어려움을 파악해 해결책을 제안하고, 필요하면 직접 프로토타입을 만들어 검증합니다.',
-      'AWS MSP 파트너사에서 EC2, S3, RDS, Lambda, CloudFront 등 70+ 고객 계정의 인프라를 관리하고 있습니다. Cost Explorer 비용 분석, RI 전환 권고, S3 Lifecycle 정책 최적화, Lambda 이미지 리사이징 자동화 등 비용 최적화 컨설팅을 수행합니다.',
-      '<span class="text-[var(--color-text)] font-medium">AI 도구를 활용한 개발 생산성 극대화</span>를 추구합니다. Claude Code로 Dear,ANT 서비스를 기획부터 배포까지 1인 2주 만에 완성했습니다. AI를 \'써본\' 수준이 아니라, AI로 \'만들어본\' 경험이 있습니다.',
+      '클라우드 인프라 운영과 비용 최적화 컨설팅을 통해 70개 이상의 고객 환경에서 발생한 기술 및 비용 문제를 해결해왔습니다. 단순 운영을 넘어, 고객의 사용 패턴과 아키텍처를 분석하여 비용 절감과 성능 개선을 동시에 달성하는 실행 중심의 역할을 수행합니다.',
+      'AWS MSP 파트너사에서 EC2, S3, RDS, Lambda, CloudFront 기반의 다수 고객 계정을 관리하며,<br/><br/>• Cost Explorer 기반 비용 구조 분석 및 비효율 구간 도출<br/>• RI/SP 전환 전략 수립 및 적용<br/>• S3 Lifecycle 정책 설계로 스토리지 비용 절감<br/>• Lambda 기반 이미지 리사이징 자동화 구축<br/><br/>등을 수행하며 지속적인 비용 최적화 체계를 구축했습니다. 특히 단발성 제안이 아닌, 고객 환경에 맞춘 구조적 개선과 운영 프로세스 정착까지 이어가는 것이 강점입니다.',
+      '또한 AI 도구를 활용한 빠른 실행력을 기반으로, 서비스 기획부터 개발, 배포까지 직접 수행합니다. Claude Code를 활용해 \'Dear,ANT\' 서비스를 2주 만에 단독으로 구현 및 배포하며, 아이디어 검증 → 프로토타입 제작 → 실제 서비스화까지 전 과정을 경험했습니다.',
+      'AI를 단순 활용하는 수준을 넘어, 문제 해결을 위한 제품으로 직접 구현해본 경험을 보유하고 있습니다.',
     ],
     tags: [
       "Cloud Infrastructure", "AWS", "Cost Optimization", "AI Service",
