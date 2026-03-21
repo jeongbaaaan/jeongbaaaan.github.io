@@ -83,7 +83,7 @@ export const ui = {
     "nav.project.quorum": "Quorum",
 
     // Layout
-    "layout.backToMain": "메인으로 돌아가기",
+    "layout.backToMain": "프로젝트 목록으로 돌아가기",
     "layout.defaultDescription": "장정빈 - Cloud Infra · AI Service 포트폴리오",
     "layout.ogSiteName": "장정빈 포트폴리오",
     "layout.pageTitle": "장정빈 | Cloud Infra · AI Service",
@@ -175,7 +175,7 @@ export const ui = {
     "nav.project.quorum": "Quorum",
 
     // Layout
-    "layout.backToMain": "Back to Main",
+    "layout.backToMain": "Back to Projects",
     "layout.defaultDescription": "Jeongbin Jang - Cloud Infra · AI Service Portfolio",
     "layout.ogSiteName": "Jeongbin Jang Portfolio",
     "layout.pageTitle": "Jeongbin Jang | Cloud Infra · AI Service",
@@ -267,7 +267,7 @@ export const ui = {
     "nav.project.quorum": "Quorum",
 
     // Layout
-    "layout.backToMain": "メインに戻る",
+    "layout.backToMain": "プロジェクト一覧に戻る",
     "layout.defaultDescription": "チャン・ジョンビン - Cloud Infra · AI Service ポートフォリオ",
     "layout.ogSiteName": "チャン・ジョンビン ポートフォリオ",
     "layout.pageTitle": "チャン・ジョンビン | Cloud Infra · AI Service",
