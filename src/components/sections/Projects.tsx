@@ -80,15 +80,6 @@ const projectsData: Record<Locale, Project[]> = {
       claudeCode: true,
     },
     {
-      title: "또나 — AI 부캐 챗봇",
-      description:
-        "18가지 질문으로 부캐 성향 학습, AI 챗봇과 대화. Potenday 312 해커톤 PM",
-      tags: ["AI Chatbot", "PM", "UX Design"],
-      company: "Potenday 312",
-      href: "/projects/ttona",
-      sideProject: true,
-    },
-    {
       title: "달결 — AI 사주·타로",
       description:
         "사주·타로 기반 AI 운세 상담 iOS 앱. 서비스 출시 예정",
@@ -176,15 +167,6 @@ const projectsData: Record<Locale, Project[]> = {
       claudeCode: true,
     },
     {
-      title: "Ttona — AI Sub-character Chatbot",
-      description:
-        "Learn sub-character personality through 18 questions, chat with AI chatbot. Potenday 312 Hackathon PM",
-      tags: ["AI Chatbot", "PM", "UX Design"],
-      company: "Potenday 312",
-      href: "/projects/ttona",
-      sideProject: true,
-    },
-    {
       title: "Dalgyeol — AI Fortune Telling",
       description:
         "AI fortune consultation iOS app based on Korean fortune telling and tarot. Service launch planned",
@@ -270,15 +252,6 @@ const projectsData: Record<Locale, Project[]> = {
       github: "https://github.com/jeongbaaaan/dear-ant",
       sideProject: true,
       claudeCode: true,
-    },
-    {
-      title: "トナ — AIサブキャラチャットボット",
-      description:
-        "18の質問でサブキャラの性向を学習、AIチャットボットと会話。Potenday 312ハッカソンPM",
-      tags: ["AI Chatbot", "PM", "UX Design"],
-      company: "Potenday 312",
-      href: "/projects/ttona",
-      sideProject: true,
     },
     {
       title: "ダルギョル — AI占い",

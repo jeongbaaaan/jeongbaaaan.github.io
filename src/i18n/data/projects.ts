@@ -20,7 +20,6 @@ export const projectSlugs = [
   "kubernetes-service",
   "python-data-viz",
   "dear-ant",
-  "ttona",
   "dalgyeol",
   "what-health",
   "quorum",
@@ -485,75 +484,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Frontend</strong>: Next.js 16, React 19, TypeScript, Tailwind CSS 4</li>
 <li><strong>Backend</strong>: Supabase (Auth, Database, Storage)</li>
 <li><strong>AI</strong>: Claude Code（開発全過程で活用）</li>
-</ul>`,
-    },
-  },
-
-  "ttona": {
-    ko: {
-      title: "또나 — AI 부캐 챗봇",
-      company: "Potenday 312",
-      period: "2024",
-      role: "PM",
-      tags: ["AI Chatbot", "PM", "UX Design"],
-      sideProject: true,
-      contentHtml: `<h2>개요</h2>
-<p>18가지 질문을 통해 사용자의 부캐(부 캐릭터) 성향을 학습하고, 그에 맞는 AI 챗봇과 대화할 수 있는 서비스입니다. Potenday 312 해커톤에서 PM으로 참여했습니다.</p>
-<h2>주요 기능</h2>
-<ul>
-<li><strong>부캐 성향 학습</strong>: 18가지 질문으로 사용자 성향 파악</li>
-<li><strong>캐릭터 조합 생성</strong>: 선택한 성향에 따라 고유한 캐릭터 조합</li>
-<li><strong>AI 챗봇 대화</strong>: 부캐와 다양한 대화 (고민 상담, 상황 제안 등)</li>
-</ul>
-<h2>PM 역할</h2>
-<ul>
-<li>서비스 컨셉 기획</li>
-<li>UX 흐름 설계</li>
-<li>디자인 시스템 정의</li>
-</ul>`,
-    },
-    en: {
-      title: "Ttona — AI Sub-character Chatbot",
-      company: "Potenday 312",
-      period: "2024",
-      role: "PM",
-      tags: ["AI Chatbot", "PM", "UX Design"],
-      sideProject: true,
-      contentHtml: `<h2>Overview</h2>
-<p>A service that learns a user's sub-character personality through 18 questions and enables conversations with a matching AI chatbot. Participated as PM at the Potenday 312 hackathon.</p>
-<h2>Key Features</h2>
-<ul>
-<li><strong>Sub-character Personality Learning</strong>: Identify user personality through 18 questions</li>
-<li><strong>Character Combination Generation</strong>: Create unique character combinations based on selected personality traits</li>
-<li><strong>AI Chatbot Conversation</strong>: Various conversations with the sub-character (counseling, situation suggestions, etc.)</li>
-</ul>
-<h2>PM Role</h2>
-<ul>
-<li>Service concept planning</li>
-<li>UX flow design</li>
-<li>Design system definition</li>
-</ul>`,
-    },
-    ja: {
-      title: "トナ — AIサブキャラチャットボット",
-      company: "Potenday 312",
-      period: "2024",
-      role: "PM",
-      tags: ["AI Chatbot", "PM", "UX Design"],
-      sideProject: true,
-      contentHtml: `<h2>概要</h2>
-<p>18の質問を通じてユーザーのサブキャラ（サブキャラクター）性向を学習し、それに合ったAIチャットボットと会話できるサービスです。Potenday 312ハッカソンにPMとして参加しました。</p>
-<h2>主要機能</h2>
-<ul>
-<li><strong>サブキャラ性向学習</strong>: 18の質問でユーザーの性向を把握</li>
-<li><strong>キャラクター組合せ生成</strong>: 選択した性向に応じたユニークなキャラクター組合せ</li>
-<li><strong>AIチャットボット会話</strong>: サブキャラとの多様な会話（悩み相談、状況提案など）</li>
-</ul>
-<h2>PM役割</h2>
-<ul>
-<li>サービスコンセプト企画</li>
-<li>UXフロー設計</li>
-<li>デザインシステム定義</li>
 </ul>`,
     },
   },
