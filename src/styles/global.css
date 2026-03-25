@@ -44,6 +44,13 @@ code, pre {
   font-family: var(--font-mono);
 }
 
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 ::selection {
   background-color: var(--color-primary);
   color: var(--color-bg);

@@ -20,73 +20,101 @@ const phasesData: Record<Locale, Phase[]> = {
   ko: [
     {
       num: "01",
-      title: "Service Build",
-      subtitle: "서비스 빌드",
+      title: "Idea Phase",
+      subtitle: "아이디어 발굴 & 검증",
       color: "var(--color-primary)",
       steps: [
         {
-          title: "Claude Code로 전체 서비스 구축",
-          desc: "Dear,ANT 프로젝트를 기획→코딩→디버깅→배포까지 대화형으로 개발",
+          title: "AI 브레인스토밍 & 트렌드 스코어링",
+          desc: "AI와 아이디어 발산, 트렌드 데이터 기반 주제 발굴. 막연한 요청도 구체화",
         },
         {
-          title: "팀 3-4명 1개월 → 1인 2주 완성",
-          desc: "AI 도구를 활용해 개발 생산성을 극대화하여 풀스택 서비스를 혼자 완성",
+          title: "CEO 방향 결정 → 시장 조사 → CSO 전략 검증",
+          desc: "AI CEO가 방향 설정, Researcher가 시장 조사, AI CSO가 리스크·실현가능성 검증. No-Go 시 방향 재설정",
         },
         {
-          title: "REST API 5개 + Custom SVG + Dual Storage",
-          desc: "별도 백엔드 없이 Next.js App Router 기반 풀스택 구현",
+          title: "BM 설계",
+          desc: "수익 모델, 가격 전략, 유닛 이코노믹스를 체계적으로 설계",
+        },
+        {
+          title: "CEO 게이트",
+          desc: "PASS / BM 수정 / 방향 변경 삼분기 의사결정. 통과 시 Design Phase 진입",
         },
       ],
     },
     {
       num: "02",
-      title: "Prompt Engineering",
-      subtitle: "프롬프트 엔지니어링",
-      color: "var(--color-secondary)",
+      title: "Design Phase",
+      subtitle: "설계 & 아키텍처",
+      color: "var(--color-accent)",
       steps: [
         {
-          title: "Clova X PM으로 Few-shot 데이터셋 구축",
-          desc: "AI 챗봇의 답변 품질을 구조적으로 설계",
+          title: "기술 스택 & DB 스키마 설계",
+          desc: "CTO가 기술 스택 결정, data-engineer가 DB 설계, CTO 리뷰. FAIL 시 재설계",
         },
         {
-          title: "기획 → API 스펙 변환 → 개발팀 협업",
-          desc: "기획 문서를 개발자가 바로 사용할 수 있는 API 스펙으로 변환",
+          title: "API 설계 & DB-API 정합성 검증",
+          desc: "backend-dev가 API 설계, CTO가 DB-API 정합성 검증. 불일치 시 DB부터 재설계",
         },
         {
-          title: "수정 사이클 3회 → 1회 (66% 단축)",
-          desc: "프롬프트 데이터셋 품질 개선으로 기획-개발 간 커뮤니케이션 효율화",
+          title: "UX/UI 디자인 & 디베이트",
+          desc: "product-designer가 UX→UI 순차 설계, 각각 리뷰어 검증 후 UX↔UI 디자인 디베이트",
+        },
+        {
+          title: "실행 계획 & Plan Critic",
+          desc: "planner가 구현 계획 생성, plan-critic이 6개 기준 채점. 통과까지 반복",
+        },
+        {
+          title: "CTO 게이트",
+          desc: "설계+계획 통합 검증. PASS 시 Build Phase 진입",
         },
       ],
     },
     {
       num: "03",
-      title: "Business Automation",
-      subtitle: "업무 자동화",
-      color: "var(--color-accent)",
+      title: "Build Phase",
+      subtitle: "구현 & 리뷰",
+      color: "#f59e0b",
       steps: [
         {
-          title: "기술 문서 작성 자동화",
-          desc: "아키텍처 설계, 기술 제안서, 비용 분석 보고서 작성에 AI 활용",
+          title: "병렬 구현",
+          desc: "frontend / backend / mobile / ai-engineer 에이전트가 동시 개발",
         },
         {
-          title: "코드 리뷰 & 반복 작업 자동화",
-          desc: "반복 작업을 자동화하여 핵심 업무에 집중",
+          title: "마이그레이션 리뷰 (DBA)",
+          desc: "DBA가 DB 변경사항 검증. 지적 시 구현으로 되돌아감",
+        },
+        {
+          title: "코드 리뷰 + 보안 리뷰",
+          desc: "code-reviewer가 품질 검토, security-reviewer가 보안 취약점 검사",
+        },
+        {
+          title: "QA 테스트",
+          desc: "qa-engineer가 Unit / Integration / E2E 테스트 실행. FAIL 시 구현으로 복귀",
         },
       ],
     },
     {
       num: "04",
-      title: "Rapid Validation",
-      subtitle: "빠른 검증",
-      color: "var(--color-primary)",
+      title: "Verify Phase",
+      subtitle: "검증 & 론칭",
+      color: "var(--color-secondary)",
       steps: [
         {
-          title: "아이디어 → 프로토타입 수일 내",
-          desc: "기획 단계에서 '이게 되나?'를 직접 만들어서 확인",
+          title: "동작 검증 (Simulator)",
+          desc: "실제 앱을 실행하여 기능 동작 확인. FAIL 시 Build Phase로 복귀",
         },
         {
-          title: "실패 비용 최소화",
-          desc: "빠른 프로토타이핑으로 초기 단계에서 방향 검증",
+          title: "UI 검증 & 사용성 테스트",
+          desc: "스크린샷 기반 시각적 검증 + 사용자 관점 사용성 테스트. FAIL 시 Design Phase로 복귀",
+        },
+        {
+          title: "론칭 디베이트",
+          desc: "CEO ↔ CTO ↔ CSO 삼자 회의. 코드 수정 / 설계 변경 / PASS 삼분기 결정",
+        },
+        {
+          title: "완성 보고",
+          desc: "론칭 승인 후 최종 보고서 생성",
         },
       ],
     },
@@ -94,73 +122,101 @@ const phasesData: Record<Locale, Phase[]> = {
   en: [
     {
       num: "01",
-      title: "Service Build",
-      subtitle: "Service Build",
+      title: "Idea Phase",
+      subtitle: "Ideation & Validation",
       color: "var(--color-primary)",
       steps: [
         {
-          title: "Full Service Build with Claude Code",
-          desc: "Developed Dear,ANT project conversationally from planning to coding to debugging to deployment",
+          title: "AI Brainstorming & Trend Scoring",
+          desc: "Diverge ideas with AI, discover topics based on trend data. Even vague requests get refined",
         },
         {
-          title: "Team of 3-4 for 1 month → Solo in 2 weeks",
-          desc: "Maximized development productivity with AI tools to complete a full-stack service solo",
+          title: "CEO Direction → Market Research → CSO Validation",
+          desc: "AI CEO sets direction, Researcher conducts market research, AI CSO validates risks & feasibility. No-Go triggers re-direction",
         },
         {
-          title: "REST API 5개 + Custom SVG + Dual Storage",
-          desc: "Full-stack implementation with Next.js App Router without separate backend",
+          title: "Business Model Design",
+          desc: "Systematically design revenue model, pricing strategy, and unit economics",
+        },
+        {
+          title: "CEO Gate",
+          desc: "PASS / Revise BM / Change direction. Proceeds to Design Phase on pass",
         },
       ],
     },
     {
       num: "02",
-      title: "Prompt Engineering",
-      subtitle: "Prompt Engineering",
-      color: "var(--color-secondary)",
+      title: "Design Phase",
+      subtitle: "Design & Architecture",
+      color: "var(--color-accent)",
       steps: [
         {
-          title: "Built Few-shot Datasets as Clova X PM",
-          desc: "Structurally designed AI chatbot response quality",
+          title: "Tech Stack & DB Schema Design",
+          desc: "CTO decides tech stack, data-engineer designs DB, CTO reviews. FAIL triggers redesign",
         },
         {
-          title: "Planning → API Spec Conversion → Dev Team Collaboration",
-          desc: "Converted planning documents into API specs ready for developer use",
+          title: "API Design & DB-API Consistency Check",
+          desc: "backend-dev designs API, CTO verifies DB-API consistency. Mismatch triggers DB redesign",
         },
         {
-          title: "Revision Cycles 3 → 1 (66% Reduction)",
-          desc: "Improved planning-dev communication efficiency through prompt dataset quality improvement",
+          title: "UX/UI Design & Debate",
+          desc: "product-designer creates UX→UI sequentially, each verified by reviewers, then UX↔UI design debate",
+        },
+        {
+          title: "Execution Plan & Plan Critic",
+          desc: "Planner generates implementation plan, plan-critic scores on 6 criteria. Iterates until pass",
+        },
+        {
+          title: "CTO Gate",
+          desc: "Integrated validation of design + plan. Proceeds to Build Phase on pass",
         },
       ],
     },
     {
       num: "03",
-      title: "Business Automation",
-      subtitle: "Business Automation",
-      color: "var(--color-accent)",
+      title: "Build Phase",
+      subtitle: "Implementation & Review",
+      color: "#f59e0b",
       steps: [
         {
-          title: "Technical Document Automation",
-          desc: "Leveraged AI for architecture design, technical proposals, and cost analysis reports",
+          title: "Parallel Implementation",
+          desc: "frontend / backend / mobile / ai-engineer agents develop simultaneously",
         },
         {
-          title: "Code Review & Repetitive Task Automation",
-          desc: "Automated repetitive tasks to focus on core work",
+          title: "Migration Review (DBA)",
+          desc: "DBA verifies DB changes. Issues route back to implementation",
+        },
+        {
+          title: "Code Review + Security Review",
+          desc: "code-reviewer checks quality, security-reviewer scans for vulnerabilities",
+        },
+        {
+          title: "QA Testing",
+          desc: "qa-engineer runs Unit / Integration / E2E tests. FAIL routes back to implementation",
         },
       ],
     },
     {
       num: "04",
-      title: "Rapid Validation",
-      subtitle: "Rapid Validation",
-      color: "var(--color-primary)",
+      title: "Verify Phase",
+      subtitle: "Verification & Launch",
+      color: "var(--color-secondary)",
       steps: [
         {
-          title: "Idea → Prototype in Days",
-          desc: "Build and verify 'Does this work?' directly at the planning stage",
+          title: "Functional Verification (Simulator)",
+          desc: "Run actual app to verify functionality. FAIL routes back to Build Phase",
         },
         {
-          title: "Minimize Failure Cost",
-          desc: "Validated direction at early stages through rapid prototyping",
+          title: "UI Verification & Usability Test",
+          desc: "Screenshot-based visual verification + user perspective usability test. FAIL routes to Design Phase",
+        },
+        {
+          title: "Launch Debate",
+          desc: "CEO ↔ CTO ↔ CSO three-way meeting. Code fix / Design change / PASS decision",
+        },
+        {
+          title: "Completion Report",
+          desc: "Final report generated after launch approval",
         },
       ],
     },
@@ -168,73 +224,101 @@ const phasesData: Record<Locale, Phase[]> = {
   ja: [
     {
       num: "01",
-      title: "Service Build",
-      subtitle: "サービスビルド",
+      title: "Idea Phase",
+      subtitle: "アイデア発掘＆検証",
       color: "var(--color-primary)",
       steps: [
         {
-          title: "Claude Codeでサービス全体を構築",
-          desc: "Dear,ANTプロジェクトを企画→コーディング→デバッグ→デプロイまで対話形式で開発",
+          title: "AIブレインストーミング＆トレンドスコアリング",
+          desc: "AIとアイデア発散、トレンドデータに基づくテーマ発掘。漠然とした要望も具体化",
         },
         {
-          title: "チーム3-4人1ヶ月 → 1人2週間で完成",
-          desc: "AIツールを活用して開発生産性を最大化し、フルスタックサービスを一人で完成",
+          title: "CEO方向決定 → 市場調査 → CSO戦略検証",
+          desc: "AI CEOが方向設定、Researcherが市場調査、AI CSOがリスク・実現可能性を検証。No-Goで方向再設定",
         },
         {
-          title: "REST API 5개 + Custom SVG + Dual Storage",
-          desc: "別途バックエンドなしでNext.js App Routerベースのフルスタック実装",
+          title: "BM設計",
+          desc: "収益モデル、価格戦略、ユニットエコノミクスを体系的に設計",
+        },
+        {
+          title: "CEOゲート",
+          desc: "PASS / BM修正 / 方向変更の三分岐意思決定。通過でDesign Phaseへ",
         },
       ],
     },
     {
       num: "02",
-      title: "Prompt Engineering",
-      subtitle: "プロンプトエンジニアリング",
-      color: "var(--color-secondary)",
+      title: "Design Phase",
+      subtitle: "設計＆アーキテクチャ",
+      color: "var(--color-accent)",
       steps: [
         {
-          title: "Clova X PMとしてFew-shotデータセット構築",
-          desc: "AIチャットボットの回答品質を構造的に設計",
+          title: "技術スタック＆DBスキーマ設計",
+          desc: "CTOが技術スタック決定、data-engineerがDB設計、CTOレビュー。FAILで再設計",
         },
         {
-          title: "企画 → APIスペック変換 → 開発チーム協業",
-          desc: "企画文書を開発者がすぐ使えるAPIスペックに変換",
+          title: "API設計＆DB-API整合性検証",
+          desc: "backend-devがAPI設計、CTOがDB-API整合性を検証。不一致でDBから再設計",
         },
         {
-          title: "修正サイクル3回 → 1回（66%短縮）",
-          desc: "プロンプトデータセットの品質改善で企画-開発間のコミュニケーションを効率化",
+          title: "UX/UIデザイン＆ディベート",
+          desc: "product-designerがUX→UI順次設計、各レビュアー検証後UX↔UIデザインディベート",
+        },
+        {
+          title: "実行計画＆Plan Critic",
+          desc: "plannerが実装計画生成、plan-criticが6基準で採点。通過まで繰り返し",
+        },
+        {
+          title: "CTOゲート",
+          desc: "設計+計画の統合検証。PASSでBuild Phaseへ",
         },
       ],
     },
     {
       num: "03",
-      title: "Business Automation",
-      subtitle: "業務自動化",
-      color: "var(--color-accent)",
+      title: "Build Phase",
+      subtitle: "実装＆レビュー",
+      color: "#f59e0b",
       steps: [
         {
-          title: "技術文書作成自動化",
-          desc: "アーキテクチャ設計、技術提案書、コスト分析レポート作成にAI活用",
+          title: "並列実装",
+          desc: "frontend / backend / mobile / ai-engineerエージェントが同時開発",
         },
         {
-          title: "コードレビュー＆反復作業自動化",
-          desc: "反復作業を自動化してコア業務に集中",
+          title: "マイグレーションレビュー（DBA）",
+          desc: "DBAがDB変更を検証。指摘があれば実装に差し戻し",
+        },
+        {
+          title: "コードレビュー＋セキュリティレビュー",
+          desc: "code-reviewerが品質検査、security-reviewerが脆弱性スキャン",
+        },
+        {
+          title: "QAテスト",
+          desc: "qa-engineerがUnit / Integration / E2Eテスト実行。FAILで実装に復帰",
         },
       ],
     },
     {
       num: "04",
-      title: "Rapid Validation",
-      subtitle: "高速検証",
-      color: "var(--color-primary)",
+      title: "Verify Phase",
+      subtitle: "検証＆ローンチ",
+      color: "var(--color-secondary)",
       steps: [
         {
-          title: "アイデア → プロトタイプ数日以内",
-          desc: "企画段階で「これができるか？」を直接作って確認",
+          title: "動作検証（Simulator）",
+          desc: "実際のアプリを実行して機能動作を確認。FAILでBuild Phaseに復帰",
         },
         {
-          title: "失敗コスト最小化",
-          desc: "高速プロトタイピングで初期段階で方向性を検証",
+          title: "UI検証＆ユーザビリティテスト",
+          desc: "スクリーンショットベースの視覚検証＋ユーザー視点のユーザビリティテスト。FAILでDesign Phaseに復帰",
+        },
+        {
+          title: "ローンチディベート",
+          desc: "CEO ↔ CTO ↔ CSO三者会議。コード修正 / 設計変更 / PASSの三分岐決定",
+        },
+        {
+          title: "完成レポート",
+          desc: "ローンチ承認後、最終レポートを生成",
         },
       ],
     },
@@ -242,10 +326,10 @@ const phasesData: Record<Locale, Phase[]> = {
 };
 
 const cycleItems = [
-  { name: "Build", color: "var(--color-primary)" },
-  { name: "Design", color: "var(--color-secondary)" },
-  { name: "Automate", color: "var(--color-accent)" },
-  { name: "Validate", color: "var(--color-primary)" },
+  { name: "Idea", color: "var(--color-primary)" },
+  { name: "Design", color: "var(--color-accent)" },
+  { name: "Build", color: "#f59e0b" },
+  { name: "Verify", color: "var(--color-secondary)" },
 ];
 
 interface Props {
@@ -264,6 +348,7 @@ export default function AiWorkflow({ locale = "ko" }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          style={{ opacity: 1 }}
         >
           <h2 className="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">
             {ui[locale]["aiWorkflow.subtitle"]}
@@ -283,12 +368,13 @@ export default function AiWorkflow({ locale = "ko" }: Props) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-20 flex items-center justify-center gap-5"
+          style={{ opacity: 1 }}
+          className="mb-20 flex items-center justify-center gap-3 md:gap-5"
         >
           {cycleItems.map((item, i) => (
-            <div key={item.name} className="flex items-center gap-5">
+            <div key={item.name} className="flex items-center gap-3 md:gap-5">
               <div
-                className="flex h-[52px] w-[84px] items-center justify-center rounded-xl border-2 text-[15px] font-bold"
+                className="flex h-[44px] w-[68px] items-center justify-center rounded-xl border-2 text-[13px] font-bold md:h-[52px] md:w-[84px] md:text-[15px]"
                 style={{
                   borderColor: item.color,
                   color: item.color,
@@ -318,6 +404,7 @@ export default function AiWorkflow({ locale = "ko" }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              style={{ opacity: 1 }}
             >
               {/* Phase Header */}
               <div className="mb-6 flex items-baseline gap-4">
@@ -352,6 +439,7 @@ export default function AiWorkflow({ locale = "ko" }: Props) {
                       duration: 0.4,
                       delay: stepIdx * 0.05,
                     }}
+                    style={{ opacity: 1 }}
                   >
                     <GlassCard className="flex flex-row items-start gap-4 !p-[18px]">
                       {/* Step Number */}
@@ -386,6 +474,7 @@ export default function AiWorkflow({ locale = "ko" }: Props) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ opacity: 1 }}
           className="mt-16 text-center"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/5 px-6 py-2.5 text-sm text-[var(--color-accent)]">

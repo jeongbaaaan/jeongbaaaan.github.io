@@ -19,6 +19,7 @@ export default function Experience({ locale = "ko" }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          style={{ opacity: 1 }}
         >
           <h2 className="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">
             {ui[locale]["experience.subtitle"]}
@@ -39,6 +40,7 @@ export default function Experience({ locale = "ko" }: Props) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
+              style={{ opacity: 1 }}
               className={`relative mb-12 pl-12 md:w-1/2 md:pl-0 ${
                 index % 2 === 0
                   ? "md:pr-12 md:text-right"

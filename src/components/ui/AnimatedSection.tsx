@@ -19,6 +19,7 @@ export default function AnimatedSection({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
       className={className}
+      style={{ opacity: 1 }}
     >
       {children}
     </motion.div>

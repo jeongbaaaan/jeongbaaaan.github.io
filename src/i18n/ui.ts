@@ -46,18 +46,22 @@ export const ui = {
 
     // AI Dev CTA
     "aiDevCta.label": "AI-Augmented Development",
-    "aiDevCta.title": "AI를 활용한 서비스 개발이 궁금하신가요?",
-    "aiDevCta.description": "서비스 빌드부터 프롬프트 설계, 업무 자동화까지 AI 활용 사례를 소개합니다.",
-    "aiDevCta.cta.projects": "프로젝트 보기",
+    "aiDevCta.title": "AI와 함께 일하는 시스템이 궁금하신가요?",
+    "aiDevCta.description": "설계 → 개발 → 테스트까지, AI를 활용한 개발 워크플로우를 소개합니다.",
     "aiDevCta.cta.aidev": "AI와 일하는 법",
-    "aiDevCta.cta.contact": "연락하기",
+    "aiDevCta.stat1.value": "15+",
+    "aiDevCta.stat1.label": "프로젝트",
+    "aiDevCta.stat2.value": "36",
+    "aiDevCta.stat2.label": "자동화 단계",
+    "aiDevCta.stat3.value": "4+",
+    "aiDevCta.stat3.label": "년 경력",
 
     // AI Workflow
-    "aiWorkflow.subtitle": "AI-Augmented Development",
-    "aiWorkflow.title": "AI 활용 역량",
-    "aiWorkflow.description": "AI를 '써본' 수준이 아니라",
-    "aiWorkflow.descriptionBr": "AI로 '만들어본' 경험이 있습니다.",
-    "aiWorkflow.badge": "Dear,ANT는 Claude Code로 제작되었습니다",
+    "aiWorkflow.subtitle": "Harness Engineering",
+    "aiWorkflow.title": "AI와 일하는 법 (Harness Engineering)",
+    "aiWorkflow.description": "AI 에이전트가 좋은 결과만 낼 수밖에 없는 환경을 설계합니다.",
+    "aiWorkflow.descriptionBr": "아이디어 발굴부터 검증·설계·구현·론칭까지, 36단계 자동화 파이프라인.",
+    "aiWorkflow.badge": "이 포트폴리오는 Claude Code로 제작되었습니다",
 
     // Navbar
     "nav.resume": "Resume",
@@ -78,7 +82,6 @@ export const ui = {
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "달결",
     "nav.project.whatHealth": "What Health",
-    "nav.project.quorum": "Quorum",
 
     // Layout
     "layout.backToMain": "프로젝트 목록으로 돌아가기",
@@ -136,18 +139,22 @@ export const ui = {
 
     // AI Dev CTA
     "aiDevCta.label": "AI-Augmented Development",
-    "aiDevCta.title": "Curious about building services with AI?",
-    "aiDevCta.description": "From service building to prompt design and business automation — AI use cases.",
-    "aiDevCta.cta.projects": "View Projects",
+    "aiDevCta.title": "Curious about AI-augmented development?",
+    "aiDevCta.description": "From design to development to testing — an introduction to AI-powered dev workflows.",
     "aiDevCta.cta.aidev": "How I Work with AI",
-    "aiDevCta.cta.contact": "Contact",
+    "aiDevCta.stat1.value": "15+",
+    "aiDevCta.stat1.label": "Projects",
+    "aiDevCta.stat2.value": "36",
+    "aiDevCta.stat2.label": "Pipeline Steps",
+    "aiDevCta.stat3.value": "4+",
+    "aiDevCta.stat3.label": "Years Exp.",
 
     // AI Workflow
-    "aiWorkflow.subtitle": "AI-Augmented Development",
-    "aiWorkflow.title": "AI Capabilities",
-    "aiWorkflow.description": "Not just 'tried AI'",
-    "aiWorkflow.descriptionBr": "I have experience 'building with AI'.",
-    "aiWorkflow.badge": "Dear,ANT was built with Claude Code",
+    "aiWorkflow.subtitle": "Harness Engineering",
+    "aiWorkflow.title": "Working with AI (Harness Engineering)",
+    "aiWorkflow.description": "Designing environments where AI agents can only produce good results.",
+    "aiWorkflow.descriptionBr": "A 36-step automated pipeline from ideation to validation, design, build, and launch.",
+    "aiWorkflow.badge": "This portfolio was built with Claude Code",
 
     // Navbar
     "nav.resume": "Resume",
@@ -168,7 +175,6 @@ export const ui = {
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "Dalgyeol",
     "nav.project.whatHealth": "What Health",
-    "nav.project.quorum": "Quorum",
 
     // Layout
     "layout.backToMain": "Back to Projects",
@@ -226,18 +232,22 @@ export const ui = {
 
     // AI Dev CTA
     "aiDevCta.label": "AI-Augmented Development",
-    "aiDevCta.title": "AIを活用したサービス開発に興味がありますか？",
-    "aiDevCta.description": "サービスビルドからプロンプト設計、業務自動化までAI活用事例を紹介します。",
-    "aiDevCta.cta.projects": "プロジェクトを見る",
+    "aiDevCta.title": "AIを活用した開発システムに興味がありますか？",
+    "aiDevCta.description": "設計→開発→テストまで、AIを活用した開発ワークフローを紹介します。",
     "aiDevCta.cta.aidev": "AIとの協業",
-    "aiDevCta.cta.contact": "お問い合わせ",
+    "aiDevCta.stat1.value": "15+",
+    "aiDevCta.stat1.label": "プロジェクト",
+    "aiDevCta.stat2.value": "36",
+    "aiDevCta.stat2.label": "自動化ステップ",
+    "aiDevCta.stat3.value": "4+",
+    "aiDevCta.stat3.label": "年の経験",
 
     // AI Workflow
-    "aiWorkflow.subtitle": "AI-Augmented Development",
-    "aiWorkflow.title": "AI活用能力",
-    "aiWorkflow.description": "AIを「使ってみた」レベルではなく",
-    "aiWorkflow.descriptionBr": "AIで「作った」経験があります。",
-    "aiWorkflow.badge": "Dear,ANTはClaude Codeで制作されました",
+    "aiWorkflow.subtitle": "Harness Engineering",
+    "aiWorkflow.title": "AIとの働き方 (Harness Engineering)",
+    "aiWorkflow.description": "AIエージェントが良い結果しか出せない環境を設計します。",
+    "aiWorkflow.descriptionBr": "アイデア発掘から検証・設計・実装・ローンチまで、36ステップの自動化パイプライン。",
+    "aiWorkflow.badge": "このポートフォリオはClaude Codeで制作されました",
 
     // Navbar
     "nav.resume": "Resume",
@@ -258,7 +268,6 @@ export const ui = {
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "ダルギョル",
     "nav.project.whatHealth": "What Health",
-    "nav.project.quorum": "Quorum",
 
     // Layout
     "layout.backToMain": "プロジェクト一覧に戻る",

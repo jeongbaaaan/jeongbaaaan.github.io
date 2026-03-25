@@ -23,6 +23,7 @@ export default function Skills({ locale = "ko" }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          style={{ opacity: 1 }}
         >
           <h2 className="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">
             {ui[locale]["skills.subtitle"]}
@@ -40,6 +41,7 @@ export default function Skills({ locale = "ko" }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              style={{ opacity: 1 }}
               className={sizeClasses[category.size]}
             >
               <GlassCard className="h-full">

@@ -7,6 +7,12 @@ interface Props {
 }
 
 const { locale = "ko" } = Astro.props;
+
+const stats = [
+  { value: t("aiDevCta.stat1.value", locale), label: t("aiDevCta.stat1.label", locale) },
+  { value: t("aiDevCta.stat2.value", locale), label: t("aiDevCta.stat2.label", locale) },
+  { value: t("aiDevCta.stat3.value", locale), label: t("aiDevCta.stat3.label", locale) },
+];
 ---
 
 <section class="px-6 py-24">
@@ -21,26 +27,20 @@ const { locale = "ko" } = Astro.props;
       <p class="mb-8 text-[var(--color-text-secondary)]">
         {t("aiDevCta.description", locale)}
       </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a
-          href={localePath("/projects", locale)}
-          class="rounded-full bg-[var(--color-primary)] px-8 py-3 font-semibold text-[var(--color-bg)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)]"
-        >
-          {t("aiDevCta.cta.projects", locale)}
-        </a>
-        <a
-          href={localePath("/ai-dev", locale)}
-          class="rounded-full bg-[var(--color-accent)] px-8 py-3 font-semibold text-[var(--color-bg)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(6,255,165,0.3)]"
-        >
-          {t("aiDevCta.cta.aidev", locale)}
-        </a>
-        <a
-          href={localePath("/contact", locale)}
-          class="rounded-full border border-[var(--color-primary)]/30 px-8 py-3 font-semibold text-[var(--color-primary)] transition-all duration-200 hover:scale-105 hover:bg-[var(--color-primary)]/10"
-        >
-          {t("aiDevCta.cta.contact", locale)}
-        </a>
+      <div class="mb-8 grid grid-cols-3 gap-4">
+        {stats.map((stat) => (
+          <div>
+            <p class="text-2xl font-bold text-[var(--color-primary)] md:text-3xl">{stat.value}</p>
+            <p class="text-xs text-[var(--color-text-secondary)]">{stat.label}</p>
+          </div>
+        ))}
       </div>
+      <a
+        href={localePath("/ai-dev", locale)}
+        class="inline-block rounded-full bg-[var(--color-accent)] px-8 py-3 font-semibold text-[var(--color-bg)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(6,255,165,0.3)]"
+      >
+        {t("aiDevCta.cta.aidev", locale)}
+      </a>
     </div>
   </div>
 </section>

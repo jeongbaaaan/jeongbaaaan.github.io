@@ -22,7 +22,6 @@ export const projectSlugs = [
   "dear-ant",
   "dalgyeol",
   "what-health",
-  "quorum",
 ] as const;
 
 const projectsData: Record<string, Record<Locale, ProjectData>> = {
@@ -581,47 +580,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
   },
 
-  "quorum": {
-    ko: {
-      title: "Quorum — 멀티에이전트 협업",
-      company: "개인 프로젝트",
-      period: "2026.03 ~",
-      role: "풀스택 개발",
-      tags: ["Rust", "Next.js", "Tauri", "LLM"],
-      sideProject: true,
-      claudeCode: true,
-      contentHtml: `<h2>개요</h2>
-<p>서로 다른 역할을 가진 AI 에이전트들이 실시간으로 토론·협업하는 멀티에이전트 플랫폼입니다.</p>
-<h2>기술 스택</h2>
-<ul><li><strong>Backend</strong>: Rust (Axum, Tokio, sqlx)</li><li><strong>Frontend</strong>: Next.js, TypeScript, Tailwind CSS</li><li><strong>Desktop</strong>: Tauri</li><li><strong>AI</strong>: Multi LLM Provider</li></ul>`,
-    },
-    en: {
-      title: "Quorum — Multi-Agent Collaboration",
-      company: "Personal Project",
-      period: "2026.03 ~",
-      role: "Full-stack Developer",
-      tags: ["Rust", "Next.js", "Tauri", "LLM"],
-      sideProject: true,
-      claudeCode: true,
-      contentHtml: `<h2>Overview</h2>
-<p>A multi-agent platform where AI agents with different roles discuss and collaborate in real-time.</p>
-<h2>Tech Stack</h2>
-<ul><li><strong>Backend</strong>: Rust (Axum, Tokio, sqlx)</li><li><strong>Frontend</strong>: Next.js, TypeScript, Tailwind CSS</li><li><strong>Desktop</strong>: Tauri</li><li><strong>AI</strong>: Multi LLM Provider</li></ul>`,
-    },
-    ja: {
-      title: "Quorum — マルチエージェント協業",
-      company: "個人プロジェクト",
-      period: "2026.03 ~",
-      role: "フルスタック開発",
-      tags: ["Rust", "Next.js", "Tauri", "LLM"],
-      sideProject: true,
-      claudeCode: true,
-      contentHtml: `<h2>概要</h2>
-<p>異なる役割を持つAIエージェントたちがリアルタイムで議論・協業するマルチエージェントプラットフォームです。</p>
-<h2>技術スタック</h2>
-<ul><li><strong>Backend</strong>: Rust (Axum, Tokio, sqlx)</li><li><strong>Frontend</strong>: Next.js, TypeScript, Tailwind CSS</li><li><strong>Desktop</strong>: Tauri</li><li><strong>AI</strong>: Multi LLM Provider</li></ul>`,
-    },
-  },
 };
 
 export function getProjectData(slug: string, locale: Locale): ProjectData {
