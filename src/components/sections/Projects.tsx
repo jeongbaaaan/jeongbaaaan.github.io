@@ -89,6 +89,7 @@ const projectsData: Record<Locale, Project[]> = {
       href: "/projects/dalgyeol",
       sideProject: true,
       claudeCode: true,
+      thumbnail: "/images/projects/dalgyeol-home.png",
     },
     {
       title: "What Health",
@@ -166,6 +167,7 @@ const projectsData: Record<Locale, Project[]> = {
       href: "/projects/dalgyeol",
       sideProject: true,
       claudeCode: true,
+      thumbnail: "/images/projects/dalgyeol-home.png",
     },
     {
       title: "What Health",
@@ -243,6 +245,7 @@ const projectsData: Record<Locale, Project[]> = {
       href: "/projects/dalgyeol",
       sideProject: true,
       claudeCode: true,
+      thumbnail: "/images/projects/dalgyeol-home.png",
     },
     {
       title: "What Health",

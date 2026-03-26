@@ -501,7 +501,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <h2>주요 구현</h2>
 <ul><li>순수 Rust 사주 계산 엔진 (외부 API 의존 없음, ~1,100줄)</li><li>AES-256-GCM 개인정보 암호화</li><li>StoreKit 2 인앱결제 + 포인트 경제 시스템</li><li>실시간 WebSocket AI 상담 + PII 마스킹</li></ul>
 <h2>기술 스택</h2>
-<ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: 멀티 LLM (Claude, GPT, Gemini)</li></ul>`,
+<ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: 멀티 LLM (Claude, GPT, Gemini)</li></ul>
+<h2>스크린샷</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<img src="/images/projects/dalgyeol-daily-fortune.png" alt="오늘의 운세" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dalgyeol-fortune-detail.png" alt="월운 상세" style="width:240px;border-radius:12px;" />
+</div>`,
     },
     en: {
       title: "Dalgyeol — AI Fortune & Tarot",
@@ -516,7 +521,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <h2>Key Implementation</h2>
 <ul><li>Pure Rust Saju calculation engine (no external API dependency, ~1,100 lines)</li><li>AES-256-GCM personal data encryption</li><li>StoreKit 2 in-app purchases + point economy system</li><li>Real-time WebSocket AI consultation + PII masking</li></ul>
 <h2>Tech Stack</h2>
-<ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: Multi LLM (Claude, GPT, Gemini)</li></ul>`,
+<ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: Multi LLM (Claude, GPT, Gemini)</li></ul>
+<h2>Screenshots</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<img src="/images/projects/dalgyeol-daily-fortune.png" alt="Daily Fortune" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dalgyeol-fortune-detail.png" alt="Monthly Fortune Detail" style="width:240px;border-radius:12px;" />
+</div>`,
     },
     ja: {
       title: "ダルギョル — AI四柱推命・タロット",
@@ -531,7 +541,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <h2>主要実装</h2>
 <ul><li>純粋Rust四柱推命計算エンジン（外部API依存なし、約1,100行）</li><li>AES-256-GCM個人情報暗号化</li><li>StoreKit 2アプリ内課金 + ポイントエコノミーシステム</li><li>リアルタイムWebSocket AIカウンセリング + PIIマスキング</li></ul>
 <h2>技術スタック</h2>
-<ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: マルチLLM (Claude, GPT, Gemini)</li></ul>`,
+<ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: マルチLLM (Claude, GPT, Gemini)</li></ul>
+<h2>スクリーンショット</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<img src="/images/projects/dalgyeol-daily-fortune.png" alt="今日の運勢" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dalgyeol-fortune-detail.png" alt="月運詳細" style="width:240px;border-radius:12px;" />
+</div>`,
     },
   },
 
