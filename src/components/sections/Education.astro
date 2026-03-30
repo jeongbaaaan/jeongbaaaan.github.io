@@ -26,7 +26,7 @@ const { education, certifications } = getEducationData(locale);
       </h3>
     </AnimatedSection>
 
-    <div class="space-y-16">
+    <div class="flex flex-col gap-12">
       {
         education.map((edu, index) => (
           <AnimatedSection client:visible delay={index * 0.15}>
