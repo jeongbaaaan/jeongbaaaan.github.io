@@ -47,7 +47,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "CQRS 패턴 설계, Multi-AZ 고가용성, 처리량 2배 향상, 비용 30% 절감, AWS 해커톤 대상",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (교육)",
       href: "/projects/cloud-native-auction",
       education: true,
     },
@@ -56,7 +56,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "Kubernetes 기반 서비스 배포, NetworkPolicy 보안, 아키텍처 설계",
       tags: ["Kubernetes", "Docker", "Architecture"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (교육)",
       href: "/projects/kubernetes-service",
       education: true,
     },
@@ -65,7 +65,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "서울시 공공 데이터 활용 분석 및 시각화",
       tags: ["Python", "Data Analysis", "Visualization"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (교육)",
       href: "/projects/python-data-viz",
       education: true,
     },
@@ -125,7 +125,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "CQRS pattern design, Multi-AZ high availability, 2x throughput improvement, 30% cost reduction, AWS Hackathon Grand Prize",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (Education)",
       href: "/projects/cloud-native-auction",
       education: true,
     },
@@ -134,7 +134,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "Kubernetes-based service deployment, NetworkPolicy security, architecture design",
       tags: ["Kubernetes", "Docker", "Architecture"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (Education)",
       href: "/projects/kubernetes-service",
       education: true,
     },
@@ -143,7 +143,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "Seoul public data analysis and visualization",
       tags: ["Python", "Data Analysis", "Visualization"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (Education)",
       href: "/projects/python-data-viz",
       education: true,
     },
@@ -203,7 +203,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "CQRSパターン設計、Multi-AZ高可用性、スループット2倍向上、コスト30%削減、AWSハッカソン大賞",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (教育)",
       href: "/projects/cloud-native-auction",
       education: true,
     },
@@ -212,7 +212,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "Kubernetesベースのサービスデプロイ、NetworkPolicyセキュリティ、アーキテクチャ設計",
       tags: ["Kubernetes", "Docker", "Architecture"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (教育)",
       href: "/projects/kubernetes-service",
       education: true,
     },
@@ -221,7 +221,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "ソウル市公共データを活用した分析および可視化",
       tags: ["Python", "Data Analysis", "Visualization"],
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (教育)",
       href: "/projects/python-data-viz",
       education: true,
     },

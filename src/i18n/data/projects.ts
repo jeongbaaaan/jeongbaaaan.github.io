@@ -163,7 +163,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
   "cloud-native-auction": {
     ko: {
       title: "CQRS 경매 웹사이트",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (교육)",
       period: "2024.01 ~ 2024.07",
       role: "부팀장 / DB 리더",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
@@ -197,7 +197,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
     en: {
       title: "CQRS Auction Website",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (Education)",
       period: "2024.01 ~ 2024.07",
       role: "Vice Team Lead / DB Lead",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
@@ -231,7 +231,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
     ja: {
       title: "CQRSオークションサイト",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (教育)",
       period: "2024.01 ~ 2024.07",
       role: "副チームリーダー / DBリーダー",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
@@ -268,7 +268,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
   "kubernetes-service": {
     ko: {
       title: "Kubernetes 프로젝트",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (교육)",
       period: "2024.04 ~ 2024.05",
       role: "PM / Architect",
       tags: ["Kubernetes", "Docker", "Architecture"],
@@ -298,7 +298,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
     en: {
       title: "Kubernetes Project",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (Education)",
       period: "2024.04 ~ 2024.05",
       role: "PM / Architect",
       tags: ["Kubernetes", "Docker", "Architecture"],
@@ -328,7 +328,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
     ja: {
       title: "Kubernetesプロジェクト",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (教育)",
       period: "2024.04 ~ 2024.05",
       role: "PM / アーキテクト",
       tags: ["Kubernetes", "Docker", "Architecture"],
@@ -361,7 +361,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
   "python-data-viz": {
     ko: {
       title: "Python 데이터 시각화",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (교육)",
       period: "2024.03",
       role: "PM",
       tags: ["Python", "Data Analysis", "Visualization"],
@@ -388,7 +388,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
     en: {
       title: "Python Data Visualization",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (Education)",
       period: "2024.03",
       role: "PM",
       tags: ["Python", "Data Analysis", "Visualization"],
@@ -415,7 +415,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
     ja: {
       title: "Pythonデータ可視化",
-      company: "AWS CloudSchool",
+      company: "AWS CloudSchool (教育)",
       period: "2024.03",
       role: "PM",
       tags: ["Python", "Data Analysis", "Visualization"],
