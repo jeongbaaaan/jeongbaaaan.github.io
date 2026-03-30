@@ -25,5 +25,14 @@ assets/
 images/
 test-results/
 
+# reference files (not for deployment)
+references/
+
+# utility scripts (portfolio generation, etc.)
+scripts/
+
+# Python virtual environment
+.venv/
+
 # jetbrains setting folder
 .idea/
