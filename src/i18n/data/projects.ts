@@ -421,7 +421,14 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Frontend</strong>: Next.js 16, React 19, TypeScript, Tailwind CSS 4</li>
 <li><strong>Backend</strong>: Supabase (Auth, Database, Storage)</li>
 <li><strong>AI</strong>: Claude Code (개발 전 과정 활용)</li>
-</ul>`,
+</ul>
+<h2>스크린샷</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<img src="/images/projects/dear-ant-home.png" alt="홈 화면" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-survey.png" alt="투자 성향 설문" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-compound.png" alt="복리 계산기" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-tools.png" alt="투자 도구" style="width:240px;border-radius:12px;" />
+</div>`,
     },
     en: {
       title: "Dear,ANT — AI Investment Report",
@@ -452,7 +459,14 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Frontend</strong>: Next.js 16, React 19, TypeScript, Tailwind CSS 4</li>
 <li><strong>Backend</strong>: Supabase (Auth, Database, Storage)</li>
 <li><strong>AI</strong>: Claude Code (used throughout entire development process)</li>
-</ul>`,
+</ul>
+<h2>Screenshots</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<img src="/images/projects/dear-ant-home.png" alt="Home" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-survey.png" alt="Investment Profile Survey" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-compound.png" alt="Compound Interest Calculator" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-tools.png" alt="Investment Tools" style="width:240px;border-radius:12px;" />
+</div>`,
     },
     ja: {
       title: "Dear,ANT — AI投資判断レポート",
@@ -483,7 +497,14 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Frontend</strong>: Next.js 16, React 19, TypeScript, Tailwind CSS 4</li>
 <li><strong>Backend</strong>: Supabase (Auth, Database, Storage)</li>
 <li><strong>AI</strong>: Claude Code（開発全過程で活用）</li>
-</ul>`,
+</ul>
+<h2>スクリーンショット</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<img src="/images/projects/dear-ant-home.png" alt="ホーム画面" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-survey.png" alt="投資性向アンケート" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-compound.png" alt="複利計算機" style="width:240px;border-radius:12px;" />
+<img src="/images/projects/dear-ant-tools.png" alt="投資ツール" style="width:240px;border-radius:12px;" />
+</div>`,
     },
   },
 
