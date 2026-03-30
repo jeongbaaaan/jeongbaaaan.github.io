@@ -12,7 +12,7 @@ export const profile = {
 
 export const summary = [
   "AWS MSP 파트너사에서 70+ 고객 계정의 클라우드 인프라를 관리하고 비용을 최적화하는 Account Manager입니다. QR 이미지 Lambda 리사이징 아키텍처를 설계하여 스토리지 60% 절감, RI 전환 권고 및 S3 Lifecycle 정책 최적화를 통한 비용 절감을 달성했습니다.",
-  "네이버클라우드 Clova X 공모전에서 AI PM으로 프롬프트 데이터셋을 구축하고 UX 흐름을 설계한 경험이 있습니다. 기획 문서를 API 스펙으로 변환하여 개발팀과 협업하며 수정 사이클을 66% 단축했습니다.",
+  "네이버클라우드 Clova X 대외활동에서 AI PM으로 프롬프트 데이터셋을 구축하고 UX 흐름을 설계한 경험이 있습니다. 기획 문서를 API 스펙으로 변환하여 개발팀과 협업하며 수정 사이클을 66% 단축했습니다.",
   "AWS CloudSchool 해커톤 대상(1위) 수상 경력이 있으며, Claude Code를 활용해 Dear,ANT AI 투자 판단 리포트 서비스를 1인 2주 만에 기획부터 배포까지 완성했습니다. 기술 블로그: substack.com/@bitbit1",
 ];
 

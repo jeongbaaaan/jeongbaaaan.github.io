@@ -39,7 +39,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "프롬프트 데이터셋 구축, UX 흐름 설계, 수정 사이클 66% 단축",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      company: "네이버클라우드 (공모전)",
+      company: "네이버클라우드 (대외활동)",
       href: "/projects/clova-x-chatbot",
     },
     {
@@ -117,7 +117,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "Prompt dataset construction, UX flow design, 66% reduction in revision cycles",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      company: "Naver Cloud (Competition)",
+      company: "Naver Cloud (Extracurricular)",
       href: "/projects/clova-x-chatbot",
     },
     {
@@ -195,7 +195,7 @@ const projectsData: Record<Locale, Project[]> = {
       description:
         "プロンプトデータセット構築、UXフロー設計、修正サイクル66%短縮",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      company: "NAVERクラウド (コンペティション)",
+      company: "NAVERクラウド (課外活動)",
       href: "/projects/clova-x-chatbot",
     },
     {
