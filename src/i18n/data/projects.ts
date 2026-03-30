@@ -187,7 +187,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Cloud</strong>: AWS (RDS, Multi-AZ, Read Replica)</li>
 <li><strong>Pattern</strong>: CQRS (Command Query Responsibility Segregation)</li>
 <li><strong>Frontend</strong>: 웹 프론트엔드 개발</li>
-</ul>`,
+</ul>
+<h2>프로젝트 자료</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/cqrs-auction-msa.png" alt="MSA 아키텍처 & Queue Service" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-auction-aws.png" alt="AWS 아키텍처 스펙" style="width:480px;border-radius:12px;" />
+</div>`,
     },
     en: {
       title: "CQRS Auction Website",
@@ -215,7 +220,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Cloud</strong>: AWS (RDS, Multi-AZ, Read Replica)</li>
 <li><strong>Pattern</strong>: CQRS (Command Query Responsibility Segregation)</li>
 <li><strong>Frontend</strong>: Web frontend development</li>
-</ul>`,
+</ul>
+<h2>Project Materials</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/cqrs-auction-msa.png" alt="MSA Architecture & Queue Service" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-auction-aws.png" alt="AWS Architecture Spec" style="width:480px;border-radius:12px;" />
+</div>`,
     },
     ja: {
       title: "CQRSオークションサイト",
@@ -243,7 +253,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Cloud</strong>: AWS (RDS, Multi-AZ, Read Replica)</li>
 <li><strong>Pattern</strong>: CQRS (Command Query Responsibility Segregation)</li>
 <li><strong>Frontend</strong>: ウェブフロントエンド開発</li>
-</ul>`,
+</ul>
+<h2>プロジェクト資料</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/cqrs-auction-msa.png" alt="MSAアーキテクチャ & Queue Service" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-auction-aws.png" alt="AWSアーキテクチャスペック" style="width:480px;border-radius:12px;" />
+</div>`,
     },
   },
 
@@ -270,7 +285,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Architecture</strong>: 3-Tier (Frontend + Backend + DB)</li>
 <li><strong>Security</strong>: NetworkPolicy</li>
 <li><strong>PM Tools</strong>: Jira, Slack</li>
-</ul>`,
+</ul>
+<h2>프로젝트 자료</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/kubernetes-architecture.png" alt="Kubernetes 아키텍처 설계" style="width:600px;border-radius:12px;" />
+</div>`,
     },
     en: {
       title: "Kubernetes Project",
@@ -294,7 +313,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Architecture</strong>: 3-Tier (Frontend + Backend + DB)</li>
 <li><strong>Security</strong>: NetworkPolicy</li>
 <li><strong>PM Tools</strong>: Jira, Slack</li>
-</ul>`,
+</ul>
+<h2>Project Materials</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/kubernetes-architecture.png" alt="Kubernetes Architecture Design" style="width:600px;border-radius:12px;" />
+</div>`,
     },
     ja: {
       title: "Kubernetesプロジェクト",
@@ -318,7 +341,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Architecture</strong>: 3-Tier (Frontend + Backend + DB)</li>
 <li><strong>Security</strong>: NetworkPolicy</li>
 <li><strong>PM Tools</strong>: Jira, Slack</li>
-</ul>`,
+</ul>
+<h2>プロジェクト資料</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/kubernetes-architecture.png" alt="Kubernetesアーキテクチャ設計" style="width:600px;border-radius:12px;" />
+</div>`,
     },
   },
 
@@ -343,7 +370,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Language</strong>: Python</li>
 <li><strong>Data</strong>: Pandas, NumPy</li>
 <li><strong>Visualization</strong>: Matplotlib, Seaborn</li>
-</ul>`,
+</ul>
+<h2>프로젝트 자료</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/python-data-viz.png" alt="데이터 시각화 결과" style="width:600px;border-radius:12px;" />
+</div>`,
     },
     en: {
       title: "Python Data Visualization",
@@ -365,7 +396,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Language</strong>: Python</li>
 <li><strong>Data</strong>: Pandas, NumPy</li>
 <li><strong>Visualization</strong>: Matplotlib, Seaborn</li>
-</ul>`,
+</ul>
+<h2>Project Materials</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/python-data-viz.png" alt="Data Visualization Results" style="width:600px;border-radius:12px;" />
+</div>`,
     },
     ja: {
       title: "Pythonデータ可視化",
@@ -387,7 +422,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>Language</strong>: Python</li>
 <li><strong>Data</strong>: Pandas, NumPy</li>
 <li><strong>Visualization</strong>: Matplotlib, Seaborn</li>
-</ul>`,
+</ul>
+<h2>プロジェクト資料</h2>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+<img src="/images/projects/python-data-viz.png" alt="データ可視化結果" style="width:600px;border-radius:12px;" />
+</div>`,
     },
   },
 
@@ -423,7 +462,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>AI</strong>: Claude Code (개발 전 과정 활용)</li>
 </ul>
 <h2>스크린샷</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/dear-ant-home.png" alt="홈 화면" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dear-ant-survey.png" alt="투자 성향 설문" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dear-ant-compound.png" alt="복리 계산기" style="width:240px;border-radius:12px;" />
@@ -461,7 +500,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>AI</strong>: Claude Code (used throughout entire development process)</li>
 </ul>
 <h2>Screenshots</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/dear-ant-home.png" alt="Home" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dear-ant-survey.png" alt="Investment Profile Survey" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dear-ant-compound.png" alt="Compound Interest Calculator" style="width:240px;border-radius:12px;" />
@@ -499,7 +538,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <li><strong>AI</strong>: Claude Code（開発全過程で活用）</li>
 </ul>
 <h2>スクリーンショット</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/dear-ant-home.png" alt="ホーム画面" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dear-ant-survey.png" alt="投資性向アンケート" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dear-ant-compound.png" alt="複利計算機" style="width:240px;border-radius:12px;" />
@@ -524,7 +563,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <h2>기술 스택</h2>
 <ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: 멀티 LLM (Claude, GPT, Gemini)</li></ul>
 <h2>스크린샷</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/dalgyeol-daily-fortune.png" alt="오늘의 운세" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dalgyeol-fortune-detail.png" alt="월운 상세" style="width:240px;border-radius:12px;" />
 </div>`,
@@ -544,7 +583,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <h2>Tech Stack</h2>
 <ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: Multi LLM (Claude, GPT, Gemini)</li></ul>
 <h2>Screenshots</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/dalgyeol-daily-fortune.png" alt="Daily Fortune" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dalgyeol-fortune-detail.png" alt="Monthly Fortune Detail" style="width:240px;border-radius:12px;" />
 </div>`,
@@ -564,7 +603,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <h2>技術スタック</h2>
 <ul><li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li><li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li><li><strong>AI</strong>: マルチLLM (Claude, GPT, Gemini)</li></ul>
 <h2>スクリーンショット</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/dalgyeol-daily-fortune.png" alt="今日の運勢" style="width:240px;border-radius:12px;" />
 <img src="/images/projects/dalgyeol-fortune-detail.png" alt="月運詳細" style="width:240px;border-radius:12px;" />
 </div>`,
