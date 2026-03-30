@@ -190,8 +190,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>프로젝트 자료</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/cqrs-auction-msa.png" alt="MSA 아키텍처 & Queue Service" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/cqrs-auction-aws.png" alt="AWS 아키텍처 스펙" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-aws-architecture.png" alt="AWS 인프라 아키텍처" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-queue-service.png" alt="Queue Service 아키텍처" style="width:400px;border-radius:12px;" />
+<img src="/images/projects/cqrs-vs-crud.png" alt="CRUD vs CQRS 비교" style="width:400px;border-radius:12px;" />
 </div>`,
     },
     en: {
@@ -223,8 +224,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>Project Materials</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/cqrs-auction-msa.png" alt="MSA Architecture & Queue Service" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/cqrs-auction-aws.png" alt="AWS Architecture Spec" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-aws-architecture.png" alt="AWS Infrastructure Architecture" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-queue-service.png" alt="Queue Service Architecture" style="width:400px;border-radius:12px;" />
+<img src="/images/projects/cqrs-vs-crud.png" alt="CRUD vs CQRS Comparison" style="width:400px;border-radius:12px;" />
 </div>`,
     },
     ja: {
@@ -256,8 +258,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>プロジェクト資料</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/cqrs-auction-msa.png" alt="MSAアーキテクチャ & Queue Service" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/cqrs-auction-aws.png" alt="AWSアーキテクチャスペック" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-aws-architecture.png" alt="AWSインフラアーキテクチャ" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/cqrs-queue-service.png" alt="Queue Serviceアーキテクチャ" style="width:400px;border-radius:12px;" />
+<img src="/images/projects/cqrs-vs-crud.png" alt="CRUD vs CQRS比較" style="width:400px;border-radius:12px;" />
 </div>`,
     },
   },
@@ -288,7 +291,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>프로젝트 자료</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/kubernetes-architecture.png" alt="Kubernetes 아키텍처 설계" style="width:600px;border-radius:12px;" />
+<img src="/images/projects/k8s-arch-logical.png" alt="논리적 아키텍처 (최종본)" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/k8s-arch-physical.png" alt="물리적 아키텍처 (워커노드 구성)" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/k8s-https-flow.png" alt="HTTPS 동작 Flow" style="width:480px;border-radius:12px;" />
 </div>`,
     },
     en: {
@@ -316,7 +321,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>Project Materials</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/kubernetes-architecture.png" alt="Kubernetes Architecture Design" style="width:600px;border-radius:12px;" />
+<img src="/images/projects/k8s-arch-logical.png" alt="Logical Architecture (Final)" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/k8s-arch-physical.png" alt="Physical Architecture (Worker Nodes)" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/k8s-https-flow.png" alt="HTTPS Flow" style="width:480px;border-radius:12px;" />
 </div>`,
     },
     ja: {
@@ -344,7 +351,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>プロジェクト資料</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/kubernetes-architecture.png" alt="Kubernetesアーキテクチャ設計" style="width:600px;border-radius:12px;" />
+<img src="/images/projects/k8s-arch-logical.png" alt="論理アーキテクチャ（最終版）" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/k8s-arch-physical.png" alt="物理アーキテクチャ（ワーカーノード構成）" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/k8s-https-flow.png" alt="HTTPS動作フロー" style="width:480px;border-radius:12px;" />
 </div>`,
     },
   },
@@ -373,7 +382,8 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>프로젝트 자료</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/python-data-viz.png" alt="데이터 시각화 결과" style="width:600px;border-radius:12px;" />
+<img src="/images/projects/python-data-viz-map.png" alt="거리별 비교 지도" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/python-data-viz-radar.png" alt="종목별 범죄 레이더 차트" style="width:480px;border-radius:12px;" />
 </div>`,
     },
     en: {
@@ -399,7 +409,8 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>Project Materials</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/python-data-viz.png" alt="Data Visualization Results" style="width:600px;border-radius:12px;" />
+<img src="/images/projects/python-data-viz-map.png" alt="Distance Comparison Map" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/python-data-viz-radar.png" alt="Crime Category Radar Chart" style="width:480px;border-radius:12px;" />
 </div>`,
     },
     ja: {
@@ -425,7 +436,8 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 <h2>プロジェクト資料</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/python-data-viz.png" alt="データ可視化結果" style="width:600px;border-radius:12px;" />
+<img src="/images/projects/python-data-viz-map.png" alt="距離別比較マップ" style="width:480px;border-radius:12px;" />
+<img src="/images/projects/python-data-viz-radar.png" alt="犯罪種目別レーダーチャート" style="width:480px;border-radius:12px;" />
 </div>`,
     },
   },
