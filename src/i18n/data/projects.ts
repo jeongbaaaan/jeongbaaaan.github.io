@@ -97,7 +97,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
   "clova-x-chatbot": {
     ko: {
       title: "Clova X AI 챗봇 PM",
-      company: "네이버클라우드",
+      company: "네이버클라우드 (공모전)",
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
@@ -118,7 +118,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
     en: {
       title: "Clova X AI Chatbot PM",
-      company: "Naver Cloud",
+      company: "Naver Cloud (Competition)",
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
@@ -139,7 +139,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
     },
     ja: {
       title: "Clova X AI チャットボット PM",
-      company: "NAVERクラウド",
+      company: "NAVERクラウド (コンペティション)",
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
