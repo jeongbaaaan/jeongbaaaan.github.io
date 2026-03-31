@@ -30,7 +30,7 @@ const phasesData: Record<Locale, Phase[]> = {
         },
         {
           title: "CEO 방향 결정 → 시장 조사 → CSO 전략 검증",
-          desc: "AI CEO가 방향 설정, Researcher가 시장 조사, AI CSO가 리스크·실현가능성 검증. No-Go 시 방향 재설정",
+          desc: "AI CEO가 방향 설정, Researcher가 시장 조사, AI CSO가 리스크·실현가능성·타겟 유저 페르소나 검증. No-Go 시 방향 재설정",
         },
         {
           title: "BM 설계",
@@ -53,12 +53,12 @@ const phasesData: Record<Locale, Phase[]> = {
           desc: "CTO가 기술 스택 결정, data-engineer가 DB 설계, CTO 리뷰. FAIL 시 재설계",
         },
         {
-          title: "API 설계 & DB-API 정합성 검증",
-          desc: "backend-dev가 API 설계, CTO가 DB-API 정합성 검증. 불일치 시 DB부터 재설계",
+          title: "UX/UI 디자인 & 디베이트",
+          desc: "product-designer가 UX→UI 순차 설계, 각각 리뷰어 검증 후 UX↔UI 디자인 디베이트. 사용자 흐름이 API 설계의 기반이 됨",
         },
         {
-          title: "UX/UI 디자인 & 디베이트",
-          desc: "product-designer가 UX→UI 순차 설계, 각각 리뷰어 검증 후 UX↔UI 디자인 디베이트",
+          title: "API 설계 & DB-API 정합성 검증",
+          desc: "UX 흐름 기반으로 backend-dev가 API 설계, CTO가 DB-API 정합성 검증. 불일치 시 DB부터 재설계",
         },
         {
           title: "실행 계획 & Plan Critic",
@@ -92,6 +92,10 @@ const phasesData: Record<Locale, Phase[]> = {
           title: "QA 테스트",
           desc: "qa-engineer가 Unit / Integration / E2E 테스트 실행. FAIL 시 구현으로 복귀",
         },
+        {
+          title: "배포 환경 구성 (DevOps)",
+          desc: "devops가 CI/CD 파이프라인, Docker 컨테이너, 배포 환경을 구성. Verify Phase에서 실제 동작 검증 가능한 상태로 준비",
+        },
       ],
     },
     {
@@ -106,7 +110,7 @@ const phasesData: Record<Locale, Phase[]> = {
         },
         {
           title: "UI 검증 & 사용성 테스트",
-          desc: "스크린샷 기반 시각적 검증 + 사용자 관점 사용성 테스트. FAIL 시 Design Phase로 복귀",
+          desc: "스크린샷 기반 시각적 검증 + 사용자 관점 사용성 테스트. 구현 버그 → Build Phase, 디자인 문제 → Design Phase로 분기",
         },
         {
           title: "론칭 디베이트",
@@ -132,7 +136,7 @@ const phasesData: Record<Locale, Phase[]> = {
         },
         {
           title: "CEO Direction → Market Research → CSO Validation",
-          desc: "AI CEO sets direction, Researcher conducts market research, AI CSO validates risks & feasibility. No-Go triggers re-direction",
+          desc: "AI CEO sets direction, Researcher conducts market research, AI CSO validates risks, feasibility & target user personas. No-Go triggers re-direction",
         },
         {
           title: "Business Model Design",
@@ -155,12 +159,12 @@ const phasesData: Record<Locale, Phase[]> = {
           desc: "CTO decides tech stack, data-engineer designs DB, CTO reviews. FAIL triggers redesign",
         },
         {
-          title: "API Design & DB-API Consistency Check",
-          desc: "backend-dev designs API, CTO verifies DB-API consistency. Mismatch triggers DB redesign",
+          title: "UX/UI Design & Debate",
+          desc: "product-designer creates UX→UI sequentially, each verified by reviewers, then UX↔UI design debate. User flows become the basis for API design",
         },
         {
-          title: "UX/UI Design & Debate",
-          desc: "product-designer creates UX→UI sequentially, each verified by reviewers, then UX↔UI design debate",
+          title: "API Design & DB-API Consistency Check",
+          desc: "backend-dev designs API based on UX flows, CTO verifies DB-API consistency. Mismatch triggers DB redesign",
         },
         {
           title: "Execution Plan & Plan Critic",
@@ -194,6 +198,10 @@ const phasesData: Record<Locale, Phase[]> = {
           title: "QA Testing",
           desc: "qa-engineer runs Unit / Integration / E2E tests. FAIL routes back to implementation",
         },
+        {
+          title: "Deployment Setup (DevOps)",
+          desc: "devops configures CI/CD pipeline, Docker containers, and deployment environment. Prepares for functional verification in Verify Phase",
+        },
       ],
     },
     {
@@ -208,7 +216,7 @@ const phasesData: Record<Locale, Phase[]> = {
         },
         {
           title: "UI Verification & Usability Test",
-          desc: "Screenshot-based visual verification + user perspective usability test. FAIL routes to Design Phase",
+          desc: "Screenshot-based visual verification + user perspective usability test. Implementation bugs → Build Phase, design issues → Design Phase",
         },
         {
           title: "Launch Debate",
@@ -234,7 +242,7 @@ const phasesData: Record<Locale, Phase[]> = {
         },
         {
           title: "CEO方向決定 → 市場調査 → CSO戦略検証",
-          desc: "AI CEOが方向設定、Researcherが市場調査、AI CSOがリスク・実現可能性を検証。No-Goで方向再設定",
+          desc: "AI CEOが方向設定、Researcherが市場調査、AI CSOがリスク・実現可能性・ターゲットユーザーペルソナを検証。No-Goで方向再設定",
         },
         {
           title: "BM設計",
@@ -257,12 +265,12 @@ const phasesData: Record<Locale, Phase[]> = {
           desc: "CTOが技術スタック決定、data-engineerがDB設計、CTOレビュー。FAILで再設計",
         },
         {
-          title: "API設計＆DB-API整合性検証",
-          desc: "backend-devがAPI設計、CTOがDB-API整合性を検証。不一致でDBから再設計",
+          title: "UX/UIデザイン＆ディベート",
+          desc: "product-designerがUX→UI順次設計、各レビュアー検証後UX↔UIデザインディベート。ユーザーフローがAPI設計の基盤に",
         },
         {
-          title: "UX/UIデザイン＆ディベート",
-          desc: "product-designerがUX→UI順次設計、各レビュアー検証後UX↔UIデザインディベート",
+          title: "API設計＆DB-API整合性検証",
+          desc: "UXフローに基づきbackend-devがAPI設計、CTOがDB-API整合性を検証。不一致でDBから再設計",
         },
         {
           title: "実行計画＆Plan Critic",
@@ -296,6 +304,10 @@ const phasesData: Record<Locale, Phase[]> = {
           title: "QAテスト",
           desc: "qa-engineerがUnit / Integration / E2Eテスト実行。FAILで実装に復帰",
         },
+        {
+          title: "デプロイ環境構成（DevOps）",
+          desc: "devopsがCI/CDパイプライン、Dockerコンテナ、デプロイ環境を構成。Verify Phaseで実際の動作検証が可能な状態に準備",
+        },
       ],
     },
     {
@@ -310,7 +322,7 @@ const phasesData: Record<Locale, Phase[]> = {
         },
         {
           title: "UI検証＆ユーザビリティテスト",
-          desc: "スクリーンショットベースの視覚検証＋ユーザー視点のユーザビリティテスト。FAILでDesign Phaseに復帰",
+          desc: "スクリーンショットベースの視覚検証＋ユーザー視点のユーザビリティテスト。実装バグ → Build Phase、デザイン問題 → Design Phaseに分岐",
         },
         {
           title: "ローンチディベート",
