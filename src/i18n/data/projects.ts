@@ -98,11 +98,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>기술 스택</h2>
-<ul>
-<li><strong>Cloud</strong>: AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</li>
-<li><strong>Architecture</strong>: Serverless, Well-Architected Framework</li>
-<li><strong>Optimization</strong>: RI 전환, S3 Lifecycle, Lambda 리사이징</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</span></div>
+<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">Serverless, Well-Architected Framework</span></div>
+<div class="bento-item"><span class="bento-label">Optimization</span><span class="bento-value">RI 전환, S3 Lifecycle, Lambda 리사이징</span></div>
+</div>`,
     },
     en: {
       title: "Cloud Infra Management & Cost Optimization",
@@ -176,11 +176,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>Tech Stack</h2>
-<ul>
-<li><strong>Cloud</strong>: AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</li>
-<li><strong>Architecture</strong>: Serverless, Well-Architected Framework</li>
-<li><strong>Optimization</strong>: RI Conversion, S3 Lifecycle, Lambda Resizing</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</span></div>
+<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">Serverless, Well-Architected Framework</span></div>
+<div class="bento-item"><span class="bento-label">Optimization</span><span class="bento-value">RI Conversion, S3 Lifecycle, Lambda Resizing</span></div>
+</div>`,
     },
     ja: {
       title: "クラウドインフラ管理＆コスト最適化",
@@ -254,11 +254,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>技術スタック</h2>
-<ul>
-<li><strong>Cloud</strong>: AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</li>
-<li><strong>Architecture</strong>: Serverless, Well-Architected Framework</li>
-<li><strong>Optimization</strong>: RI転換、S3 Lifecycle、Lambdaリサイジング</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</span></div>
+<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">Serverless, Well-Architected Framework</span></div>
+<div class="bento-item"><span class="bento-label">Optimization</span><span class="bento-value">RI転換、S3 Lifecycle、Lambdaリサイジング</span></div>
+</div>`,
     },
   },
 
@@ -339,11 +339,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>기술 스택</h2>
-<ul>
-<li><strong>AI</strong>: Clova X, Prompt Engineering, Few-shot Learning</li>
-<li><strong>PM</strong>: 페르소나 정의, IA 설계, UX 설계, API 스펙 문서화</li>
-<li><strong>Design</strong>: 디자인 시스템 (Typography, Color System, Component)</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Clova X, Prompt Engineering, Few-shot Learning</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">페르소나 정의, IA 설계, UX 설계, API 스펙 문서화</span></div>
+<div class="bento-item"><span class="bento-label">Design</span><span class="bento-value">디자인 시스템 (Typography, Color System, Component)</span></div>
+</div>`,
     },
     en: {
       title: "Clova X AI Chatbot PM",
@@ -421,11 +421,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>Tech Stack</h2>
-<ul>
-<li><strong>AI</strong>: Clova X, Prompt Engineering, Few-shot Learning</li>
-<li><strong>PM</strong>: Persona Definition, IA Design, UX Design, API Spec Documentation</li>
-<li><strong>Design</strong>: Design System (Typography, Color System, Component)</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Clova X, Prompt Engineering, Few-shot Learning</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Persona Definition, IA Design, UX Design, API Spec Documentation</span></div>
+<div class="bento-item"><span class="bento-label">Design</span><span class="bento-value">Design System (Typography, Color System, Component)</span></div>
+</div>`,
     },
     ja: {
       title: "Clova X AI チャットボット PM",
@@ -503,11 +503,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>技術スタック</h2>
-<ul>
-<li><strong>AI</strong>: Clova X, Prompt Engineering, Few-shot Learning</li>
-<li><strong>PM</strong>: ペルソナ定義、IA設計、UX設計、APIスペック文書化</li>
-<li><strong>Design</strong>: デザインシステム（Typography、Color System、Component）</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Clova X, Prompt Engineering, Few-shot Learning</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">ペルソナ定義、IA設計、UX設計、APIスペック文書化</span></div>
+<div class="bento-item"><span class="bento-label">Design</span><span class="bento-value">デザインシステム（Typography、Color System、Component）</span></div>
+</div>`,
     },
   },
 
@@ -588,12 +588,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>기술 스택</h2>
-<ul>
-<li><strong>Cloud</strong>: AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</li>
-<li><strong>Pattern</strong>: CQRS, MSA (Microservice Architecture)</li>
-<li><strong>DevOps</strong>: Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</li>
-<li><strong>PM</strong>: Jira, Slack, GitHub</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</span></div>
+<div class="bento-item"><span class="bento-label">Pattern</span><span class="bento-value">CQRS, MSA (Microservice Architecture)</span></div>
+<div class="bento-item"><span class="bento-label">DevOps</span><span class="bento-value">Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub</span></div>
+</div>
 
 <h2>프로젝트 자료</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -678,12 +678,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>Tech Stack</h2>
-<ul>
-<li><strong>Cloud</strong>: AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</li>
-<li><strong>Pattern</strong>: CQRS, MSA (Microservice Architecture)</li>
-<li><strong>DevOps</strong>: Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</li>
-<li><strong>PM</strong>: Jira, Slack, GitHub</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</span></div>
+<div class="bento-item"><span class="bento-label">Pattern</span><span class="bento-value">CQRS, MSA (Microservice Architecture)</span></div>
+<div class="bento-item"><span class="bento-label">DevOps</span><span class="bento-value">Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub</span></div>
+</div>
 
 <h2>Project Materials</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -768,12 +768,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>技術スタック</h2>
-<ul>
-<li><strong>Cloud</strong>: AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</li>
-<li><strong>Pattern</strong>: CQRS, MSA (Microservice Architecture)</li>
-<li><strong>DevOps</strong>: Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</li>
-<li><strong>PM</strong>: Jira, Slack, GitHub</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</span></div>
+<div class="bento-item"><span class="bento-label">Pattern</span><span class="bento-value">CQRS, MSA (Microservice Architecture)</span></div>
+<div class="bento-item"><span class="bento-label">DevOps</span><span class="bento-value">Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub</span></div>
+</div>
 
 <h2>プロジェクト資料</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -855,12 +855,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>기술 스택</h2>
-<ul>
-<li><strong>Orchestration</strong>: Kubernetes, Docker</li>
-<li><strong>Architecture</strong>: 3-Tier (Frontend + Backend + DB), Namespace 분리</li>
-<li><strong>Security</strong>: NetworkPolicy, Resource Quota, OpenSSL, MetalLB</li>
-<li><strong>PM</strong>: Jira, Slack, GitHub 연동</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Orchestration</span><span class="bento-value">Kubernetes, Docker</span></div>
+<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">3-Tier (Frontend + Backend + DB), Namespace 분리</span></div>
+<div class="bento-item"><span class="bento-label">Security</span><span class="bento-value">NetworkPolicy, Resource Quota, OpenSSL, MetalLB</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub 연동</span></div>
+</div>
 
 <h2>프로젝트 자료</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -939,12 +939,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>Tech Stack</h2>
-<ul>
-<li><strong>Orchestration</strong>: Kubernetes, Docker</li>
-<li><strong>Architecture</strong>: 3-Tier (Frontend + Backend + DB), Namespace Separation</li>
-<li><strong>Security</strong>: NetworkPolicy, Resource Quota, OpenSSL, MetalLB</li>
-<li><strong>PM</strong>: Jira, Slack, GitHub Integration</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Orchestration</span><span class="bento-value">Kubernetes, Docker</span></div>
+<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">3-Tier (Frontend + Backend + DB), Namespace Separation</span></div>
+<div class="bento-item"><span class="bento-label">Security</span><span class="bento-value">NetworkPolicy, Resource Quota, OpenSSL, MetalLB</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub Integration</span></div>
+</div>
 
 <h2>Project Materials</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1023,12 +1023,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>技術スタック</h2>
-<ul>
-<li><strong>Orchestration</strong>: Kubernetes, Docker</li>
-<li><strong>Architecture</strong>: 3-Tier (Frontend + Backend + DB), Namespace分離</li>
-<li><strong>Security</strong>: NetworkPolicy, Resource Quota, OpenSSL, MetalLB</li>
-<li><strong>PM</strong>: Jira, Slack, GitHub連動</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Orchestration</span><span class="bento-value">Kubernetes, Docker</span></div>
+<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">3-Tier (Frontend + Backend + DB), Namespace分離</span></div>
+<div class="bento-item"><span class="bento-label">Security</span><span class="bento-value">NetworkPolicy, Resource Quota, OpenSSL, MetalLB</span></div>
+<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub連動</span></div>
+</div>
 
 <h2>プロジェクト資料</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1104,12 +1104,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>기술 스택</h2>
-<ul>
-<li><strong>Language</strong>: Python</li>
-<li><strong>Data</strong>: Pandas, NumPy</li>
-<li><strong>Visualization</strong>: Matplotlib, Folium</li>
-<li><strong>IDE</strong>: PyCharm, Jupyter Notebook</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Language</span><span class="bento-value">Python</span></div>
+<div class="bento-item"><span class="bento-label">Data</span><span class="bento-value">Pandas, NumPy</span></div>
+<div class="bento-item"><span class="bento-label">Visualization</span><span class="bento-value">Matplotlib, Folium</span></div>
+<div class="bento-item"><span class="bento-label">IDE</span><span class="bento-value">PyCharm, Jupyter Notebook</span></div>
+</div>
 
 <h2>프로젝트 자료</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1181,12 +1181,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>Tech Stack</h2>
-<ul>
-<li><strong>Language</strong>: Python</li>
-<li><strong>Data</strong>: Pandas, NumPy</li>
-<li><strong>Visualization</strong>: Matplotlib, Folium</li>
-<li><strong>IDE</strong>: PyCharm, Jupyter Notebook</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Language</span><span class="bento-value">Python</span></div>
+<div class="bento-item"><span class="bento-label">Data</span><span class="bento-value">Pandas, NumPy</span></div>
+<div class="bento-item"><span class="bento-label">Visualization</span><span class="bento-value">Matplotlib, Folium</span></div>
+<div class="bento-item"><span class="bento-label">IDE</span><span class="bento-value">PyCharm, Jupyter Notebook</span></div>
+</div>
 
 <h2>Project Materials</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1258,12 +1258,12 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>技術スタック</h2>
-<ul>
-<li><strong>Language</strong>: Python</li>
-<li><strong>Data</strong>: Pandas, NumPy</li>
-<li><strong>Visualization</strong>: Matplotlib, Folium</li>
-<li><strong>IDE</strong>: PyCharm, Jupyter Notebook</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Language</span><span class="bento-value">Python</span></div>
+<div class="bento-item"><span class="bento-label">Data</span><span class="bento-value">Pandas, NumPy</span></div>
+<div class="bento-item"><span class="bento-label">Visualization</span><span class="bento-value">Matplotlib, Folium</span></div>
+<div class="bento-item"><span class="bento-label">IDE</span><span class="bento-value">PyCharm, Jupyter Notebook</span></div>
+</div>
 
 <h2>プロジェクト資料</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1321,11 +1321,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>기술 스택</h2>
-<ul>
-<li><strong>Frontend</strong>: Next.js 16, React 19, TypeScript, Tailwind CSS 4</li>
-<li><strong>Backend</strong>: Supabase (Auth, Database, Storage)</li>
-<li><strong>AI</strong>: Claude Code (개발 전 과정 활용)</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Next.js 16, React 19, TypeScript, Tailwind CSS 4</span></div>
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Supabase (Auth, Database, Storage)</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Claude Code (개발 전 과정 활용)</span></div>
+</div>
 
 <h2>스크린샷</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1382,11 +1382,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>Tech Stack</h2>
-<ul>
-<li><strong>Frontend</strong>: Next.js 16, React 19, TypeScript, Tailwind CSS 4</li>
-<li><strong>Backend</strong>: Supabase (Auth, Database, Storage)</li>
-<li><strong>AI</strong>: Claude Code (used throughout entire development process)</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Next.js 16, React 19, TypeScript, Tailwind CSS 4</span></div>
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Supabase (Auth, Database, Storage)</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Claude Code (used throughout entire development process)</span></div>
+</div>
 
 <h2>Screenshots</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1443,11 +1443,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>技術スタック</h2>
-<ul>
-<li><strong>Frontend</strong>: Next.js 16, React 19, TypeScript, Tailwind CSS 4</li>
-<li><strong>Backend</strong>: Supabase (Auth, Database, Storage)</li>
-<li><strong>AI</strong>: Claude Code（開発全過程で活用）</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Next.js 16, React 19, TypeScript, Tailwind CSS 4</span></div>
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Supabase (Auth, Database, Storage)</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Claude Code（開発全過程で活用）</span></div>
+</div>
 
 <h2>スクリーンショット</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1501,11 +1501,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>기술 스택</h2>
-<ul>
-<li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li>
-<li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li>
-<li><strong>AI</strong>: 멀티 LLM (Claude, GPT, Gemini)</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust (Axum, Tokio), PostgreSQL, Fly.io</span></div>
+<div class="bento-item"><span class="bento-label">iOS</span><span class="bento-value">SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">멀티 LLM (Claude, GPT, Gemini)</span></div>
+</div>
 
 <h2>스크린샷</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1554,11 +1554,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>Tech Stack</h2>
-<ul>
-<li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li>
-<li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li>
-<li><strong>AI</strong>: Multi LLM (Claude, GPT, Gemini)</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust (Axum, Tokio), PostgreSQL, Fly.io</span></div>
+<div class="bento-item"><span class="bento-label">iOS</span><span class="bento-value">SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Multi LLM (Claude, GPT, Gemini)</span></div>
+</div>
 
 <h2>Screenshots</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1607,11 +1607,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </ul>
 
 <h2>技術スタック</h2>
-<ul>
-<li><strong>Backend</strong>: Rust (Axum, Tokio), PostgreSQL, Fly.io</li>
-<li><strong>iOS</strong>: SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</li>
-<li><strong>AI</strong>: マルチLLM (Claude, GPT, Gemini)</li>
-</ul>
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust (Axum, Tokio), PostgreSQL, Fly.io</span></div>
+<div class="bento-item"><span class="bento-label">iOS</span><span class="bento-value">SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">マルチLLM (Claude, GPT, Gemini)</span></div>
+</div>
 
 <h2>スクリーンショット</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
@@ -1635,11 +1635,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <p>LLM이 운동 코치가 되어 개인 맞춤 운동 스케줄을 관리해주는 앱입니다. 개발 진행 중입니다.</p>
 
 <h2>기술 스택</h2>
-<ul>
-<li><strong>Frontend</strong>: Swift (iOS)</li>
-<li><strong>Backend</strong>: Rust</li>
-<li><strong>AI</strong>: LLM</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Swift (iOS)</span></div>
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">LLM</span></div>
+</div>`,
     },
     en: {
       title: "What Health",
@@ -1654,11 +1654,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <p>An app where LLM becomes your fitness coach, managing personalized workout schedules. Currently in development.</p>
 
 <h2>Tech Stack</h2>
-<ul>
-<li><strong>Frontend</strong>: Swift (iOS)</li>
-<li><strong>Backend</strong>: Rust</li>
-<li><strong>AI</strong>: LLM</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Swift (iOS)</span></div>
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">LLM</span></div>
+</div>`,
     },
     ja: {
       title: "What Health",
@@ -1673,11 +1673,11 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <p>LLMがフィットネスコーチとなり、個人に合わせた運動スケジュールを管理するアプリです。開発進行中です。</p>
 
 <h2>技術スタック</h2>
-<ul>
-<li><strong>Frontend</strong>: Swift (iOS)</li>
-<li><strong>Backend</strong>: Rust</li>
-<li><strong>AI</strong>: LLM</li>
-</ul>`,
+<div class="bento-grid">
+<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Swift (iOS)</span></div>
+<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust</span></div>
+<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">LLM</span></div>
+</div>`,
     },
   },
 
