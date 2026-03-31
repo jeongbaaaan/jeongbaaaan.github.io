@@ -32,15 +32,50 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2024.11 ~ 현재",
       role: "Account Manager",
       tags: ["AWS", "EC2", "Lambda", "Cost Optimization"],
-      contentHtml: `<h2>개요</h2>
-<p>AWS MSP(Managed Service Provider) 기반으로 70개 이상의 고객 계정 인프라를 관리하고 있습니다. EC2, S3, RDS, Lambda, CloudFront 등 다양한 AWS 서비스를 운영하며, 비용 최적화와 아키텍처 설계를 담당합니다.</p>
-<h2>주요 성과</h2>
+      contentHtml: `<h2>배경 (Situation)</h2>
+<p>스마일샤크는 AWS MSP(Managed Service Provider) 파트너사로, 70개 이상의 고객이 사용하는 클라우드 인프라를 관리합니다. 고객별로 EC2, S3, RDS, Lambda, CloudFront 등 다양한 AWS 서비스를 운영하고 있으며, 각 고객의 비용 효율성과 서비스 안정성을 동시에 확보하는 것이 핵심 과제입니다.</p>
+
+<h2>나의 역할 (Task)</h2>
+<p>Account Manager로서 고객 계정의 인프라 전반을 담당합니다.</p>
 <ul>
-<li><strong>QR 이미지 Lambda 리사이징 아키텍처 설계</strong>: S3 업로드 → Lambda 트리거 → 리사이징(3MB→300KB) → CloudFront 배포. 스토리지 비용 60% 절감</li>
-<li><strong>Cost Explorer 분석</strong>: RI(Reserved Instance) 전환 권고, S3 Lifecycle 정책 최적화를 통한 비용 절감</li>
-<li><strong>신규 고객사 PoC 기획</strong>: AWS Well-Architected Framework 기반 인프라 설계 및 검토</li>
 <li>70+ 고객 계정의 AWS 인프라 일상 관리 및 장애 대응</li>
+<li>비용 최적화 분석 및 아키텍처 개선 제안</li>
+<li>신규 고객사 인프라 설계 및 PoC 수행</li>
+<li>AWS Well-Architected Framework 기반 인프라 검토</li>
 </ul>
+
+<h2>수행 내용 (Action)</h2>
+<h3>QR 이미지 Lambda 리사이징 아키텍처 설계</h3>
+<p>고객사의 QR 이미지 처리 비용 문제를 해결하기 위해 서버리스 아키텍처를 설계했습니다.</p>
+<ul>
+<li><strong>기존</strong>: 원본 이미지(~3MB)를 그대로 S3에 저장·CloudFront로 배포</li>
+<li><strong>개선</strong>: S3 업로드 → Lambda 트리거 → 자동 리사이징(3MB→300KB) → CloudFront 배포</li>
+<li>서버 없이 이벤트 기반으로 동작하는 완전 서버리스 파이프라인 구성</li>
+</ul>
+
+<h3>Cost Explorer 기반 비용 최적화</h3>
+<ul>
+<li>고객별 Cost Explorer 데이터를 분석하여 <strong>RI(Reserved Instance) 전환 권고</strong></li>
+<li><strong>S3 Lifecycle 정책 최적화</strong>: 사용 빈도가 낮은 객체의 스토리지 클래스 자동 전환 설정</li>
+</ul>
+
+<h3>신규 고객사 PoC</h3>
+<ul>
+<li>AWS Well-Architected Framework의 5대 축(보안, 안정성, 성능 효율성, 비용 최적화, 운영 우수성) 기반 인프라 설계 및 검토</li>
+</ul>
+
+<h3>AWS 공식 교육</h3>
+<ul>
+<li>Serverless, DevOps, Developing, Well-Architected, Technical Essentials, Security Essentials <strong>6개 과정 수료</strong></li>
+</ul>
+
+<h2>결과 (Result)</h2>
+<ul>
+<li><strong>스토리지 비용 60% 절감</strong> — QR 이미지 Lambda 리사이징 아키텍처 적용 건</li>
+<li><strong>70+ 고객 계정</strong> 안정 운영 및 장애 대응</li>
+<li><strong>AWS SAA</strong>(Solutions Architect Associate) 자격증 취득</li>
+</ul>
+
 <h2>기술 스택</h2>
 <ul>
 <li><strong>Cloud</strong>: AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</li>
@@ -54,15 +89,50 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2024.11 ~ Present",
       role: "Account Manager",
       tags: ["AWS", "EC2", "Lambda", "Cost Optimization"],
-      contentHtml: `<h2>Overview</h2>
-<p>Managing infrastructure for 70+ customer accounts based on AWS MSP (Managed Service Provider). Operating various AWS services including EC2, S3, RDS, Lambda, and CloudFront, while handling cost optimization and architecture design.</p>
-<h2>Key Results</h2>
+      contentHtml: `<h2>Situation</h2>
+<p>SmileShark is an AWS MSP (Managed Service Provider) partner managing cloud infrastructure for over 70 customers. Each customer operates various AWS services including EC2, S3, RDS, Lambda, and CloudFront, and the key challenge is ensuring both cost efficiency and service reliability.</p>
+
+<h2>Task</h2>
+<p>As an Account Manager, I am responsible for the overall infrastructure of customer accounts.</p>
 <ul>
-<li><strong>QR Image Lambda Resizing Architecture</strong>: S3 Upload → Lambda Trigger → Resizing (3MB→300KB) → CloudFront Distribution. 60% storage cost reduction</li>
-<li><strong>Cost Explorer Analysis</strong>: RI (Reserved Instance) conversion recommendations and S3 Lifecycle policy optimization for cost savings</li>
-<li><strong>New Client PoC Planning</strong>: Infrastructure design and review based on AWS Well-Architected Framework</li>
 <li>Daily management and incident response for 70+ customer AWS accounts</li>
+<li>Cost optimization analysis and architecture improvement proposals</li>
+<li>Infrastructure design and PoC for new customers</li>
+<li>Infrastructure review based on AWS Well-Architected Framework</li>
 </ul>
+
+<h2>Action</h2>
+<h3>QR Image Lambda Resizing Architecture</h3>
+<p>Designed a serverless architecture to solve a customer's QR image processing cost issue.</p>
+<ul>
+<li><strong>Before</strong>: Original images (~3MB) stored directly in S3 and served via CloudFront</li>
+<li><strong>After</strong>: S3 Upload → Lambda Trigger → Auto-resizing (3MB→300KB) → CloudFront Distribution</li>
+<li>Fully serverless, event-driven pipeline with no server management</li>
+</ul>
+
+<h3>Cost Optimization via Cost Explorer</h3>
+<ul>
+<li>Analyzed per-customer Cost Explorer data to recommend <strong>RI (Reserved Instance) conversions</strong></li>
+<li><strong>S3 Lifecycle policy optimization</strong>: Configured automatic storage class transitions for infrequently accessed objects</li>
+</ul>
+
+<h3>New Customer PoC</h3>
+<ul>
+<li>Infrastructure design and review based on the 5 pillars of AWS Well-Architected Framework (Security, Reliability, Performance Efficiency, Cost Optimization, Operational Excellence)</li>
+</ul>
+
+<h3>AWS Official Training</h3>
+<ul>
+<li>Completed <strong>6 courses</strong>: Serverless, DevOps, Developing, Well-Architected, Technical Essentials, Security Essentials</li>
+</ul>
+
+<h2>Result</h2>
+<ul>
+<li><strong>60% storage cost reduction</strong> — from QR image Lambda resizing architecture</li>
+<li><strong>70+ customer accounts</strong> operated stably with incident response</li>
+<li><strong>AWS SAA</strong> (Solutions Architect Associate) certification obtained</li>
+</ul>
+
 <h2>Tech Stack</h2>
 <ul>
 <li><strong>Cloud</strong>: AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</li>
@@ -76,15 +146,50 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2024.11 ~ 現在",
       role: "アカウントマネージャー",
       tags: ["AWS", "EC2", "Lambda", "Cost Optimization"],
-      contentHtml: `<h2>概要</h2>
-<p>AWS MSP（Managed Service Provider）ベースで70以上の顧客アカウントインフラを管理しています。EC2、S3、RDS、Lambda、CloudFrontなど様々なAWSサービスを運用し、コスト最適化とアーキテクチャ設計を担当しています。</p>
-<h2>主要成果</h2>
+      contentHtml: `<h2>背景 (Situation)</h2>
+<p>スマイルシャークはAWS MSP（Managed Service Provider）パートナー企業で、70社以上の顧客のクラウドインフラを管理しています。各顧客がEC2、S3、RDS、Lambda、CloudFrontなど様々なAWSサービスを運用しており、コスト効率とサービス安定性の両立が重要な課題です。</p>
+
+<h2>役割 (Task)</h2>
+<p>アカウントマネージャーとして、顧客アカウントのインフラ全般を担当しています。</p>
 <ul>
-<li><strong>QR画像Lambdaリサイジングアーキテクチャ設計</strong>: S3アップロード → Lambdaトリガー → リサイジング(3MB→300KB) → CloudFront配信。ストレージコスト60%削減</li>
-<li><strong>Cost Explorer分析</strong>: RI（リザーブドインスタンス）転換勧告、S3 Lifecycleポリシー最適化によるコスト削減</li>
-<li><strong>新規顧客PoC企画</strong>: AWS Well-Architected Frameworkベースのインフラ設計およびレビュー</li>
 <li>70以上の顧客アカウントのAWSインフラ日常管理および障害対応</li>
+<li>コスト最適化分析およびアーキテクチャ改善提案</li>
+<li>新規顧客のインフラ設計およびPoC実施</li>
+<li>AWS Well-Architected Frameworkベースのインフラレビュー</li>
 </ul>
+
+<h2>実施内容 (Action)</h2>
+<h3>QR画像Lambdaリサイジングアーキテクチャ設計</h3>
+<p>顧客のQR画像処理コスト問題を解決するため、サーバーレスアーキテクチャを設計しました。</p>
+<ul>
+<li><strong>改善前</strong>: 元画像（〜3MB）をそのままS3に保存・CloudFrontで配信</li>
+<li><strong>改善後</strong>: S3アップロード → Lambdaトリガー → 自動リサイジング（3MB→300KB） → CloudFront配信</li>
+<li>サーバー不要のイベント駆動型完全サーバーレスパイプライン構成</li>
+</ul>
+
+<h3>Cost Explorerベースのコスト最適化</h3>
+<ul>
+<li>顧客別Cost Explorerデータを分析し、<strong>RI（リザーブドインスタンス）転換を勧告</strong></li>
+<li><strong>S3 Lifecycleポリシー最適化</strong>: アクセス頻度の低いオブジェクトのストレージクラス自動転換を設定</li>
+</ul>
+
+<h3>新規顧客PoC</h3>
+<ul>
+<li>AWS Well-Architected Frameworkの5つの柱（セキュリティ、信頼性、パフォーマンス効率、コスト最適化、運用の優秀性）ベースのインフラ設計およびレビュー</li>
+</ul>
+
+<h3>AWS公式トレーニング</h3>
+<ul>
+<li>Serverless、DevOps、Developing、Well-Architected、Technical Essentials、Security Essentials <strong>6コース修了</strong></li>
+</ul>
+
+<h2>成果 (Result)</h2>
+<ul>
+<li><strong>ストレージコスト60%削減</strong> — QR画像Lambdaリサイジングアーキテクチャ適用件</li>
+<li><strong>70以上の顧客アカウント</strong>の安定運用および障害対応</li>
+<li><strong>AWS SAA</strong>（Solutions Architect Associate）資格取得</li>
+</ul>
+
 <h2>技術スタック</h2>
 <ul>
 <li><strong>Cloud</strong>: AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</li>
@@ -101,19 +206,57 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      contentHtml: `<h2>개요</h2>
-<p>Clova X AI 챗봇의 프로젝트 매니저로서, 프롬프트 데이터셋 구축과 UX 흐름 설계를 담당했습니다. 기획에서 API 스펙 변환까지의 프로세스를 체계화하여 개발팀과의 협업 효율을 크게 향상시켰습니다.</p>
-<h2>주요 성과</h2>
+      contentHtml: `<h2>배경 (Situation)</h2>
+<p>네이버클라우드 Clova X 대외활동에서 AI 챗봇 서비스를 기획했습니다. AI가 사용자의 성향을 학습하여 맞춤형 대화를 제공하는 서비스로, 챗봇의 대화 품질을 높이기 위한 프롬프트 데이터셋 구축과 사용자 경험 설계가 핵심 과제였습니다. 당시 기획팀과 개발팀 간 수정 사이클이 평균 3회로, 협업 효율이 낮은 상태였습니다.</p>
+
+<h2>나의 역할 (Task)</h2>
+<p>6인 팀(Back-end 1, Front-end 2, PM 2, Design 1)에서 AI PM을 담당했습니다.</p>
 <ul>
-<li><strong>프롬프트 데이터셋 구축</strong>: Few-shot 기반 프롬프트 데이터셋 설계 및 구축</li>
-<li><strong>UX 흐름 설계</strong>: 사용자 시나리오 작성 및 챗봇 대화 흐름 최적화</li>
-<li><strong>기획→API 스펙 변환</strong>: 기획 문서를 개발팀이 바로 사용할 수 있는 API 스펙으로 변환하는 프로세스 수립</li>
-<li><strong>수정 사이클 66% 단축</strong>: 기획-개발 간 수정 사이클을 3회에서 1회로 단축</li>
+<li>서비스 목표 정의 및 타겟 유저 페르소나 설계</li>
+<li>프롬프트 데이터셋 설계 및 구축</li>
+<li>UX 흐름 설계 및 Information Architecture(IA) 구성</li>
+<li>기획 문서 → API 스펙 변환 프로세스 수립</li>
 </ul>
+
+<h2>수행 내용 (Action)</h2>
+<h3>서비스 기획</h3>
+<ul>
+<li><strong>문제 정의</strong>: 일상의 과몰입이나 성격으로 인한 인간관계의 답답함을 AI 챗봇으로 해소</li>
+<li><strong>타겟 페르소나</strong>: 2가지 유저 유형 정의 — 성격 개선을 원하는 사용자 / 새로운 자아를 경험하고 싶은 직장인</li>
+<li><strong>서비스 목표</strong>: 원하는 페르소나를 구체화하고, AI와의 대화를 통해 삶의 유연함을 제공</li>
+</ul>
+
+<h3>UX 설계</h3>
+<ul>
+<li><strong>Information Architecture</strong>: 앱 진입 → 성향 질문(18문항) → 캐릭터 생성 → AI 대화방으로 이어지는 전체 흐름 설계</li>
+<li><strong>사용자 시나리오</strong>: 성향 선택부터 대화까지 자연스럽게 이어지도록 IA 구성</li>
+<li><strong>디자인 시스템</strong>: Typography, Color System, Component 정의를 통한 효율적 협업 환경 구축</li>
+</ul>
+
+<h3>프롬프트 엔지니어링</h3>
+<ul>
+<li><strong>Few-shot 기반 프롬프트 데이터셋</strong>: 사용자 답변을 학습하여 성향에 맞는 캐릭터를 생성하고, 상황별 맞춤 대화를 제공하는 프롬프트 설계</li>
+<li>다양한 상황 제안(오늘의 추천 상황) 기능을 위한 프롬프트 구성</li>
+</ul>
+
+<h3>기획→개발 협업 프로세스</h3>
+<ul>
+<li>기획 문서를 개발팀이 바로 사용할 수 있는 <strong>API 스펙으로 변환</strong>하는 프로세스 수립</li>
+<li>기획 의도와 기술 구현 사이의 갭을 줄여 수정 사이클 단축</li>
+</ul>
+
+<h2>결과 (Result)</h2>
+<ul>
+<li><strong>수정 사이클 66% 단축</strong> — 기획-개발 간 수정 3회→1회 (협업 프로세스 개선 한정)</li>
+<li>Few-shot 기반 프롬프트 데이터셋 구축 완료</li>
+<li>18문항 성향 분석 → AI 캐릭터 생성 → 맞춤 대화의 전체 UX 흐름 설계 완료</li>
+</ul>
+
 <h2>기술 스택</h2>
 <ul>
-<li><strong>AI</strong>: Clova X, Prompt Engineering</li>
-<li><strong>PM</strong>: UX 설계, 사용자 시나리오, API 스펙 문서화</li>
+<li><strong>AI</strong>: Clova X, Prompt Engineering, Few-shot Learning</li>
+<li><strong>PM</strong>: 페르소나 정의, IA 설계, UX 설계, API 스펙 문서화</li>
+<li><strong>Design</strong>: 디자인 시스템 (Typography, Color System, Component)</li>
 </ul>`,
     },
     en: {
@@ -122,19 +265,57 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      contentHtml: `<h2>Overview</h2>
-<p>Served as Project Manager for the Clova X AI chatbot, responsible for prompt dataset construction and UX flow design. Systematized the process from planning to API spec conversion, significantly improving collaboration efficiency with the development team.</p>
-<h2>Key Results</h2>
+      contentHtml: `<h2>Situation</h2>
+<p>Planned an AI chatbot service as part of Naver Cloud's Clova X extracurricular program. The service learns user personality traits and provides personalized conversations. The key challenges were building prompt datasets to improve chatbot quality and designing the user experience. At the time, the average revision cycle between planning and development teams was 3 rounds, resulting in low collaboration efficiency.</p>
+
+<h2>Task</h2>
+<p>Served as AI PM in a 6-member team (1 Back-end, 2 Front-end, 2 PM, 1 Design).</p>
 <ul>
-<li><strong>Prompt Dataset Construction</strong>: Designed and built few-shot based prompt datasets</li>
-<li><strong>UX Flow Design</strong>: Created user scenarios and optimized chatbot conversation flows</li>
-<li><strong>Planning→API Spec Conversion</strong>: Established a process to convert planning documents into API specs directly usable by the development team</li>
-<li><strong>66% Reduction in Revision Cycles</strong>: Reduced planning-development revision cycles from 3 rounds to 1</li>
+<li>Define service goals and design target user personas</li>
+<li>Design and build prompt datasets</li>
+<li>Design UX flows and Information Architecture (IA)</li>
+<li>Establish planning document → API spec conversion process</li>
 </ul>
+
+<h2>Action</h2>
+<h3>Service Planning</h3>
+<ul>
+<li><strong>Problem Definition</strong>: Resolve frustrations in interpersonal relationships caused by personality traits or daily burnout through AI chatbot</li>
+<li><strong>Target Personas</strong>: Defined 2 user types — users seeking personality improvement / professionals wanting to experience a new self</li>
+<li><strong>Service Goal</strong>: Materialize desired personas and provide life flexibility through AI conversations</li>
+</ul>
+
+<h3>UX Design</h3>
+<ul>
+<li><strong>Information Architecture</strong>: Designed end-to-end flow from app entry → personality questions (18 items) → character generation → AI chat room</li>
+<li><strong>User Scenarios</strong>: Structured IA for seamless flow from personality selection to conversation</li>
+<li><strong>Design System</strong>: Defined Typography, Color System, and Components for efficient team collaboration</li>
+</ul>
+
+<h3>Prompt Engineering</h3>
+<ul>
+<li><strong>Few-shot Prompt Datasets</strong>: Designed prompts that learn from user responses to generate personality-matched characters and provide situation-specific conversations</li>
+<li>Composed prompts for contextual suggestion features (daily recommended situations)</li>
+</ul>
+
+<h3>Planning→Development Process</h3>
+<ul>
+<li>Established a process to convert planning documents into <strong>API specs directly usable by developers</strong></li>
+<li>Reduced the gap between planning intent and technical implementation, shortening revision cycles</li>
+</ul>
+
+<h2>Result</h2>
+<ul>
+<li><strong>66% reduction in revision cycles</strong> — planning-development revisions from 3 rounds to 1 (collaboration process improvement)</li>
+<li>Completed few-shot based prompt dataset construction</li>
+<li>Designed complete UX flow: 18-question personality analysis → AI character generation → personalized conversation</li>
+</ul>
+
 <h2>Tech Stack</h2>
 <ul>
-<li><strong>AI</strong>: Clova X, Prompt Engineering</li>
-<li><strong>PM</strong>: UX Design, User Scenarios, API Spec Documentation</li>
+<li><strong>AI</strong>: Clova X, Prompt Engineering, Few-shot Learning</li>
+<li><strong>PM</strong>: Persona Definition, IA Design, UX Design, API Spec Documentation</li>
+<li><strong>Design</strong>: Design System (Typography, Color System, Component)</li>
 </ul>`,
     },
     ja: {
@@ -143,19 +324,57 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      contentHtml: `<h2>概要</h2>
-<p>Clova X AIチャットボットのプロジェクトマネージャーとして、プロンプトデータセット構築とUXフロー設計を担当しました。企画からAPIスペック変換までのプロセスを体系化し、開発チームとのコラボレーション効率を大幅に向上させました。</p>
-<h2>主要成果</h2>
+      contentHtml: `<h2>背景 (Situation)</h2>
+<p>NAVERクラウドClova X課外活動でAIチャットボットサービスを企画しました。AIがユーザーの性向を学習し、カスタマイズされた会話を提供するサービスで、チャットボットの会話品質を高めるためのプロンプトデータセット構築とユーザー体験設計が重要な課題でした。当時、企画チームと開発チーム間の修正サイクルが平均3回で、コラボレーション効率が低い状態でした。</p>
+
+<h2>役割 (Task)</h2>
+<p>6人チーム（Back-end 1、Front-end 2、PM 2、Design 1）でAI PMを担当しました。</p>
 <ul>
-<li><strong>プロンプトデータセット構築</strong>: Few-shotベースのプロンプトデータセット設計および構築</li>
-<li><strong>UXフロー設計</strong>: ユーザーシナリオ作成およびチャットボット会話フロー最適化</li>
-<li><strong>企画→APIスペック変換</strong>: 企画文書を開発チームがそのまま使用できるAPIスペックに変換するプロセス確立</li>
-<li><strong>修正サイクル66%短縮</strong>: 企画-開発間の修正サイクルを3回から1回に短縮</li>
+<li>サービス目標定義およびターゲットユーザーペルソナ設計</li>
+<li>プロンプトデータセット設計および構築</li>
+<li>UXフロー設計およびInformation Architecture（IA）構成</li>
+<li>企画文書→APIスペック変換プロセス確立</li>
 </ul>
+
+<h2>実施内容 (Action)</h2>
+<h3>サービス企画</h3>
+<ul>
+<li><strong>問題定義</strong>: 日常の過没入や性格による人間関係の息苦しさをAIチャットボットで解消</li>
+<li><strong>ターゲットペルソナ</strong>: 2つのユーザータイプを定義 — 性格改善を望むユーザー / 新しい自分を体験したい社会人</li>
+<li><strong>サービス目標</strong>: 望むペルソナを具体化し、AIとの会話を通じて人生の柔軟性を提供</li>
+</ul>
+
+<h3>UX設計</h3>
+<ul>
+<li><strong>Information Architecture</strong>: アプリ進入→性向質問（18問）→キャラクター生成→AIチャットルームまでの全体フロー設計</li>
+<li><strong>ユーザーシナリオ</strong>: 性向選択から会話まで自然につながるようIA構成</li>
+<li><strong>デザインシステム</strong>: Typography、Color System、Component定義による効率的なコラボレーション環境構築</li>
+</ul>
+
+<h3>プロンプトエンジニアリング</h3>
+<ul>
+<li><strong>Few-shotベースプロンプトデータセット</strong>: ユーザーの回答を学習して性向に合うキャラクターを生成し、状況別カスタマイズ会話を提供するプロンプト設計</li>
+<li>多様な状況提案（今日のおすすめ状況）機能のためのプロンプト構成</li>
+</ul>
+
+<h3>企画→開発コラボレーションプロセス</h3>
+<ul>
+<li>企画文書を開発チームがそのまま使用できる<strong>APIスペックに変換</strong>するプロセス確立</li>
+<li>企画意図と技術実装の間のギャップを縮め、修正サイクルを短縮</li>
+</ul>
+
+<h2>成果 (Result)</h2>
+<ul>
+<li><strong>修正サイクル66%短縮</strong> — 企画-開発間の修正3回→1回（コラボレーションプロセス改善に限定）</li>
+<li>Few-shotベースプロンプトデータセット構築完了</li>
+<li>18問の性向分析→AIキャラクター生成→カスタマイズ会話の全体UXフロー設計完了</li>
+</ul>
+
 <h2>技術スタック</h2>
 <ul>
-<li><strong>AI</strong>: Clova X, Prompt Engineering</li>
-<li><strong>PM</strong>: UX設計、ユーザーシナリオ、APIスペック文書化</li>
+<li><strong>AI</strong>: Clova X, Prompt Engineering, Few-shot Learning</li>
+<li><strong>PM</strong>: ペルソナ定義、IA設計、UX設計、APIスペック文書化</li>
+<li><strong>Design</strong>: デザインシステム（Typography、Color System、Component）</li>
 </ul>`,
     },
   },
