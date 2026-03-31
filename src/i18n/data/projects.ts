@@ -32,7 +32,14 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2024.11 ~ 현재",
       role: "Account Manager",
       tags: ["AWS", "EC2", "Lambda", "Cost Optimization"],
-      contentHtml: `<h2>배경 (Situation)</h2>
+      contentHtml: `
+<div class="metric-cards">
+<div class="metric-card"><div class="value">70+</div><div class="label">고객 계정</div></div>
+<div class="metric-card"><div class="value">60%</div><div class="label">스토리지 절감</div></div>
+<div class="metric-card"><div class="value">6</div><div class="label">AWS 공식 교육</div></div>
+</div>
+
+<h2>배경 (Situation)</h2>
 <p>스마일샤크는 AWS MSP(Managed Service Provider) 파트너사로, 70개 이상의 고객이 사용하는 클라우드 인프라를 관리합니다. 고객별로 EC2, S3, RDS, Lambda, CloudFront 등 다양한 AWS 서비스를 운영하고 있으며, 각 고객의 비용 효율성과 서비스 안정성을 동시에 확보하는 것이 핵심 과제입니다.</p>
 
 <h2>나의 역할 (Task)</h2>
@@ -47,11 +54,25 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 <h2>수행 내용 (Action)</h2>
 <h3>QR 이미지 Lambda 리사이징 아키텍처 설계</h3>
 <p>고객사의 QR 이미지 처리 비용 문제를 해결하기 위해 서버리스 아키텍처를 설계했습니다.</p>
-<ul>
-<li><strong>기존</strong>: 원본 이미지(~3MB)를 그대로 S3에 저장·CloudFront로 배포</li>
-<li><strong>개선</strong>: S3 업로드 → Lambda 트리거 → 자동 리사이징(3MB→300KB) → CloudFront 배포</li>
-<li>서버 없이 이벤트 기반으로 동작하는 완전 서버리스 파이프라인 구성</li>
-</ul>
+
+<div class="compare">
+<div class="compare-item before"><span class="tag">Before</span><p>원본 이미지(~3MB)를 그대로 S3에 저장·CloudFront로 배포</p></div>
+<div class="compare-item after"><span class="tag">After</span><p>S3 업로드 → Lambda 트리거 → 자동 리사이징(3MB→300KB) → CloudFront 배포</p></div>
+</div>
+
+<div class="process-flow">
+<div class="process-step"><div class="step-title">S3 Upload</div><div class="step-desc">이미지 업로드</div></div>
+<span class="process-arrow">→</span>
+<div class="process-step"><div class="step-title">Lambda</div><div class="step-desc">자동 리사이징</div></div>
+<span class="process-arrow">→</span>
+<div class="process-step"><div class="step-title">S3 저장</div><div class="step-desc">300KB</div></div>
+<span class="process-arrow">→</span>
+<div class="process-step"><div class="step-title">CloudFront</div><div class="step-desc">글로벌 배포</div></div>
+</div>
+
+<div class="highlight-box">
+<strong>서버리스 아키텍처</strong> — 서버 없이 이벤트 기반으로 동작하는 완전 서버리스 파이프라인. 트래픽에 따라 자동 스케일링되며 유휴 비용이 없습니다.
+</div>
 
 <h3>Cost Explorer 기반 비용 최적화</h3>
 <ul>
@@ -387,26 +408,73 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "부팀장 / DB 리더",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
       education: true,
-      contentHtml: `<h2>개요</h2>
-<p>CQRS(Command Query Responsibility Segregation) 패턴을 적용한 경매 웹사이트를 설계·구축했습니다. Command(Write)는 Primary DB로, Query(Read)는 Read Replica로 분리하여 처리량을 2배 향상시키고, Multi-AZ 고가용성 아키텍처로 자동 Failover를 구현했습니다.</p>
-<h2>주요 성과</h2>
+      contentHtml: `<h2>배경 (Situation)</h2>
+<p>AWS CloudSchool 최종 프로젝트로 경매 웹사이트를 설계·구축했습니다. 경매 서비스 특성상 <strong>대규모 동시 입찰 트래픽 처리</strong>와 <strong>입찰 순서 보장</strong>이 핵심 요구사항이었으며, On-premise 환경에서 AWS 클라우드로의 마이그레이션도 함께 수행해야 했습니다.</p>
+
+<h2>나의 역할 (Task)</h2>
+<p>부팀장 겸 DB 리더로서 프로젝트 전반을 관리하고, 데이터베이스 아키텍처를 주도했습니다.</p>
 <ul>
-<li><strong>CQRS 패턴 설계</strong>: Command(Write) → Primary DB, Query(Read) → Read Replica 분리</li>
-<li><strong>Multi-AZ 고가용성</strong>: 자동 Failover를 통한 서비스 연속성 보장</li>
-<li><strong>처리량 2배 향상</strong>: 읽기/쓰기 분리를 통한 성능 최적화</li>
-<li><strong>비용 30% 절감</strong>: 효율적인 리소스 활용</li>
+<li><strong>부팀장</strong>: Jira 기반 전체 일정 관리 및 AWS 비용 모니터링</li>
+<li><strong>DB 리더</strong>: 데이터 I/O 특성 분석, DB 기술 스택 선정, CQRS 패턴 설계</li>
+<li><strong>Frontend 개발</strong>: 웹 프론트엔드 구현</li>
+<li><strong>Infra Migration</strong>: On-premise → AWS 클라우드 마이그레이션 기획</li>
+</ul>
+
+<h2>수행 내용 (Action)</h2>
+<h3>MSA 아키텍처 설계</h3>
+<ul>
+<li>경매 서비스에 MSA(Microservice Architecture) 채택</li>
+<li><strong>확장성·탄력성</strong>: 대규모 트래픽을 유연하게 처리</li>
+<li><strong>장애 격리성</strong>: 경매 외적인 부분에서 장애가 발생해도 핵심 입찰 기능에 영향을 주지 않도록 설계</li>
+</ul>
+
+<h3>DB 기술 스택 선정 — CQRS 패턴</h3>
+<ul>
+<li>데이터 I/O 특성 분석: 경매 서비스는 읽기(상품 조회) 빈도가 쓰기(입찰)보다 높음</li>
+<li><strong>CQRS 패턴 선택</strong>: Command(Write) → Primary DB, Query(Read) → Read Replica 분리</li>
+<li>CRUD 단일 DB 대비 읽기/쓰기 분리로 성능 최적화</li>
+</ul>
+
+<h3>Queue Service — 입찰 순서 보장</h3>
+<ul>
+<li>경매 입찰의 정확한 순서 보장을 위해 Queue Service 도입</li>
+<li>Kafka, RabbitMQ, Amazon SQS 비교 검토 → 클라우드 환경에 적합한 <strong>SQS FIFO Queue</strong> 채택</li>
+</ul>
+
+<h3>On-premise → Cloud 마이그레이션</h3>
+<ul>
+<li>전체 DevOps 툴체인 설계 및 정리</li>
+<li><strong>On-premise</strong>: Jira → GitHub → GitHub Actions/Argo CD → Apache Bench → Docker Hub → Kubernetes</li>
+<li><strong>Cloud(AWS)</strong>: Jira → CodeCommit → CodeBuild/Argo CD → Chaos Mesh → ECR → EKS → CloudWatch/Grafana/Loki/Jaeger</li>
+</ul>
+
+<h3>Architecture 스펙 문서화</h3>
+<ul>
+<li>구현 전 각 서비스별 스펙을 문서로 정리하고 설계도를 기반으로 개발 진행</li>
+<li>개발자별 사용 스펙을 공유하여 커뮤니케이션 효율화</li>
+</ul>
+
+<h3>Multi-AZ 고가용성</h3>
+<ul>
+<li>자동 Failover를 통한 서비스 연속성 보장</li>
+</ul>
+
+<h2>결과 (Result)</h2>
+<ul>
 <li><strong>AWS 해커톤 대상(1위)</strong></li>
+<li><strong>처리량 2배 향상</strong> — CQRS 읽기/쓰기 분리</li>
+<li><strong>비용 30% 절감</strong> — 효율적인 리소스 활용</li>
+<li>AWS 비용 관리: 총 $673, 일일 $10.52, 28개 서비스 운영</li>
 </ul>
-<h2>팀 역할</h2>
-<ul>
-<li>부팀장, DB 리더, Frontend 개발</li>
-</ul>
+
 <h2>기술 스택</h2>
 <ul>
-<li><strong>Cloud</strong>: AWS (RDS, Multi-AZ, Read Replica)</li>
-<li><strong>Pattern</strong>: CQRS (Command Query Responsibility Segregation)</li>
-<li><strong>Frontend</strong>: 웹 프론트엔드 개발</li>
+<li><strong>Cloud</strong>: AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</li>
+<li><strong>Pattern</strong>: CQRS, MSA (Microservice Architecture)</li>
+<li><strong>DevOps</strong>: Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</li>
+<li><strong>PM</strong>: Jira, Slack, GitHub</li>
 </ul>
+
 <h2>프로젝트 자료</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/cqrs-aws-architecture.png" alt="AWS 인프라 아키텍처" style="width:480px;border-radius:12px;" />
@@ -421,26 +489,73 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "Vice Team Lead / DB Lead",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
       education: true,
-      contentHtml: `<h2>Overview</h2>
-<p>Designed and built an auction website applying the CQRS (Command Query Responsibility Segregation) pattern. Separated Command (Write) to Primary DB and Query (Read) to Read Replica, achieving 2x throughput improvement, and implemented automatic Failover with Multi-AZ high availability architecture.</p>
-<h2>Key Results</h2>
+      contentHtml: `<h2>Situation</h2>
+<p>Built an auction website as the final project for AWS CloudSchool. The auction service required <strong>handling high-volume concurrent bid traffic</strong> and <strong>guaranteeing bid ordering</strong>. The project also involved migrating from on-premise to AWS cloud.</p>
+
+<h2>Task</h2>
+<p>Managed the overall project as Vice Team Lead and led database architecture as DB Lead.</p>
 <ul>
-<li><strong>CQRS Pattern Design</strong>: Command (Write) → Primary DB, Query (Read) → Read Replica separation</li>
-<li><strong>Multi-AZ High Availability</strong>: Service continuity through automatic Failover</li>
-<li><strong>2x Throughput Improvement</strong>: Performance optimization through read/write separation</li>
-<li><strong>30% Cost Reduction</strong>: Efficient resource utilization</li>
+<li><strong>Vice Team Lead</strong>: Jira-based schedule management and AWS cost monitoring</li>
+<li><strong>DB Lead</strong>: Data I/O analysis, DB tech stack selection, CQRS pattern design</li>
+<li><strong>Frontend Development</strong>: Web frontend implementation</li>
+<li><strong>Infra Migration</strong>: On-premise → AWS cloud migration planning</li>
+</ul>
+
+<h2>Action</h2>
+<h3>MSA Architecture Design</h3>
+<ul>
+<li>Adopted MSA (Microservice Architecture) for the auction service</li>
+<li><strong>Scalability & Elasticity</strong>: Handle large-scale traffic flexibly</li>
+<li><strong>Fault Isolation</strong>: Designed so failures in non-auction components don't affect core bidding</li>
+</ul>
+
+<h3>DB Tech Stack — CQRS Pattern</h3>
+<ul>
+<li>Data I/O analysis: Auction services have higher read (product browsing) frequency than write (bidding)</li>
+<li><strong>CQRS Pattern</strong>: Command (Write) → Primary DB, Query (Read) → Read Replica separation</li>
+<li>Performance optimization through read/write separation vs single CRUD DB</li>
+</ul>
+
+<h3>Queue Service — Bid Order Guarantee</h3>
+<ul>
+<li>Introduced Queue Service to guarantee accurate bid ordering</li>
+<li>Compared Kafka, RabbitMQ, and Amazon SQS → Selected <strong>SQS FIFO Queue</strong> for cloud environment</li>
+</ul>
+
+<h3>On-premise → Cloud Migration</h3>
+<ul>
+<li>Designed and documented the full DevOps toolchain</li>
+<li><strong>On-premise</strong>: Jira → GitHub → GitHub Actions/Argo CD → Apache Bench → Docker Hub → Kubernetes</li>
+<li><strong>Cloud (AWS)</strong>: Jira → CodeCommit → CodeBuild/Argo CD → Chaos Mesh → ECR → EKS → CloudWatch/Grafana/Loki/Jaeger</li>
+</ul>
+
+<h3>Architecture Spec Documentation</h3>
+<ul>
+<li>Documented per-service specs before implementation; developed based on architecture diagrams</li>
+<li>Shared developer-specific specs to improve communication efficiency</li>
+</ul>
+
+<h3>Multi-AZ High Availability</h3>
+<ul>
+<li>Service continuity through automatic Failover</li>
+</ul>
+
+<h2>Result</h2>
+<ul>
 <li><strong>AWS Hackathon Grand Prize (1st Place)</strong></li>
+<li><strong>2x throughput improvement</strong> — CQRS read/write separation</li>
+<li><strong>30% cost reduction</strong> — efficient resource utilization</li>
+<li>AWS cost management: $673 total, $10.52/day, 28 services operated</li>
 </ul>
-<h2>Team Role</h2>
-<ul>
-<li>Vice Team Lead, DB Lead, Frontend Development</li>
-</ul>
+
 <h2>Tech Stack</h2>
 <ul>
-<li><strong>Cloud</strong>: AWS (RDS, Multi-AZ, Read Replica)</li>
-<li><strong>Pattern</strong>: CQRS (Command Query Responsibility Segregation)</li>
-<li><strong>Frontend</strong>: Web frontend development</li>
+<li><strong>Cloud</strong>: AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</li>
+<li><strong>Pattern</strong>: CQRS, MSA (Microservice Architecture)</li>
+<li><strong>DevOps</strong>: Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</li>
+<li><strong>PM</strong>: Jira, Slack, GitHub</li>
 </ul>
+
 <h2>Project Materials</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/cqrs-aws-architecture.png" alt="AWS Infrastructure Architecture" style="width:480px;border-radius:12px;" />
@@ -455,26 +570,73 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "副チームリーダー / DBリーダー",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
       education: true,
-      contentHtml: `<h2>概要</h2>
-<p>CQRS（Command Query Responsibility Segregation）パターンを適用したオークションウェブサイトを設計・構築しました。Command（Write）はPrimary DBへ、Query（Read）はRead Replicaへ分離し、スループットを2倍向上させ、Multi-AZ高可用性アーキテクチャで自動Failoverを実現しました。</p>
-<h2>主要成果</h2>
+      contentHtml: `<h2>背景 (Situation)</h2>
+<p>AWS CloudSchool最終プロジェクトとしてオークションウェブサイトを設計・構築しました。オークションサービスの特性上、<strong>大規模同時入札トラフィックの処理</strong>と<strong>入札順序の保証</strong>が重要な要件であり、オンプレミス環境からAWSクラウドへのマイグレーションも併せて実施しました。</p>
+
+<h2>役割 (Task)</h2>
+<p>副チームリーダー兼DBリーダーとしてプロジェクト全般を管理し、データベースアーキテクチャを主導しました。</p>
 <ul>
-<li><strong>CQRSパターン設計</strong>: Command（Write）→ Primary DB、Query（Read）→ Read Replica分離</li>
-<li><strong>Multi-AZ高可用性</strong>: 自動Failoverによるサービス継続性保証</li>
-<li><strong>スループット2倍向上</strong>: 読み書き分離によるパフォーマンス最適化</li>
-<li><strong>コスト30%削減</strong>: 効率的なリソース活用</li>
+<li><strong>副チームリーダー</strong>: Jiraベースの全体スケジュール管理およびAWSコストモニタリング</li>
+<li><strong>DBリーダー</strong>: データI/O特性分析、DB技術スタック選定、CQRSパターン設計</li>
+<li><strong>フロントエンド開発</strong>: ウェブフロントエンド実装</li>
+<li><strong>インフラマイグレーション</strong>: オンプレミス→AWSクラウドマイグレーション企画</li>
+</ul>
+
+<h2>実施内容 (Action)</h2>
+<h3>MSAアーキテクチャ設計</h3>
+<ul>
+<li>オークションサービスにMSA（Microservice Architecture）を採用</li>
+<li><strong>拡張性・弾力性</strong>: 大規模トラフィックを柔軟に処理</li>
+<li><strong>障害分離</strong>: オークション以外の部分で障害が発生しても、核心的な入札機能に影響を与えない設計</li>
+</ul>
+
+<h3>DB技術スタック選定 — CQRSパターン</h3>
+<ul>
+<li>データI/O特性分析: オークションサービスは読み取り（商品閲覧）頻度が書き込み（入札）より高い</li>
+<li><strong>CQRSパターン選択</strong>: Command（Write）→ Primary DB、Query（Read）→ Read Replica分離</li>
+<li>CRUD単一DB対比、読み書き分離によるパフォーマンス最適化</li>
+</ul>
+
+<h3>Queue Service — 入札順序保証</h3>
+<ul>
+<li>オークション入札の正確な順序保証のためQueue Serviceを導入</li>
+<li>Kafka、RabbitMQ、Amazon SQSを比較検討 → クラウド環境に適した<strong>SQS FIFO Queue</strong>を採用</li>
+</ul>
+
+<h3>オンプレミス → クラウドマイグレーション</h3>
+<ul>
+<li>全体DevOpsツールチェーンの設計および整理</li>
+<li><strong>オンプレミス</strong>: Jira → GitHub → GitHub Actions/Argo CD → Apache Bench → Docker Hub → Kubernetes</li>
+<li><strong>Cloud（AWS）</strong>: Jira → CodeCommit → CodeBuild/Argo CD → Chaos Mesh → ECR → EKS → CloudWatch/Grafana/Loki/Jaeger</li>
+</ul>
+
+<h3>アーキテクチャスペック文書化</h3>
+<ul>
+<li>実装前に各サービス別スペックを文書化し、設計図ベースで開発を進行</li>
+<li>開発者別使用スペックを共有し、コミュニケーション効率化</li>
+</ul>
+
+<h3>Multi-AZ高可用性</h3>
+<ul>
+<li>自動Failoverによるサービス継続性保証</li>
+</ul>
+
+<h2>成果 (Result)</h2>
+<ul>
 <li><strong>AWSハッカソン大賞（1位）</strong></li>
+<li><strong>スループット2倍向上</strong> — CQRS読み書き分離</li>
+<li><strong>コスト30%削減</strong> — 効率的なリソース活用</li>
+<li>AWSコスト管理: 総額$673、日額$10.52、28サービス運用</li>
 </ul>
-<h2>チーム役割</h2>
-<ul>
-<li>副チームリーダー、DBリーダー、フロントエンド開発</li>
-</ul>
+
 <h2>技術スタック</h2>
 <ul>
-<li><strong>Cloud</strong>: AWS (RDS, Multi-AZ, Read Replica)</li>
-<li><strong>Pattern</strong>: CQRS (Command Query Responsibility Segregation)</li>
-<li><strong>Frontend</strong>: ウェブフロントエンド開発</li>
+<li><strong>Cloud</strong>: AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</li>
+<li><strong>Pattern</strong>: CQRS, MSA (Microservice Architecture)</li>
+<li><strong>DevOps</strong>: Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</li>
+<li><strong>PM</strong>: Jira, Slack, GitHub</li>
 </ul>
+
 <h2>プロジェクト資料</h2>
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
 <img src="/images/projects/cqrs-aws-architecture.png" alt="AWSインフラアーキテクチャ" style="width:480px;border-radius:12px;" />

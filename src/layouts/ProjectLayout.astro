@@ -180,9 +180,159 @@ const { title, company, period, role, tags, github, sideProject, claudeCode, loc
     color: var(--color-primary);
   }
 
+  /* 1. Metric Cards — 핵심 지표 큰 숫자 */
+  .prose-custom :global(.metric-cards) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .prose-custom :global(.metric-card) {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .prose-custom :global(.metric-card .value) {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .prose-custom :global(.metric-card .label) {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.25rem;
+  }
+
+  /* 2. Highlight Box — 의사결정/인사이트 강조 */
+  .prose-custom :global(.highlight-box) {
+    background: var(--color-surface);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .prose-custom :global(.highlight-box strong) {
+    color: var(--color-primary);
+  }
+
+  /* 3. Before/After Comparison */
+  .prose-custom :global(.compare) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .prose-custom :global(.compare-item) {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+
+  .prose-custom :global(.compare-item.before) {
+    border-top: 3px solid var(--color-text-secondary);
+  }
+
+  .prose-custom :global(.compare-item.after) {
+    border-top: 3px solid var(--color-accent);
+  }
+
+  .prose-custom :global(.compare-item .tag) {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .prose-custom :global(.compare-item.before .tag) {
+    color: var(--color-text-secondary);
+  }
+
+  .prose-custom :global(.compare-item.after .tag) {
+    color: var(--color-accent);
+  }
+
+  .prose-custom :global(.compare-item p) {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  /* 4. Process Flow — 단계별 플로우 */
+  .prose-custom :global(.process-flow) {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .prose-custom :global(.process-step) {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    min-width: 100px;
+    flex-shrink: 0;
+  }
+
+  .prose-custom :global(.process-step .step-title) {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .prose-custom :global(.process-step .step-desc) {
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.2rem;
+  }
+
+  .prose-custom :global(.process-arrow) {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    padding: 0 0.25rem;
+  }
+
+  /* Nested list bullet override */
+  .prose-custom :global(.metric-card li::before),
+  .prose-custom :global(.highlight-box li::before),
+  .prose-custom :global(.compare-item li::before),
+  .prose-custom :global(.process-step li::before) {
+    display: none;
+  }
+
   @media (max-width: 640px) {
     .prose-custom :global(.demo-grid) {
       grid-template-columns: 1fr;
+    }
+    .prose-custom :global(.compare) {
+      grid-template-columns: 1fr;
+    }
+    .prose-custom :global(.process-flow) {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .prose-custom :global(.process-arrow) {
+      display: none;
+    }
+    .prose-custom :global(.metric-cards) {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
