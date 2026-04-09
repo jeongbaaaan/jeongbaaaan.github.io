@@ -7,6 +7,7 @@ export interface ProjectData {
   role: string;
   tags: string[];
   github?: string;
+  demo?: string;
   sideProject?: boolean;
   claudeCode?: boolean;
   education?: boolean;
@@ -1281,6 +1282,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "1인 개발",
       tags: ["Next.js", "TypeScript", "Supabase", "Claude Code"],
       github: "https://github.com/jeongbaaaan/dear-ant",
+      demo: "https://dear-ant.vercel.app/",
       sideProject: true,
       claudeCode: true,
       contentHtml: `<div class="metric-cards">
@@ -1328,11 +1330,14 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </div>
 
 <h2>스크린샷</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/dear-ant-home.png" alt="홈 화면" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-survey.png" alt="투자 성향 설문" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-compound.png" alt="복리 계산기" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-tools.png" alt="투자 도구" style="width:240px;border-radius:12px;" />
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+<img src="/images/projects/dear-ant-home.png" alt="홈 대시보드" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-survey.png" alt="매매 전 셀프 체크" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-report.png" alt="리포트 목록" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-journal.png" alt="트레이딩 저널" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-calculator.png" alt="적금 vs 투자 비교" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-compound.png" alt="복리 계산기" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-simulator.png" alt="매매 시뮬레이터" style="width:100%;border-radius:12px;" />
 </div>`,
     },
     en: {
@@ -1342,6 +1347,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "Solo Developer",
       tags: ["Next.js", "TypeScript", "Supabase", "Claude Code"],
       github: "https://github.com/jeongbaaaan/dear-ant",
+      demo: "https://dear-ant.vercel.app/",
       sideProject: true,
       claudeCode: true,
       contentHtml: `<div class="metric-cards">
@@ -1389,11 +1395,14 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </div>
 
 <h2>Screenshots</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/dear-ant-home.png" alt="Home" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-survey.png" alt="Investment Profile Survey" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-compound.png" alt="Compound Interest Calculator" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-tools.png" alt="Investment Tools" style="width:240px;border-radius:12px;" />
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+<img src="/images/projects/dear-ant-home.png" alt="Home Dashboard" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-survey.png" alt="Pre-trade Self Check" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-report.png" alt="Report List" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-journal.png" alt="Trading Journal" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-calculator.png" alt="Savings vs Investment" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-compound.png" alt="Compound Interest Calculator" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-simulator.png" alt="Trade Simulator" style="width:100%;border-radius:12px;" />
 </div>`,
     },
     ja: {
@@ -1403,6 +1412,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "1人開発",
       tags: ["Next.js", "TypeScript", "Supabase", "Claude Code"],
       github: "https://github.com/jeongbaaaan/dear-ant",
+      demo: "https://dear-ant.vercel.app/",
       sideProject: true,
       claudeCode: true,
       contentHtml: `<div class="metric-cards">
@@ -1450,11 +1460,14 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
 </div>
 
 <h2>スクリーンショット</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/dear-ant-home.png" alt="ホーム画面" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-survey.png" alt="投資性向アンケート" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-compound.png" alt="複利計算機" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dear-ant-tools.png" alt="投資ツール" style="width:240px;border-radius:12px;" />
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+<img src="/images/projects/dear-ant-home.png" alt="ホームダッシュボード" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-survey.png" alt="売買前セルフチェック" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-report.png" alt="レポート一覧" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-journal.png" alt="トレーディングジャーナル" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-calculator.png" alt="積立 vs 投資比較" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-compound.png" alt="複利計算機" style="width:100%;border-radius:12px;" />
+<img src="/images/projects/dear-ant-simulator.png" alt="売買シミュレーター" style="width:100%;border-radius:12px;" />
 </div>`,
     },
   },

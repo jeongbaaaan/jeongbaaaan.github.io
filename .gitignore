@@ -23,6 +23,7 @@ pnpm-debug.log*
 # source assets (PPT, resume, raw images)
 assets/
 images/
+!public/images/
 test-results/
 
 # reference files (not for deployment)
