@@ -7,12 +7,6 @@ interface Props {
 }
 
 const { locale = "ko" } = Astro.props;
-
-const stats = [
-  { value: t("aiDevCta.stat1.value", locale), label: t("aiDevCta.stat1.label", locale) },
-  { value: t("aiDevCta.stat2.value", locale), label: t("aiDevCta.stat2.label", locale) },
-  { value: t("aiDevCta.stat3.value", locale), label: t("aiDevCta.stat3.label", locale) },
-];
 ---
 
 <section class="px-6 py-24">
@@ -27,14 +21,6 @@ const stats = [
       <p class="mb-8 text-[var(--color-text-secondary)]">
         {t("aiDevCta.description", locale)}
       </p>
-      <div class="mb-8 grid grid-cols-3 gap-4">
-        {stats.map((stat) => (
-          <div>
-            <p class="text-2xl font-bold text-[var(--color-primary)] md:text-3xl">{stat.value}</p>
-            <p class="text-xs text-[var(--color-text-secondary)]">{stat.label}</p>
-          </div>
-        ))}
-      </div>
       <a
         href={localePath("/ai-dev", locale)}
         class="inline-block rounded-full bg-[var(--color-accent)] px-8 py-3 font-semibold text-[var(--color-bg)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(6,255,165,0.3)]"
