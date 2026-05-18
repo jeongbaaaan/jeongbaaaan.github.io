@@ -75,7 +75,8 @@ export const ui = {
     "nav.project.dataViz": "데이터 시각화",
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "달결",
-    "nav.project.whatHealth": "What Health",
+    "nav.project.sauceFace": "조미료상 테스트",
+    "nav.project.calendarAgent": "Calendar Agent",
 
     // Layout
     "layout.backToMain": "프로젝트 목록으로 돌아가기",
@@ -162,7 +163,8 @@ export const ui = {
     "nav.project.dataViz": "Data Visualization",
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "Dalgyeol",
-    "nav.project.whatHealth": "What Health",
+    "nav.project.sauceFace": "Sauce Face Test",
+    "nav.project.calendarAgent": "Calendar Agent",
 
     // Layout
     "layout.backToMain": "Back to Projects",
@@ -249,7 +251,8 @@ export const ui = {
     "nav.project.dataViz": "データ可視化",
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "ダルギョル",
-    "nav.project.whatHealth": "What Health",
+    "nav.project.sauceFace": "調味料顔テスト",
+    "nav.project.calendarAgent": "Calendar Agent",
 
     // Layout
     "layout.backToMain": "プロジェクト一覧に戻る",

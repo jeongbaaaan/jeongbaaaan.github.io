@@ -22,8 +22,140 @@ export const projectSlugs = [
   "python-data-viz",
   "dear-ant",
   "dalgyeol",
-  "what-health",
+  "sauce-face-test",
+  "calendar-briefing-agent",
 ] as const;
+
+type Metric = { value: string; label: string };
+type FlowStep = { title: string; desc: string };
+type ProblemFrame = { beforeTag: string; before: string; afterTag: string; after: string };
+type StackItem = { label: string; value: string };
+type ImageItem = { src: string; alt: string };
+
+interface ProjectContent {
+  metrics?: Metric[];
+  summary: string;
+  signal: string;
+  problem?: ProblemFrame;
+  flow?: FlowStep[];
+  actions: string[];
+  results: string[];
+  stack: StackItem[];
+  images?: ImageItem[];
+}
+
+interface SectionLabels {
+  summary: string;
+  signal: string;
+  problem: string;
+  flow: string;
+  action: string;
+  result: string;
+  stack: string;
+  screenshots: string;
+}
+
+const sectionLabels: Record<Locale, SectionLabels> = {
+  ko: {
+    summary: "한줄 요약",
+    signal: "현업 관점",
+    problem: "문제 정의",
+    flow: "제품/구조 흐름",
+    action: "주요 실행",
+    result: "결과",
+    stack: "기술 스택",
+    screenshots: "스크린샷",
+  },
+  en: {
+    summary: "Summary",
+    signal: "Hiring Signal",
+    problem: "Problem Framing",
+    flow: "Product / System Flow",
+    action: "What I Built",
+    result: "Result",
+    stack: "Tech Stack",
+    screenshots: "Screenshots",
+  },
+  ja: {
+    summary: "概要",
+    signal: "実務で伝わるポイント",
+    problem: "課題設定",
+    flow: "プロダクト/構造フロー",
+    action: "実施内容",
+    result: "成果",
+    stack: "技術スタック",
+    screenshots: "スクリーンショット",
+  },
+};
+
+function metricCards(metrics?: Metric[]): string {
+  if (!metrics?.length) return "";
+  return `<div class="metric-strip">
+${metrics.map((item) => `<div class="metric-stat"><span class="value">${item.value}</span><span class="label">${item.label}</span></div>`).join("\n")}
+</div>`;
+}
+
+function bulletList(items: string[]): string {
+  return `<ul>
+${items.map((item) => `<li>${item}</li>`).join("\n")}
+</ul>`;
+}
+
+function compare(frame?: ProblemFrame): string {
+  if (!frame) return "";
+  return `<div class="compare">
+<div class="compare-item before"><span class="tag">${frame.beforeTag}</span><p>${frame.before}</p></div>
+<div class="compare-item after"><span class="tag">${frame.afterTag}</span><p>${frame.after}</p></div>
+</div>`;
+}
+
+function processFlow(steps?: FlowStep[]): string {
+  if (!steps?.length) return "";
+  return `<div class="process-flow">
+${steps
+  .map((step, index) => {
+    const item = `<div class="process-step"><div class="step-title">${step.title}</div><div class="step-desc">${step.desc}</div></div>`;
+    return index === steps.length - 1 ? item : `${item}\n<span class="process-arrow">→</span>`;
+  })
+  .join("\n")}
+</div>`;
+}
+
+function stackGrid(items: StackItem[]): string {
+  return `<div class="bento-grid">
+${items.map((item) => `<div class="bento-item"><span class="bento-label">${item.label}</span><span class="bento-value">${item.value}</span></div>`).join("\n")}
+</div>`;
+}
+
+function imageGrid(images?: ImageItem[]): string {
+  if (!images?.length) return "";
+  return `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
+${images.map((image) => `<img src="${image.src}" alt="${image.alt}" style="width:100%;border-radius:8px;" />`).join("\n")}
+</div>`;
+}
+
+function projectHtml(locale: Locale, content: ProjectContent): string {
+  const label = sectionLabels[locale];
+  return `${metricCards(content.metrics)}
+
+<h2>${label.summary}</h2>
+<p>${content.summary}</p>
+
+<div class="highlight-box">
+<strong>${label.signal}</strong>: ${content.signal}
+</div>
+
+${content.problem ? `<h2>${label.problem}</h2>\n${compare(content.problem)}\n` : ""}${content.flow ? `<h2>${label.flow}</h2>\n${processFlow(content.flow)}\n` : ""}
+<h2>${label.action}</h2>
+${bulletList(content.actions)}
+
+<h2>${label.result}</h2>
+${bulletList(content.results)}
+
+<h2>${label.stack}</h2>
+${stackGrid(content.stack)}
+${content.images ? `\n<h2>${label.screenshots}</h2>\n${imageGrid(content.images)}` : ""}`;
+}
 
 const projectsData: Record<string, Record<Locale, ProjectData>> = {
   "cloud-infra-management": {
@@ -33,77 +165,46 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2024.11 ~ 현재",
       role: "Account Manager",
       tags: ["AWS", "EC2", "Lambda", "Cost Optimization"],
-      contentHtml: `
-<div class="metric-cards">
-<div class="metric-card"><div class="value">70+</div><div class="label">고객 계정</div></div>
-<div class="metric-card"><div class="value">60%</div><div class="label">스토리지 절감</div></div>
-<div class="metric-card"><div class="value">6</div><div class="label">AWS 공식 교육</div></div>
-</div>
-
-<h2>배경 (Situation)</h2>
-<p>스마일샤크는 AWS MSP(Managed Service Provider) 파트너사로, 70개 이상의 고객이 사용하는 클라우드 인프라를 관리합니다. 고객별로 EC2, S3, RDS, Lambda, CloudFront 등 다양한 AWS 서비스를 운영하고 있으며, 각 고객의 비용 효율성과 서비스 안정성을 동시에 확보하는 것이 핵심 과제입니다.</p>
-
-<h2>나의 역할 (Task)</h2>
-<p>Account Manager로서 고객 계정의 인프라 전반을 담당합니다.</p>
-<ul>
-<li>70+ 고객 계정의 AWS 인프라 일상 관리 및 장애 대응</li>
-<li>비용 최적화 분석 및 아키텍처 개선 제안</li>
-<li>신규 고객사 인프라 설계 및 PoC 수행</li>
-<li>AWS Well-Architected Framework 기반 인프라 검토</li>
-</ul>
-
-<h2>수행 내용 (Action)</h2>
-<h3>QR 이미지 Lambda 리사이징 아키텍처 설계</h3>
-<p>고객사의 QR 이미지 처리 비용 문제를 해결하기 위해 서버리스 아키텍처를 설계했습니다.</p>
-
-<div class="compare">
-<div class="compare-item before"><span class="tag">Before</span><p>원본 이미지(~3MB)를 그대로 S3에 저장·CloudFront로 배포</p></div>
-<div class="compare-item after"><span class="tag">After</span><p>S3 업로드 → Lambda 트리거 → 자동 리사이징(3MB→300KB) → CloudFront 배포</p></div>
-</div>
-
-<div class="process-flow">
-<div class="process-step"><div class="step-title">S3 Upload</div><div class="step-desc">이미지 업로드</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Lambda</div><div class="step-desc">자동 리사이징</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">S3 저장</div><div class="step-desc">300KB</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">CloudFront</div><div class="step-desc">글로벌 배포</div></div>
-</div>
-
-<div class="highlight-box">
-<strong>서버리스 아키텍처</strong> — 서버 없이 이벤트 기반으로 동작하는 완전 서버리스 파이프라인. 트래픽에 따라 자동 스케일링되며 유휴 비용이 없습니다.
-</div>
-
-<h3>Cost Explorer 기반 비용 최적화</h3>
-<ul>
-<li>고객별 Cost Explorer 데이터를 분석하여 <strong>RI(Reserved Instance) 전환 권고</strong></li>
-<li><strong>S3 Lifecycle 정책 최적화</strong>: 사용 빈도가 낮은 객체의 스토리지 클래스 자동 전환 설정</li>
-</ul>
-
-<h3>신규 고객사 PoC</h3>
-<ul>
-<li>AWS Well-Architected Framework의 5대 축(보안, 안정성, 성능 효율성, 비용 최적화, 운영 우수성) 기반 인프라 설계 및 검토</li>
-</ul>
-
-<h3>AWS 공식 교육</h3>
-<ul>
-<li>Serverless, DevOps, Developing, Well-Architected, Technical Essentials, Security Essentials <strong>6개 과정 수료</strong></li>
-</ul>
-
-<h2>결과 (Result)</h2>
-<ul>
-<li><strong>스토리지 비용 60% 절감</strong> — QR 이미지 Lambda 리사이징 아키텍처 적용 건</li>
-<li><strong>70+ 고객 계정</strong> 안정 운영 및 장애 대응</li>
-<li><strong>AWS SAA</strong>(Solutions Architect Associate) 자격증 취득</li>
-</ul>
-
-<h2>기술 스택</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</span></div>
-<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">Serverless, Well-Architected Framework</span></div>
-<div class="bento-item"><span class="bento-label">Optimization</span><span class="bento-value">RI 전환, S3 Lifecycle, Lambda 리사이징</span></div>
-</div>`,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "70+", label: "고객 계정" },
+          { value: "60%", label: "스토리지 절감" },
+          { value: "6", label: "AWS 공식 교육" },
+        ],
+        summary:
+          "AWS MSP 환경에서 70개 이상의 고객 계정을 운영하며 비용, 장애, 아키텍처 이슈를 고객 언어로 정리하고 실행 가능한 개선안으로 연결했습니다.",
+        signal:
+          "단순 콘솔 운영이 아니라 고객의 비용 구조와 운영 리스크를 읽고, 기술 대안을 비즈니스 효과로 설명할 수 있는 클라우드 운영 역량을 보여줍니다.",
+        problem: {
+          beforeTag: "Before",
+          before: "원본 QR 이미지를 그대로 저장하고 배포해 스토리지와 전송 비용이 불필요하게 커졌습니다.",
+          afterTag: "After",
+          after: "S3 업로드 이벤트에 Lambda 리사이징을 연결해 이미지 용량을 줄이고 CloudFront 배포 흐름을 유지했습니다.",
+        },
+        flow: [
+          { title: "진단", desc: "Cost Explorer·리소스 점검" },
+          { title: "설계", desc: "서버리스 개선안" },
+          { title: "적용", desc: "S3→Lambda→CloudFront" },
+          { title: "보고", desc: "비용 효과·운영 리스크" },
+        ],
+        actions: [
+          "70+ 고객 AWS 계정의 EC2, S3, RDS, Lambda, CloudFront 사용 현황과 비용 흐름을 점검했습니다.",
+          "QR 이미지 파이프라인을 S3 업로드, Lambda 자동 리사이징, CloudFront 배포 구조로 재설계했습니다.",
+          "Cost Explorer 데이터를 기반으로 RI 전환, S3 Lifecycle, 불필요 리소스 정리 같은 고객별 최적화 안건을 도출했습니다.",
+          "신규 고객 PoC에서 Well-Architected Framework 관점으로 보안, 안정성, 비용 최적화 항목을 검토했습니다.",
+          "AWS Serverless, DevOps, Developing, Well-Architected, Technical Essentials, Security Essentials 교육을 수료하고 SAA 자격을 취득했습니다.",
+        ],
+        results: [
+          "QR 이미지 리사이징 구조 적용 건에서 스토리지 사용량 60% 절감 효과를 만들었습니다.",
+          "고객별 비용 이슈를 기술 항목이 아니라 의사결정 가능한 개선 리스트로 전달했습니다.",
+          "운영, 비용, 아키텍처 리뷰를 함께 수행하며 클라우드 AM으로서의 문제 해결 범위를 넓혔습니다.",
+        ],
+        stack: [
+          { label: "Cloud", value: "AWS EC2, S3, RDS, Lambda, CloudFront, Cost Explorer" },
+          { label: "Architecture", value: "Serverless, Well-Architected Framework" },
+          { label: "Optimization", value: "RI 전환 제안, S3 Lifecycle, 이미지 리사이징" },
+        ],
+      }),
     },
     en: {
       title: "Cloud Infra Management & Cost Optimization",
@@ -111,77 +212,46 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2024.11 ~ Present",
       role: "Account Manager",
       tags: ["AWS", "EC2", "Lambda", "Cost Optimization"],
-      contentHtml: `
-<div class="metric-cards">
-<div class="metric-card"><div class="value">70+</div><div class="label">Customer Accounts</div></div>
-<div class="metric-card"><div class="value">60%</div><div class="label">Storage Cost Saved</div></div>
-<div class="metric-card"><div class="value">6</div><div class="label">AWS Trainings</div></div>
-</div>
-
-<h2>Situation</h2>
-<p>SmileShark is an AWS MSP (Managed Service Provider) partner managing cloud infrastructure for over 70 customers. Each customer operates various AWS services including EC2, S3, RDS, Lambda, and CloudFront, and the key challenge is ensuring both cost efficiency and service reliability.</p>
-
-<h2>Task</h2>
-<p>As an Account Manager, I am responsible for the overall infrastructure of customer accounts.</p>
-<ul>
-<li>Daily management and incident response for 70+ customer AWS accounts</li>
-<li>Cost optimization analysis and architecture improvement proposals</li>
-<li>Infrastructure design and PoC for new customers</li>
-<li>Infrastructure review based on AWS Well-Architected Framework</li>
-</ul>
-
-<h2>Action</h2>
-<h3>QR Image Lambda Resizing Architecture</h3>
-<p>Designed a serverless architecture to solve a customer's QR image processing cost issue.</p>
-
-<div class="compare">
-<div class="compare-item before"><span class="tag">Before</span><p>Original images (~3MB) stored directly in S3 and served via CloudFront</p></div>
-<div class="compare-item after"><span class="tag">After</span><p>S3 Upload → Lambda Trigger → Auto-resizing (3MB→300KB) → CloudFront Distribution</p></div>
-</div>
-
-<div class="process-flow">
-<div class="process-step"><div class="step-title">S3 Upload</div><div class="step-desc">Image upload</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Lambda</div><div class="step-desc">Auto-resize</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">S3 Store</div><div class="step-desc">300KB</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">CloudFront</div><div class="step-desc">Global CDN</div></div>
-</div>
-
-<div class="highlight-box">
-<strong>Serverless Architecture</strong> — Fully event-driven pipeline with no servers. Auto-scales with traffic and incurs zero idle costs.
-</div>
-
-<h3>Cost Optimization via Cost Explorer</h3>
-<ul>
-<li>Analyzed per-customer Cost Explorer data to recommend <strong>RI (Reserved Instance) conversions</strong></li>
-<li><strong>S3 Lifecycle policy optimization</strong>: Configured automatic storage class transitions for infrequently accessed objects</li>
-</ul>
-
-<h3>New Customer PoC</h3>
-<ul>
-<li>Infrastructure design and review based on the 5 pillars of AWS Well-Architected Framework (Security, Reliability, Performance Efficiency, Cost Optimization, Operational Excellence)</li>
-</ul>
-
-<h3>AWS Official Training</h3>
-<ul>
-<li>Completed <strong>6 courses</strong>: Serverless, DevOps, Developing, Well-Architected, Technical Essentials, Security Essentials</li>
-</ul>
-
-<h2>Result</h2>
-<ul>
-<li><strong>60% storage cost reduction</strong> — from QR image Lambda resizing architecture</li>
-<li><strong>70+ customer accounts</strong> operated stably with incident response</li>
-<li><strong>AWS SAA</strong> (Solutions Architect Associate) certification obtained</li>
-</ul>
-
-<h2>Tech Stack</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</span></div>
-<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">Serverless, Well-Architected Framework</span></div>
-<div class="bento-item"><span class="bento-label">Optimization</span><span class="bento-value">RI Conversion, S3 Lifecycle, Lambda Resizing</span></div>
-</div>`,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "70+", label: "Customer Accounts" },
+          { value: "60%", label: "Storage Reduced" },
+          { value: "6", label: "AWS Trainings" },
+        ],
+        summary:
+          "Managed 70+ customer AWS accounts in an MSP environment, translating cost, reliability, and architecture issues into actionable customer-facing recommendations.",
+        signal:
+          "This shows cloud operations judgment beyond console work: reading cost structures, spotting reliability risks, and explaining technical options in business terms.",
+        problem: {
+          beforeTag: "Before",
+          before: "QR images were stored and distributed at original size, creating avoidable storage and delivery cost.",
+          afterTag: "After",
+          after: "Connected S3 upload events to Lambda resizing while preserving the CloudFront delivery path.",
+        },
+        flow: [
+          { title: "Diagnose", desc: "Cost and resource review" },
+          { title: "Design", desc: "Serverless improvement" },
+          { title: "Apply", desc: "S3→Lambda→CloudFront" },
+          { title: "Report", desc: "Cost and risk impact" },
+        ],
+        actions: [
+          "Reviewed EC2, S3, RDS, Lambda, CloudFront, and cost patterns across 70+ AWS customer accounts.",
+          "Redesigned the QR image pipeline around S3 upload, Lambda resizing, and CloudFront distribution.",
+          "Used Cost Explorer to identify customer-specific optimization items including RI conversion, S3 Lifecycle, and unused resources.",
+          "Reviewed new-customer PoCs through Well-Architected lenses including security, reliability, and cost optimization.",
+          "Completed AWS Serverless, DevOps, Developing, Well-Architected, Technical Essentials, and Security Essentials training, and earned AWS SAA.",
+        ],
+        results: [
+          "Reduced storage usage by 60% in the QR image resizing architecture case.",
+          "Turned customer cost issues into concrete action lists rather than raw cloud metrics.",
+          "Expanded from account operation into architecture review, cost optimization, and incident-aware customer communication.",
+        ],
+        stack: [
+          { label: "Cloud", value: "AWS EC2, S3, RDS, Lambda, CloudFront, Cost Explorer" },
+          { label: "Architecture", value: "Serverless, Well-Architected Framework" },
+          { label: "Optimization", value: "RI recommendations, S3 Lifecycle, image resizing" },
+        ],
+      }),
     },
     ja: {
       title: "クラウドインフラ管理＆コスト最適化",
@@ -189,77 +259,46 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2024.11 ~ 現在",
       role: "アカウントマネージャー",
       tags: ["AWS", "EC2", "Lambda", "Cost Optimization"],
-      contentHtml: `
-<div class="metric-cards">
-<div class="metric-card"><div class="value">70+</div><div class="label">顧客アカウント</div></div>
-<div class="metric-card"><div class="value">60%</div><div class="label">ストレージ削減</div></div>
-<div class="metric-card"><div class="value">6</div><div class="label">AWS公式研修</div></div>
-</div>
-
-<h2>背景 (Situation)</h2>
-<p>スマイルシャークはAWS MSP（Managed Service Provider）パートナー企業で、70社以上の顧客のクラウドインフラを管理しています。各顧客がEC2、S3、RDS、Lambda、CloudFrontなど様々なAWSサービスを運用しており、コスト効率とサービス安定性の両立が重要な課題です。</p>
-
-<h2>役割 (Task)</h2>
-<p>アカウントマネージャーとして、顧客アカウントのインフラ全般を担当しています。</p>
-<ul>
-<li>70以上の顧客アカウントのAWSインフラ日常管理および障害対応</li>
-<li>コスト最適化分析およびアーキテクチャ改善提案</li>
-<li>新規顧客のインフラ設計およびPoC実施</li>
-<li>AWS Well-Architected Frameworkベースのインフラレビュー</li>
-</ul>
-
-<h2>実施内容 (Action)</h2>
-<h3>QR画像Lambdaリサイジングアーキテクチャ設計</h3>
-<p>顧客のQR画像処理コスト問題を解決するため、サーバーレスアーキテクチャを設計しました。</p>
-
-<div class="compare">
-<div class="compare-item before"><span class="tag">Before</span><p>元画像（〜3MB）をそのままS3に保存・CloudFrontで配信</p></div>
-<div class="compare-item after"><span class="tag">After</span><p>S3アップロード → Lambdaトリガー → 自動リサイジング（3MB→300KB） → CloudFront配信</p></div>
-</div>
-
-<div class="process-flow">
-<div class="process-step"><div class="step-title">S3 Upload</div><div class="step-desc">画像アップロード</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Lambda</div><div class="step-desc">自動リサイジング</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">S3保存</div><div class="step-desc">300KB</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">CloudFront</div><div class="step-desc">グローバル配信</div></div>
-</div>
-
-<div class="highlight-box">
-<strong>サーバーレスアーキテクチャ</strong> — サーバー不要のイベント駆動型パイプライン。トラフィックに応じて自動スケーリング、アイドルコストゼロ。
-</div>
-
-<h3>Cost Explorerベースのコスト最適化</h3>
-<ul>
-<li>顧客別Cost Explorerデータを分析し、<strong>RI（リザーブドインスタンス）転換を勧告</strong></li>
-<li><strong>S3 Lifecycleポリシー最適化</strong>: アクセス頻度の低いオブジェクトのストレージクラス自動転換を設定</li>
-</ul>
-
-<h3>新規顧客PoC</h3>
-<ul>
-<li>AWS Well-Architected Frameworkの5つの柱（セキュリティ、信頼性、パフォーマンス効率、コスト最適化、運用の優秀性）ベースのインフラ設計およびレビュー</li>
-</ul>
-
-<h3>AWS公式トレーニング</h3>
-<ul>
-<li>Serverless、DevOps、Developing、Well-Architected、Technical Essentials、Security Essentials <strong>6コース修了</strong></li>
-</ul>
-
-<h2>成果 (Result)</h2>
-<ul>
-<li><strong>ストレージコスト60%削減</strong> — QR画像Lambdaリサイジングアーキテクチャ適用件</li>
-<li><strong>70以上の顧客アカウント</strong>の安定運用および障害対応</li>
-<li><strong>AWS SAA</strong>（Solutions Architect Associate）資格取得</li>
-</ul>
-
-<h2>技術スタック</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EC2, S3, RDS, Lambda, CloudFront, Cost Explorer)</span></div>
-<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">Serverless, Well-Architected Framework</span></div>
-<div class="bento-item"><span class="bento-label">Optimization</span><span class="bento-value">RI転換、S3 Lifecycle、Lambdaリサイジング</span></div>
-</div>`,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "70+", label: "顧客アカウント" },
+          { value: "60%", label: "ストレージ削減" },
+          { value: "6", label: "AWS公式研修" },
+        ],
+        summary:
+          "AWS MSP環境で70以上の顧客アカウントを運用し、コスト、障害、アーキテクチャ課題を顧客が判断できる改善案へ整理しました。",
+        signal:
+          "単なるコンソール運用ではなく、コスト構造と運用リスクを読み、技術的な選択肢をビジネス効果として説明できるクラウド運用力を示します。",
+        problem: {
+          beforeTag: "Before",
+          before: "QR画像を元サイズのまま保存・配信しており、ストレージと配信コストが不要に増えていました。",
+          afterTag: "After",
+          after: "S3アップロードイベントにLambdaリサイズを接続し、CloudFront配信フローは維持しました。",
+        },
+        flow: [
+          { title: "診断", desc: "コスト・リソース確認" },
+          { title: "設計", desc: "サーバーレス改善案" },
+          { title: "適用", desc: "S3→Lambda→CloudFront" },
+          { title: "報告", desc: "費用効果・運用リスク" },
+        ],
+        actions: [
+          "70以上の顧客AWSアカウントでEC2、S3、RDS、Lambda、CloudFrontの利用状況とコストを確認しました。",
+          "QR画像パイプラインをS3アップロード、Lambda自動リサイズ、CloudFront配信の構造へ再設計しました。",
+          "Cost ExplorerをもとにRI転換、S3 Lifecycle、不要リソース整理など顧客別の最適化案を出しました。",
+          "新規顧客PoCではWell-Architected Framework観点でセキュリティ、信頼性、コスト最適化を確認しました。",
+          "AWS Serverless、DevOps、Developing、Well-Architected、Technical Essentials、Security Essentialsを修了し、SAAを取得しました。",
+        ],
+        results: [
+          "QR画像リサイズ構造の適用ケースでストレージ使用量を60%削減しました。",
+          "顧客のコスト課題をクラウド指標の羅列ではなく、実行可能な改善リストとして伝えました。",
+          "運用、コスト、アーキテクチャレビューを横断して扱うクラウドAMとしての問題解決範囲を広げました。",
+        ],
+        stack: [
+          { label: "Cloud", value: "AWS EC2, S3, RDS, Lambda, CloudFront, Cost Explorer" },
+          { label: "Architecture", value: "Serverless, Well-Architected Framework" },
+          { label: "Optimization", value: "RI転換提案、S3 Lifecycle、画像リサイズ" },
+        ],
+      }),
     },
   },
 
@@ -270,81 +309,45 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      contentHtml: `
-<div class="metric-cards">
-<div class="metric-card"><div class="value">66%</div><div class="label">수정 사이클 단축</div></div>
-<div class="metric-card"><div class="value">18</div><div class="label">성향 분석 질문</div></div>
-<div class="metric-card"><div class="value">6인</div><div class="label">팀 구성</div></div>
-</div>
-
-<h2>배경 (Situation)</h2>
-<p>네이버클라우드 Clova X 대외활동에서 AI 챗봇 서비스를 기획했습니다. AI가 사용자의 성향을 학습하여 맞춤형 대화를 제공하는 서비스로, 챗봇의 대화 품질을 높이기 위한 프롬프트 데이터셋 구축과 사용자 경험 설계가 핵심 과제였습니다. 당시 기획팀과 개발팀 간 수정 사이클이 평균 3회로, 협업 효율이 낮은 상태였습니다.</p>
-
-<h2>나의 역할 (Task)</h2>
-<p>6인 팀(Back-end 1, Front-end 2, PM 2, Design 1)에서 AI PM을 담당했습니다.</p>
-<ul>
-<li>서비스 목표 정의 및 타겟 유저 페르소나 설계</li>
-<li>프롬프트 데이터셋 설계 및 구축</li>
-<li>UX 흐름 설계 및 Information Architecture(IA) 구성</li>
-<li>기획 문서 → API 스펙 변환 프로세스 수립</li>
-</ul>
-
-<h2>수행 내용 (Action)</h2>
-<h3>서비스 기획</h3>
-<ul>
-<li><strong>문제 정의</strong>: 일상의 과몰입이나 성격으로 인한 인간관계의 답답함을 AI 챗봇으로 해소</li>
-<li><strong>타겟 페르소나</strong>: 2가지 유저 유형 정의 — 성격 개선을 원하는 사용자 / 새로운 자아를 경험하고 싶은 직장인</li>
-<li><strong>서비스 목표</strong>: 원하는 페르소나를 구체화하고, AI와의 대화를 통해 삶의 유연함을 제공</li>
-</ul>
-
-<h3>UX 설계</h3>
-<ul>
-<li><strong>Information Architecture</strong>: 앱 진입 → 성향 질문(18문항) → 캐릭터 생성 → AI 대화방으로 이어지는 전체 흐름 설계</li>
-<li><strong>사용자 시나리오</strong>: 성향 선택부터 대화까지 자연스럽게 이어지도록 IA 구성</li>
-<li><strong>디자인 시스템</strong>: Typography, Color System, Component 정의를 통한 효율적 협업 환경 구축</li>
-</ul>
-
-<h3>UX 플로우</h3>
-<div class="process-flow">
-<div class="process-step"><div class="step-title">앱 진입</div><div class="step-desc">온보딩</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">성향 질문</div><div class="step-desc">18문항</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">캐릭터 생성</div><div class="step-desc">AI 매칭</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">AI 대화방</div><div class="step-desc">맞춤 대화</div></div>
-</div>
-
-<h3>프롬프트 엔지니어링</h3>
-<ul>
-<li><strong>Few-shot 기반 프롬프트 데이터셋</strong>: 사용자 답변을 학습하여 성향에 맞는 캐릭터를 생성하고, 상황별 맞춤 대화를 제공하는 프롬프트 설계</li>
-<li>다양한 상황 제안(오늘의 추천 상황) 기능을 위한 프롬프트 구성</li>
-</ul>
-
-<h3>기획→개발 협업 프로세스</h3>
-
-<div class="compare">
-<div class="compare-item before"><span class="tag">Before</span><p>기획-개발 간 수정 사이클 평균 <strong>3회</strong></p></div>
-<div class="compare-item after"><span class="tag">After</span><p>API 스펙 변환 프로세스 도입 → 수정 <strong>1회</strong></p></div>
-</div>
-
-<div class="highlight-box">
-<strong>핵심 개선</strong> — 기획 문서를 개발팀이 바로 사용 가능한 API 스펙으로 변환하는 프로세스를 수립하여, 기획 의도와 기술 구현 사이의 갭을 줄였습니다.
-</div>
-
-<h2>결과 (Result)</h2>
-<ul>
-<li><strong>수정 사이클 66% 단축</strong> — 기획-개발 간 수정 3회→1회 (협업 프로세스 개선 한정)</li>
-<li>Few-shot 기반 프롬프트 데이터셋 구축 완료</li>
-<li>18문항 성향 분석 → AI 캐릭터 생성 → 맞춤 대화의 전체 UX 흐름 설계 완료</li>
-</ul>
-
-<h2>기술 스택</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Clova X, Prompt Engineering, Few-shot Learning</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">페르소나 정의, IA 설계, UX 설계, API 스펙 문서화</span></div>
-<div class="bento-item"><span class="bento-label">Design</span><span class="bento-value">디자인 시스템 (Typography, Color System, Component)</span></div>
-</div>`,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "18", label: "성향 질문" },
+          { value: "3→1", label: "수정 사이클" },
+          { value: "Few-shot", label: "프롬프트 설계" },
+        ],
+        summary:
+          "AI 챗봇 아이디어를 사용자 성향 진단, 캐릭터 생성, 맞춤 대화 흐름으로 쪼개고 개발팀이 바로 구현할 수 있는 API 스펙까지 정리했습니다.",
+        signal:
+          "AI PM에게 중요한 역량인 모호한 아이디어의 구조화, 프롬프트 요구사항 정의, 기획-개발 간 커뮤니케이션 비용 절감이 드러납니다.",
+        problem: {
+          beforeTag: "Before",
+          before: "기획 문서가 추상적이면 개발팀이 의도를 재확인해야 하고 수정 사이클이 반복됩니다.",
+          afterTag: "After",
+          after: "프롬프트 데이터셋, IA, API 스펙으로 기획 의도를 쪼개 개발 가능한 요구사항으로 전환했습니다.",
+        },
+        flow: [
+          { title: "질문", desc: "18문항 성향 진단" },
+          { title: "분류", desc: "사용자 페르소나" },
+          { title: "생성", desc: "AI 캐릭터" },
+          { title: "대화", desc: "상황별 챗봇" },
+        ],
+        actions: [
+          "18문항 성향 분석을 기반으로 사용자 페르소나와 AI 캐릭터 생성 흐름을 설계했습니다.",
+          "Few-shot 예시와 상황별 대화 톤을 정리해 Clova X 기반 챗봇의 응답 방향을 구체화했습니다.",
+          "화면 흐름, IA, 컴포넌트 기준을 정리해 사용자 여정이 끊기지 않도록 설계했습니다.",
+          "기획 문서를 API 스펙으로 변환하는 협업 프로세스를 만들어 개발팀과의 해석 차이를 줄였습니다.",
+        ],
+        results: [
+          "기획-개발 수정 사이클을 평균 3회에서 1회로 줄였습니다.",
+          "AI 챗봇의 핵심 경험을 성향 분석, 캐릭터 생성, 맞춤 대화로 명확하게 구조화했습니다.",
+          "PM 산출물이 실제 개발 입력값으로 쓰이도록 요구사항의 밀도를 높였습니다.",
+        ],
+        stack: [
+          { label: "AI", value: "Clova X, Prompt Engineering, Few-shot Prompting" },
+          { label: "PM", value: "Persona, IA, User Flow, API Spec" },
+          { label: "Design", value: "Typography, Color System, Component 기준" },
+        ],
+      }),
     },
     en: {
       title: "Clova X AI Chatbot PM",
@@ -352,81 +355,45 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      contentHtml: `
-<div class="metric-cards">
-<div class="metric-card"><div class="value">66%</div><div class="label">Revision Cycle Reduced</div></div>
-<div class="metric-card"><div class="value">18</div><div class="label">Personality Questions</div></div>
-<div class="metric-card"><div class="value">6</div><div class="label">Team Members</div></div>
-</div>
-
-<h2>Situation</h2>
-<p>Planned an AI chatbot service as part of Naver Cloud's Clova X extracurricular program. The service learns user personality traits and provides personalized conversations. The key challenges were building prompt datasets to improve chatbot quality and designing the user experience. At the time, the average revision cycle between planning and development teams was 3 rounds, resulting in low collaboration efficiency.</p>
-
-<h2>Task</h2>
-<p>Served as AI PM in a 6-member team (1 Back-end, 2 Front-end, 2 PM, 1 Design).</p>
-<ul>
-<li>Define service goals and design target user personas</li>
-<li>Design and build prompt datasets</li>
-<li>Design UX flows and Information Architecture (IA)</li>
-<li>Establish planning document → API spec conversion process</li>
-</ul>
-
-<h2>Action</h2>
-<h3>Service Planning</h3>
-<ul>
-<li><strong>Problem Definition</strong>: Resolve frustrations in interpersonal relationships caused by personality traits or daily burnout through AI chatbot</li>
-<li><strong>Target Personas</strong>: Defined 2 user types — users seeking personality improvement / professionals wanting to experience a new self</li>
-<li><strong>Service Goal</strong>: Materialize desired personas and provide life flexibility through AI conversations</li>
-</ul>
-
-<h3>UX Design</h3>
-<ul>
-<li><strong>Information Architecture</strong>: Designed end-to-end flow from app entry → personality questions (18 items) → character generation → AI chat room</li>
-<li><strong>User Scenarios</strong>: Structured IA for seamless flow from personality selection to conversation</li>
-<li><strong>Design System</strong>: Defined Typography, Color System, and Components for efficient team collaboration</li>
-</ul>
-
-<h3>UX Flow</h3>
-<div class="process-flow">
-<div class="process-step"><div class="step-title">App Entry</div><div class="step-desc">Onboarding</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Personality Q</div><div class="step-desc">18 items</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Character Gen</div><div class="step-desc">AI Matching</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">AI Chat Room</div><div class="step-desc">Custom Chat</div></div>
-</div>
-
-<h3>Prompt Engineering</h3>
-<ul>
-<li><strong>Few-shot Prompt Datasets</strong>: Designed prompts that learn from user responses to generate personality-matched characters and provide situation-specific conversations</li>
-<li>Composed prompts for contextual suggestion features (daily recommended situations)</li>
-</ul>
-
-<h3>Planning→Development Process</h3>
-
-<div class="compare">
-<div class="compare-item before"><span class="tag">Before</span><p>Average <strong>3 rounds</strong> of revision between planning and development</p></div>
-<div class="compare-item after"><span class="tag">After</span><p>API spec conversion process → <strong>1 round</strong> of revision</p></div>
-</div>
-
-<div class="highlight-box">
-<strong>Key Improvement</strong> — Established a process to convert planning documents into API specs directly usable by developers, reducing the gap between planning intent and technical implementation.
-</div>
-
-<h2>Result</h2>
-<ul>
-<li><strong>66% reduction in revision cycles</strong> — planning-development revisions from 3 rounds to 1 (collaboration process improvement)</li>
-<li>Completed few-shot based prompt dataset construction</li>
-<li>Designed complete UX flow: 18-question personality analysis → AI character generation → personalized conversation</li>
-</ul>
-
-<h2>Tech Stack</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Clova X, Prompt Engineering, Few-shot Learning</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Persona Definition, IA Design, UX Design, API Spec Documentation</span></div>
-<div class="bento-item"><span class="bento-label">Design</span><span class="bento-value">Design System (Typography, Color System, Component)</span></div>
-</div>`,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "18", label: "Profile Questions" },
+          { value: "3→1", label: "Revision Cycles" },
+          { value: "Few-shot", label: "Prompt Design" },
+        ],
+        summary:
+          "Structured an AI chatbot concept into user profiling, AI character generation, personalized conversation flows, and developer-ready API specs.",
+        signal:
+          "This demonstrates AI PM fundamentals: turning ambiguity into product logic, defining prompt requirements, and reducing planning-development friction.",
+        problem: {
+          beforeTag: "Before",
+          before: "Abstract planning documents forced developers to re-check intent and caused repeated revision cycles.",
+          afterTag: "After",
+          after: "Converted the concept into prompt datasets, IA, and API specs that could be implemented directly.",
+        },
+        flow: [
+          { title: "Questions", desc: "18-item profile test" },
+          { title: "Classify", desc: "User persona" },
+          { title: "Generate", desc: "AI character" },
+          { title: "Chat", desc: "Contextual dialogue" },
+        ],
+        actions: [
+          "Designed the user persona and AI character generation flow around an 18-question profile test.",
+          "Defined few-shot examples and situational tone rules for Clova X chatbot responses.",
+          "Mapped screens, IA, and component guidelines to keep the user journey coherent.",
+          "Built a planning-to-API-spec collaboration process to reduce interpretation gaps with developers.",
+        ],
+        results: [
+          "Reduced planning-development revision cycles from an average of 3 to 1.",
+          "Clarified the chatbot experience into profile analysis, character generation, and personalized conversation.",
+          "Made PM deliverables dense enough to work as actual development input.",
+        ],
+        stack: [
+          { label: "AI", value: "Clova X, Prompt Engineering, Few-shot Prompting" },
+          { label: "PM", value: "Persona, IA, User Flow, API Spec" },
+          { label: "Design", value: "Typography, Color System, Component Guidelines" },
+        ],
+      }),
     },
     ja: {
       title: "Clova X AI チャットボット PM",
@@ -434,81 +401,45 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       period: "2023.11 ~ 2023.12",
       role: "AI PM",
       tags: ["AI PM", "Prompt Engineering", "UX"],
-      contentHtml: `
-<div class="metric-cards">
-<div class="metric-card"><div class="value">66%</div><div class="label">修正サイクル短縮</div></div>
-<div class="metric-card"><div class="value">18</div><div class="label">性向分析質問</div></div>
-<div class="metric-card"><div class="value">6人</div><div class="label">チーム構成</div></div>
-</div>
-
-<h2>背景 (Situation)</h2>
-<p>NAVERクラウドClova X課外活動でAIチャットボットサービスを企画しました。AIがユーザーの性向を学習し、カスタマイズされた会話を提供するサービスで、チャットボットの会話品質を高めるためのプロンプトデータセット構築とユーザー体験設計が重要な課題でした。当時、企画チームと開発チーム間の修正サイクルが平均3回で、コラボレーション効率が低い状態でした。</p>
-
-<h2>役割 (Task)</h2>
-<p>6人チーム（Back-end 1、Front-end 2、PM 2、Design 1）でAI PMを担当しました。</p>
-<ul>
-<li>サービス目標定義およびターゲットユーザーペルソナ設計</li>
-<li>プロンプトデータセット設計および構築</li>
-<li>UXフロー設計およびInformation Architecture（IA）構成</li>
-<li>企画文書→APIスペック変換プロセス確立</li>
-</ul>
-
-<h2>実施内容 (Action)</h2>
-<h3>サービス企画</h3>
-<ul>
-<li><strong>問題定義</strong>: 日常の過没入や性格による人間関係の息苦しさをAIチャットボットで解消</li>
-<li><strong>ターゲットペルソナ</strong>: 2つのユーザータイプを定義 — 性格改善を望むユーザー / 新しい自分を体験したい社会人</li>
-<li><strong>サービス目標</strong>: 望むペルソナを具体化し、AIとの会話を通じて人生の柔軟性を提供</li>
-</ul>
-
-<h3>UX設計</h3>
-<ul>
-<li><strong>Information Architecture</strong>: アプリ進入→性向質問（18問）→キャラクター生成→AIチャットルームまでの全体フロー設計</li>
-<li><strong>ユーザーシナリオ</strong>: 性向選択から会話まで自然につながるようIA構成</li>
-<li><strong>デザインシステム</strong>: Typography、Color System、Component定義による効率的なコラボレーション環境構築</li>
-</ul>
-
-<h3>UXフロー</h3>
-<div class="process-flow">
-<div class="process-step"><div class="step-title">アプリ進入</div><div class="step-desc">オンボーディング</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">性向質問</div><div class="step-desc">18問</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">キャラ生成</div><div class="step-desc">AIマッチング</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">AIチャット</div><div class="step-desc">カスタム会話</div></div>
-</div>
-
-<h3>プロンプトエンジニアリング</h3>
-<ul>
-<li><strong>Few-shotベースプロンプトデータセット</strong>: ユーザーの回答を学習して性向に合うキャラクターを生成し、状況別カスタマイズ会話を提供するプロンプト設計</li>
-<li>多様な状況提案（今日のおすすめ状況）機能のためのプロンプト構成</li>
-</ul>
-
-<h3>企画→開発コラボレーションプロセス</h3>
-
-<div class="compare">
-<div class="compare-item before"><span class="tag">Before</span><p>企画-開発間の修正サイクル平均<strong>3回</strong></p></div>
-<div class="compare-item after"><span class="tag">After</span><p>APIスペック変換プロセス導入 → 修正<strong>1回</strong></p></div>
-</div>
-
-<div class="highlight-box">
-<strong>核心改善</strong> — 企画文書を開発チームがそのまま使用可能なAPIスペックに変換するプロセスを確立し、企画意図と技術実装の間のギャップを縮めました。
-</div>
-
-<h2>成果 (Result)</h2>
-<ul>
-<li><strong>修正サイクル66%短縮</strong> — 企画-開発間の修正3回→1回（コラボレーションプロセス改善に限定）</li>
-<li>Few-shotベースプロンプトデータセット構築完了</li>
-<li>18問の性向分析→AIキャラクター生成→カスタマイズ会話の全体UXフロー設計完了</li>
-</ul>
-
-<h2>技術スタック</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Clova X, Prompt Engineering, Few-shot Learning</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">ペルソナ定義、IA設計、UX設計、APIスペック文書化</span></div>
-<div class="bento-item"><span class="bento-label">Design</span><span class="bento-value">デザインシステム（Typography、Color System、Component）</span></div>
-</div>`,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "18", label: "性向質問" },
+          { value: "3→1", label: "修正サイクル" },
+          { value: "Few-shot", label: "プロンプト設計" },
+        ],
+        summary:
+          "AIチャットボットのアイデアを性向診断、AIキャラクター生成、パーソナライズ会話、開発可能なAPI仕様へ構造化しました。",
+        signal:
+          "曖昧なAI企画をプロダクトロジックに落とし込み、プロンプト要件を定義し、企画と開発の摩擦を下げるAI PM力を示します。",
+        problem: {
+          beforeTag: "Before",
+          before: "企画文書が抽象的だと、開発チームが意図を再確認し、修正サイクルが繰り返されます。",
+          afterTag: "After",
+          after: "プロンプトデータセット、IA、API仕様へ分解し、実装できる要求事項に変換しました。",
+        },
+        flow: [
+          { title: "質問", desc: "18問の性向診断" },
+          { title: "分類", desc: "ユーザーペルソナ" },
+          { title: "生成", desc: "AIキャラクター" },
+          { title: "会話", desc: "状況別チャット" },
+        ],
+        actions: [
+          "18問の性向分析をもとにユーザーペルソナとAIキャラクター生成フローを設計しました。",
+          "Few-shot例と状況別の会話トーンを整理し、Clova Xチャットボットの応答方針を具体化しました。",
+          "画面フロー、IA、コンポーネント基準を整理し、ユーザー体験が途切れないよう設計しました。",
+          "企画文書をAPI仕様へ変換する協業プロセスを作り、開発チームとの解釈差を減らしました。",
+        ],
+        results: [
+          "企画開発間の修正サイクルを平均3回から1回へ短縮しました。",
+          "AIチャットボットの中核体験を性向分析、キャラクター生成、パーソナライズ会話として明確化しました。",
+          "PM成果物が実際の開発入力として使える密度になるよう改善しました。",
+        ],
+        stack: [
+          { label: "AI", value: "Clova X, Prompt Engineering, Few-shot Prompting" },
+          { label: "PM", value: "Persona, IA, User Flow, API Spec" },
+          { label: "Design", value: "Typography, Color System, Component基準" },
+        ],
+      }),
     },
   },
 
@@ -520,88 +451,53 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "부팀장 / DB 리더",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
       education: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">🏆 대상</div><div class="label">AWS 해커톤 1위</div></div>
-<div class="metric-card"><div class="value">2x</div><div class="label">처리량 향상</div></div>
-<div class="metric-card"><div class="value">30%</div><div class="label">비용 절감</div></div>
-</div>
-
-<h2>배경 (Situation)</h2>
-<p>AWS CloudSchool 최종 프로젝트로 경매 웹사이트를 설계·구축했습니다. 경매 서비스 특성상 <strong>대규모 동시 입찰 트래픽 처리</strong>와 <strong>입찰 순서 보장</strong>이 핵심 요구사항이었으며, On-premise 환경에서 AWS 클라우드로의 마이그레이션도 함께 수행해야 했습니다.</p>
-
-<h2>나의 역할 (Task)</h2>
-<p>부팀장 겸 DB 리더로서 프로젝트 전반을 관리하고, 데이터베이스 아키텍처를 주도했습니다.</p>
-<ul>
-<li><strong>부팀장</strong>: Jira 기반 전체 일정 관리 및 AWS 비용 모니터링</li>
-<li><strong>DB 리더</strong>: 데이터 I/O 특성 분석, DB 기술 스택 선정, CQRS 패턴 설계</li>
-<li><strong>Frontend 개발</strong>: 웹 프론트엔드 구현</li>
-<li><strong>Infra Migration</strong>: On-premise → AWS 클라우드 마이그레이션 기획</li>
-</ul>
-
-<h2>수행 내용 (Action)</h2>
-<h3>MSA 아키텍처 설계</h3>
-<ul>
-<li>경매 서비스에 MSA(Microservice Architecture) 채택</li>
-<li><strong>확장성·탄력성</strong>: 대규모 트래픽을 유연하게 처리</li>
-<li><strong>장애 격리성</strong>: 경매 외적인 부분에서 장애가 발생해도 핵심 입찰 기능에 영향을 주지 않도록 설계</li>
-</ul>
-
-<div class="highlight-box">
-<strong>MSA를 선택한 이유</strong> — 경매 서비스는 입찰 트래픽이 집중되는 특성이 있어, 장애 격리를 통해 핵심 입찰 기능의 안정성을 보장해야 했습니다.
-</div>
-
-<h3>DB 기술 스택 선정 — CQRS 패턴</h3>
-<ul>
-<li>데이터 I/O 특성 분석: 경매 서비스는 읽기(상품 조회) 빈도가 쓰기(입찰)보다 높음</li>
-<li><strong>CQRS 패턴 선택</strong>: Command(Write) → Primary DB, Query(Read) → Read Replica 분리</li>
-<li>CRUD 단일 DB 대비 읽기/쓰기 분리로 성능 최적화</li>
-</ul>
-
-<h3>Queue Service — 입찰 순서 보장</h3>
-<ul>
-<li>경매 입찰의 정확한 순서 보장을 위해 Queue Service 도입</li>
-<li>Kafka, RabbitMQ, Amazon SQS 비교 검토 → 클라우드 환경에 적합한 <strong>SQS FIFO Queue</strong> 채택</li>
-</ul>
-
-<h3>On-premise → Cloud 마이그레이션</h3>
-<div class="compare">
-<div class="compare-item before"><span class="tag">On-premise</span><p>Jira → GitHub → GitHub Actions / Argo CD → Apache Bench → Docker Hub → Kubernetes</p></div>
-<div class="compare-item after"><span class="tag">Cloud (AWS)</span><p>Jira → CodeCommit → CodeBuild / Argo CD → Chaos Mesh → ECR → EKS → CloudWatch / Grafana / Loki / Jaeger</p></div>
-</div>
-
-<h3>Architecture 스펙 문서화</h3>
-<ul>
-<li>구현 전 각 서비스별 스펙을 문서로 정리하고 설계도를 기반으로 개발 진행</li>
-<li>개발자별 사용 스펙을 공유하여 커뮤니케이션 효율화</li>
-</ul>
-
-<h3>Multi-AZ 고가용성</h3>
-<ul>
-<li>자동 Failover를 통한 서비스 연속성 보장</li>
-</ul>
-
-<h2>결과 (Result)</h2>
-<ul>
-<li><strong>AWS 해커톤 대상(1위)</strong></li>
-<li><strong>처리량 2배 향상</strong> — CQRS 읽기/쓰기 분리</li>
-<li><strong>비용 30% 절감</strong> — 효율적인 리소스 활용</li>
-<li>AWS 비용 관리: 총 $673, 일일 $10.52, 28개 서비스 운영</li>
-</ul>
-
-<h2>기술 스택</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</span></div>
-<div class="bento-item"><span class="bento-label">Pattern</span><span class="bento-value">CQRS, MSA (Microservice Architecture)</span></div>
-<div class="bento-item"><span class="bento-label">DevOps</span><span class="bento-value">Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub</span></div>
-</div>
-
-<h2>프로젝트 자료</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/cqrs-aws-architecture.png" alt="AWS 인프라 아키텍처" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/cqrs-queue-service.png" alt="Queue Service 아키텍처" style="width:400px;border-radius:12px;" />
-<img src="/images/projects/cqrs-vs-crud.png" alt="CRUD vs CQRS 비교" style="width:400px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "대상", label: "AWS 해커톤" },
+          { value: "2x", label: "처리량 향상" },
+          { value: "30%", label: "비용 절감" },
+        ],
+        summary:
+          "동시 입찰과 입찰 순서 보장이 중요한 경매 도메인에 CQRS, SQS FIFO, Multi-AZ 아키텍처를 적용해 성능과 비용을 함께 개선했습니다.",
+        signal:
+          "도메인의 병목을 읽고 데이터 I/O, 메시징, 고가용성을 함께 설계한 경험입니다. 교육 프로젝트지만 현업 아키텍처 의사결정 방식으로 설명할 수 있습니다.",
+        problem: {
+          beforeTag: "Risk",
+          before: "단일 CRUD DB 구조에서는 조회 트래픽과 입찰 쓰기 트래픽이 섞여 병목과 순서 오류 위험이 커집니다.",
+          afterTag: "Architecture",
+          after: "CQRS로 읽기와 쓰기를 분리하고 SQS FIFO로 입찰 순서를 보장하며 Multi-AZ로 장애 대응성을 높였습니다.",
+        },
+        flow: [
+          { title: "Read", desc: "상품 조회 Replica" },
+          { title: "Write", desc: "입찰 Command" },
+          { title: "Queue", desc: "SQS FIFO 순서 보장" },
+          { title: "HA", desc: "RDS Multi-AZ" },
+        ],
+        actions: [
+          "부팀장으로 Jira 일정, AWS 비용, 팀 커뮤니케이션을 관리했습니다.",
+          "DB 리더로 경매 서비스의 읽기/쓰기 비율을 분석하고 CQRS 구조를 제안했습니다.",
+          "Kafka, RabbitMQ, SQS를 비교해 클라우드 운영 부담과 순서 보장 요구에 맞는 SQS FIFO를 선택했습니다.",
+          "On-premise 흐름을 AWS 기반 EKS, RDS, ECR, CloudWatch 중심 구조로 재설계했습니다.",
+          "아키텍처 스펙과 서비스별 책임을 문서화해 팀원이 같은 구조를 기준으로 개발하도록 맞췄습니다.",
+        ],
+        results: [
+          "AWS CloudSchool 해커톤에서 대상(1위)을 수상했습니다.",
+          "CQRS 읽기/쓰기 분리를 통해 처리량 2배 향상 결과를 만들었습니다.",
+          "리소스 구조 조정으로 비용 30% 절감 결과를 만들었습니다.",
+          "경매 도메인의 핵심 요구인 입찰 순서, 확장성, 장애 격리를 설계 산출물로 남겼습니다.",
+        ],
+        stack: [
+          { label: "Cloud", value: "AWS EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch" },
+          { label: "Pattern", value: "CQRS, MSA, Queue-based Ordering" },
+          { label: "DevOps", value: "Argo CD, Chaos Mesh, Grafana, Loki, Jaeger" },
+          { label: "PM", value: "Jira, Slack, GitHub" },
+        ],
+        images: [
+          { src: "/images/projects/cqrs-aws-architecture.png", alt: "AWS 인프라 아키텍처" },
+          { src: "/images/projects/cqrs-queue-service.png", alt: "Queue Service 아키텍처" },
+          { src: "/images/projects/cqrs-vs-crud.png", alt: "CRUD vs CQRS 비교" },
+        ],
+      }),
     },
     en: {
       title: "CQRS Auction Website",
@@ -610,88 +506,53 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "Vice Team Lead / DB Lead",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
       education: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">🏆 1st</div><div class="label">AWS Hackathon</div></div>
-<div class="metric-card"><div class="value">2x</div><div class="label">Throughput</div></div>
-<div class="metric-card"><div class="value">30%</div><div class="label">Cost Saved</div></div>
-</div>
-
-<h2>Situation</h2>
-<p>Built an auction website as the final project for AWS CloudSchool. The auction service required <strong>handling high-volume concurrent bid traffic</strong> and <strong>guaranteeing bid ordering</strong>. The project also involved migrating from on-premise to AWS cloud.</p>
-
-<h2>Task</h2>
-<p>Managed the overall project as Vice Team Lead and led database architecture as DB Lead.</p>
-<ul>
-<li><strong>Vice Team Lead</strong>: Jira-based schedule management and AWS cost monitoring</li>
-<li><strong>DB Lead</strong>: Data I/O analysis, DB tech stack selection, CQRS pattern design</li>
-<li><strong>Frontend Development</strong>: Web frontend implementation</li>
-<li><strong>Infra Migration</strong>: On-premise → AWS cloud migration planning</li>
-</ul>
-
-<h2>Action</h2>
-<h3>MSA Architecture Design</h3>
-<ul>
-<li>Adopted MSA (Microservice Architecture) for the auction service</li>
-<li><strong>Scalability & Elasticity</strong>: Handle large-scale traffic flexibly</li>
-<li><strong>Fault Isolation</strong>: Designed so failures in non-auction components don't affect core bidding</li>
-</ul>
-
-<div class="highlight-box">
-<strong>Why MSA</strong> — Auction services experience concentrated bid traffic, requiring fault isolation to guarantee stability of core bidding functionality.
-</div>
-
-<h3>DB Tech Stack — CQRS Pattern</h3>
-<ul>
-<li>Data I/O analysis: Auction services have higher read (product browsing) frequency than write (bidding)</li>
-<li><strong>CQRS Pattern</strong>: Command (Write) → Primary DB, Query (Read) → Read Replica separation</li>
-<li>Performance optimization through read/write separation vs single CRUD DB</li>
-</ul>
-
-<h3>Queue Service — Bid Order Guarantee</h3>
-<ul>
-<li>Introduced Queue Service to guarantee accurate bid ordering</li>
-<li>Compared Kafka, RabbitMQ, and Amazon SQS → Selected <strong>SQS FIFO Queue</strong> for cloud environment</li>
-</ul>
-
-<h3>On-premise → Cloud Migration</h3>
-<div class="compare">
-<div class="compare-item before"><span class="tag">On-premise</span><p>Jira → GitHub → GitHub Actions / Argo CD → Apache Bench → Docker Hub → Kubernetes</p></div>
-<div class="compare-item after"><span class="tag">Cloud (AWS)</span><p>Jira → CodeCommit → CodeBuild / Argo CD → Chaos Mesh → ECR → EKS → CloudWatch / Grafana / Loki / Jaeger</p></div>
-</div>
-
-<h3>Architecture Spec Documentation</h3>
-<ul>
-<li>Documented per-service specs before implementation; developed based on architecture diagrams</li>
-<li>Shared developer-specific specs to improve communication efficiency</li>
-</ul>
-
-<h3>Multi-AZ High Availability</h3>
-<ul>
-<li>Service continuity through automatic Failover</li>
-</ul>
-
-<h2>Result</h2>
-<ul>
-<li><strong>AWS Hackathon Grand Prize (1st Place)</strong></li>
-<li><strong>2x throughput improvement</strong> — CQRS read/write separation</li>
-<li><strong>30% cost reduction</strong> — efficient resource utilization</li>
-<li>AWS cost management: $673 total, $10.52/day, 28 services operated</li>
-</ul>
-
-<h2>Tech Stack</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</span></div>
-<div class="bento-item"><span class="bento-label">Pattern</span><span class="bento-value">CQRS, MSA (Microservice Architecture)</span></div>
-<div class="bento-item"><span class="bento-label">DevOps</span><span class="bento-value">Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub</span></div>
-</div>
-
-<h2>Project Materials</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/cqrs-aws-architecture.png" alt="AWS Infrastructure Architecture" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/cqrs-queue-service.png" alt="Queue Service Architecture" style="width:400px;border-radius:12px;" />
-<img src="/images/projects/cqrs-vs-crud.png" alt="CRUD vs CQRS Comparison" style="width:400px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "1st", label: "AWS Hackathon" },
+          { value: "2x", label: "Throughput" },
+          { value: "30%", label: "Cost Saved" },
+        ],
+        summary:
+          "Applied CQRS, SQS FIFO, and Multi-AZ architecture to an auction domain where concurrent bids and bid ordering are core product requirements.",
+        signal:
+          "This reads as architecture decision-making: identifying domain bottlenecks, separating data I/O paths, selecting messaging, and planning for availability.",
+        problem: {
+          beforeTag: "Risk",
+          before: "A single CRUD database mixes product reads with bid writes, increasing bottleneck and ordering risk.",
+          afterTag: "Architecture",
+          after: "Separated reads and writes with CQRS, guaranteed bid order with SQS FIFO, and improved resilience with Multi-AZ.",
+        },
+        flow: [
+          { title: "Read", desc: "Product replica" },
+          { title: "Write", desc: "Bid command" },
+          { title: "Queue", desc: "SQS FIFO ordering" },
+          { title: "HA", desc: "RDS Multi-AZ" },
+        ],
+        actions: [
+          "Managed schedule, AWS cost, and team communication as Vice Team Lead.",
+          "Led database architecture by analyzing read/write characteristics and proposing CQRS.",
+          "Compared Kafka, RabbitMQ, and SQS, then selected SQS FIFO for cloud-fit and ordering requirements.",
+          "Redesigned the on-premise flow around AWS EKS, RDS, ECR, and CloudWatch.",
+          "Documented architecture specs and service responsibilities so the team could build from a shared model.",
+        ],
+        results: [
+          "Won 1st place at the AWS CloudSchool hackathon.",
+          "Improved throughput 2x through CQRS read/write separation.",
+          "Reduced cost 30% through resource and architecture adjustments.",
+          "Produced architecture artifacts covering bid ordering, scalability, and fault isolation.",
+        ],
+        stack: [
+          { label: "Cloud", value: "AWS EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch" },
+          { label: "Pattern", value: "CQRS, MSA, Queue-based Ordering" },
+          { label: "DevOps", value: "Argo CD, Chaos Mesh, Grafana, Loki, Jaeger" },
+          { label: "PM", value: "Jira, Slack, GitHub" },
+        ],
+        images: [
+          { src: "/images/projects/cqrs-aws-architecture.png", alt: "AWS infrastructure architecture" },
+          { src: "/images/projects/cqrs-queue-service.png", alt: "Queue service architecture" },
+          { src: "/images/projects/cqrs-vs-crud.png", alt: "CRUD vs CQRS comparison" },
+        ],
+      }),
     },
     ja: {
       title: "CQRSオークションサイト",
@@ -700,88 +561,53 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "副チームリーダー / DBリーダー",
       tags: ["AWS", "CQRS", "RDS", "Multi-AZ"],
       education: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">🏆 大賞</div><div class="label">AWSハッカソン1位</div></div>
-<div class="metric-card"><div class="value">2x</div><div class="label">スループット向上</div></div>
-<div class="metric-card"><div class="value">30%</div><div class="label">コスト削減</div></div>
-</div>
-
-<h2>背景 (Situation)</h2>
-<p>AWS CloudSchool最終プロジェクトとしてオークションウェブサイトを設計・構築しました。オークションサービスの特性上、<strong>大規模同時入札トラフィックの処理</strong>と<strong>入札順序の保証</strong>が重要な要件であり、オンプレミス環境からAWSクラウドへのマイグレーションも併せて実施しました。</p>
-
-<h2>役割 (Task)</h2>
-<p>副チームリーダー兼DBリーダーとしてプロジェクト全般を管理し、データベースアーキテクチャを主導しました。</p>
-<ul>
-<li><strong>副チームリーダー</strong>: Jiraベースの全体スケジュール管理およびAWSコストモニタリング</li>
-<li><strong>DBリーダー</strong>: データI/O特性分析、DB技術スタック選定、CQRSパターン設計</li>
-<li><strong>フロントエンド開発</strong>: ウェブフロントエンド実装</li>
-<li><strong>インフラマイグレーション</strong>: オンプレミス→AWSクラウドマイグレーション企画</li>
-</ul>
-
-<h2>実施内容 (Action)</h2>
-<h3>MSAアーキテクチャ設計</h3>
-<ul>
-<li>オークションサービスにMSA（Microservice Architecture）を採用</li>
-<li><strong>拡張性・弾力性</strong>: 大規模トラフィックを柔軟に処理</li>
-<li><strong>障害分離</strong>: オークション以外の部分で障害が発生しても、核心的な入札機能に影響を与えない設計</li>
-</ul>
-
-<div class="highlight-box">
-<strong>MSAを選択した理由</strong> — オークションサービスは入札トラフィックが集中する特性があり、障害分離を通じて核心的な入札機能の安定性を保証する必要がありました。
-</div>
-
-<h3>DB技術スタック選定 — CQRSパターン</h3>
-<ul>
-<li>データI/O特性分析: オークションサービスは読み取り（商品閲覧）頻度が書き込み（入札）より高い</li>
-<li><strong>CQRSパターン選択</strong>: Command（Write）→ Primary DB、Query（Read）→ Read Replica分離</li>
-<li>CRUD単一DB対比、読み書き分離によるパフォーマンス最適化</li>
-</ul>
-
-<h3>Queue Service — 入札順序保証</h3>
-<ul>
-<li>オークション入札の正確な順序保証のためQueue Serviceを導入</li>
-<li>Kafka、RabbitMQ、Amazon SQSを比較検討 → クラウド環境に適した<strong>SQS FIFO Queue</strong>を採用</li>
-</ul>
-
-<h3>オンプレミス → クラウドマイグレーション</h3>
-<div class="compare">
-<div class="compare-item before"><span class="tag">オンプレミス</span><p>Jira → GitHub → GitHub Actions / Argo CD → Apache Bench → Docker Hub → Kubernetes</p></div>
-<div class="compare-item after"><span class="tag">Cloud（AWS）</span><p>Jira → CodeCommit → CodeBuild / Argo CD → Chaos Mesh → ECR → EKS → CloudWatch / Grafana / Loki / Jaeger</p></div>
-</div>
-
-<h3>アーキテクチャスペック文書化</h3>
-<ul>
-<li>実装前に各サービス別スペックを文書化し、設計図ベースで開発を進行</li>
-<li>開発者別使用スペックを共有し、コミュニケーション効率化</li>
-</ul>
-
-<h3>Multi-AZ高可用性</h3>
-<ul>
-<li>自動Failoverによるサービス継続性保証</li>
-</ul>
-
-<h2>成果 (Result)</h2>
-<ul>
-<li><strong>AWSハッカソン大賞（1位）</strong></li>
-<li><strong>スループット2倍向上</strong> — CQRS読み書き分離</li>
-<li><strong>コスト30%削減</strong> — 効率的なリソース活用</li>
-<li>AWSコスト管理: 総額$673、日額$10.52、28サービス運用</li>
-</ul>
-
-<h2>技術スタック</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Cloud</span><span class="bento-value">AWS (EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch)</span></div>
-<div class="bento-item"><span class="bento-label">Pattern</span><span class="bento-value">CQRS, MSA (Microservice Architecture)</span></div>
-<div class="bento-item"><span class="bento-label">DevOps</span><span class="bento-value">Argo CD, Chaos Mesh, Grafana, Loki, Jaeger</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub</span></div>
-</div>
-
-<h2>プロジェクト資料</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/cqrs-aws-architecture.png" alt="AWSインフラアーキテクチャ" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/cqrs-queue-service.png" alt="Queue Serviceアーキテクチャ" style="width:400px;border-radius:12px;" />
-<img src="/images/projects/cqrs-vs-crud.png" alt="CRUD vs CQRS比較" style="width:400px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "大賞", label: "AWSハッカソン" },
+          { value: "2x", label: "処理量向上" },
+          { value: "30%", label: "コスト削減" },
+        ],
+        summary:
+          "同時入札と入札順序保証が重要なオークション領域にCQRS、SQS FIFO、Multi-AZ構成を適用し、性能とコストを改善しました。",
+        signal:
+          "ドメイン上のボトルネックを読み、データI/O、メッセージング、高可用性を一緒に設計した経験として伝わります。",
+        problem: {
+          beforeTag: "Risk",
+          before: "単一CRUD DBでは商品閲覧と入札書き込みが混ざり、ボトルネックと順序エラーのリスクが高まります。",
+          afterTag: "Architecture",
+          after: "CQRSで読み書きを分離し、SQS FIFOで入札順序を保証し、Multi-AZで障害対応力を高めました。",
+        },
+        flow: [
+          { title: "Read", desc: "商品照会Replica" },
+          { title: "Write", desc: "入札Command" },
+          { title: "Queue", desc: "SQS FIFO順序保証" },
+          { title: "HA", desc: "RDS Multi-AZ" },
+        ],
+        actions: [
+          "副チームリーダーとしてJira日程、AWSコスト、チームコミュニケーションを管理しました。",
+          "DBリーダーとしてオークションサービスの読み書き特性を分析し、CQRS構造を提案しました。",
+          "Kafka、RabbitMQ、SQSを比較し、クラウド運用負担と順序保証要求に合うSQS FIFOを選びました。",
+          "オンプレミスの流れをAWS EKS、RDS、ECR、CloudWatch中心の構造へ再設計しました。",
+          "アーキテクチャ仕様とサービス別責任を文書化し、チームが同じ構造を基準に開発できるようにしました。",
+        ],
+        results: [
+          "AWS CloudSchoolハッカソンで大賞(1位)を受賞しました。",
+          "CQRS読み書き分離により処理量2倍向上の結果を作りました。",
+          "リソース構造調整によりコスト30%削減の結果を作りました。",
+          "入札順序、拡張性、障害分離を設計成果物として残しました。",
+        ],
+        stack: [
+          { label: "Cloud", value: "AWS EKS, RDS, Multi-AZ, Read Replica, SQS, ECR, CloudWatch" },
+          { label: "Pattern", value: "CQRS, MSA, Queue-based Ordering" },
+          { label: "DevOps", value: "Argo CD, Chaos Mesh, Grafana, Loki, Jaeger" },
+          { label: "PM", value: "Jira, Slack, GitHub" },
+        ],
+        images: [
+          { src: "/images/projects/cqrs-aws-architecture.png", alt: "AWSインフラアーキテクチャ" },
+          { src: "/images/projects/cqrs-queue-service.png", alt: "Queue Serviceアーキテクチャ" },
+          { src: "/images/projects/cqrs-vs-crud.png", alt: "CRUD vs CQRS比較" },
+        ],
+      }),
     },
   },
 
@@ -793,82 +619,52 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "PM / Architect",
       tags: ["Kubernetes", "Docker", "Architecture"],
       education: true,
-      contentHtml: `
-<div class="process-flow">
-<div class="process-step"><div class="step-title">아키텍처 설계</div><div class="step-desc">물리/논리 설계</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">서비스 배포</div><div class="step-desc">3-Tier App</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">보안 설정</div><div class="step-desc">NetworkPolicy</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">모니터링</div><div class="step-desc">Resource Quota</div></div>
-</div>
-
-<h2>배경 (Situation)</h2>
-<p>AWS CloudSchool에서 Kubernetes 기반 서비스 배포 프로젝트를 진행했습니다. 학습과 동시에 프로젝트를 수행하며, 3-Tier Application의 컨테이너 오케스트레이션과 서비스 보안을 구현하는 것이 목표였습니다.</p>
-
-<h2>나의 역할 (Task)</h2>
-<p>PM 겸 Architect로서 프로젝트 전반을 이끌었습니다.</p>
-<ul>
-<li><strong>PM</strong>: Jira 기반 일정 관리, GitHub-Slack 연동으로 실시간 코드 변경 알림 설정</li>
-<li><strong>Architect</strong>: 물리적/논리적 아키텍처 설계, Namespace 분리 전략</li>
-<li><strong>보안</strong>: NetworkPolicy, Resource Quota 설정</li>
-<li><strong>개발</strong>: Frontend + Backend + DB Ingress 연결</li>
-</ul>
-
-<h2>수행 내용 (Action)</h2>
-<h3>아키텍처 설계 — 반복적 개선</h3>
-<ul>
-<li>초안에서 최종본까지 팀원 전체가 참여하는 설계 회의를 통해 아키텍처를 발전</li>
-<li><strong>물리적 설계</strong>: Worker Node 구성 및 리소스 배분</li>
-<li><strong>논리적 설계</strong>: Namespace별 서비스 분리 (frontend-ns, member-ns, apply-ns, job-ns, db-ns)</li>
-</ul>
-
-<div class="highlight-box">
-<strong>설계도의 변화 과정</strong> — 전체 아키텍처 구성에 모든 팀원이 가장 시간을 많이 투자하고 길게 회의한 부분이었습니다. PT에서 아키텍처 변경 과정도 함께 설명하며 서비스 이해도를 높였습니다.
-</div>
-
-<h3>Frontend + Backend + DB 연결</h3>
-<ul>
-<li>Kubernetes 환경에서 각 서비스 간 API 연동 테스트</li>
-<li>Ingress를 통한 3-Tier Application 통합</li>
-<li>Frontend, Backend, Database 개발 프로세스와 인프라 결합을 경험</li>
-</ul>
-
-<h3>서비스 보안</h3>
-<ul>
-<li><strong>HTTPS Flow</strong>: OpenSSL 인증서 발급 → MetalLB External IP 할당</li>
-<li><strong>NetworkPolicy</strong>: 내부 서비스를 기능별로 구분하고, 내부 통신을 설정 후 테스트</li>
-<li><strong>Resource Quota</strong>: Namespace별 CPU/메모리 제한 설정</li>
-</ul>
-
-<h3>프로젝트 관리</h3>
-<ul>
-<li>Jira로 전체 태스크 관리 (주기별포, 백엔드 개발, DB 구축, 프론트엔드, API 연동 등)</li>
-<li>GitHub-Slack 연동: 팀원들의 코드 변경 시 실시간 알림</li>
-</ul>
-
-<h2>결과 (Result)</h2>
-<ul>
-<li>Kubernetes 기반 3-Tier 서비스 배포 완료</li>
-<li>NetworkPolicy + Resource Quota 보안 설정 완료</li>
-<li>기획자로서 서비스에 문제가 생길 경우 다각도로 접근하는 시야 확보</li>
-</ul>
-
-<h2>기술 스택</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Orchestration</span><span class="bento-value">Kubernetes, Docker</span></div>
-<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">3-Tier (Frontend + Backend + DB), Namespace 분리</span></div>
-<div class="bento-item"><span class="bento-label">Security</span><span class="bento-value">NetworkPolicy, Resource Quota, OpenSSL, MetalLB</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub 연동</span></div>
-</div>
-
-<h2>프로젝트 자료</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/k8s-arch-logical.png" alt="논리적 아키텍처 (최종본)" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/k8s-arch-physical.png" alt="물리적 아키텍처 (워커노드 구성)" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/k8s-https-flow.png" alt="HTTPS 동작 Flow" style="width:480px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "3-Tier", label: "서비스 구조" },
+          { value: "5", label: "Namespace" },
+          { value: "Policy", label: "네트워크 보안" },
+        ],
+        summary:
+          "Kubernetes 배포 실습을 서비스 운영 관점으로 확장해 Namespace, NetworkPolicy, Ingress, Resource Quota까지 포함한 3-Tier 구조로 설계했습니다.",
+        signal:
+          "컨테이너를 띄우는 수준을 넘어 서비스 경계, 내부 통신, 리소스 제한, 팀 협업 흐름을 함께 설계한 PM/Architect 경험입니다.",
+        problem: {
+          beforeTag: "Challenge",
+          before: "프론트엔드, 백엔드, DB가 컨테이너화되어도 서비스 경계와 통신 규칙이 없으면 운영 구조가 흐려집니다.",
+          afterTag: "Design",
+          after: "Namespace와 NetworkPolicy로 서비스 경계를 나누고 Ingress로 외부 진입을 통합했습니다.",
+        },
+        flow: [
+          { title: "Namespace", desc: "기능별 경계" },
+          { title: "Ingress", desc: "외부 진입" },
+          { title: "Policy", desc: "내부 통신 제어" },
+          { title: "Quota", desc: "리소스 제한" },
+        ],
+        actions: [
+          "PM으로 Jira 일정과 팀 태스크를 관리하고 GitHub-Slack 알림으로 코드 변경 흐름을 공유했습니다.",
+          "Architect로 물리/논리 아키텍처를 나누고 frontend, member, apply, job, db Namespace 전략을 설계했습니다.",
+          "Ingress를 통해 프론트엔드, 백엔드, DB 연결 흐름을 통합하고 API 연동을 검증했습니다.",
+          "NetworkPolicy와 Resource Quota를 적용해 내부 통신 범위와 리소스 사용 상한을 명확히 했습니다.",
+          "설계 변경 과정을 PT에 포함해 왜 구조가 바뀌었는지 팀과 평가자가 이해할 수 있게 설명했습니다.",
+        ],
+        results: [
+          "Kubernetes 기반 3-Tier 서비스 배포를 완료했습니다.",
+          "NetworkPolicy와 Resource Quota를 적용해 운영 관점의 보안/자원 경계를 만들었습니다.",
+          "서비스 장애를 애플리케이션 코드뿐 아니라 네트워크, 리소스, 배포 구조에서 함께 보는 관점을 얻었습니다.",
+        ],
+        stack: [
+          { label: "Orchestration", value: "Kubernetes, Docker" },
+          { label: "Architecture", value: "3-Tier, Namespace 분리, Ingress" },
+          { label: "Security", value: "NetworkPolicy, Resource Quota, OpenSSL, MetalLB" },
+          { label: "PM", value: "Jira, Slack, GitHub 연동" },
+        ],
+        images: [
+          { src: "/images/projects/k8s-arch-logical.png", alt: "논리적 아키텍처" },
+          { src: "/images/projects/k8s-arch-physical.png", alt: "물리적 아키텍처" },
+          { src: "/images/projects/k8s-https-flow.png", alt: "HTTPS 동작 흐름" },
+        ],
+      }),
     },
     en: {
       title: "Kubernetes Project",
@@ -877,82 +673,52 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "PM / Architect",
       tags: ["Kubernetes", "Docker", "Architecture"],
       education: true,
-      contentHtml: `
-<div class="process-flow">
-<div class="process-step"><div class="step-title">Architecture</div><div class="step-desc">Physical/Logical</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Deployment</div><div class="step-desc">3-Tier App</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Security</div><div class="step-desc">NetworkPolicy</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Monitoring</div><div class="step-desc">Resource Quota</div></div>
-</div>
-
-<h2>Situation</h2>
-<p>Conducted a Kubernetes-based service deployment project at AWS CloudSchool. The goal was to implement container orchestration for a 3-Tier Application and service security while simultaneously learning.</p>
-
-<h2>Task</h2>
-<p>Led the overall project as PM and Architect.</p>
-<ul>
-<li><strong>PM</strong>: Jira-based schedule management, real-time code change notifications via GitHub-Slack integration</li>
-<li><strong>Architect</strong>: Physical/logical architecture design, Namespace separation strategy</li>
-<li><strong>Security</strong>: NetworkPolicy, Resource Quota configuration</li>
-<li><strong>Development</strong>: Frontend + Backend + DB Ingress connection</li>
-</ul>
-
-<h2>Action</h2>
-<h3>Architecture Design — Iterative Improvement</h3>
-<ul>
-<li>Evolved architecture from initial draft to final version through team-wide design meetings</li>
-<li><strong>Physical Design</strong>: Worker Node configuration and resource allocation</li>
-<li><strong>Logical Design</strong>: Namespace-based service separation (frontend-ns, member-ns, apply-ns, job-ns, db-ns)</li>
-</ul>
-
-<div class="highlight-box">
-<strong>Architecture Evolution</strong> — The overall architecture design was where the team invested the most time and had the longest discussions. Explaining the architecture changes during the presentation improved understanding of the service.
-</div>
-
-<h3>Frontend + Backend + DB Integration</h3>
-<ul>
-<li>API integration testing between services in Kubernetes environment</li>
-<li>3-Tier Application integration through Ingress</li>
-<li>Gained experience combining Frontend, Backend, Database development with infrastructure</li>
-</ul>
-
-<h3>Service Security</h3>
-<ul>
-<li><strong>HTTPS Flow</strong>: OpenSSL certificate issuance → MetalLB External IP allocation</li>
-<li><strong>NetworkPolicy</strong>: Separated internal services by function, configured and tested internal communication</li>
-<li><strong>Resource Quota</strong>: CPU/memory limits per Namespace</li>
-</ul>
-
-<h3>Project Management</h3>
-<ul>
-<li>Jira for all task management (sprints, backend, DB, frontend, API integration, etc.)</li>
-<li>GitHub-Slack integration for real-time code change notifications</li>
-</ul>
-
-<h2>Result</h2>
-<ul>
-<li>Completed Kubernetes-based 3-Tier service deployment</li>
-<li>NetworkPolicy + Resource Quota security configuration completed</li>
-<li>Gained multi-perspective approach to service troubleshooting as a planner</li>
-</ul>
-
-<h2>Tech Stack</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Orchestration</span><span class="bento-value">Kubernetes, Docker</span></div>
-<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">3-Tier (Frontend + Backend + DB), Namespace Separation</span></div>
-<div class="bento-item"><span class="bento-label">Security</span><span class="bento-value">NetworkPolicy, Resource Quota, OpenSSL, MetalLB</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub Integration</span></div>
-</div>
-
-<h2>Project Materials</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/k8s-arch-logical.png" alt="Logical Architecture (Final)" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/k8s-arch-physical.png" alt="Physical Architecture (Worker Nodes)" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/k8s-https-flow.png" alt="HTTPS Flow" style="width:480px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "3-Tier", label: "Service Structure" },
+          { value: "5", label: "Namespaces" },
+          { value: "Policy", label: "Network Security" },
+        ],
+        summary:
+          "Extended a Kubernetes deployment project into an operations-oriented 3-tier design covering Namespace, NetworkPolicy, Ingress, and Resource Quota.",
+        signal:
+          "This shows PM/Architect thinking beyond launching containers: service boundaries, internal traffic control, resource limits, and team workflow.",
+        problem: {
+          beforeTag: "Challenge",
+          before: "Even containerized frontend, backend, and database components become hard to operate without clear service boundaries and traffic rules.",
+          afterTag: "Design",
+          after: "Separated service boundaries with Namespaces and NetworkPolicy, then unified external access through Ingress.",
+        },
+        flow: [
+          { title: "Namespace", desc: "Functional boundary" },
+          { title: "Ingress", desc: "External entry" },
+          { title: "Policy", desc: "Internal traffic" },
+          { title: "Quota", desc: "Resource limit" },
+        ],
+        actions: [
+          "Managed Jira schedule and team tasks, and connected GitHub-Slack notifications for code-change visibility.",
+          "Designed physical and logical architecture with separate frontend, member, apply, job, and db Namespaces.",
+          "Integrated frontend, backend, and database flows through Ingress and validated API communication.",
+          "Applied NetworkPolicy and Resource Quota to define internal traffic scope and resource ceilings.",
+          "Included architecture evolution in the presentation so reviewers could follow why the structure changed.",
+        ],
+        results: [
+          "Completed Kubernetes-based 3-tier service deployment.",
+          "Created operational security and resource boundaries through NetworkPolicy and Resource Quota.",
+          "Built the habit of diagnosing service issues across code, network, resources, and deployment structure.",
+        ],
+        stack: [
+          { label: "Orchestration", value: "Kubernetes, Docker" },
+          { label: "Architecture", value: "3-Tier, Namespace separation, Ingress" },
+          { label: "Security", value: "NetworkPolicy, Resource Quota, OpenSSL, MetalLB" },
+          { label: "PM", value: "Jira, Slack, GitHub integration" },
+        ],
+        images: [
+          { src: "/images/projects/k8s-arch-logical.png", alt: "Logical architecture" },
+          { src: "/images/projects/k8s-arch-physical.png", alt: "Physical architecture" },
+          { src: "/images/projects/k8s-https-flow.png", alt: "HTTPS flow" },
+        ],
+      }),
     },
     ja: {
       title: "Kubernetesプロジェクト",
@@ -961,82 +727,52 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "PM / アーキテクト",
       tags: ["Kubernetes", "Docker", "Architecture"],
       education: true,
-      contentHtml: `
-<div class="process-flow">
-<div class="process-step"><div class="step-title">アーキテクチャ</div><div class="step-desc">物理/論理設計</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">デプロイ</div><div class="step-desc">3-Tier App</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">セキュリティ</div><div class="step-desc">NetworkPolicy</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">モニタリング</div><div class="step-desc">Resource Quota</div></div>
-</div>
-
-<h2>背景 (Situation)</h2>
-<p>AWS CloudSchoolでKubernetesベースのサービスデプロイプロジェクトを実施しました。学習と同時にプロジェクトを遂行し、3-Tier Applicationのコンテナオーケストレーションとサービスセキュリティの実装が目標でした。</p>
-
-<h2>役割 (Task)</h2>
-<p>PM兼アーキテクトとしてプロジェクト全般を率いました。</p>
-<ul>
-<li><strong>PM</strong>: Jiraベースのスケジュール管理、GitHub-Slack連動でリアルタイムコード変更通知</li>
-<li><strong>アーキテクト</strong>: 物理/論理アーキテクチャ設計、Namespace分離戦略</li>
-<li><strong>セキュリティ</strong>: NetworkPolicy、Resource Quota設定</li>
-<li><strong>開発</strong>: Frontend + Backend + DB Ingress接続</li>
-</ul>
-
-<h2>実施内容 (Action)</h2>
-<h3>アーキテクチャ設計 — 反復的改善</h3>
-<ul>
-<li>初案から最終版まで、チーム全員が参加する設計会議を通じてアーキテクチャを発展</li>
-<li><strong>物理設計</strong>: Worker Node構成およびリソース配分</li>
-<li><strong>論理設計</strong>: Namespace別サービス分離（frontend-ns、member-ns、apply-ns、job-ns、db-ns）</li>
-</ul>
-
-<div class="highlight-box">
-<strong>設計図の変化過程</strong> — 全体アーキテクチャ構成にすべてのチームメンバーが最も時間を投資し、最も長く会議した部分でした。PTでアーキテクチャ変更過程も説明し、サービスの理解度を高めました。
-</div>
-
-<h3>Frontend + Backend + DB統合</h3>
-<ul>
-<li>Kubernetes環境で各サービス間のAPI連携テスト</li>
-<li>Ingressによる3-Tier Application統合</li>
-<li>Frontend、Backend、Database開発プロセスとインフラの結合を経験</li>
-</ul>
-
-<h3>サービスセキュリティ</h3>
-<ul>
-<li><strong>HTTPS Flow</strong>: OpenSSL証明書発行 → MetalLB External IP割当</li>
-<li><strong>NetworkPolicy</strong>: 内部サービスを機能別に区分し、内部通信を設定後テスト</li>
-<li><strong>Resource Quota</strong>: Namespace別CPU/メモリ制限設定</li>
-</ul>
-
-<h3>プロジェクト管理</h3>
-<ul>
-<li>Jiraで全タスク管理（スプリント、バックエンド、DB、フロントエンド、API連携等）</li>
-<li>GitHub-Slack連動: チームメンバーのコード変更時リアルタイム通知</li>
-</ul>
-
-<h2>成果 (Result)</h2>
-<ul>
-<li>Kubernetesベース3-Tierサービスデプロイ完了</li>
-<li>NetworkPolicy + Resource Quotaセキュリティ設定完了</li>
-<li>企画者としてサービスに問題が生じた場合、多角的にアプローチする視野を確保</li>
-</ul>
-
-<h2>技術スタック</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Orchestration</span><span class="bento-value">Kubernetes, Docker</span></div>
-<div class="bento-item"><span class="bento-label">Architecture</span><span class="bento-value">3-Tier (Frontend + Backend + DB), Namespace分離</span></div>
-<div class="bento-item"><span class="bento-label">Security</span><span class="bento-value">NetworkPolicy, Resource Quota, OpenSSL, MetalLB</span></div>
-<div class="bento-item"><span class="bento-label">PM</span><span class="bento-value">Jira, Slack, GitHub連動</span></div>
-</div>
-
-<h2>プロジェクト資料</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/k8s-arch-logical.png" alt="論理アーキテクチャ（最終版）" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/k8s-arch-physical.png" alt="物理アーキテクチャ（ワーカーノード構成）" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/k8s-https-flow.png" alt="HTTPS動作フロー" style="width:480px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "3-Tier", label: "サービス構造" },
+          { value: "5", label: "Namespace" },
+          { value: "Policy", label: "ネットワーク保護" },
+        ],
+        summary:
+          "Kubernetes配備を運用視点に広げ、Namespace、NetworkPolicy、Ingress、Resource Quotaを含む3-Tier構造として設計しました。",
+        signal:
+          "コンテナを起動するだけでなく、サービス境界、内部通信、リソース制限、チーム協業の流れを一緒に設計したPM/Architect経験です。",
+        problem: {
+          beforeTag: "Challenge",
+          before: "フロントエンド、バックエンド、DBをコンテナ化しても、境界と通信ルールがなければ運用構造が不明確になります。",
+          afterTag: "Design",
+          after: "NamespaceとNetworkPolicyでサービス境界を分け、Ingressで外部入口を統合しました。",
+        },
+        flow: [
+          { title: "Namespace", desc: "機能別境界" },
+          { title: "Ingress", desc: "外部入口" },
+          { title: "Policy", desc: "内部通信制御" },
+          { title: "Quota", desc: "リソース制限" },
+        ],
+        actions: [
+          "PMとしてJira日程とチームタスクを管理し、GitHub-Slack通知でコード変更を共有しました。",
+          "Architectとして物理/論理アーキテクチャを分け、frontend、member、apply、job、db Namespace戦略を設計しました。",
+          "Ingressでフロントエンド、バックエンド、DBの接続フローを統合し、API連携を検証しました。",
+          "NetworkPolicyとResource Quotaを適用し、内部通信範囲とリソース上限を明確にしました。",
+          "設計変更の過程を発表に含め、構造が変わった理由を説明しました。",
+        ],
+        results: [
+          "Kubernetesベースの3-Tierサービス配備を完了しました。",
+          "NetworkPolicyとResource Quotaで運用視点のセキュリティ/リソース境界を作りました。",
+          "サービス障害をコード、ネットワーク、リソース、配備構造から一緒に見る観点を得ました。",
+        ],
+        stack: [
+          { label: "Orchestration", value: "Kubernetes, Docker" },
+          { label: "Architecture", value: "3-Tier, Namespace分離, Ingress" },
+          { label: "Security", value: "NetworkPolicy, Resource Quota, OpenSSL, MetalLB" },
+          { label: "PM", value: "Jira, Slack, GitHub連動" },
+        ],
+        images: [
+          { src: "/images/projects/k8s-arch-logical.png", alt: "論理アーキテクチャ" },
+          { src: "/images/projects/k8s-arch-physical.png", alt: "物理アーキテクチャ" },
+          { src: "/images/projects/k8s-https-flow.png", alt: "HTTPS動作フロー" },
+        ],
+      }),
     },
   },
 
@@ -1048,75 +784,50 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "PM",
       tags: ["Python", "Data Analysis", "Visualization"],
       education: true,
-      contentHtml: `
-<div class="process-flow">
-<div class="process-step"><div class="step-title">데이터 수집</div><div class="step-desc">CSV 공공데이터</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">전처리</div><div class="step-desc">Pandas</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">분석/시각화</div><div class="step-desc">Matplotlib, Folium</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">서비스 제안</div><div class="step-desc">이사 추천 Top 5</div></div>
-</div>
-
-<h2>배경 (Situation)</h2>
-<p>AWS CloudSchool에서 Python 언어의 이해와 활용을 주제로 데이터 시각화 프로젝트를 진행했습니다. 팀원 모두가 관심 가질만한 주제를 선정하고, 서울시 공공 데이터를 활용하여 실용적인 서비스를 기획하는 것이 목표였습니다.</p>
-
-<h2>나의 역할 (Task)</h2>
-<p>Project Manager로서 주제 선정부터 개발, PT까지 전 과정을 이끌었습니다.</p>
-<ul>
-<li>서비스 아이디어 선정 및 범위 설정</li>
-<li>데이터 전처리 및 시각화 구현</li>
-<li>최종 PT 발표</li>
-</ul>
-
-<h2>수행 내용 (Action)</h2>
-<h3>서비스 설계 — "이 YeaH"</h3>
-
-<div class="highlight-box">
-<strong>서비스 컨셉</strong> — "이사 가기 전, 눈으로 확인하자." 서울시 전월세 가격, 범죄율, 거리를 종합 분석하여 이사 추천 지역을 제안하는 서비스를 기획했습니다.
-</div>
-
-<ul>
-<li>서울시 전월세가 평균 확인을 통한 <strong>지역별 추이 확인</strong></li>
-<li>범죄율, 횟수 시각화를 통한 <strong>선택 지역 안전성 확인</strong></li>
-<li>이동 거리 선호별 <strong>이사 지역 추천 리스트</strong></li>
-</ul>
-
-<h3>데이터 파이프라인</h3>
-<ul>
-<li><strong>데이터 수집</strong>: 서울시 공공 데이터 CSV 파일 수집</li>
-<li><strong>전처리</strong>: Pandas를 활용한 법정동, 전월세 구분, 금액 등 파라미터 필터링</li>
-<li><strong>시각화</strong>: Folium(지도), Matplotlib(레이더 차트) 활용</li>
-<li><strong>추천 로직</strong>: 420개 좌표 중 특정 거리 이하 + 선택 보증금, 임대료 가장 낮은 Top 5 선정</li>
-</ul>
-
-<h3>카테고리 분류</h3>
-<ul>
-<li>분류한 데이터를 기반으로 카테고리별 나누는 방법을 팀 회의를 통해 결정</li>
-<li>이사추천에 적합한 비용, 안전, 근무지 거리에 따라 데이터를 구분</li>
-<li>이용자 관점에서 서비스를 생각하여 제시</li>
-</ul>
-
-<h2>결과 (Result)</h2>
-<ul>
-<li>서울시 공공 데이터 기반 이사 추천 서비스 구축 완료</li>
-<li>데이터 활용 기법 학습 및 데이터를 통한 인사이트 도출 경험</li>
-</ul>
-
-<h2>기술 스택</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Language</span><span class="bento-value">Python</span></div>
-<div class="bento-item"><span class="bento-label">Data</span><span class="bento-value">Pandas, NumPy</span></div>
-<div class="bento-item"><span class="bento-label">Visualization</span><span class="bento-value">Matplotlib, Folium</span></div>
-<div class="bento-item"><span class="bento-label">IDE</span><span class="bento-value">PyCharm, Jupyter Notebook</span></div>
-</div>
-
-<h2>프로젝트 자료</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/python-data-viz-map.png" alt="거리별 비교 지도" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/python-data-viz-radar.png" alt="종목별 범죄 레이더 차트" style="width:480px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "서울", label: "공공데이터" },
+          { value: "420", label: "좌표 후보" },
+          { value: "Top 5", label: "지역 추천" },
+        ],
+        summary:
+          "서울시 전월세, 범죄, 거리 데이터를 단순 시각화가 아니라 이사 후보지를 비교하는 의사결정 도구로 만들었습니다.",
+        signal:
+          "데이터를 예쁘게 보여주는 데서 끝내지 않고, 사용자의 선택 기준을 정의하고 추천 로직으로 연결한 PM형 데이터 프로젝트입니다.",
+        problem: {
+          beforeTag: "Data",
+          before: "전월세, 범죄율, 거리 데이터는 각각 흩어져 있어 이사 후보지를 한 번에 비교하기 어렵습니다.",
+          afterTag: "Service",
+          after: "비용, 안전, 이동 거리 기준으로 후보지를 필터링하고 지도와 레이더 차트로 비교 가능하게 했습니다.",
+        },
+        flow: [
+          { title: "수집", desc: "서울시 CSV" },
+          { title: "전처리", desc: "Pandas 필터링" },
+          { title: "비교", desc: "지도·레이더 차트" },
+          { title: "추천", desc: "이사 후보 Top 5" },
+        ],
+        actions: [
+          "PM으로 주제 선정, 범위 설정, 개발 진행, 최종 발표를 이끌었습니다.",
+          "서울시 공공데이터를 수집하고 법정동, 전월세 구분, 보증금, 월세 기준으로 전처리했습니다.",
+          "Folium 지도와 Matplotlib 레이더 차트로 거리, 비용, 안전성을 비교할 수 있게 만들었습니다.",
+          "420개 좌표 중 사용자가 선택한 거리와 예산 조건에 맞는 후보지를 Top 5로 추천했습니다.",
+        ],
+        results: [
+          "서울시 공공데이터 기반 이사 추천 서비스 컨셉을 구현했습니다.",
+          "분석 결과를 사용자의 의사결정 기준으로 번역하는 경험을 만들었습니다.",
+          "데이터 전처리, 시각화, 추천 로직을 하나의 흐름으로 연결했습니다.",
+        ],
+        stack: [
+          { label: "Language", value: "Python" },
+          { label: "Data", value: "Pandas, NumPy, Seoul Public Data CSV" },
+          { label: "Visualization", value: "Matplotlib, Folium" },
+          { label: "Tool", value: "PyCharm, Jupyter Notebook" },
+        ],
+        images: [
+          { src: "/images/projects/python-data-viz-map.png", alt: "거리별 비교 지도" },
+          { src: "/images/projects/python-data-viz-radar.png", alt: "범죄 유형 레이더 차트" },
+        ],
+      }),
     },
     en: {
       title: "Python Data Visualization",
@@ -1125,75 +836,50 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "PM",
       tags: ["Python", "Data Analysis", "Visualization"],
       education: true,
-      contentHtml: `
-<div class="process-flow">
-<div class="process-step"><div class="step-title">Data Collection</div><div class="step-desc">CSV Public Data</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Preprocessing</div><div class="step-desc">Pandas</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Visualization</div><div class="step-desc">Matplotlib, Folium</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">Recommendation</div><div class="step-desc">Top 5 Areas</div></div>
-</div>
-
-<h2>Situation</h2>
-<p>Conducted a data visualization project at AWS CloudSchool focused on understanding and utilizing Python. The goal was to select a topic of common interest and build a practical service using Seoul city public data.</p>
-
-<h2>Task</h2>
-<p>Led the entire process from topic selection to development and presentation as Project Manager.</p>
-<ul>
-<li>Service idea selection and scope definition</li>
-<li>Data preprocessing and visualization implementation</li>
-<li>Final presentation delivery</li>
-</ul>
-
-<h2>Action</h2>
-<h3>Service Design</h3>
-
-<div class="highlight-box">
-<strong>Service Concept</strong> — "Check before you move." Designed a service that recommends moving areas by comprehensively analyzing Seoul's rent prices, crime rates, and commute distances.
-</div>
-
-<ul>
-<li><strong>Regional rent trend analysis</strong> through Seoul average rent data</li>
-<li><strong>Safety assessment</strong> through crime rate and frequency visualization</li>
-<li><strong>Moving area recommendation list</strong> based on commute distance preferences</li>
-</ul>
-
-<h3>Data Pipeline</h3>
-<ul>
-<li><strong>Collection</strong>: Seoul public data CSV files</li>
-<li><strong>Preprocessing</strong>: Pandas-based filtering by district, rent type, and price</li>
-<li><strong>Visualization</strong>: Folium (maps), Matplotlib (radar charts)</li>
-<li><strong>Recommendation Logic</strong>: From 420 coordinates, select Top 5 within distance threshold with lowest deposit and rent</li>
-</ul>
-
-<h3>Category Classification</h3>
-<ul>
-<li>Decided categorization method through team meetings based on classified data</li>
-<li>Separated data by cost, safety, and commute distance for moving recommendations</li>
-<li>Designed from the end-user's perspective</li>
-</ul>
-
-<h2>Result</h2>
-<ul>
-<li>Completed Seoul public data-based moving recommendation service</li>
-<li>Gained experience in data utilization techniques and deriving insights from data</li>
-</ul>
-
-<h2>Tech Stack</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Language</span><span class="bento-value">Python</span></div>
-<div class="bento-item"><span class="bento-label">Data</span><span class="bento-value">Pandas, NumPy</span></div>
-<div class="bento-item"><span class="bento-label">Visualization</span><span class="bento-value">Matplotlib, Folium</span></div>
-<div class="bento-item"><span class="bento-label">IDE</span><span class="bento-value">PyCharm, Jupyter Notebook</span></div>
-</div>
-
-<h2>Project Materials</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/python-data-viz-map.png" alt="Distance Comparison Map" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/python-data-viz-radar.png" alt="Crime Category Radar Chart" style="width:480px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "Seoul", label: "Public Data" },
+          { value: "420", label: "Coordinates" },
+          { value: "Top 5", label: "Area Picks" },
+        ],
+        summary:
+          "Turned Seoul rent, crime, and distance datasets into a decision tool for comparing moving-area candidates.",
+        signal:
+          "This is a PM-style data project: defining user decision criteria and connecting cleaned data to recommendation logic, not just drawing charts.",
+        problem: {
+          beforeTag: "Data",
+          before: "Rent, crime, and distance data are scattered, making it hard to compare moving candidates in one view.",
+          afterTag: "Service",
+          after: "Filtered candidates by cost, safety, and commute distance, then made them comparable through maps and radar charts.",
+        },
+        flow: [
+          { title: "Collect", desc: "Seoul CSV data" },
+          { title: "Clean", desc: "Pandas filters" },
+          { title: "Compare", desc: "Map and radar" },
+          { title: "Recommend", desc: "Top 5 areas" },
+        ],
+        actions: [
+          "Led topic selection, scope definition, development flow, and final presentation as PM.",
+          "Collected Seoul public datasets and cleaned them by district, rent type, deposit, and monthly rent.",
+          "Used Folium and Matplotlib to compare distance, cost, and safety visually.",
+          "Recommended Top 5 candidates from 420 coordinates based on selected distance and budget conditions.",
+        ],
+        results: [
+          "Built a Seoul public data-based moving recommendation concept.",
+          "Translated raw analysis into criteria users can actually decide with.",
+          "Connected preprocessing, visualization, and recommendation logic into one product flow.",
+        ],
+        stack: [
+          { label: "Language", value: "Python" },
+          { label: "Data", value: "Pandas, NumPy, Seoul Public Data CSV" },
+          { label: "Visualization", value: "Matplotlib, Folium" },
+          { label: "Tool", value: "PyCharm, Jupyter Notebook" },
+        ],
+        images: [
+          { src: "/images/projects/python-data-viz-map.png", alt: "Distance comparison map" },
+          { src: "/images/projects/python-data-viz-radar.png", alt: "Crime category radar chart" },
+        ],
+      }),
     },
     ja: {
       title: "Pythonデータ可視化",
@@ -1202,75 +888,50 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       role: "PM",
       tags: ["Python", "Data Analysis", "Visualization"],
       education: true,
-      contentHtml: `
-<div class="process-flow">
-<div class="process-step"><div class="step-title">データ収集</div><div class="step-desc">CSV公共データ</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">前処理</div><div class="step-desc">Pandas</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">分析/可視化</div><div class="step-desc">Matplotlib, Folium</div></div>
-<span class="process-arrow">→</span>
-<div class="process-step"><div class="step-title">サービス提案</div><div class="step-desc">引越しTop 5</div></div>
-</div>
-
-<h2>背景 (Situation)</h2>
-<p>AWS CloudSchoolでPython言語の理解と活用をテーマにデータ可視化プロジェクトを実施しました。チームメンバー全員が関心を持てるテーマを選定し、ソウル市公共データを活用して実用的なサービスを企画することが目標でした。</p>
-
-<h2>役割 (Task)</h2>
-<p>Project Managerとしてテーマ選定から開発、PTまで全過程を率いました。</p>
-<ul>
-<li>サービスアイデア選定および範囲設定</li>
-<li>データ前処理および可視化実装</li>
-<li>最終PT発表</li>
-</ul>
-
-<h2>実施内容 (Action)</h2>
-<h3>サービス設計</h3>
-
-<div class="highlight-box">
-<strong>サービスコンセプト</strong> — 「引越し前に、目で確認しよう。」ソウル市の家賃価格、犯罪率、距離を総合分析して引越し推薦地域を提案するサービスを企画しました。
-</div>
-
-<ul>
-<li>ソウル市平均家賃確認による<strong>地域別推移確認</strong></li>
-<li>犯罪率、回数の可視化による<strong>選択地域安全性確認</strong></li>
-<li>移動距離選好別<strong>引越し地域推薦リスト</strong></li>
-</ul>
-
-<h3>データパイプライン</h3>
-<ul>
-<li><strong>データ収集</strong>: ソウル市公共データCSVファイル収集</li>
-<li><strong>前処理</strong>: Pandasを活用した法定洞、家賃区分、金額等パラメータフィルタリング</li>
-<li><strong>可視化</strong>: Folium（地図）、Matplotlib（レーダーチャート）活用</li>
-<li><strong>推薦ロジック</strong>: 420座標から特定距離以下 + 選択保証金、賃料最低Top 5選定</li>
-</ul>
-
-<h3>カテゴリ分類</h3>
-<ul>
-<li>分類したデータを基にカテゴリ別の分け方をチーム会議で決定</li>
-<li>引越し推薦に適した費用、安全、勤務地距離に応じてデータを区分</li>
-<li>利用者視点でサービスを考えて提示</li>
-</ul>
-
-<h2>成果 (Result)</h2>
-<ul>
-<li>ソウル市公共データベースの引越し推薦サービス構築完了</li>
-<li>データ活用技法の学習およびデータからのインサイト導出を経験</li>
-</ul>
-
-<h2>技術スタック</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Language</span><span class="bento-value">Python</span></div>
-<div class="bento-item"><span class="bento-label">Data</span><span class="bento-value">Pandas, NumPy</span></div>
-<div class="bento-item"><span class="bento-label">Visualization</span><span class="bento-value">Matplotlib, Folium</span></div>
-<div class="bento-item"><span class="bento-label">IDE</span><span class="bento-value">PyCharm, Jupyter Notebook</span></div>
-</div>
-
-<h2>プロジェクト資料</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/python-data-viz-map.png" alt="距離別比較マップ" style="width:480px;border-radius:12px;" />
-<img src="/images/projects/python-data-viz-radar.png" alt="犯罪種目別レーダーチャート" style="width:480px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "ソウル", label: "公共データ" },
+          { value: "420", label: "座標候補" },
+          { value: "Top 5", label: "地域推薦" },
+        ],
+        summary:
+          "ソウル市の家賃、犯罪、距離データを単なる可視化ではなく、引越し候補地を比較する意思決定ツールにしました。",
+        signal:
+          "データを見せるだけで終わらせず、利用者の選択基準を定義し推薦ロジックへつなげたPM型データプロジェクトです。",
+        problem: {
+          beforeTag: "Data",
+          before: "家賃、犯罪率、距離データが分散しており、引越し候補地を一度に比較しにくい状態でした。",
+          afterTag: "Service",
+          after: "費用、安全、移動距離で候補地を絞り込み、地図とレーダーチャートで比較できるようにしました。",
+        },
+        flow: [
+          { title: "収集", desc: "ソウル市CSV" },
+          { title: "前処理", desc: "Pandasフィルタ" },
+          { title: "比較", desc: "地図・レーダー" },
+          { title: "推薦", desc: "候補地Top 5" },
+        ],
+        actions: [
+          "PMとしてテーマ選定、範囲設定、開発進行、最終発表をリードしました。",
+          "ソウル市公共データを収集し、法定洞、家賃区分、保証金、月額家賃で前処理しました。",
+          "Folium地図とMatplotlibレーダーチャートで距離、費用、安全性を比較できるようにしました。",
+          "420座標の中から距離と予算条件に合う候補地をTop 5として推薦しました。",
+        ],
+        results: [
+          "ソウル市公共データベースの引越し推薦サービスコンセプトを実装しました。",
+          "分析結果をユーザーの意思決定基準へ翻訳する経験を作りました。",
+          "データ前処理、可視化、推薦ロジックを一つの流れにつなげました。",
+        ],
+        stack: [
+          { label: "Language", value: "Python" },
+          { label: "Data", value: "Pandas, NumPy, Seoul Public Data CSV" },
+          { label: "Visualization", value: "Matplotlib, Folium" },
+          { label: "Tool", value: "PyCharm, Jupyter Notebook" },
+        ],
+        images: [
+          { src: "/images/projects/python-data-viz-map.png", alt: "距離別比較マップ" },
+          { src: "/images/projects/python-data-viz-radar.png", alt: "犯罪カテゴリーレーダーチャート" },
+        ],
+      }),
     },
   },
 
@@ -1285,60 +946,56 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       demo: "https://dear-ant.vercel.app/",
       sideProject: true,
       claudeCode: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">2주</div><div class="label">기획~배포</div></div>
-<div class="metric-card"><div class="value">5</div><div class="label">REST API</div></div>
-<div class="metric-card"><div class="value">1인</div><div class="label">개발</div></div>
-</div>
-
-<h2>배경 (Situation)</h2>
-<p>개인 투자자들이 자신의 투자 성향을 객관적으로 파악하고, 매매 기록을 감정과 함께 관리할 수 있는 서비스가 필요했습니다. AI 기반으로 투자 판단을 돕는 리포트 서비스를 기획했습니다.</p>
-
-<h2>나의 역할 (Task)</h2>
-<p>Claude Code를 활용하여 기획부터 배포까지 1인으로 전 과정을 수행했습니다.</p>
-
-<h2>수행 내용 (Action)</h2>
-<h3>주요 기능 구현</h3>
-<ul>
-<li><strong>투자 성향 리포트</strong>: 7문항 설문 → AI 분석 → A~F 등급 판정</li>
-<li><strong>트레이딩 저널</strong>: 매매 기록, 감정 태깅 분석</li>
-<li><strong>금융 계산기</strong>: 복리 계산, 적금 vs 투자 비교</li>
-</ul>
-
-<h3>기술적 구현</h3>
-<ul>
-<li>REST API 5개 엔드포인트 설계</li>
-<li>Custom SVG 차트 구현</li>
-<li>Dual Storage (Supabase + LocalStorage) 아키텍처</li>
-</ul>
-
-<div class="highlight-box">
-<strong>Claude Code 활용</strong> — 기획→설계→개발→배포까지 전 과정에서 Claude Code를 활용하여 1인 2주 만에 서비스를 완성했습니다.
-</div>
-
-<h2>결과 (Result)</h2>
-<ul>
-<li>2주 만에 기획~배포 완료</li>
-<li>REST API 5개 엔드포인트, Custom SVG 차트, Dual Storage 구현</li>
-</ul>
-
-<h2>기술 스택</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Next.js 16, React 19, TypeScript, Tailwind CSS 4</span></div>
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Supabase (Auth, Database, Storage)</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Claude Code (개발 전 과정 활용)</span></div>
-</div>
-
-<h2>스크린샷</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
-<img src="/images/projects/dear-ant-home.png" alt="홈 대시보드" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-survey.png" alt="매매 전 셀프 체크" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-report.png" alt="리포트 목록" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-journal.png" alt="트레이딩 저널" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-calculator.png" alt="적금 vs 투자 비교" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-compound.png" alt="복리 계산기" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-simulator.png" alt="매매 시뮬레이터" style="width:100%;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "2주", label: "기획~배포" },
+          { value: "1인", label: "제품 개발" },
+          { value: "3", label: "핵심 워크플로우" },
+        ],
+        summary:
+          "개인 투자자가 매매 전 판단, 매매 후 기록, 장기 수익 계산을 한 곳에서 반복할 수 있도록 투자 의사결정 루틴을 제품화했습니다.",
+        signal:
+          "혼자 빠르게 만드는 능력보다 더 중요한 것은 사용자의 반복 행동을 읽고 기능을 묶는 제품 감각입니다. 이 프로젝트는 그 흐름을 보여줍니다.",
+        problem: {
+          beforeTag: "Pain",
+          before: "개인 투자자는 매매 판단, 감정 기록, 수익 계산을 서로 다른 도구에 흩어놓기 쉽습니다.",
+          afterTag: "Product",
+          after: "투자 성향 리포트, 트레이딩 저널, 금융 계산기를 하나의 루틴으로 연결했습니다.",
+        },
+        flow: [
+          { title: "진단", desc: "투자 성향 리포트" },
+          { title: "기록", desc: "트레이딩 저널" },
+          { title: "계산", desc: "복리·비교 계산기" },
+          { title: "회고", desc: "판단 습관 확인" },
+        ],
+        actions: [
+          "7문항 설문을 통해 투자 성향을 진단하고 결과를 A~F 등급 리포트로 보여주는 흐름을 만들었습니다.",
+          "매매 기록과 감정 태그를 함께 남길 수 있는 트레이딩 저널을 구현했습니다.",
+          "복리 계산, 적금과 투자 비교, 매매 시뮬레이션처럼 반복 사용 가능한 계산 도구를 구성했습니다.",
+          "Supabase와 LocalStorage를 함께 사용해 로그인 유무와 저장 안정성을 고려한 Dual Storage 구조를 적용했습니다.",
+          "Claude Code를 활용해 기획, 설계, 구현, 배포까지 2주 안에 마무리했습니다.",
+        ],
+        results: [
+          "개인 투자자의 의사결정 루틴을 진단, 기록, 계산 세 흐름으로 정리했습니다.",
+          "Next.js 기반 웹서비스를 1인으로 기획부터 배포까지 완성했습니다.",
+          "AI 도구를 단순 코드 생성이 아니라 제품 개발 속도를 높이는 작업 파트너로 활용했습니다.",
+        ],
+        stack: [
+          { label: "Frontend", value: "Next.js 16, React 19, TypeScript, Tailwind CSS 4" },
+          { label: "Backend", value: "Supabase Auth, Database, Storage" },
+          { label: "Product", value: "Investment Profile, Trading Journal, Financial Calculators" },
+          { label: "AI Workflow", value: "Claude Code 기반 1인 개발" },
+        ],
+        images: [
+          { src: "/images/projects/dear-ant-home.png", alt: "홈 대시보드" },
+          { src: "/images/projects/dear-ant-survey.png", alt: "매매 전 셀프 체크" },
+          { src: "/images/projects/dear-ant-report.png", alt: "리포트 목록" },
+          { src: "/images/projects/dear-ant-journal.png", alt: "트레이딩 저널" },
+          { src: "/images/projects/dear-ant-calculator.png", alt: "적금 vs 투자 비교" },
+          { src: "/images/projects/dear-ant-compound.png", alt: "복리 계산기" },
+          { src: "/images/projects/dear-ant-simulator.png", alt: "매매 시뮬레이터" },
+        ],
+      }),
     },
     en: {
       title: "Dear,ANT — AI Investment Report",
@@ -1350,60 +1007,56 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       demo: "https://dear-ant.vercel.app/",
       sideProject: true,
       claudeCode: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">2wk</div><div class="label">Plan to Deploy</div></div>
-<div class="metric-card"><div class="value">5</div><div class="label">REST APIs</div></div>
-<div class="metric-card"><div class="value">Solo</div><div class="label">Developer</div></div>
-</div>
-
-<h2>Situation</h2>
-<p>Individual investors needed a service to objectively assess their investment profiles and manage trade records alongside emotions. Planned an AI-powered report service to assist investment decisions.</p>
-
-<h2>Task</h2>
-<p>Executed the entire process from planning to deployment solo using Claude Code.</p>
-
-<h2>Action</h2>
-<h3>Core Features</h3>
-<ul>
-<li><strong>Investment Profile Report</strong>: 7-question survey → AI analysis → A~F grade assessment</li>
-<li><strong>Trading Journal</strong>: Trade records, emotion tagging analysis</li>
-<li><strong>Financial Calculator</strong>: Compound interest, savings vs investment comparison</li>
-</ul>
-
-<h3>Technical Implementation</h3>
-<ul>
-<li>5 REST API endpoints designed</li>
-<li>Custom SVG chart implementation</li>
-<li>Dual Storage (Supabase + LocalStorage) architecture</li>
-</ul>
-
-<div class="highlight-box">
-<strong>Claude Code</strong> — Leveraged Claude Code throughout the entire development cycle (planning → design → development → deployment) to complete the service solo in 2 weeks.
-</div>
-
-<h2>Result</h2>
-<ul>
-<li>Completed planning to deployment in 2 weeks</li>
-<li>5 REST API endpoints, Custom SVG charts, Dual Storage implemented</li>
-</ul>
-
-<h2>Tech Stack</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Next.js 16, React 19, TypeScript, Tailwind CSS 4</span></div>
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Supabase (Auth, Database, Storage)</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Claude Code (used throughout entire development process)</span></div>
-</div>
-
-<h2>Screenshots</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
-<img src="/images/projects/dear-ant-home.png" alt="Home Dashboard" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-survey.png" alt="Pre-trade Self Check" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-report.png" alt="Report List" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-journal.png" alt="Trading Journal" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-calculator.png" alt="Savings vs Investment" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-compound.png" alt="Compound Interest Calculator" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-simulator.png" alt="Trade Simulator" style="width:100%;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "2wk", label: "Plan to Deploy" },
+          { value: "Solo", label: "Product Build" },
+          { value: "3", label: "Core Workflows" },
+        ],
+        summary:
+          "Productized an individual investor routine around pre-trade judgment, post-trade journaling, and long-term return calculation.",
+        signal:
+          "The key signal is not just building fast, but recognizing repeated user behavior and grouping features into a coherent product routine.",
+        problem: {
+          beforeTag: "Pain",
+          before: "Individual investors often scatter trade judgment, emotion records, and return calculations across separate tools.",
+          afterTag: "Product",
+          after: "Connected investment profile reports, trading journal, and financial calculators into one loop.",
+        },
+        flow: [
+          { title: "Diagnose", desc: "Investment profile" },
+          { title: "Record", desc: "Trading journal" },
+          { title: "Calculate", desc: "Compound and compare" },
+          { title: "Review", desc: "Decision habits" },
+        ],
+        actions: [
+          "Built a 7-question investment profile survey that returns an A-F style report.",
+          "Implemented a trading journal where users can save trade records with emotion tags.",
+          "Created repeat-use calculators including compound interest, savings vs investment, and trade simulation.",
+          "Applied a Dual Storage approach using Supabase and LocalStorage to consider both authenticated and local usage.",
+          "Used Claude Code across planning, design, implementation, and deployment to finish the product in 2 weeks.",
+        ],
+        results: [
+          "Organized individual investor decisions into diagnosis, journaling, and calculation workflows.",
+          "Shipped a Next.js web service from planning to deployment as a solo developer.",
+          "Used AI tooling as a product-development partner rather than only a code-generation shortcut.",
+        ],
+        stack: [
+          { label: "Frontend", value: "Next.js 16, React 19, TypeScript, Tailwind CSS 4" },
+          { label: "Backend", value: "Supabase Auth, Database, Storage" },
+          { label: "Product", value: "Investment Profile, Trading Journal, Financial Calculators" },
+          { label: "AI Workflow", value: "Solo development with Claude Code" },
+        ],
+        images: [
+          { src: "/images/projects/dear-ant-home.png", alt: "Home dashboard" },
+          { src: "/images/projects/dear-ant-survey.png", alt: "Pre-trade self check" },
+          { src: "/images/projects/dear-ant-report.png", alt: "Report list" },
+          { src: "/images/projects/dear-ant-journal.png", alt: "Trading journal" },
+          { src: "/images/projects/dear-ant-calculator.png", alt: "Savings vs investment" },
+          { src: "/images/projects/dear-ant-compound.png", alt: "Compound calculator" },
+          { src: "/images/projects/dear-ant-simulator.png", alt: "Trade simulator" },
+        ],
+      }),
     },
     ja: {
       title: "Dear,ANT — AI投資判断レポート",
@@ -1415,285 +1068,553 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
       demo: "https://dear-ant.vercel.app/",
       sideProject: true,
       claudeCode: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">2週</div><div class="label">企画〜デプロイ</div></div>
-<div class="metric-card"><div class="value">5</div><div class="label">REST API</div></div>
-<div class="metric-card"><div class="value">1人</div><div class="label">開発</div></div>
-</div>
-
-<h2>背景 (Situation)</h2>
-<p>個人投資家が自分の投資性向を客観的に把握し、売買記録を感情と共に管理できるサービスが必要でした。AIベースで投資判断を支援するレポートサービスを企画しました。</p>
-
-<h2>役割 (Task)</h2>
-<p>Claude Codeを活用して企画からデプロイまで1人で全過程を遂行しました。</p>
-
-<h2>実施内容 (Action)</h2>
-<h3>主要機能実装</h3>
-<ul>
-<li><strong>投資性向レポート</strong>: 7問アンケート → AI分析 → A〜Fグレード判定</li>
-<li><strong>トレーディングジャーナル</strong>: 売買記録、感情タギング分析</li>
-<li><strong>金融計算機</strong>: 複利計算、積立 vs 投資比較</li>
-</ul>
-
-<h3>技術的実装</h3>
-<ul>
-<li>REST API 5エンドポイント設計</li>
-<li>Custom SVGチャート実装</li>
-<li>Dual Storage（Supabase + LocalStorage）アーキテクチャ</li>
-</ul>
-
-<div class="highlight-box">
-<strong>Claude Code活用</strong> — 企画→設計→開発→デプロイまで全過程でClaude Codeを活用し、1人2週間でサービスを完成しました。
-</div>
-
-<h2>成果 (Result)</h2>
-<ul>
-<li>2週間で企画〜デプロイ完了</li>
-<li>REST API 5エンドポイント、Custom SVGチャート、Dual Storage実装</li>
-</ul>
-
-<h2>技術スタック</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Next.js 16, React 19, TypeScript, Tailwind CSS 4</span></div>
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Supabase (Auth, Database, Storage)</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Claude Code（開発全過程で活用）</span></div>
-</div>
-
-<h2>スクリーンショット</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
-<img src="/images/projects/dear-ant-home.png" alt="ホームダッシュボード" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-survey.png" alt="売買前セルフチェック" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-report.png" alt="レポート一覧" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-journal.png" alt="トレーディングジャーナル" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-calculator.png" alt="積立 vs 投資比較" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-compound.png" alt="複利計算機" style="width:100%;border-radius:12px;" />
-<img src="/images/projects/dear-ant-simulator.png" alt="売買シミュレーター" style="width:100%;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "2週", label: "企画〜公開" },
+          { value: "1人", label: "製品開発" },
+          { value: "3", label: "主要ワークフロー" },
+        ],
+        summary:
+          "個人投資家が売買前の判断、売買後の記録、長期収益計算を一つの流れで繰り返せるよう、投資意思決定ルーティンを製品化しました。",
+        signal:
+          "早く作る力だけでなく、ユーザーの反復行動を読み、機能を一つのプロダクト体験としてまとめる感覚を示します。",
+        problem: {
+          beforeTag: "Pain",
+          before: "個人投資家は売買判断、感情記録、収益計算を別々のツールに分散しがちです。",
+          afterTag: "Product",
+          after: "投資性向レポート、トレーディングジャーナル、金融計算機を一つのルーティンとして接続しました。",
+        },
+        flow: [
+          { title: "診断", desc: "投資性向レポート" },
+          { title: "記録", desc: "売買ジャーナル" },
+          { title: "計算", desc: "複利・比較" },
+          { title: "振り返り", desc: "判断習慣確認" },
+        ],
+        actions: [
+          "7問アンケートで投資性向を診断し、A〜Fグレードのレポートで見せる流れを作りました。",
+          "売買記録と感情タグを一緒に残せるトレーディングジャーナルを実装しました。",
+          "複利計算、積立と投資比較、売買シミュレーションなど繰り返し使える計算機を構成しました。",
+          "SupabaseとLocalStorageを併用し、ログイン有無と保存安定性を考慮したDual Storage構造を適用しました。",
+          "Claude Codeを活用して企画、設計、実装、公開まで2週間で完了しました。",
+        ],
+        results: [
+          "個人投資家の意思決定ルーティンを診断、記録、計算の三つの流れに整理しました。",
+          "Next.jsベースのWebサービスを1人で企画から公開まで完成させました。",
+          "AIツールを単なるコード生成ではなく、製品開発速度を上げる作業パートナーとして活用しました。",
+        ],
+        stack: [
+          { label: "Frontend", value: "Next.js 16, React 19, TypeScript, Tailwind CSS 4" },
+          { label: "Backend", value: "Supabase Auth, Database, Storage" },
+          { label: "Product", value: "Investment Profile, Trading Journal, Financial Calculators" },
+          { label: "AI Workflow", value: "Claude Codeによる1人開発" },
+        ],
+        images: [
+          { src: "/images/projects/dear-ant-home.png", alt: "ホームダッシュボード" },
+          { src: "/images/projects/dear-ant-survey.png", alt: "売買前セルフチェック" },
+          { src: "/images/projects/dear-ant-report.png", alt: "レポート一覧" },
+          { src: "/images/projects/dear-ant-journal.png", alt: "トレーディングジャーナル" },
+          { src: "/images/projects/dear-ant-calculator.png", alt: "積立 vs 投資比較" },
+          { src: "/images/projects/dear-ant-compound.png", alt: "複利計算機" },
+          { src: "/images/projects/dear-ant-simulator.png", alt: "売買シミュレーター" },
+        ],
+      }),
     },
   },
 
   "dalgyeol": {
     ko: {
-      title: "달결 — AI 사주·타로",
+      title: "달결 — 무료 사주·타로 & AI 상담",
       company: "개인 프로젝트",
       period: "2026.03 ~",
-      role: "풀스택 개발",
-      tags: ["Rust", "Swift", "LLM", "iOS"],
+      role: "풀스택 웹서비스 개발 · 제품 구조 설계",
+      tags: ["Next.js", "Rust", "Axum", "WebSocket", "Toss"],
+      demo: "https://dalgyeol.com",
       sideProject: true,
       claudeCode: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">~1,100</div><div class="label">Rust 엔진 (줄)</div></div>
-<div class="metric-card"><div class="value">3</div><div class="label">멀티 LLM</div></div>
-<div class="metric-card"><div class="value">AES-256</div><div class="label">암호화</div></div>
-</div>
-
-<h2>배경 (Situation)</h2>
-<p>사주와 타로를 결합한 AI 운세 상담 iOS 앱입니다. 기존 운세 서비스가 LLM에 전적으로 의존하여 일관성이 떨어지는 문제를 해결하고자, 규칙 기반 사주 엔진을 직접 구현했습니다.</p>
-
-<h2>나의 역할 (Task)</h2>
-<p>풀스택 개발자로서 백엔드(Rust), iOS(Swift), AI 통합을 담당합니다.</p>
-
-<h2>수행 내용 (Action)</h2>
-<h3>핵심 기술</h3>
-
-<div class="highlight-box">
-<strong>순수 Rust 사주 엔진</strong> — 외부 API에 의존하지 않는 ~1,100줄의 규칙 기반 사주 계산 엔진을 직접 구현. LLM의 불확실성 없이 일관된 운세 결과를 보장합니다.
-</div>
-
-<ul>
-<li>AES-256-GCM 개인정보 암호화</li>
-<li>StoreKit 2 인앱결제 + 포인트 경제 시스템</li>
-<li>실시간 WebSocket AI 상담 + PII 마스킹</li>
-<li>멀티 LLM 프로바이더 (Claude, GPT, Gemini)</li>
-</ul>
-
-<h2>결과 (Result)</h2>
-<ul>
-<li>순수 Rust 사주 엔진 구현 완료</li>
-<li>서비스 출시 예정</li>
-</ul>
-
-<h2>기술 스택</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust (Axum, Tokio), PostgreSQL, Fly.io</span></div>
-<div class="bento-item"><span class="bento-label">iOS</span><span class="bento-value">SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">멀티 LLM (Claude, GPT, Gemini)</span></div>
-</div>
-
-<h2>스크린샷</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/dalgyeol-daily-fortune.png" alt="오늘의 운세" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dalgyeol-fortune-detail.png" alt="월운 상세" style="width:240px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "3", label: "무료 공개 진입점" },
+          { value: "Next.js", label: "웹 프론트" },
+          { value: "Rust", label: "Axum API" },
+          { value: "BYTEA", label: "프로필 PII 저장" },
+        ],
+        summary:
+          "무료 사주, 오늘의 운세, 타로로 첫 방문자의 체험 장벽을 낮추고, 결과 이후 AI 상담과 프로필 저장으로 이어지는 운세 웹서비스를 설계·구현했습니다.",
+        signal:
+          "달결은 단순 운세 페이지가 아니라 유입, 체험, 신뢰, 심화 행동을 분리한 제품 구조입니다. 기획과 풀스택 구현을 동시에 다룰 수 있음을 보여줍니다.",
+        problem: {
+          beforeTag: "Friction",
+          before: "운세 서비스는 호기심 진입이 많아 첫 화면에서 로그인이나 결제가 빠르게 나오면 결과 품질을 확인하기 전에 이탈합니다.",
+          afterTag: "Funnel",
+          after: "오늘의 운세, 사주, 타로를 무료 공개 진입점으로 두고 AI 상담과 지갑은 결과 이후의 심화 행동으로 배치했습니다.",
+        },
+        flow: [
+          { title: "방문", desc: "홈/검색 유입" },
+          { title: "체험", desc: "무료 사주·타로" },
+          { title: "맥락", desc: "프로필 저장" },
+          { title: "심화", desc: "AI 상담" },
+        ],
+        actions: [
+          "Next.js App Router로 공개 화면과 인증 후 화면을 분리하고, 첫 방문자가 바로 결과를 볼 수 있는 무료 진입점을 구성했습니다.",
+          "Rust Axum 백엔드에서 public/protected 라우트를 나누고 JWT 인증, PostgreSQL, sqlx 기반 API 흐름을 설계했습니다.",
+          "사주 엔진, 타로 엔진, LLM 라우팅, 채팅, 프로필 PII 처리를 도메인 모듈로 분리해 화면 코드와 정책 코드를 얇게 유지했습니다.",
+          "회원 프로필에 저장되는 생년월일, 태어난 시간, 출생지, 전화번호는 CryptoService로 암호화해 BYTEA 컬럼에 저장하는 흐름으로 다뤘습니다.",
+          "AI 상담은 WebSocket/RPC 스트리밍, 추천 질문, 상담 맥락 유지, 부족 상태 안내까지 포함해 서비스형 대화 경험으로 구성했습니다.",
+          "Fly.dev 백엔드 콜드스타트 재시도, 입력 해시 기반 중복 생성 방지, 공개/보호 라우트 분리를 반영했습니다.",
+        ],
+        results: [
+          "dalgyeol.com에 실제 서비스 도메인을 연결했습니다.",
+          "첫 방문자가 로그인 없이 오늘의 운세, 사주팔자, 타로를 바로 체험하는 구조를 완성했습니다.",
+          "운세 결과 이후 프로필 저장과 AI 상담으로 자연스럽게 이어지는 심화 흐름을 만들었습니다.",
+          "사주, 타로, LLM, 암호화, 채팅을 모듈화해 이후 기능 확장 비용을 낮췄습니다.",
+        ],
+        stack: [
+          { label: "Web", value: "Next.js 15, React 19, TypeScript, Tailwind CSS 4" },
+          { label: "API", value: "Rust 2024, Axum 0.8, PostgreSQL, sqlx, JWT" },
+          { label: "Domain", value: "Saju Engine, Tarot Engine, LLM Router, Chat Core, PII Crypto" },
+          { label: "Realtime", value: "WebSocket/RPC AI Consultation, Streaming Messages" },
+          { label: "Deploy", value: "Vercel Web, Fly.dev Backend" },
+        ],
+        images: [
+          { src: "/images/projects/dalgyeol-web-home.jpg", alt: "달결 홈" },
+          { src: "/images/projects/dalgyeol-web-today.jpg", alt: "무료 오늘의 운세" },
+          { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "무료 사주팔자" },
+          { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "무료 타로" },
+        ],
+      }),
     },
     en: {
-      title: "Dalgyeol — AI Fortune & Tarot",
+      title: "Dalgyeol — Free Saju, Tarot & AI Consultation",
       company: "Personal Project",
       period: "2026.03 ~",
-      role: "Full-stack Developer",
-      tags: ["Rust", "Swift", "LLM", "iOS"],
+      role: "Full-stack Web Service Developer · Product Architecture",
+      tags: ["Next.js", "Rust", "Axum", "WebSocket", "Toss"],
+      demo: "https://dalgyeol.com",
       sideProject: true,
       claudeCode: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">~1,100</div><div class="label">Rust Engine (lines)</div></div>
-<div class="metric-card"><div class="value">3</div><div class="label">Multi LLM</div></div>
-<div class="metric-card"><div class="value">AES-256</div><div class="label">Encryption</div></div>
-</div>
-
-<h2>Situation</h2>
-<p>An iOS app combining Saju (Korean fortune-telling) and Tarot for AI-powered fortune consultation. Built a rule-based Saju engine to solve the inconsistency problem of existing services that rely entirely on LLMs.</p>
-
-<h2>Task</h2>
-<p>Full-stack developer responsible for backend (Rust), iOS (Swift), and AI integration.</p>
-
-<h2>Action</h2>
-<h3>Core Technology</h3>
-
-<div class="highlight-box">
-<strong>Pure Rust Saju Engine</strong> — Implemented a ~1,100-line rule-based Saju calculation engine with no external API dependency. Guarantees consistent fortune results without LLM uncertainty.
-</div>
-
-<ul>
-<li>AES-256-GCM personal data encryption</li>
-<li>StoreKit 2 in-app purchases + point economy system</li>
-<li>Real-time WebSocket AI consultation + PII masking</li>
-<li>Multi LLM providers (Claude, GPT, Gemini)</li>
-</ul>
-
-<h2>Result</h2>
-<ul>
-<li>Pure Rust Saju engine implementation completed</li>
-<li>Service launch planned</li>
-</ul>
-
-<h2>Tech Stack</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust (Axum, Tokio), PostgreSQL, Fly.io</span></div>
-<div class="bento-item"><span class="bento-label">iOS</span><span class="bento-value">SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">Multi LLM (Claude, GPT, Gemini)</span></div>
-</div>
-
-<h2>Screenshots</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/dalgyeol-daily-fortune.png" alt="Daily Fortune" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dalgyeol-fortune-detail.png" alt="Monthly Fortune Detail" style="width:240px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "3", label: "Free Entry Points" },
+          { value: "Next.js", label: "Web Frontend" },
+          { value: "Rust", label: "Axum API" },
+          { value: "BYTEA", label: "Profile PII Storage" },
+        ],
+        summary:
+          "Designed and built a Korean fortune web service where free Saju, daily fortune, and tarot lower first-visit friction, then lead into profile saving and AI consultation.",
+        signal:
+          "Dalgyeol is not just a fortune page. It separates acquisition, trial, trust, and deeper actions, showing both product thinking and full-stack execution.",
+        problem: {
+          beforeTag: "Friction",
+          before: "Fortune products are curiosity-driven, so early login or payment can make users leave before they can judge result quality.",
+          afterTag: "Funnel",
+          after: "Daily fortune, Saju, and tarot are public entrypoints, while AI consultation and wallet actions are placed after the result experience.",
+        },
+        flow: [
+          { title: "Visit", desc: "Home/search entry" },
+          { title: "Try", desc: "Free Saju and tarot" },
+          { title: "Context", desc: "Profile saving" },
+          { title: "Deepen", desc: "AI consultation" },
+        ],
+        actions: [
+          "Separated public and authenticated screens with Next.js App Router so first-time users can experience results immediately.",
+          "Designed Rust Axum public/protected API routes with JWT authentication, PostgreSQL, and sqlx.",
+          "Separated Saju, tarot, LLM routing, chat, and PII encryption into domain modules to keep screen and policy code focused.",
+          "Stored profile birth date, birth time, birthplace, and phone fields as encrypted BYTEA values through CryptoService.",
+          "Built AI consultation as a service-like conversation experience with WebSocket/RPC streaming, suggested questions, context retention, and shortage-state guidance.",
+          "Added operational guardrails including Fly.dev cold-start retry, input-hash deduplication, and clear public/protected route boundaries.",
+        ],
+        results: [
+          "Connected the live service domain at dalgyeol.com.",
+          "Completed a first-visit flow where users can try daily fortune, Saju, and tarot without login.",
+          "Created a deeper journey from fortune result to profile saving and AI consultation.",
+          "Reduced future expansion cost by modularizing Saju, tarot, LLM, encryption, and chat responsibilities.",
+        ],
+        stack: [
+          { label: "Web", value: "Next.js 15, React 19, TypeScript, Tailwind CSS 4" },
+          { label: "API", value: "Rust 2024, Axum 0.8, PostgreSQL, sqlx, JWT" },
+          { label: "Domain", value: "Saju Engine, Tarot Engine, LLM Router, Chat Core, PII Crypto" },
+          { label: "Realtime", value: "WebSocket/RPC AI Consultation, Streaming Messages" },
+          { label: "Deploy", value: "Vercel Web, Fly.dev Backend" },
+        ],
+        images: [
+          { src: "/images/projects/dalgyeol-web-home.jpg", alt: "Dalgyeol home" },
+          { src: "/images/projects/dalgyeol-web-today.jpg", alt: "Free daily fortune" },
+          { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "Free Saju report" },
+          { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "Free tarot" },
+        ],
+      }),
     },
     ja: {
-      title: "ダルギョル — AI四柱推命・タロット",
+      title: "ダルギョル — 無料四柱推命・タロット & AI相談",
       company: "個人プロジェクト",
       period: "2026.03 ~",
-      role: "フルスタック開発",
-      tags: ["Rust", "Swift", "LLM", "iOS"],
+      role: "フルスタックWebサービス開発 · プロダクト構造設計",
+      tags: ["Next.js", "Rust", "Axum", "WebSocket", "Toss"],
+      demo: "https://dalgyeol.com",
       sideProject: true,
       claudeCode: true,
-      contentHtml: `<div class="metric-cards">
-<div class="metric-card"><div class="value">~1,100</div><div class="label">Rustエンジン（行）</div></div>
-<div class="metric-card"><div class="value">3</div><div class="label">マルチLLM</div></div>
-<div class="metric-card"><div class="value">AES-256</div><div class="label">暗号化</div></div>
-</div>
-
-<h2>背景 (Situation)</h2>
-<p>四柱推命とタロットを組み合わせたAI運勢相談iOSアプリです。既存の運勢サービスがLLMに全面的に依存して一貫性が低い問題を解決するため、ルールベースの四柱推命エンジンを直接実装しました。</p>
-
-<h2>役割 (Task)</h2>
-<p>フルスタック開発者としてバックエンド（Rust）、iOS（Swift）、AI統合を担当しています。</p>
-
-<h2>実施内容 (Action)</h2>
-<h3>核心技術</h3>
-
-<div class="highlight-box">
-<strong>純粋Rust四柱推命エンジン</strong> — 外部APIに依存しない約1,100行のルールベース四柱推命計算エンジンを直接実装。LLMの不確実性なしに一貫した運勢結果を保証します。
-</div>
-
-<ul>
-<li>AES-256-GCM個人情報暗号化</li>
-<li>StoreKit 2アプリ内課金 + ポイントエコノミーシステム</li>
-<li>リアルタイムWebSocket AIカウンセリング + PIIマスキング</li>
-<li>マルチLLMプロバイダー（Claude、GPT、Gemini）</li>
-</ul>
-
-<h2>成果 (Result)</h2>
-<ul>
-<li>純粋Rust四柱推命エンジン実装完了</li>
-<li>サービスリリース予定</li>
-</ul>
-
-<h2>技術スタック</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust (Axum, Tokio), PostgreSQL, Fly.io</span></div>
-<div class="bento-item"><span class="bento-label">iOS</span><span class="bento-value">SwiftUI (iOS 17+), StoreKit 2, Sign in with Apple</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">マルチLLM (Claude, GPT, Gemini)</span></div>
-</div>
-
-<h2>スクリーンショット</h2>
-<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
-<img src="/images/projects/dalgyeol-daily-fortune.png" alt="今日の運勢" style="width:240px;border-radius:12px;" />
-<img src="/images/projects/dalgyeol-fortune-detail.png" alt="月運詳細" style="width:240px;border-radius:12px;" />
-</div>`,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "3", label: "無料公開入口" },
+          { value: "Next.js", label: "Webフロント" },
+          { value: "Rust", label: "Axum API" },
+          { value: "BYTEA", label: "プロフィールPII保存" },
+        ],
+        summary:
+          "無料四柱推命、今日の運勢、タロットで初回体験の障壁を下げ、結果後にプロフィール保存とAI相談へつながる占いWebサービスを設計・実装しました。",
+        signal:
+          "ダルギョルは単なる占いページではなく、流入、体験、信頼、深い行動を分けたプロダクト構造です。企画とフルスタック実装を同時に扱えることを示します。",
+        problem: {
+          beforeTag: "Friction",
+          before: "占いサービスは好奇心で入るため、早い段階でログインや決済が出ると結果品質を確認する前に離脱されやすくなります。",
+          afterTag: "Funnel",
+          after: "今日の運勢、四柱推命、タロットを無料入口とし、AI相談とウォレットは結果後の深い行動として配置しました。",
+        },
+        flow: [
+          { title: "訪問", desc: "ホーム/検索流入" },
+          { title: "体験", desc: "無料四柱・タロット" },
+          { title: "文脈", desc: "プロフィール保存" },
+          { title: "深化", desc: "AI相談" },
+        ],
+        actions: [
+          "Next.js App Routerで公開画面と認証後画面を分け、初回訪問者がすぐ結果を見られる無料入口を構成しました。",
+          "Rust Axumバックエンドでpublic/protectedルートを分け、JWT認証、PostgreSQL、sqlxベースのAPIフローを設計しました。",
+          "四柱推命、タロット、LLMルーティング、チャット、プロフィールPII処理をドメインモジュールとして分離しました。",
+          "会員プロフィールに保存される生年月日、出生時刻、出生地、電話番号はCryptoServiceで暗号化し、BYTEAカラムへ保存する流れにしました。",
+          "AI相談はWebSocket/RPCストリーミング、推奨質問、相談文脈維持、不足状態案内まで含む会話体験として構成しました。",
+          "Fly.devバックエンドのコールドスタート再試行、入力ハッシュによる重複生成防止、公開/保護ルート分離を反映しました。",
+        ],
+        results: [
+          "dalgyeol.comに実サービスドメインを接続しました。",
+          "初回訪問者がログインなしで今日の運勢、四柱推命、タロットをすぐ体験できる構造を完成しました。",
+          "結果後にプロフィール保存とAI相談へ自然につながる深い体験フローを作りました。",
+          "四柱推命、タロット、LLM、暗号化、チャットをモジュール化し、今後の機能拡張コストを下げました。",
+        ],
+        stack: [
+          { label: "Web", value: "Next.js 15, React 19, TypeScript, Tailwind CSS 4" },
+          { label: "API", value: "Rust 2024, Axum 0.8, PostgreSQL, sqlx, JWT" },
+          { label: "Domain", value: "Saju Engine, Tarot Engine, LLM Router, Chat Core, PII Crypto" },
+          { label: "Realtime", value: "WebSocket/RPC AI Consultation, Streaming Messages" },
+          { label: "Deploy", value: "Vercel Web, Fly.dev Backend" },
+        ],
+        images: [
+          { src: "/images/projects/dalgyeol-web-home.jpg", alt: "ダルギョルホーム" },
+          { src: "/images/projects/dalgyeol-web-today.jpg", alt: "無料今日の運勢" },
+          { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "無料四柱推命" },
+          { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "無料タロット" },
+        ],
+      }),
     },
   },
 
-  "what-health": {
+  "sauce-face-test": {
     ko: {
-      title: "What Health",
+      title: "조미료상 테스트",
       company: "개인 프로젝트",
-      period: "2026.03 ~",
-      role: "풀스택 개발",
-      tags: ["Swift", "Rust", "LLM"],
-      github: "https://github.com/kangnam7654/what_health",
+      period: "2026.05",
+      role: "웹 서비스 개발",
+      tags: ["Web", "Browser ML", "Cloudflare Pages"],
+      demo: "https://sauce-face.pages.dev",
       sideProject: true,
-      claudeCode: true,
-      contentHtml: `<h2>배경 (Situation)</h2>
-<p>LLM이 운동 코치가 되어 개인 맞춤 운동 스케줄을 관리해주는 앱입니다. 개발 진행 중입니다.</p>
-
-<h2>기술 스택</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Swift (iOS)</span></div>
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">LLM</span></div>
-</div>`,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "9", label: "결과 유형" },
+          { value: "Browser", label: "이미지 판정" },
+          { value: "Pages", label: "Cloudflare 배포" },
+        ],
+        summary:
+          "사진 한 장으로 사용자가 가볍게 즐기고 공유할 수 있는 조미료상 테스트를 브라우저 중심 흐름으로 빠르게 배포했습니다.",
+        signal:
+          "작은 사이드 프로젝트지만 업로드, 판정, 실패 처리, 공유까지 사용자가 끝까지 도달하는 흐름을 빠르게 만드는 실행력이 보입니다.",
+        problem: {
+          beforeTag: "Need",
+          before: "바이럴 테스트는 진입이 쉬워야 하고, 사용자가 결과를 기다리거나 개인정보 저장을 걱정하면 바로 이탈합니다.",
+          afterTag: "MVP",
+          after: "사진 업로드 후 브라우저에서 바로 미리보기와 판정을 진행하고, 짧은 결과 문구로 공유하기 쉽게 만들었습니다.",
+        },
+        flow: [
+          { title: "업로드", desc: "사진 선택" },
+          { title: "판정", desc: "브라우저 처리" },
+          { title: "결과", desc: "9가지 조미료상" },
+          { title: "공유", desc: "짧은 결과 문구" },
+        ],
+        actions: [
+          "사진 업로드, 미리보기, 브라우저 기반 이미지 판정 흐름을 구현했습니다.",
+          "얼굴 감지 실패 시 사용자가 직접 영역을 선택할 수 있는 보조 흐름을 제공했습니다.",
+          "한국어, 영어, 일본어 페이지와 검색 노출용 메타 정보를 구성했습니다.",
+          "결과를 복사하거나 공유하기 쉬운 짧은 문구 중심으로 화면을 정리했습니다.",
+        ],
+        results: [
+          "sauce-face.pages.dev에 공개 테스트 페이지를 연결했습니다.",
+          "사진 업로드부터 결과 확인까지 별도 회원가입 없이 끝나는 가벼운 테스트 경험을 만들었습니다.",
+          "작은 아이디어를 빠르게 릴리즈 가능한 웹 제품으로 바꾸는 실험을 완료했습니다.",
+        ],
+        stack: [
+          { label: "Web", value: "HTML, CSS, JavaScript" },
+          { label: "Analysis", value: "Browser-based image prediction" },
+          { label: "Deploy", value: "Cloudflare Pages" },
+        ],
+        images: [
+          { src: "/images/projects/sauce-face-home.jpg", alt: "조미료상 테스트 메인 화면" },
+        ],
+      }),
     },
     en: {
-      title: "What Health",
+      title: "Sauce Face Test",
       company: "Personal Project",
-      period: "2026.03 ~",
-      role: "Full-stack Developer",
-      tags: ["Swift", "Rust", "LLM"],
-      github: "https://github.com/kangnam7654/what_health",
+      period: "2026.05",
+      role: "Web Service Developer",
+      tags: ["Web", "Browser ML", "Cloudflare Pages"],
+      demo: "https://sauce-face.pages.dev",
       sideProject: true,
-      claudeCode: true,
-      contentHtml: `<h2>Situation</h2>
-<p>An app where LLM becomes your fitness coach, managing personalized workout schedules. Currently in development.</p>
-
-<h2>Tech Stack</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Swift (iOS)</span></div>
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">LLM</span></div>
-</div>`,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "9", label: "Result Types" },
+          { value: "Browser", label: "Image Judgement" },
+          { value: "Pages", label: "Cloudflare Deploy" },
+        ],
+        summary:
+          "Shipped a lightweight seasoning-style face test where users can upload one photo, get a playful result, and share it quickly.",
+        signal:
+          "It is a small side project, but it shows fast execution across upload, prediction, failure handling, and shareable result design.",
+        problem: {
+          beforeTag: "Need",
+          before: "Viral tests need low friction. If users wait too long or worry about photo storage, they leave.",
+          afterTag: "MVP",
+          after: "Handled upload, preview, and prediction in the browser, then presented compact copy for sharing.",
+        },
+        flow: [
+          { title: "Upload", desc: "Choose photo" },
+          { title: "Predict", desc: "Browser process" },
+          { title: "Result", desc: "9 seasoning types" },
+          { title: "Share", desc: "Short copy" },
+        ],
+        actions: [
+          "Implemented photo upload, preview, and browser-based image prediction flow.",
+          "Added a manual area-selection fallback when face detection fails.",
+          "Prepared Korean, English, and Japanese pages with search-friendly metadata.",
+          "Focused the result screen around compact copy that is easy to copy and share.",
+        ],
+        results: [
+          "Connected the public page at sauce-face.pages.dev.",
+          "Created a no-signup test experience from image upload to result.",
+          "Turned a small idea into a shippable web product experiment.",
+        ],
+        stack: [
+          { label: "Web", value: "HTML, CSS, JavaScript" },
+          { label: "Analysis", value: "Browser-based image prediction" },
+          { label: "Deploy", value: "Cloudflare Pages" },
+        ],
+        images: [
+          { src: "/images/projects/sauce-face-home.jpg", alt: "Sauce Face Test main screen" },
+        ],
+      }),
     },
     ja: {
-      title: "What Health",
+      title: "調味料顔テスト",
       company: "個人プロジェクト",
-      period: "2026.03 ~",
-      role: "フルスタック開発",
-      tags: ["Swift", "Rust", "LLM"],
-      github: "https://github.com/kangnam7654/what_health",
+      period: "2026.05",
+      role: "Webサービス開発",
+      tags: ["Web", "Browser ML", "Cloudflare Pages"],
+      demo: "https://sauce-face.pages.dev",
       sideProject: true,
-      claudeCode: true,
-      contentHtml: `<h2>背景 (Situation)</h2>
-<p>LLMがフィットネスコーチとなり、個人に合わせた運動スケジュールを管理するアプリです。開発進行中です。</p>
-
-<h2>技術スタック</h2>
-<div class="bento-grid">
-<div class="bento-item"><span class="bento-label">Frontend</span><span class="bento-value">Swift (iOS)</span></div>
-<div class="bento-item"><span class="bento-label">Backend</span><span class="bento-value">Rust</span></div>
-<div class="bento-item"><span class="bento-label">AI</span><span class="bento-value">LLM</span></div>
-</div>`,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "9", label: "結果タイプ" },
+          { value: "Browser", label: "画像判定" },
+          { value: "Pages", label: "Cloudflare配備" },
+        ],
+        summary:
+          "1枚の写真で気軽に遊び、結果を共有できる調味料顔テストをブラウザ中心の流れで素早く公開しました。",
+        signal:
+          "小さなサイドプロジェクトですが、アップロード、判定、失敗時の補助、共有までユーザーが最後まで進める流れを素早く作った実行力が見えます。",
+        problem: {
+          beforeTag: "Need",
+          before: "バイラルテストは入口が軽い必要があり、待ち時間や写真保存への不安があると離脱されます。",
+          afterTag: "MVP",
+          after: "写真アップロード後にブラウザでプレビューと判定を行い、短い結果文で共有しやすくしました。",
+        },
+        flow: [
+          { title: "アップロード", desc: "写真選択" },
+          { title: "判定", desc: "ブラウザ処理" },
+          { title: "結果", desc: "9種類の調味料顔" },
+          { title: "共有", desc: "短い結果文" },
+        ],
+        actions: [
+          "写真アップロード、プレビュー、ブラウザベースの画像判定フローを実装しました。",
+          "顔検出に失敗した場合に手動で領域を選択できる補助フローを提供しました。",
+          "韓国語、英語、日本語ページと検索向けメタ情報を構成しました。",
+          "結果をコピーまたは共有しやすい短い文言中心に画面を整理しました。",
+        ],
+        results: [
+          "sauce-face.pages.devに公開テストページを接続しました。",
+          "写真アップロードから結果確認まで会員登録なしで終わる軽いテスト体験を作りました。",
+          "小さなアイデアを素早く公開可能なWeb製品実験へ変えました。",
+        ],
+        stack: [
+          { label: "Web", value: "HTML, CSS, JavaScript" },
+          { label: "Analysis", value: "Browser-based image prediction" },
+          { label: "Deploy", value: "Cloudflare Pages" },
+        ],
+        images: [
+          { src: "/images/projects/sauce-face-home.jpg", alt: "調味料顔テストのメイン画面" },
+        ],
+      }),
     },
   },
 
+  "calendar-briefing-agent": {
+    ko: {
+      title: "Calendar Briefing Agent",
+      company: "개인 프로젝트",
+      period: "2026.05",
+      role: "AI Agent MVP 설계·개발",
+      tags: ["Python", "Streamlit", "Agent Workflow"],
+      github: "https://github.com/jeongbaaaan/calendar-briefing-agent",
+      sideProject: true,
+      contentHtml: projectHtml("ko", {
+        metrics: [
+          { value: "Python", label: "Agent MVP" },
+          { value: "Streamlit", label: "검증 UI" },
+          { value: "JSON", label: "구조화 출력" },
+        ],
+        summary:
+          "캘린더 데이터를 일정 수, 시간 밀도, 충돌, 버퍼 부족, 카테고리 신호로 구조화하고 하루를 읽는 브리핑 액션으로 변환했습니다.",
+        signal:
+          "LLM을 붙이기 전에 문제를 분석, 판단, 추천 단계로 나눈 점이 좋습니다. Agent 제품을 만들 때 필요한 워크플로우 설계 감각이 드러납니다.",
+        problem: {
+          beforeTag: "Raw Calendar",
+          before: "캘린더는 일정 목록을 보여주지만 하루의 위험, 집중도, 우선순위를 스스로 해석해주지는 않습니다.",
+          afterTag: "Briefing",
+          after: "일정을 구조화해 페르소나, 리스크, 추천 액션을 포함한 데일리 브리핑으로 바꿨습니다.",
+        },
+        flow: [
+          { title: "Analyze", desc: "일정 밀도·충돌" },
+          { title: "Classify", desc: "사용자 페르소나" },
+          { title: "Detect", desc: "리스크·버퍼" },
+          { title: "Brief", desc: "추천 액션" },
+        ],
+        actions: [
+          "샘플 일정 로더와 입력 파싱 구조를 정의했습니다.",
+          "일정 수, 총 일정 시간, 카테고리 분포, 일정 충돌, 버퍼 부족을 계산했습니다.",
+          "분석 결과를 바탕으로 사용자 페르소나를 분류하고 하루의 리스크를 도출했습니다.",
+          "요약, 일정 목록, 리스크 메시지, 추천 액션을 포함한 브리핑 출력을 만들었습니다.",
+          "Streamlit UI에서 날짜 선택, 일정 추가/삭제/저장, 분석 실행 흐름을 제공했습니다.",
+        ],
+        results: [
+          "CLI와 Streamlit 두 실행 흐름을 구현했습니다.",
+          "분석 결과를 <code>logs/result.json</code>에 저장하는 구조화 출력 흐름을 만들었습니다.",
+          "Google Calendar/Outlook 연동과 LLM 자연어 브리핑으로 확장 가능한 MVP 구조를 정리했습니다.",
+        ],
+        stack: [
+          { label: "Language", value: "Python" },
+          { label: "UI", value: "Streamlit" },
+          { label: "Architecture", value: "Modular analysis, persona, briefing logic" },
+          { label: "Output", value: "Structured JSON result" },
+        ],
+      }),
+    },
+    en: {
+      title: "Calendar Briefing Agent",
+      company: "Personal Project",
+      period: "2026.05",
+      role: "AI Agent MVP Designer & Developer",
+      tags: ["Python", "Streamlit", "Agent Workflow"],
+      github: "https://github.com/jeongbaaaan/calendar-briefing-agent",
+      sideProject: true,
+      contentHtml: projectHtml("en", {
+        metrics: [
+          { value: "Python", label: "Agent MVP" },
+          { value: "Streamlit", label: "Validation UI" },
+          { value: "JSON", label: "Structured Output" },
+        ],
+        summary:
+          "Structured calendar data into event count, time density, conflicts, buffer risks, and category signals, then converted them into daily briefing actions.",
+        signal:
+          "The strong point is separating the problem into analysis, decision, and recommendation before adding LLM output. That is useful Agent product thinking.",
+        problem: {
+          beforeTag: "Raw Calendar",
+          before: "Calendars show event lists, but they do not explain daily risk, focus load, or priority by themselves.",
+          afterTag: "Briefing",
+          after: "Converted schedules into persona, risk, and recommended-action briefings.",
+        },
+        flow: [
+          { title: "Analyze", desc: "Density and conflicts" },
+          { title: "Classify", desc: "User persona" },
+          { title: "Detect", desc: "Risk and buffer" },
+          { title: "Brief", desc: "Recommended actions" },
+        ],
+        actions: [
+          "Defined a sample schedule loader and input parsing structure.",
+          "Calculated event count, total scheduled time, category distribution, conflicts, and insufficient buffers.",
+          "Classified user personas and derived daily risks from structured analysis.",
+          "Generated briefing output with summary, event list, risk messages, and recommended actions.",
+          "Provided a Streamlit UI for date selection, event add/delete/save, and analysis execution.",
+        ],
+        results: [
+          "Implemented both CLI and Streamlit execution flows.",
+          "Saved structured analysis output to <code>logs/result.json</code>.",
+          "Outlined an MVP path that can expand into Google Calendar/Outlook integration and LLM-powered natural-language briefings.",
+        ],
+        stack: [
+          { label: "Language", value: "Python" },
+          { label: "UI", value: "Streamlit" },
+          { label: "Architecture", value: "Modular analysis, persona, briefing logic" },
+          { label: "Output", value: "Structured JSON result" },
+        ],
+      }),
+    },
+    ja: {
+      title: "Calendar Briefing Agent",
+      company: "個人プロジェクト",
+      period: "2026.05",
+      role: "AI Agent MVP設計・開発",
+      tags: ["Python", "Streamlit", "Agent Workflow"],
+      github: "https://github.com/jeongbaaaan/calendar-briefing-agent",
+      sideProject: true,
+      contentHtml: projectHtml("ja", {
+        metrics: [
+          { value: "Python", label: "Agent MVP" },
+          { value: "Streamlit", label: "検証UI" },
+          { value: "JSON", label: "構造化出力" },
+        ],
+        summary:
+          "カレンダーデータを予定数、時間密度、衝突、バッファ不足、カテゴリ信号に構造化し、1日のブリーフィングアクションへ変換しました。",
+        signal:
+          "LLMを先に接続する前に、分析、判断、推薦の段階へ問題を分けている点が強みです。Agent製品に必要なワークフロー設計力が見えます。",
+        problem: {
+          beforeTag: "Raw Calendar",
+          before: "カレンダーは予定一覧を見せますが、1日のリスク、集中度、優先順位を自動で解釈してくれるわけではありません。",
+          afterTag: "Briefing",
+          after: "予定を構造化し、ペルソナ、リスク、推奨アクションを含むデイリーブリーフィングへ変換しました。",
+        },
+        flow: [
+          { title: "Analyze", desc: "予定密度・衝突" },
+          { title: "Classify", desc: "ユーザーペルソナ" },
+          { title: "Detect", desc: "リスク・バッファ" },
+          { title: "Brief", desc: "推奨アクション" },
+        ],
+        actions: [
+          "サンプル予定ローダーと入力パース構造を定義しました。",
+          "予定数、総予定時間、カテゴリ分布、予定衝突、バッファ不足を計算しました。",
+          "分析結果をもとにユーザーペルソナを分類し、1日のリスクを導きました。",
+          "要約、予定一覧、リスクメッセージ、推奨アクションを含むブリーフィング出力を作りました。",
+          "Streamlit UIで日付選択、予定追加/削除/保存、分析実行フローを提供しました。",
+        ],
+        results: [
+          "CLIとStreamlitの二つの実行フローを実装しました。",
+          "分析結果を<code>logs/result.json</code>に保存する構造化出力を作りました。",
+          "Google Calendar/Outlook連携とLLM自然言語ブリーフィングへ拡張できるMVP構造を整理しました。",
+        ],
+        stack: [
+          { label: "Language", value: "Python" },
+          { label: "UI", value: "Streamlit" },
+          { label: "Architecture", value: "Modular analysis, persona, briefing logic" },
+          { label: "Output", value: "Structured JSON result" },
+        ],
+      }),
+    },
+  },
 };
 
 export function getProjectData(slug: string, locale: Locale): ProjectData {
