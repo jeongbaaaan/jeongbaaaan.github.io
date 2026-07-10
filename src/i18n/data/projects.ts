@@ -125,10 +125,11 @@ ${items.map((item) => `<div class="bento-item"><span class="bento-label">${item.
 </div>`;
 }
 
-function imageGrid(images?: ImageItem[]): string {
+function architectureBlock(images?: ImageItem[], label?: string): string {
   if (!images?.length) return "";
-  return `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
-${images.map((image) => `<img src="${image.src}" alt="${image.alt}" style="width:100%;border-radius:8px;" />`).join("\n")}
+  return `<div class="arch-block">
+<span class="arch-eyebrow">${label ?? "Architecture"}</span>
+${images.map((img) => `<img src="${img.src}" alt="${img.alt}" class="arch-img" />`).join("\n")}
 </div>`;
 }
 
@@ -143,6 +144,7 @@ function projectHtml(locale: Locale, content: ProjectContent): string {
 <strong>${label.signal}</strong>: ${content.signal}
 </div>
 
+${content.images ? architectureBlock(content.images, label.screenshots) : ""}
 ${content.problem ? `<h2>${label.problem}</h2>\n${compare(content.problem)}\n` : ""}${content.flow ? `<h2>${label.flow}</h2>\n${processFlow(content.flow)}\n` : ""}
 <h2>${label.action}</h2>
 ${bulletList(content.actions)}
@@ -151,8 +153,7 @@ ${bulletList(content.actions)}
 ${bulletList(content.results)}
 
 <h2>${label.stack}</h2>
-${stackGrid(content.stack)}
-${content.images ? `\n<h2>${label.screenshots}</h2>\n${imageGrid(content.images)}` : ""}`;
+${stackGrid(content.stack)}`;
 }
 
 const projectsData: Record<string, Record<Locale, ProjectData>> = {

@@ -555,6 +555,55 @@ const typeLabel = education ? activeFactLabels.education : sideProject ? activeF
     background: var(--color-surface);
   }
 
+  .prose-custom :global(.arch-block) {
+    margin: 36px 0 52px;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 32px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0,0,0,0.03);
+  }
+
+  :global(html.light) .prose-custom :global(.arch-block) {
+    box-shadow: 0 2px 32px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0,0,0,0.04);
+  }
+
+  .prose-custom :global(.arch-eyebrow) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-primary), transparent 93%);
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .prose-custom :global(.arch-eyebrow::before) {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0.7;
+  }
+
+  .prose-custom :global(.arch-img) {
+    display: block;
+    width: 100%;
+    border: none !important;
+    border-radius: 0 !important;
+    background: #f8f9fa;
+  }
+
+  :global(html:not(.light)) .prose-custom :global(.arch-img) {
+    filter: brightness(0.92) contrast(1.05);
+  }
+
   .prose-custom :global(h2 + div[style*="display:grid"]) {
     margin-left: 86px;
   }
