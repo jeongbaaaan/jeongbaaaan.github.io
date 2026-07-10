@@ -499,7 +499,8 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           "조직의 서드파티 OAuth 차단 환경을 파악하고 아키텍처를 현실에 맞게 재설계했습니다.",
         ],
         results: [
-          "고객별 이메일 작성 시간을 크게 단축했습니다.",
+          "이메일 템플릿 구조화와 수신자 변수 자동 치환으로 고객별 작성 리소스를 단축했습니다.",
+          "수기 복붙·변수 누락 등 반복 발송 과정의 휴먼에러를 구조적으로 줄였습니다.",
           "포트폴리오 수준의 설계 문서(ADR 15개)를 갖춘 내부 도구를 완성했습니다.",
           "실무 제약(OAuth 차단)을 파악하고 대안 아키텍처로 전환한 의사결정 과정을 기록으로 남겼습니다.",
         ],
@@ -552,7 +553,8 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           "Identified the organization's third-party OAuth block and redesigned the architecture accordingly.",
         ],
         results: [
-          "Significantly reduced per-client email writing time.",
+          "Reduced per-client email writing effort through template structuring and automatic variable substitution.",
+          "Structurally reduced human errors such as missed variables and manual copy-paste in recurring sends.",
           "Completed an internal tool with portfolio-grade design documentation (15 ADRs).",
           "Left a documented record of identifying a real constraint and pivoting the architecture to match.",
         ],
@@ -605,7 +607,8 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           "組織のサードパーティOAuth制限を把握し、アーキテクチャを現実に合わせて再設計しました。",
         ],
         results: [
-          "顧客ごとのメール作成時間を大幅に短縮しました。",
+          "テンプレート構造化と受信者変数の自動置換により、顧客ごとの作成リソースを削減しました。",
+          "手動コピペや変数漏れなど、繰り返し送信時のヒューマンエラーを構造的に削減しました。",
           "ポートフォリオレベルの設計文書（ADR 15個）を備えた内部ツールを完成しました。",
           "実務制約（OAuth制限）を把握し、代替アーキテクチャへ転換した意思決定過程を記録として残しました。",
         ],
