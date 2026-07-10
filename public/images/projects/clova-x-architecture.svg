@@ -1,0 +1,94 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="900" height="460" fill="#f8f9fa" rx="12"/>
+  <text x="450" y="38" font-size="15" font-weight="700" fill="#1a1a2e" text-anchor="middle">Clova X AI 챗봇 PM — 기획 산출물 구조</text>
+  <line x1="60" y1="52" x2="840" y2="52" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- User Research -->
+  <rect x="40" y="76" width="180" height="110" rx="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="130" y="100" font-size="11" font-weight="700" fill="#ea580c" text-anchor="middle">① 사용자 리서치</text>
+  <text x="130" y="120" font-size="10" fill="#9a3412" text-anchor="middle">성향 진단 18문항 설계</text>
+  <text x="130" y="136" font-size="10" fill="#9a3412" text-anchor="middle">페르소나 유형 정의</text>
+  <text x="130" y="152" font-size="10" fill="#9a3412" text-anchor="middle">사용자 시나리오 작성</text>
+  <text x="130" y="168" font-size="10" fill="#9a3412" text-anchor="middle">User Story Map</text>
+
+  <line x1="220" y1="131" x2="265" y2="131" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Prompt Design -->
+  <rect x="265" y="76" width="180" height="110" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="355" y="100" font-size="11" font-weight="700" fill="#1d4ed8" text-anchor="middle">② 프롬프트 설계</text>
+  <text x="355" y="120" font-size="10" fill="#1e40af" text-anchor="middle">Few-shot 예시 구성</text>
+  <text x="355" y="136" font-size="10" fill="#1e40af" text-anchor="middle">캐릭터 생성 로직</text>
+  <text x="355" y="152" font-size="10" fill="#1e40af" text-anchor="middle">대화 흐름 분기 설계</text>
+  <text x="355" y="168" font-size="10" fill="#1e40af" text-anchor="middle">응답 포맷 정의</text>
+
+  <line x1="445" y1="131" x2="490" y2="131" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- API Spec -->
+  <rect x="490" y="76" width="180" height="110" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="580" y="100" font-size="11" font-weight="700" fill="#15803d" text-anchor="middle">③ API 스펙 정의</text>
+  <text x="580" y="120" font-size="10" fill="#166534" text-anchor="middle">Clova X API 연동 설계</text>
+  <text x="580" y="136" font-size="10" fill="#166534" text-anchor="middle">Request / Response 포맷</text>
+  <text x="580" y="152" font-size="10" fill="#166534" text-anchor="middle">에러 처리 정의</text>
+  <text x="580" y="168" font-size="10" fill="#166534" text-anchor="middle">개발팀 전달 문서</text>
+
+  <line x1="670" y1="131" x2="715" y2="131" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Iteration -->
+  <rect x="715" y="76" width="145" height="110" rx="10" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="787" y="100" font-size="11" font-weight="700" fill="#7e22ce" text-anchor="middle">④ 수정 사이클</text>
+  <text x="787" y="120" font-size="10" fill="#6b21a8" text-anchor="middle">3→1회 단축</text>
+  <text x="787" y="136" font-size="10" fill="#6b21a8" text-anchor="middle">PM ↔ 개발팀</text>
+  <text x="787" y="152" font-size="10" fill="#6b21a8" text-anchor="middle">피드백 반영</text>
+  <text x="787" y="168" font-size="10" fill="#6b21a8" text-anchor="middle">최종 배포</text>
+
+  <!-- Chat flow diagram -->
+  <line x1="60" y1="218" x2="840" y2="218" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="450" y="236" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle">챗봇 대화 흐름</text>
+
+  <!-- Flow boxes -->
+  <rect x="60" y="252" width="120" height="56" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="120" y="276" font-size="20" text-anchor="middle">👤</text>
+  <text x="120" y="296" font-size="10" font-weight="600" fill="#475569" text-anchor="middle">사용자 진입</text>
+
+  <line x1="180" y1="280" x2="215" y2="280" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="215" y="252" width="140" height="56" rx="8" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="285" y="271" font-size="10" font-weight="700" fill="#ea580c" text-anchor="middle">성향 진단</text>
+  <text x="285" y="285" font-size="9" fill="#9a3412" text-anchor="middle">18문항 응답</text>
+  <text x="285" y="298" font-size="9" fill="#9a3412" text-anchor="middle">Few-shot 분류</text>
+
+  <line x1="355" y1="280" x2="390" y2="280" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="390" y="252" width="140" height="56" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="460" y="271" font-size="10" font-weight="700" fill="#1d4ed8" text-anchor="middle">캐릭터 생성</text>
+  <text x="460" y="285" font-size="9" fill="#1e40af" text-anchor="middle">Clova X API</text>
+  <text x="460" y="298" font-size="9" fill="#1e40af" text-anchor="middle">페르소나 매핑</text>
+
+  <line x1="530" y1="280" x2="565" y2="280" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="565" y="252" width="140" height="56" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="635" y="271" font-size="10" font-weight="700" fill="#15803d" text-anchor="middle">맞춤 대화</text>
+  <text x="635" y="285" font-size="9" fill="#166534" text-anchor="middle">캐릭터 기반 응답</text>
+  <text x="635" y="298" font-size="9" fill="#166534" text-anchor="middle">지속 대화 유지</text>
+
+  <line x1="705" y1="280" x2="740" y2="280" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="740" y="252" width="120" height="56" rx="8" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="800" y="271" font-size="10" font-weight="700" fill="#7e22ce" text-anchor="middle">리텐션</text>
+  <text x="800" y="285" font-size="9" fill="#6b21a8" text-anchor="middle">재방문 유도</text>
+  <text x="800" y="298" font-size="9" fill="#6b21a8" text-anchor="middle">캐릭터 성장</text>
+
+  <!-- Tech used -->
+  <rect x="60" y="336" width="780" height="36" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="450" y="358" font-size="11" fill="#475569" text-anchor="middle">Naver Cloud Clova X API · Few-shot Prompting · PM 기획 산출물 (User Story · API Spec · 프롬프트 템플릿)</text>
+
+  <!-- Result -->
+  <rect x="60" y="392" width="780" height="36" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="450" y="414" font-size="12" font-weight="700" fill="#15803d" text-anchor="middle">수정 사이클 3→1회 단축 · 18문항 성향 진단 설계 · 개발팀 바로 구현 가능한 API 스펙 전달</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

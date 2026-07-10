@@ -62,7 +62,7 @@ const sectionLabels: Record<Locale, SectionLabels> = {
     action: "주요 실행",
     result: "결과",
     stack: "기술 스택",
-    screenshots: "스크린샷",
+    screenshots: "아키텍처",
   },
   en: {
     summary: "Summary",
@@ -72,7 +72,7 @@ const sectionLabels: Record<Locale, SectionLabels> = {
     action: "What I Built",
     result: "Result",
     stack: "Tech Stack",
-    screenshots: "Screenshots",
+    screenshots: "Architecture",
   },
   ja: {
     summary: "概要",
@@ -82,7 +82,7 @@ const sectionLabels: Record<Locale, SectionLabels> = {
     action: "実施内容",
     result: "成果",
     stack: "技術スタック",
-    screenshots: "スクリーンショット",
+    screenshots: "アーキテクチャ",
   },
 };
 
@@ -202,6 +202,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Architecture", value: "Serverless, Well-Architected Framework" },
           { label: "Optimization", value: "RI 전환 제안, S3 Lifecycle, 이미지 리사이징" },
         ],
+        images: [
+          { src: "/images/projects/cloud-infra-architecture.svg", alt: "클라우드 인프라 관리 아키텍처" },
+        ],
       }),
     },
     en: {
@@ -249,6 +252,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Architecture", value: "Serverless, Well-Architected Framework" },
           { label: "Optimization", value: "RI recommendations, S3 Lifecycle, image resizing" },
         ],
+        images: [
+          { src: "/images/projects/cloud-infra-architecture.svg", alt: "클라우드 인프라 관리 아키텍처" },
+        ],
       }),
     },
     ja: {
@@ -295,6 +301,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Cloud", value: "AWS EC2, S3, RDS, Lambda, CloudFront, Cost Explorer" },
           { label: "Architecture", value: "Serverless, Well-Architected Framework" },
           { label: "Optimization", value: "RI転換提案、S3 Lifecycle、画像リサイズ" },
+        ],
+        images: [
+          { src: "/images/projects/cloud-infra-architecture.svg", alt: "클라우드 인프라 관리 아키텍처" },
         ],
       }),
     },
@@ -345,6 +354,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "PM", value: "Persona, IA, User Flow, API Spec" },
           { label: "Design", value: "Typography, Color System, Component 기준" },
         ],
+        images: [
+          { src: "/images/projects/clova-x-architecture.svg", alt: "Clova X 챗봇 기획 구조" },
+        ],
       }),
     },
     en: {
@@ -391,6 +403,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "PM", value: "Persona, IA, User Flow, API Spec" },
           { label: "Design", value: "Typography, Color System, Component Guidelines" },
         ],
+        images: [
+          { src: "/images/projects/clova-x-architecture.svg", alt: "Clova X 챗봇 기획 구조" },
+        ],
       }),
     },
     ja: {
@@ -436,6 +451,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "AI", value: "Clova X, Prompt Engineering, Few-shot Prompting" },
           { label: "PM", value: "Persona, IA, User Flow, API Spec" },
           { label: "Design", value: "Typography, Color System, Component基準" },
+        ],
+        images: [
+          { src: "/images/projects/clova-x-architecture.svg", alt: "Clova X 챗봇 기획 구조" },
         ],
       }),
     },
@@ -490,6 +508,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Extension", value: "Chrome Extension MV3, Gmail 핸드오프" },
           { label: "Docs", value: "ADR 15개, Architecture Decision Records" },
         ],
+        images: [
+          { src: "/images/projects/smileshark-mailer-architecture.svg", alt: "SmileShark Mailer 시스템 아키텍처" },
+        ],
       }),
     },
     en: {
@@ -540,6 +561,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Extension", value: "Chrome Extension MV3, Gmail handoff" },
           { label: "Docs", value: "15 ADRs, Architecture Decision Records" },
         ],
+        images: [
+          { src: "/images/projects/smileshark-mailer-architecture.svg", alt: "SmileShark Mailer 시스템 아키텍처" },
+        ],
       }),
     },
     ja: {
@@ -589,6 +613,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Frontend", value: "React, TipTap, Tailwind CSS, Vite" },
           { label: "Extension", value: "Chrome Extension MV3, Gmailハンドオフ" },
           { label: "Docs", value: "ADR 15個, Architecture Decision Records" },
+        ],
+        images: [
+          { src: "/images/projects/smileshark-mailer-architecture.svg", alt: "SmileShark Mailer 시스템 아키텍처" },
         ],
       }),
     },
@@ -648,6 +675,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "DB", value: "Amazon Aurora MySQL, Redis 7.0" },
           { label: "Observability", value: "Grafana, Jaeger, OpenTelemetry, CloudWatch" },
         ],
+        images: [
+          { src: "/images/projects/cqrs-aws-architecture.png", alt: "Dapanda AWS 클라우드 아키텍처" },
+        ],
       }),
     },
     en: {
@@ -703,6 +733,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "DB", value: "Amazon Aurora MySQL, Redis 7.0" },
           { label: "Observability", value: "Grafana, Jaeger, OpenTelemetry, CloudWatch" },
         ],
+        images: [
+          { src: "/images/projects/cqrs-aws-architecture.png", alt: "Dapanda AWS 클라우드 아키텍처" },
+        ],
       }),
     },
     ja: {
@@ -757,6 +790,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Frontend", value: "Next.js 14.2, TypeScript" },
           { label: "DB", value: "Amazon Aurora MySQL, Redis 7.0" },
           { label: "Observability", value: "Grafana, Jaeger, OpenTelemetry, CloudWatch" },
+        ],
+        images: [
+          { src: "/images/projects/cqrs-aws-architecture.png", alt: "Dapanda AWS 클라우드 아키텍처" },
         ],
       }),
     },
@@ -814,9 +850,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "AI Workflow", value: "Claude Code 기반 1인 개발" },
         ],
         images: [
-          { src: "/images/projects/dear-ant-home.png", alt: "홈 대시보드" },
-          { src: "/images/projects/dear-ant-survey.png", alt: "매매 전 셀프 체크" },
-          { src: "/images/projects/dear-ant-report.png", alt: "리포트 목록" },
+          { src: "/images/projects/dear-ant-architecture.svg", alt: "Dear,ANT 서비스 아키텍처" },
           { src: "/images/projects/dear-ant-journal.png", alt: "트레이딩 저널" },
           { src: "/images/projects/dear-ant-calculator.png", alt: "적금 vs 투자 비교" },
           { src: "/images/projects/dear-ant-compound.png", alt: "복리 계산기" },
@@ -875,9 +909,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "AI Workflow", value: "Solo development with Claude Code" },
         ],
         images: [
-          { src: "/images/projects/dear-ant-home.png", alt: "Home dashboard" },
-          { src: "/images/projects/dear-ant-survey.png", alt: "Pre-trade self check" },
-          { src: "/images/projects/dear-ant-report.png", alt: "Report list" },
+          { src: "/images/projects/dear-ant-architecture.svg", alt: "Dear,ANT Service Architecture" },
           { src: "/images/projects/dear-ant-journal.png", alt: "Trading journal" },
           { src: "/images/projects/dear-ant-calculator.png", alt: "Savings vs investment" },
           { src: "/images/projects/dear-ant-compound.png", alt: "Compound calculator" },
@@ -936,9 +968,8 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "AI Workflow", value: "Claude Codeによる1人開発" },
         ],
         images: [
-          { src: "/images/projects/dear-ant-home.png", alt: "ホームダッシュボード" },
-          { src: "/images/projects/dear-ant-survey.png", alt: "売買前セルフチェック" },
-          { src: "/images/projects/dear-ant-report.png", alt: "レポート一覧" },
+          { src: "/images/projects/dear-ant-architecture.svg", alt: "Dear,ANTサービスアーキテクチャ" },
+          
           { src: "/images/projects/dear-ant-journal.png", alt: "トレーディングジャーナル" },
           { src: "/images/projects/dear-ant-calculator.png", alt: "積立 vs 投資比較" },
           { src: "/images/projects/dear-ant-compound.png", alt: "複利計算機" },
@@ -1003,8 +1034,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Deploy", value: "Vercel Web, Fly.dev Backend" },
         ],
         images: [
-          { src: "/images/projects/dalgyeol-web-home.jpg", alt: "달결 홈" },
-          { src: "/images/projects/dalgyeol-web-today.jpg", alt: "무료 오늘의 운세" },
+          { src: "/images/projects/dalgyeol-architecture.svg", alt: "달결 서비스 아키텍처" },
           { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "무료 사주팔자" },
           { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "무료 타로" },
         ],
@@ -1064,8 +1094,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Deploy", value: "Vercel Web, Fly.dev Backend" },
         ],
         images: [
-          { src: "/images/projects/dalgyeol-web-home.jpg", alt: "Dalgyeol home" },
-          { src: "/images/projects/dalgyeol-web-today.jpg", alt: "Free daily fortune" },
+          { src: "/images/projects/dalgyeol-architecture.svg", alt: "Dalgyeol Service Architecture" },
           { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "Free Saju report" },
           { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "Free tarot" },
         ],
@@ -1125,8 +1154,7 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Deploy", value: "Vercel Web, Fly.dev Backend" },
         ],
         images: [
-          { src: "/images/projects/dalgyeol-web-home.jpg", alt: "ダルギョルホーム" },
-          { src: "/images/projects/dalgyeol-web-today.jpg", alt: "無料今日の運勢" },
+          { src: "/images/projects/dalgyeol-architecture.svg", alt: "ダルギョルサービスアーキテクチャ" },
           { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "無料四柱推命" },
           { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "無料タロット" },
         ],
@@ -1183,6 +1211,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Architecture", value: "Modular analysis, persona, briefing logic" },
           { label: "Output", value: "Structured JSON result" },
         ],
+        images: [
+          { src: "/images/projects/calendar-agent-architecture.svg", alt: "Calendar Briefing Agent 아키텍처" },
+        ],
       }),
     },
     en: {
@@ -1233,6 +1264,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "Architecture", value: "Modular analysis, persona, briefing logic" },
           { label: "Output", value: "Structured JSON result" },
         ],
+        images: [
+          { src: "/images/projects/calendar-agent-architecture.svg", alt: "Calendar Briefing Agent 아키텍처" },
+        ],
       }),
     },
     ja: {
@@ -1282,6 +1316,9 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
           { label: "UI", value: "Streamlit" },
           { label: "Architecture", value: "Modular analysis, persona, briefing logic" },
           { label: "Output", value: "Structured JSON result" },
+        ],
+        images: [
+          { src: "/images/projects/calendar-agent-architecture.svg", alt: "Calendar Briefing Agent 아키텍처" },
         ],
       }),
     },

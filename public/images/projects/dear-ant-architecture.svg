@@ -1,0 +1,92 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="900" height="460" fill="#f8f9fa" rx="12"/>
+  <text x="450" y="38" font-size="15" font-weight="700" fill="#1a1a2e" text-anchor="middle">Dear,ANT — AI 투자 판단 리포트 아키텍처</text>
+  <line x1="60" y1="52" x2="840" y2="52" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Frontend -->
+  <rect x="40" y="80" width="170" height="240" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="125" y="104" font-size="11" font-weight="700" fill="#1d4ed8" text-anchor="middle">Frontend</text>
+  <text x="125" y="120" font-size="10" fill="#3b82f6" text-anchor="middle">Next.js 14 (App Router)</text>
+  <line x1="60" y1="130" x2="210" y2="130" stroke="#dbeafe" stroke-width="1"/>
+  <text x="125" y="150" font-size="10" fill="#1e40af" text-anchor="middle">📊 수익 계산기</text>
+  <text x="125" y="168" font-size="10" fill="#1e40af" text-anchor="middle">📈 복리 시뮬레이터</text>
+  <text x="125" y="186" font-size="10" fill="#1e40af" text-anchor="middle">📋 설문 (투자 성향)</text>
+  <text x="125" y="204" font-size="10" fill="#1e40af" text-anchor="middle">📝 투자 일지</text>
+  <text x="125" y="222" font-size="10" fill="#1e40af" text-anchor="middle">🤖 AI 리포트</text>
+  <rect x="60" y="234" width="150" height="22" rx="4" fill="#dbeafe"/>
+  <text x="135" y="249" font-size="9" fill="#1e40af" text-anchor="middle">TypeScript · Tailwind CSS</text>
+  <rect x="60" y="264" width="150" height="22" rx="4" fill="#dbeafe"/>
+  <text x="135" y="279" font-size="9" fill="#1e40af" text-anchor="middle">Vercel 배포</text>
+  <rect x="60" y="294" width="150" height="22" rx="4" fill="#bfdbfe"/>
+  <text x="135" y="309" font-size="9" font-weight="600" fill="#1d4ed8" text-anchor="middle">Claude Code로 2주 완성</text>
+
+  <!-- Arrow -->
+  <line x1="210" y1="200" x2="255" y2="200" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="255" y1="150" x2="210" y2="150" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+  <!-- Supabase -->
+  <rect x="255" y="80" width="180" height="240" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="345" y="104" font-size="11" font-weight="700" fill="#15803d" text-anchor="middle">Supabase</text>
+  <line x1="275" y1="114" x2="435" y2="114" stroke="#dcfce7" stroke-width="1"/>
+  <text x="345" y="136" font-size="10" font-weight="600" fill="#166534" text-anchor="middle">Auth</text>
+  <text x="345" y="152" font-size="10" fill="#166534" text-anchor="middle">소셜 로그인</text>
+  <text x="345" y="168" font-size="10" fill="#166534" text-anchor="middle">세션 관리</text>
+  <line x1="275" y1="180" x2="435" y2="180" stroke="#dcfce7" stroke-width="1"/>
+  <text x="345" y="200" font-size="10" font-weight="600" fill="#166534" text-anchor="middle">PostgreSQL DB</text>
+  <text x="345" y="216" font-size="10" fill="#166534" text-anchor="middle">투자 일지 저장</text>
+  <text x="345" y="232" font-size="10" fill="#166534" text-anchor="middle">성향 설문 결과</text>
+  <text x="345" y="248" font-size="10" fill="#166534" text-anchor="middle">리포트 히스토리</text>
+  <line x1="275" y1="260" x2="435" y2="260" stroke="#dcfce7" stroke-width="1"/>
+  <text x="345" y="280" font-size="10" font-weight="600" fill="#166534" text-anchor="middle">Storage</text>
+  <text x="345" y="296" font-size="10" fill="#166534" text-anchor="middle">리포트 파일 저장</text>
+  <text x="345" y="312" font-size="10" fill="#166534" text-anchor="middle">이미지 에셋</text>
+
+  <!-- Arrow -->
+  <line x1="435" y1="200" x2="480" y2="200" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="480" y1="150" x2="435" y2="150" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+  <!-- Claude API -->
+  <rect x="480" y="80" width="180" height="180" rx="10" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="570" y="104" font-size="11" font-weight="700" fill="#7e22ce" text-anchor="middle">Claude API</text>
+  <line x1="500" y1="114" x2="660" y2="114" stroke="#f3e8ff" stroke-width="1"/>
+  <text x="570" y="136" font-size="10" fill="#6b21a8" text-anchor="middle">투자 성향 분석</text>
+  <text x="570" y="154" font-size="10" fill="#6b21a8" text-anchor="middle">포트폴리오 진단</text>
+  <text x="570" y="172" font-size="10" fill="#6b21a8" text-anchor="middle">리스크 평가 리포트</text>
+  <text x="570" y="190" font-size="10" fill="#6b21a8" text-anchor="middle">개인화 투자 제안</text>
+  <rect x="500" y="204" width="160" height="22" rx="4" fill="#f3e8ff"/>
+  <text x="580" y="219" font-size="9" fill="#6b21a8" text-anchor="middle">설문 결과 → 프롬프트 → 리포트</text>
+  <rect x="500" y="232" width="160" height="22" rx="4" fill="#ede9fe"/>
+  <text x="580" y="247" font-size="9" font-weight="600" fill="#7e22ce" text-anchor="middle">Anthropic Claude (API)</text>
+
+  <!-- Arrow to result -->
+  <line x1="660" y1="170" x2="705" y2="170" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Output -->
+  <rect x="705" y="80" width="155" height="180" rx="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="782" y="104" font-size="11" font-weight="700" fill="#ea580c" text-anchor="middle">AI 리포트 출력</text>
+  <line x1="725" y1="114" x2="860" y2="114" stroke="#fed7aa" stroke-width="1"/>
+  <text x="782" y="136" font-size="10" fill="#9a3412" text-anchor="middle">투자 성향 요약</text>
+  <text x="782" y="154" font-size="10" fill="#9a3412" text-anchor="middle">포트폴리오 분석</text>
+  <text x="782" y="172" font-size="10" fill="#9a3412" text-anchor="middle">개선 제안 3가지</text>
+  <text x="782" y="190" font-size="10" fill="#9a3412" text-anchor="middle">리스크 경고</text>
+  <text x="782" y="208" font-size="10" fill="#9a3412" text-anchor="middle">PDF 다운로드</text>
+  <rect x="725" y="222" width="135" height="22" rx="4" fill="#fed7aa"/>
+  <text x="792" y="237" font-size="9" font-weight="600" fill="#ea580c" text-anchor="middle">Vercel + Supabase</text>
+
+  <!-- Bottom stat bar -->
+  <rect x="40" y="350" width="820" height="42" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="450" y="376" font-size="12" font-weight="700" fill="#15803d" text-anchor="middle">솔로 개발 · 2주 완성 · Claude Code 활용 · Next.js + Supabase + Claude API Full-stack</text>
+
+  <!-- Tech tags -->
+  <rect x="40" y="408" width="820" height="36" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="450" y="431" font-size="11" fill="#475569" text-anchor="middle">Next.js 14 · TypeScript · Supabase (Auth + PostgreSQL + Storage) · Claude API · Tailwind CSS · Vercel</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

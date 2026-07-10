@@ -1,0 +1,74 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="900" height="460" fill="#f8f9fa" rx="12"/>
+  <text x="450" y="38" font-size="15" font-weight="700" fill="#1a1a2e" text-anchor="middle">Calendar Briefing Agent — 아키텍처</text>
+  <line x1="60" y1="52" x2="840" y2="52" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Google Calendar -->
+  <rect x="40" y="90" width="155" height="130" rx="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="117" y="114" font-size="11" font-weight="700" fill="#ea580c" text-anchor="middle">Google Calendar</text>
+  <line x1="60" y1="124" x2="195" y2="124" stroke="#fed7aa" stroke-width="1"/>
+  <text x="117" y="144" font-size="10" fill="#9a3412" text-anchor="middle">오늘 일정 목록</text>
+  <text x="117" y="162" font-size="10" fill="#9a3412" text-anchor="middle">참석자 정보</text>
+  <text x="117" y="180" font-size="10" fill="#9a3412" text-anchor="middle">일정 메모</text>
+  <text x="117" y="198" font-size="9" fill="#fb923c" text-anchor="middle">Google Calendar API</text>
+
+  <line x1="195" y1="155" x2="245" y2="155" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Python Agent -->
+  <rect x="245" y="72" width="200" height="230" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="345" y="96" font-size="11" font-weight="700" fill="#1d4ed8" text-anchor="middle">Python Agent</text>
+  <line x1="265" y1="106" x2="445" y2="106" stroke="#dbeafe" stroke-width="1"/>
+  <text x="345" y="126" font-size="10" font-weight="600" fill="#1e40af" text-anchor="middle">① 일정 수집</text>
+  <text x="345" y="143" font-size="9" fill="#3b82f6" text-anchor="middle">Google Calendar API 호출</text>
+  <line x1="265" y1="154" x2="445" y2="154" stroke="#dbeafe" stroke-width="1"/>
+  <text x="345" y="172" font-size="10" font-weight="600" fill="#1e40af" text-anchor="middle">② 전처리</text>
+  <text x="345" y="189" font-size="9" fill="#3b82f6" text-anchor="middle">일정 파싱 · 우선순위 태깅</text>
+  <line x1="265" y1="200" x2="445" y2="200" stroke="#dbeafe" stroke-width="1"/>
+  <text x="345" y="218" font-size="10" font-weight="600" fill="#1e40af" text-anchor="middle">③ 프롬프트 구성</text>
+  <text x="345" y="235" font-size="9" fill="#3b82f6" text-anchor="middle">일정 컨텍스트 → LLM 입력</text>
+  <line x1="265" y1="246" x2="445" y2="246" stroke="#dbeafe" stroke-width="1"/>
+  <text x="345" y="264" font-size="9" fill="#3b82f6" text-anchor="middle">Python 3 · google-api-python-client</text>
+  <text x="345" y="280" font-size="9" fill="#3b82f6" text-anchor="middle">dotenv · requests</text>
+
+  <line x1="445" y1="180" x2="490" y2="180" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- LLM -->
+  <rect x="490" y="90" width="165" height="130" rx="10" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="572" y="114" font-size="11" font-weight="700" fill="#7e22ce" text-anchor="middle">LLM 분석</text>
+  <line x1="510" y1="124" x2="655" y2="124" stroke="#f3e8ff" stroke-width="1"/>
+  <text x="572" y="144" font-size="10" fill="#6b21a8" text-anchor="middle">오늘 우선순위 정리</text>
+  <text x="572" y="162" font-size="10" fill="#6b21a8" text-anchor="middle">집중 시간대 제안</text>
+  <text x="572" y="180" font-size="10" fill="#6b21a8" text-anchor="middle">회의 준비 체크리스트</text>
+  <text x="572" y="198" font-size="9" fill="#a855f7" text-anchor="middle">Claude / OpenAI API</text>
+
+  <line x1="655" y1="155" x2="700" y2="155" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Streamlit -->
+  <rect x="700" y="90" width="160" height="130" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="780" y="114" font-size="11" font-weight="700" fill="#15803d" text-anchor="middle">Streamlit UI</text>
+  <line x1="720" y1="124" x2="860" y2="124" stroke="#dcfce7" stroke-width="1"/>
+  <text x="780" y="144" font-size="10" fill="#166534" text-anchor="middle">오늘의 브리핑 카드</text>
+  <text x="780" y="162" font-size="10" fill="#166534" text-anchor="middle">일정 타임라인</text>
+  <text x="780" y="180" font-size="10" fill="#166534" text-anchor="middle">AI 제안 사항</text>
+  <text x="780" y="198" font-size="9" fill="#22c55e" text-anchor="middle">로컬 웹 대시보드</text>
+
+  <!-- Flow indicator -->
+  <rect x="245" y="325" width="615" height="36" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="552" y="342" font-size="10" fill="#64748b" text-anchor="middle">매일 아침 실행 →</text>
+  <text x="552" y="356" font-size="10" fill="#64748b" text-anchor="middle">Calendar 수집 → Python 전처리 → LLM 분석 → Streamlit 대시보드 표시</text>
+
+  <!-- Problem solved -->
+  <rect x="40" y="380" width="820" height="42" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="450" y="401" font-size="11" font-weight="700" fill="#92400e" text-anchor="middle">"오늘 뭘 먼저 해야 하지?" — 매일 아침 반복되는 질문을 자동화</text>
+  <text x="450" y="417" font-size="10" fill="#92400e" text-anchor="middle">실제 불편함 → Python 자동화 · 솔로 개발</text>
+
+  <!-- Tech bar -->
+  <rect x="40" y="432" width="820" height="20" rx="6" fill="#f1f5f9"/>
+  <text x="450" y="446" font-size="10" fill="#64748b" text-anchor="middle">Python 3 · Streamlit · Google Calendar API · Claude/OpenAI API · google-auth</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

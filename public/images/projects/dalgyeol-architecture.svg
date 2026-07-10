@@ -1,0 +1,74 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="900" height="460" fill="#f8f9fa" rx="12"/>
+  <text x="450" y="38" font-size="15" font-weight="700" fill="#1a1a2e" text-anchor="middle">달결 — 운세 서비스 아키텍처</text>
+  <line x1="60" y1="52" x2="840" y2="52" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- User -->
+  <rect x="40" y="100" width="100" height="80" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="90" y="133" font-size="24" text-anchor="middle">👤</text>
+  <text x="90" y="158" font-size="10" font-weight="600" fill="#475569" text-anchor="middle">사용자</text>
+
+  <line x1="140" y1="140" x2="185" y2="140" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Next.js Frontend -->
+  <rect x="185" y="72" width="190" height="196" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="280" y="96" font-size="11" font-weight="700" fill="#1d4ed8" text-anchor="middle">Next.js Frontend</text>
+  <line x1="205" y1="106" x2="375" y2="106" stroke="#dbeafe" stroke-width="1"/>
+  <text x="280" y="126" font-size="10" fill="#1e40af" text-anchor="middle">🔮 오늘의 운세</text>
+  <text x="280" y="144" font-size="10" fill="#1e40af" text-anchor="middle">🃏 타로 카드</text>
+  <text x="280" y="162" font-size="10" fill="#1e40af" text-anchor="middle">📅 사주 분석</text>
+  <text x="280" y="180" font-size="10" fill="#1e40af" text-anchor="middle">⭐ 별자리 운세</text>
+  <line x1="205" y1="194" x2="375" y2="194" stroke="#dbeafe" stroke-width="1"/>
+  <text x="280" y="212" font-size="10" fill="#1e40af" text-anchor="middle">TypeScript · Tailwind</text>
+  <text x="280" y="228" font-size="10" fill="#1e40af" text-anchor="middle">SSR / SSG</text>
+  <text x="280" y="248" font-size="9" fill="#3b82f6" text-anchor="middle">kangnam7654/lunawave</text>
+
+  <line x1="375" y1="140" x2="420" y2="140" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="420" y1="200" x2="375" y2="200" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+  <!-- Rust/Axum Backend -->
+  <rect x="420" y="72" width="190" height="196" rx="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="515" y="96" font-size="11" font-weight="700" fill="#ea580c" text-anchor="middle">Rust / Axum Backend</text>
+  <line x1="440" y1="106" x2="610" y2="106" stroke="#fed7aa" stroke-width="1"/>
+  <text x="515" y="128" font-size="10" fill="#9a3412" text-anchor="middle">REST API 서버</text>
+  <text x="515" y="146" font-size="10" fill="#9a3412" text-anchor="middle">운세 데이터 처리</text>
+  <text x="515" y="164" font-size="10" fill="#9a3412" text-anchor="middle">사주 계산 로직</text>
+  <text x="515" y="182" font-size="10" fill="#9a3412" text-anchor="middle">타로 알고리즘</text>
+  <line x1="440" y1="196" x2="610" y2="196" stroke="#fed7aa" stroke-width="1"/>
+  <text x="515" y="214" font-size="10" fill="#9a3412" text-anchor="middle">고성능 · 타입 안전</text>
+  <text x="515" y="232" font-size="10" fill="#9a3412" text-anchor="middle">async/await (Tokio)</text>
+  <text x="515" y="252" font-size="9" fill="#fb923c" text-anchor="middle">Rust + Axum Framework</text>
+
+  <line x1="610" y1="170" x2="655" y2="170" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Data layer -->
+  <rect x="655" y="100" width="200" height="140" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="755" y="124" font-size="11" font-weight="700" fill="#15803d" text-anchor="middle">데이터</text>
+  <line x1="675" y1="134" x2="855" y2="134" stroke="#dcfce7" stroke-width="1"/>
+  <text x="755" y="154" font-size="10" fill="#166534" text-anchor="middle">운세 콘텐츠 DB</text>
+  <text x="755" y="172" font-size="10" fill="#166534" text-anchor="middle">타로 카드 78장</text>
+  <text x="755" y="190" font-size="10" fill="#166534" text-anchor="middle">사주 만세력 데이터</text>
+  <text x="755" y="208" font-size="10" fill="#166534" text-anchor="middle">별자리 / 오늘의 운세</text>
+  <text x="755" y="226" font-size="9" fill="#22c55e" text-anchor="middle">정적 콘텐츠 + DB</text>
+
+  <!-- Team badge -->
+  <rect x="185" y="290" width="670" height="42" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="520" y="316" font-size="11" font-weight="700" fill="#854d0e" text-anchor="middle">팀 프로젝트 · 장정빈 (Frontend · Next.js) · kangnam7654/lunawave GitHub Org</text>
+
+  <!-- Tech bar -->
+  <rect x="40" y="352" width="820" height="36" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="450" y="375" font-size="11" fill="#475569" text-anchor="middle">Next.js · TypeScript · Rust · Axum · Tokio · Tailwind CSS · REST API</text>
+
+  <!-- Result bar -->
+  <rect x="40" y="400" width="820" height="36" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="450" y="423" font-size="11" font-weight="700" fill="#15803d" text-anchor="middle">Rust 백엔드로 고성능 운세 API 구현 · Next.js SSR로 SEO 최적화 · 팀 협업 프로젝트</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto">
+      <path d="M8,0 L8,6 L0,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>
