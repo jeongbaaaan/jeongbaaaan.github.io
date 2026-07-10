@@ -851,10 +851,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
         ],
         images: [
           { src: "/images/projects/dear-ant-architecture.svg", alt: "Dear,ANT 서비스 아키텍처" },
-          { src: "/images/projects/dear-ant-journal.png", alt: "트레이딩 저널" },
-          { src: "/images/projects/dear-ant-calculator.png", alt: "적금 vs 투자 비교" },
-          { src: "/images/projects/dear-ant-compound.png", alt: "복리 계산기" },
-          { src: "/images/projects/dear-ant-simulator.png", alt: "매매 시뮬레이터" },
         ],
       }),
     },
@@ -910,10 +906,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
         ],
         images: [
           { src: "/images/projects/dear-ant-architecture.svg", alt: "Dear,ANT Service Architecture" },
-          { src: "/images/projects/dear-ant-journal.png", alt: "Trading journal" },
-          { src: "/images/projects/dear-ant-calculator.png", alt: "Savings vs investment" },
-          { src: "/images/projects/dear-ant-compound.png", alt: "Compound calculator" },
-          { src: "/images/projects/dear-ant-simulator.png", alt: "Trade simulator" },
         ],
       }),
     },
@@ -969,11 +961,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
         ],
         images: [
           { src: "/images/projects/dear-ant-architecture.svg", alt: "Dear,ANTサービスアーキテクチャ" },
-          
-          { src: "/images/projects/dear-ant-journal.png", alt: "トレーディングジャーナル" },
-          { src: "/images/projects/dear-ant-calculator.png", alt: "積立 vs 投資比較" },
-          { src: "/images/projects/dear-ant-compound.png", alt: "複利計算機" },
-          { src: "/images/projects/dear-ant-simulator.png", alt: "売買シミュレーター" },
         ],
       }),
     },
@@ -1035,8 +1022,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
         ],
         images: [
           { src: "/images/projects/dalgyeol-architecture.svg", alt: "달결 서비스 아키텍처" },
-          { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "무료 사주팔자" },
-          { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "무료 타로" },
         ],
       }),
     },
@@ -1095,8 +1080,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
         ],
         images: [
           { src: "/images/projects/dalgyeol-architecture.svg", alt: "Dalgyeol Service Architecture" },
-          { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "Free Saju report" },
-          { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "Free tarot" },
         ],
       }),
     },
@@ -1155,8 +1138,6 @@ const projectsData: Record<string, Record<Locale, ProjectData>> = {
         ],
         images: [
           { src: "/images/projects/dalgyeol-architecture.svg", alt: "ダルギョルサービスアーキテクチャ" },
-          { src: "/images/projects/dalgyeol-web-saju.jpg", alt: "無料四柱推命" },
-          { src: "/images/projects/dalgyeol-web-tarot.jpg", alt: "無料タロット" },
         ],
       }),
     },
