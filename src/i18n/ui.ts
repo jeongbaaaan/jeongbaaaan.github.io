@@ -67,15 +67,19 @@ export const ui = {
     "nav.ariaTheme": "테마 전환",
     "nav.ariaMenu": "메뉴 열기",
 
+    // Hero stats
+    "hero.stat.clients": "고객사 관리",
+    "hero.stat.savings": "스토리지 비용 절감",
+    "hero.stat.projects": "프로젝트",
+    "hero.stat.hackathon": "AWS 해커톤 대상",
+
     // Nav project labels
     "nav.project.cloudInfra": "클라우드 인프라 관리",
+    "nav.project.mailer": "SmileShark Mailer",
     "nav.project.clovaX": "Clova X 챗봇 PM",
-    "nav.project.auction": "CQRS 경매 웹사이트",
-    "nav.project.kubernetes": "Kubernetes 프로젝트",
-    "nav.project.dataViz": "데이터 시각화",
+    "nav.project.dapanda": "Dapanda (CloudSchool)",
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "달결",
-    "nav.project.sauceFace": "조미료상 테스트",
     "nav.project.calendarAgent": "Calendar Agent",
 
     // Layout
@@ -155,15 +159,19 @@ export const ui = {
     "nav.ariaTheme": "Toggle theme",
     "nav.ariaMenu": "Open menu",
 
+    // Hero stats
+    "hero.stat.clients": "Clients Managed",
+    "hero.stat.savings": "Storage Cost Reduction",
+    "hero.stat.projects": "Projects",
+    "hero.stat.hackathon": "AWS Hackathon 1st",
+
     // Nav project labels
     "nav.project.cloudInfra": "Cloud Infra Management",
+    "nav.project.mailer": "SmileShark Mailer",
     "nav.project.clovaX": "Clova X Chatbot PM",
-    "nav.project.auction": "CQRS Auction Website",
-    "nav.project.kubernetes": "Kubernetes Project",
-    "nav.project.dataViz": "Data Visualization",
+    "nav.project.dapanda": "Dapanda (CloudSchool)",
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "Dalgyeol",
-    "nav.project.sauceFace": "Sauce Face Test",
     "nav.project.calendarAgent": "Calendar Agent",
 
     // Layout
@@ -243,15 +251,19 @@ export const ui = {
     "nav.ariaTheme": "テーマ切替",
     "nav.ariaMenu": "メニューを開く",
 
+    // Hero stats
+    "hero.stat.clients": "顧客管理",
+    "hero.stat.savings": "ストレージ削減",
+    "hero.stat.projects": "プロジェクト",
+    "hero.stat.hackathon": "AWSハッカソン大賞",
+
     // Nav project labels
     "nav.project.cloudInfra": "クラウドインフラ管理",
+    "nav.project.mailer": "SmileShark Mailer",
     "nav.project.clovaX": "Clova X チャットボットPM",
-    "nav.project.auction": "CQRSオークションサイト",
-    "nav.project.kubernetes": "Kubernetesプロジェクト",
-    "nav.project.dataViz": "データ可視化",
+    "nav.project.dapanda": "Dapanda (CloudSchool)",
     "nav.project.dearAnt": "Dear,ANT",
     "nav.project.dalgyeol": "ダルギョル",
-    "nav.project.sauceFace": "調味料顔テスト",
     "nav.project.calendarAgent": "Calendar Agent",
 
     // Layout

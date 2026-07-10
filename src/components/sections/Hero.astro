@@ -83,6 +83,28 @@ const { locale = "ko" } = Astro.props;
         {t("hero.cta.contact", locale)}
       </a>
     </div>
+
+    <div class="mt-14 flex flex-wrap justify-center gap-8 md:gap-14">
+      <div class="text-center">
+        <p class="text-3xl font-extrabold gradient-text">70+</p>
+        <p class="mt-1 text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">{t("hero.stat.clients", locale)}</p>
+      </div>
+      <div class="hidden h-10 w-px self-center bg-[var(--color-border)] md:block"></div>
+      <div class="text-center">
+        <p class="text-3xl font-extrabold gradient-text">60%</p>
+        <p class="mt-1 text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">{t("hero.stat.savings", locale)}</p>
+      </div>
+      <div class="hidden h-10 w-px self-center bg-[var(--color-border)] md:block"></div>
+      <div class="text-center">
+        <p class="text-3xl font-extrabold gradient-text">9</p>
+        <p class="mt-1 text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">{t("hero.stat.projects", locale)}</p>
+      </div>
+      <div class="hidden h-10 w-px self-center bg-[var(--color-border)] md:block"></div>
+      <div class="text-center">
+        <p class="text-3xl font-extrabold">🏆</p>
+        <p class="mt-1 text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">{t("hero.stat.hackathon", locale)}</p>
+      </div>
+    </div>
   </div>
 
   <!-- Scroll indicator -->

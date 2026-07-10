@@ -2,19 +2,99 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navbar from "../../components/layout/Navbar.astro";
 import Footer from "../../components/layout/Footer.astro";
-import ScrollProgress from "../../components/ui/ScrollProgress.tsx";
-import AiWorkflow from "../../components/sections/AiWorkflow.tsx";
 import { t } from "../../i18n/utils";
 import type { Locale } from "../../i18n/utils";
 
 const locale: Locale = "ja";
+
+const content = {
+  badge: "このポートフォリオはClaude Codeで設計・開発・デプロイしました",
+  title: "AIとの働き方",
+  subtitle: "コードを生成するツールではなく、思考を具体化する協業パートナー",
+  intro: "AIがなくてもできるが、AIとともにすればより速く、より深く考えられる。",
+  examples: [
+    {
+      number: "01",
+      label: "ADRで設計判断を記録する",
+      desc: "SmileShark Mailerを作るとき、コードを書く前にまずAIと一緒に「なぜこの構造か」を問いました。Gmail OAuthを使うか、ハンドオフ方式にするか — 15個のADRはその対話の結果物です。AIは意思決定の速度を上げ、ADRはその過程を記録として残します。",
+      tag: "SmileShark Mailer · ADR 15個",
+    },
+    {
+      number: "02",
+      label: "コードより設計を先に",
+      desc: "AIにはまずコンテキストを渡します。どんなサービスか、制約は何か、チーム規模はどれくらいか。それからアーキテクチャを一緒に検討します。AIにコードを書かせるのではなく、自分がより深く考えられるように使います。",
+      tag: "Architecture Review · Context-first",
+    },
+    {
+      number: "03",
+      label: "このポートフォリオ自体が証拠",
+      desc: "Claude Codeでこのポートフォリオをゼロから設計し、コンポーネントを作り、i18nを組み込み、デプロイまで完了しました。AIツールの可能性を言葉で説明するのではなく、成果物で直接示します。",
+      tag: "Astro · Claude Code · GitHub Pages",
+    },
+    {
+      number: "04",
+      label: "繰り返し業務は自動化で取り除く",
+      desc: "Calendar Briefing Agentは、毎朝カレンダーを見て感じる「今日は何から始めるべきか」という問いを自動化したものです。不便を感じたら、AIと一緒にその不便を製品にする — それが私のやり方です。",
+      tag: "Calendar Briefing Agent · Python",
+    },
+  ],
+  closing: "AIがなくてもできるが、\nAIとともにすればより速く、より深く考えられる。",
+};
 ---
 
-<BaseLayout title={`AI Dev | ${t("hero.name", locale)}`} locale={locale}>
-  <ScrollProgress client:load />
+<BaseLayout title={`AIとの働き方 | ${t("hero.name", locale)}`} locale={locale}>
   <Navbar locale={locale} />
-  <main>
-    <AiWorkflow client:visible locale={locale} />
+  <main class="min-h-screen">
+    <!-- Hero -->
+    <section class="relative overflow-hidden border-b border-[var(--color-border)] py-24 px-6">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute left-1/3 top-1/3 h-80 w-80 rounded-full bg-[var(--color-primary)]/8 blur-[100px]"></div>
+        <div class="absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full bg-[var(--color-accent)]/8 blur-[100px]"></div>
+      </div>
+      <div class="relative mx-auto max-w-3xl text-center">
+        <div class="mb-6 inline-block rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 px-4 py-1.5 text-xs font-semibold text-[var(--color-primary)] uppercase tracking-widest">
+          {content.badge}
+        </div>
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight md:text-6xl font-[family-name:var(--font-heading)]">
+          {content.title}
+        </h1>
+        <p class="text-lg text-[var(--color-text-secondary)] md:text-xl">
+          {content.subtitle}
+        </p>
+      </div>
+    </section>
+
+    <!-- Examples -->
+    <section class="mx-auto max-w-3xl px-6 py-20">
+      <div class="space-y-16">
+        {content.examples.map((ex) => (
+          <div class="group">
+            <div class="mb-3 flex items-center gap-3">
+              <span class="font-mono text-xs font-bold text-[var(--color-primary)] opacity-60">{ex.number}</span>
+              <span class="h-px flex-1 bg-[var(--color-border)]"></span>
+            </div>
+            <h2 class="mb-3 text-xl font-bold text-[var(--color-text)] md:text-2xl">
+              {ex.label}
+            </h2>
+            <p class="mb-4 leading-relaxed text-[var(--color-text-secondary)]">
+              {ex.desc}
+            </p>
+            <span class="inline-block rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 font-mono text-xs text-[var(--color-text-secondary)]">
+              {ex.tag}
+            </span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="border-t border-[var(--color-border)] px-6 py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-2xl font-bold leading-snug text-[var(--color-text)] md:text-3xl whitespace-pre-line">
+          {content.closing}
+        </p>
+      </div>
+    </section>
   </main>
   <Footer locale={locale} />
 </BaseLayout>

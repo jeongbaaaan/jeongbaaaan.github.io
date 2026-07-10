@@ -2,19 +2,99 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navbar from "../../components/layout/Navbar.astro";
 import Footer from "../../components/layout/Footer.astro";
-import ScrollProgress from "../../components/ui/ScrollProgress.tsx";
-import AiWorkflow from "../../components/sections/AiWorkflow.tsx";
 import { t } from "../../i18n/utils";
 import type { Locale } from "../../i18n/utils";
 
 const locale: Locale = "en";
+
+const content = {
+  badge: "This portfolio was designed, built, and deployed with Claude Code",
+  title: "How I Work with AI",
+  subtitle: "Not a code-generation tool — a thinking partner for making ideas concrete",
+  intro: "I could do it without AI, but with AI I think faster and better.",
+  examples: [
+    {
+      number: "01",
+      label: "Document design decisions with ADRs",
+      desc: "When building SmileShark Mailer, before writing any code I worked through the why with AI. Should we use Gmail OAuth, or go with a handoff model? The 15 ADRs are the output of those conversations. AI accelerates the decision-making, ADRs preserve the reasoning.",
+      tag: "SmileShark Mailer · 15 ADRs",
+    },
+    {
+      number: "02",
+      label: "Design first, code second",
+      desc: "I give AI context before asking for output. What is this service, what are the constraints, what is the team size. Then we review the architecture together. The goal is not for AI to write the code — it is to help me think more clearly.",
+      tag: "Architecture Review · Context-first",
+    },
+    {
+      number: "03",
+      label: "This portfolio is the proof",
+      desc: "I designed this portfolio from scratch with Claude Code — components, i18n, routing, and deployment. I do not talk about AI capabilities in the abstract. I show them through what I ship.",
+      tag: "Astro · Claude Code · GitHub Pages",
+    },
+    {
+      number: "04",
+      label: "Automate the friction away",
+      desc: "Calendar Briefing Agent started from a daily question: what should I focus on today? If I notice friction, my instinct is to build something that removes it — and AI makes that faster than ever.",
+      tag: "Calendar Briefing Agent · Python",
+    },
+  ],
+  closing: "I could do it without AI,\nbut with AI I think faster and better.",
+};
 ---
 
-<BaseLayout title={`AI Dev | ${t("hero.name", locale)}`} locale={locale}>
-  <ScrollProgress client:load />
+<BaseLayout title={`How I Work with AI | ${t("hero.name", locale)}`} locale={locale}>
   <Navbar locale={locale} />
-  <main>
-    <AiWorkflow client:visible locale={locale} />
+  <main class="min-h-screen">
+    <!-- Hero -->
+    <section class="relative overflow-hidden border-b border-[var(--color-border)] py-24 px-6">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute left-1/3 top-1/3 h-80 w-80 rounded-full bg-[var(--color-primary)]/8 blur-[100px]"></div>
+        <div class="absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full bg-[var(--color-accent)]/8 blur-[100px]"></div>
+      </div>
+      <div class="relative mx-auto max-w-3xl text-center">
+        <div class="mb-6 inline-block rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 px-4 py-1.5 text-xs font-semibold text-[var(--color-primary)] uppercase tracking-widest">
+          {content.badge}
+        </div>
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight md:text-6xl font-[family-name:var(--font-heading)]">
+          {content.title}
+        </h1>
+        <p class="text-lg text-[var(--color-text-secondary)] md:text-xl">
+          {content.subtitle}
+        </p>
+      </div>
+    </section>
+
+    <!-- Examples -->
+    <section class="mx-auto max-w-3xl px-6 py-20">
+      <div class="space-y-16">
+        {content.examples.map((ex) => (
+          <div class="group">
+            <div class="mb-3 flex items-center gap-3">
+              <span class="font-mono text-xs font-bold text-[var(--color-primary)] opacity-60">{ex.number}</span>
+              <span class="h-px flex-1 bg-[var(--color-border)]"></span>
+            </div>
+            <h2 class="mb-3 text-xl font-bold text-[var(--color-text)] md:text-2xl">
+              {ex.label}
+            </h2>
+            <p class="mb-4 leading-relaxed text-[var(--color-text-secondary)]">
+              {ex.desc}
+            </p>
+            <span class="inline-block rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 font-mono text-xs text-[var(--color-text-secondary)]">
+              {ex.tag}
+            </span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="border-t border-[var(--color-border)] px-6 py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-2xl font-bold leading-snug text-[var(--color-text)] md:text-3xl whitespace-pre-line">
+          {content.closing}
+        </p>
+      </div>
+    </section>
   </main>
   <Footer locale={locale} />
 </BaseLayout>

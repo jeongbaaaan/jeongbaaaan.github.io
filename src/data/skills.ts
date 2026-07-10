@@ -16,6 +16,11 @@ export const skills: SkillCategory[] = [
       "AWS RDS",
       "AWS CloudFront",
       "AWS Cost Explorer",
+      "AWS IAM",
+      "VPC",
+      "CloudWatch",
+      "Route 53",
+      "ECS",
       "Docker",
       "Linux",
     ],
@@ -24,7 +29,7 @@ export const skills: SkillCategory[] = [
   {
     title: "Development",
     icon: "💻",
-    items: ["Next.js", "TypeScript", "React", "Python", "JavaScript"],
+    items: ["Next.js", "TypeScript", "React", "Python", "JavaScript", "Astro"],
     size: "medium",
   },
   {
@@ -36,7 +41,7 @@ export const skills: SkillCategory[] = [
   {
     title: "Tools & Collaboration",
     icon: "🛠️",
-    items: ["JIRA", "Figma", "Notion", "Git", "Claude Code"],
+    items: ["Claude Code", "JIRA", "Figma", "Notion", "Git", "GitHub Actions"],
     size: "medium",
   },
 ];
