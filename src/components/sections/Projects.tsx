@@ -591,7 +591,7 @@ export default function Projects({ locale = "ko" }: Props) {
                       </span>
                     )}
                   </div>
-                  <h4 className="mb-3 flex min-w-0 items-center gap-2 text-xl font-bold leading-snug transition-colors duration-200 group-hover:text-[var(--color-primary)] md:text-2xl">
+                  <h4 className="mb-3 flex min-w-0 items-center gap-2 text-base font-bold leading-snug transition-colors duration-200 group-hover:text-[var(--color-primary)] md:text-lg">
                     <span>{project.title}</span>
                     {project.github && (
                       <span
